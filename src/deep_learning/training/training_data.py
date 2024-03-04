@@ -1,5 +1,5 @@
 import os
-import _pickle as pickle
+import pickle as pickle
 import numpy as np
 from tqdm import tqdm
 from src.utils.splitter import Splitter
