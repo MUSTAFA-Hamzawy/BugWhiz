@@ -9,8 +9,8 @@ from src.deep_learning.model.siamese_model import SiameseModel
 from src.deep_learning.training.train_config import TrainConfig
 from src.deep_learning.loss.quintet_loss import quintet_loss, QuintetWeights, quintet_trainable
 from keras_bert import get_custom_objects
-from tensorflow.keras.models import load_model as keras_load_model
-from tensorflow.keras.layers import Layer, Lambda
+from keras.models import load_model as keras_load_model
+from keras.layers import Layer, Lambda
 from src.utils.util import Util
 import mlflow
 import tempfile

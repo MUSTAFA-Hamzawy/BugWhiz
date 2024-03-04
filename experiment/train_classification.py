@@ -1,0 +1,101 @@
+import os
+import mlflow
+import click
+import logging
+from mlflow.utils.logging_utils import eprint
+from src.evaluation.retrieval import Retrieval
+from src.utils.keras_utils import KerasUtils
+from src.deep_learning.training.train_retrieval import TrainRetrieval
+from src.deep_learning.training.train_classification import TrainClassification
+from src.deep_learning.training.train_config import TrainConfig
+import tensorflow as tf
+
+"""
+Trains a SiameseQAT model for classification experiment using bug reports preprocessed
+"""
+
+tf.compat.v1.disable_eager_execution()
+
+logging.basicConfig(level=logging.DEBUG)
+
+@click.command(
+    help="SiameseQAT script for retrieval experiment"
+)
+@click.option("--run_id_retrieval", default='', help='Hash id for retrieval previously runned.')
+@click.option("--domain", default='eclipse', help='Dataset to be used. Ex: eclipse, netbeans, openoffice.')
+@click.option("--batch_size", default=64, type=int, help="Batch size for training and validation phase.")
+@click.option("--epochs", default=15, type=int, help="Number of epochs for training.")
+def train_classification(run_id_retrieval, domain, batch_size, epochs):
+
+    retrieval_run = mlflow.get_run(run_id_retrieval)
+
+    # start a new MLflow run
+    with mlflow.start_run():
+
+        # Retrieves the artifact URI for the encoder model from a previous retrieval run.
+        artifact_uri = os.path.join(retrieval_run.info.artifact_uri, "encoder_model", "encoder_model.ckpt")
+        artifact_uri = artifact_uri[8:]
+        print("Artifact uri: {}".format(artifact_uri))
+
+        # Initializes TensorFlow session and sets up necessary parameters for training.
+        retrieval_params = retrieval_run.data.params
+
+        preprocessing = retrieval_params['preprocessing']
+
+        dir_input = os.path.join('data', 'processed', domain, )
+
+        print("Data params:", retrieval_run.data.params)
+        print("Data metrics:", retrieval_run.data.metrics)
+
+        # Autolog
+        mlflow.keras.autolog()
+
+        # https://stackoverflow.com/questions/60354923/how-can-i-handle-the-variable-uninitialized-error-in-tensorflow-v2
+        init = tf.compat.v1.global_variables_initializer()
+        with tf.compat.v1.Session() as sess:
+            sess.run(init)
+
+            model_name = retrieval_params['model_name']
+            epochs_trained = int(retrieval_params['epochs'])
+            title_seq_lenght = int(retrieval_params['title_seq'])
+            desc_seq_lenght = int(retrieval_params['desc_seq'])
+            bert_layers = int(retrieval_params['bert_layers'])
+            batch_size_retrieval = int(retrieval_params['batch_size'])
+            dir_input = os.path.join('data', 'processed', domain, preprocessing)
+
+            # Constructs a TrainRetrieval object for retrieval training and loads the pre-trained retrieval model.
+            retrieval = TrainRetrieval(model_name, 
+                        dir_input, 
+                        domain, 
+                        preprocessing, 
+                        MAX_SEQUENCE_LENGTH_T=title_seq_lenght, 
+                        MAX_SEQUENCE_LENGTH_D=desc_seq_lenght,
+                        BERT_LAYERS=bert_layers, 
+                        EPOCHS=epochs_trained, 
+                        BATCH_SIZE=batch_size_retrieval, 
+                        BATCH_SIZE_TEST=batch_size_retrieval).build()
+
+            retrieval_preload = retrieval.get_model()
+            
+            # Constructs a TrainClassification object for classification training using the pre-trained retrieval model.
+            pretrained_model_input = artifact_uri
+            train = TrainClassification(retrieval_preload, 
+                        model_name, 
+                        pretrained_model_input, 
+                        dir_input, 
+                        domain, 
+                        preprocessing, 
+                        EPOCHS=epochs, 
+                        BATCH_SIZE=batch_size, 
+                        BATCH_SIZE_TEST=batch_size)
+
+            train.run()
+
+            model = train.get_model()
+
+            # Logs the trained classification model using MLflow.
+            print("Saving classification model")
+            KerasUtils.log_model(model, "classification_model")        
+
+if __name__ == "__main__":
+    train_classification()
