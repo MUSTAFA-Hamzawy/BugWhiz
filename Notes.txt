@@ -128,3 +128,7 @@ WORKING WELL:
 - Bag of Words (BoW): BoW representation counts the frequency of each word in the document. It's a simple yet effective way to represent text data.
 
 ////////////////////////////////////////////////////////////////////////
+
+Cleaning and selecting the important columns that I use in duplicate detection
+
+////////////////////////////////////////////////////////////////////////
