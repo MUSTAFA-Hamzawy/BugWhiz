@@ -1,3 +1,4 @@
 # ignore the dataset folder and all its contents
 dataset/
 new_dataset/
+BOW_dataset/
