@@ -64,9 +64,11 @@ These features should capture characteristics or patterns that distinguish dupli
 Here are some common features you can consider extracting:
 
 1. Textual Similarity Features:
-   - TF-IDF Vectors: Convert bug report texts into TF-IDF (Term Frequency-Inverse Document Frequency) vectors to represent the importance of each word in the document relative to the entire corpus.
+   X ==> NOT WORKING WELL - TF-IDF Vectors: Convert bug report texts into TF-IDF (Term Frequency-Inverse Document Frequency) vectors to represent the importance of each word in the document relative to the entire corpus.
+   
+   X ==> NOT WORKING WELL - Jaccard Similarity: Compute Jaccard similarity between sets of words in bug reports to measure their similarity.
+   
    - Word Embeddings: Use pre-trained word embeddings (e.g., Word2Vec, GloVe) to capture semantic similarities between bug report texts.
-   - Jaccard Similarity: Compute Jaccard similarity between sets of words in bug reports to measure their similarity.
 
 2. Metadata Features:
    - Bug Report ID: Use the ID of the bug report as a feature to identify duplicates.
@@ -121,3 +123,8 @@ Some of these features include:
 
 10. **Semantic similarity measures**: Besides cosine similarity, you can also explore other semantic similarity measures such as Jaccard similarity, Dice similarity, or Jaccard Index.
 
+////////////////////////////////////////////////////////////////////////
+WORKING WELL:
+- Bag of Words (BoW): BoW representation counts the frequency of each word in the document. It's a simple yet effective way to represent text data.
+
+////////////////////////////////////////////////////////////////////////
