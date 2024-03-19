@@ -1,21 +1,11 @@
 from tqdm import tqdm
 import numpy as np
 
-data = """To be, or not to be, that is the question: Whether \
-'tis nobler in the mind to suffer The slings and arrows of ou\
-trageous fortune, Or to take arms against a sea of troubles A\
-nd by opposing end them. To die—to sleep, No more; and by a s\
-leep to say we end The heart-ache and the thousand natural sh\
-ocks That flesh is heir to: 'tis a consummation Devoutly to b\
-e wish'd. To die, to sleep; To sleep, perchance to dream—ay, \
-there's the rub: For in that sleep of death what dreams may c\
-ome, When we have shuffled off this mortal coil, Must give us\
- pause—there's the respect That makes calamity of so long lif\
-e. For who would bear the whips and scorns of time, Th'oppres\
-sor's wrong, the proud man's contumely, The pangs of dispriz'\
-d love, the law's delay, The insolence of office, and the spu\
-rns That patient merit of th'unworthy takes, When he himself \
-might his quietus make""".lower()
+data = """bug report unknownhostexception is not caught when the host name is invalid in the repositories view newcvs repository location put a garbage host name eg eh complete the wizard expand the project version uhe is thrown log wed jun edt orgeclipsevcmcore cannot locate host eh javanetunknownhostexception eh at javanetinetaddressgetallbyname0inetaddressjava585 at javanetinetaddressgetallbyname0inetaddressjava554 at javanetinetaddressgetbynameinetaddressjava463 at javanetsocketinitsocketjava112 at orgeclipsevcminternalcoreccvsclientpserverconnectioncreatesocket pserverconnectionjava140 at orgeclipsevcminternalcoreccvsclientpserverconnectionopen pserverconnectionjava190 at orgeclipsevcminternalcoreccvsclientconnectionopen connectionjava224 at orgeclipsevcminternalcoreccvsclientclientinit clientjava226 at orgeclipsevcminternalcoreccvscvsadapterinternalfetchmembernames cvsadapterjava768 at orgeclipsevcminternalcoreccvscvsadapterfetchteamstreamprojectnames cvsadapterjava591 at orgeclipsevcminternalcoreteamstreamfetchprojects teamstreamjava58 at orgeclipsevcminternaluimodelteamstreamelementinternalgetchildren teamstreamelementjava82 at orgeclipsevcminternaluimodelteamstreamelement1run teamstreamelementjava39 at orgeclipseswtcustombusyindicatorshowwhilebusyindicatorjava97 at orgeclipsevcminternaluimodelteamstreamelementgetchildren teamstreamelementjava37 at orgeclipseuimodelworkbenchcontentprovidergetchildren workbenchcontentproviderjava53 at orgeclipsejfaceviewersabstracttreeviewergetrawchildren abstracttreeviewerjava568 at orgeclipsejfaceviewersstructuredviewergetfilteredchildren structuredviewerjava281 at orgeclipsejfaceviewersstructuredviewergetsortedchildren structuredviewerjava378 at orgeclipsejfaceviewersabstracttreeviewercreatechildren abstracttreeviewerjava238 at orgeclipsejfaceviewersabstracttreeviewerhandletreeexpand abstracttreeviewerjava611 at orgeclipsejfaceviewersabstracttreeviewer2treeexpanded abstracttreeviewerjava631 at orgeclipseswtwidgetstypedlistenerhandleeventtypedlistenerjava compiled code at orgeclipseswtwidgetswidgetsendeventwidgetjavacompiled code at orgeclipseswtwidgetswidgetsendeventwidgetjavacompiled code at orgeclipseswtwidgetstreewmnotifychildtreejavacompiled code at orgeclipseswtwidgetscompositewmnotifycompositejavacompiled code at orgeclipseswtwidgetscompositewmnotifycompositejavacompiled code at orgeclipseswtwidgetscontrolwindowproccontroljavacompiled code at orgeclipseswtwidgetsdisplaywindowprocdisplayjavacompiled code at orgeclipseswtinternalwin32oscallwindowprocnative method at orgeclipseswtwidgetstreecallwindowproctreejavacompiled code at orgeclipseswtwidgetstreewmlbuttondowntreejava1043 at orgeclipseswtwidgetscontrolwindowproccontroljavacompiled code at orgeclipseswtwidgetsdisplaywindowprocdisplayjavacompiled code at orgeclipseswtinternalwin32osdispatchmessagenative method at orgeclipseswtwidgetsdisplayreadanddispatchdisplayjava compiled code at orgeclipseuiinternalworkbenchruneventloopworkbenchjava compiled code at orgeclipseuiinternalworkbenchrunworkbenchjava620 at orgeclipsecoreinternalbootinternalbootloaderrun internalbootloaderjava815 at orgeclipsecorebootbootloaderrunbootloaderjava285 at javalangreflectmethodinvokenative method at orgeclipsecorelaunchermainbasicrunmainjava69 at orgeclipsecorelaunchermainrunmainjava311 at orgeclipsecorelaunchermainmainmainjava198 notes km pm recommend we catch at level of teamstreamelementinternalgetchildren and do errordialogopenerror recommend that class because its only ui place we can catch and its already catching coreexceptions there anyway there are other places you could get this error since we lazy verify connections but this is the most common also noticed that in vcmmodelelementhandle where this is being caught we should not be loging info messages only errors kh pm yes 
+""".lower()
+
+data_test = """bug report after having synchronized and released successfully with teamstream on zrhcvs i attempted to version the project orgeclipsejdtcore and got a dialog saying cvs communication error following stack trace was in the log log sat jun cest orgeclipsevcmcore cvs communication error javaiointerruptedioexception read timed out at javanetsocketinputstreamsocketreadnative method at javanetsocketinputstreamreadsocketinputstreamjavacompiled code at javaiobufferedinputstreamfillbufferedinputstreamjavacompiled code at javaiobufferedinputstreamreadbufferedinputstreamjavacompiled code at orgeclipsevcminternalcoreccvsclientconnectionreadlineoruntilconnectionjavacompiled code at orgeclipsevcminternalcoreccvsclientconnectionreadtokenconnectionjavacompiled code at orgeclipsevcminternalcoreccvsclientclientprocessresponsesclientjavacompiled code at orgeclipsevcminternalcoreccvsclientclientprocessresponsesclientjava397 at orgeclipsevcminternalcoreccvsclientclientexecuteclientjava257 at orgeclipsevcminternalcoreccvscvsadaptercreateprojectversioncvsadapterjava313 at orgeclipsevcminternalcoresharingmanagercreateprojectversionsharingmanagerjava71 at orgeclipsevcminternaluiactionsversionactionversionlocaloperationversionversionactionjava121 at orgeclipsevcminternaluiversionresourcesoperationrunversionresourcesoperationjava45 at orgeclipsejfaceoperationmodalcontextmodalcontextthreadrunmodalcontextjava98 notes pm am my network connection did not drop i am connected over vpn from home to ott next versioning attempt worked fine
+ """.lower()
 
 chars = set(data)
 
@@ -27,6 +17,7 @@ char_to_idx = {c:i for i, c in enumerate(chars)}
 idx_to_char = {i:c for i, c in enumerate(chars)}
 
 train_X, train_y = data[:-1], data[1:]
+test_X, test_y = data_test[:-1], data_test[1:]
 
 def oneHotEncode(text):
     output = np.zeros((char_size, 1))
@@ -212,10 +203,10 @@ class LSTM:
     
 hidden_size = 25
 
-lstm = LSTM(input_size = char_size + hidden_size, hidden_size = hidden_size, output_size = char_size, num_epochs = 1_000, learning_rate = 0.05)
+lstm = LSTM(input_size = char_size + hidden_size, hidden_size = hidden_size, output_size = char_size, num_epochs = 1_000, learning_rate = 0.01)
 
 ##### Training #####
 lstm.train(train_X, train_y)
 
 ##### Testing #####
-lstm.test(train_X, train_y)
+lstm.test(test_X, test_y)
