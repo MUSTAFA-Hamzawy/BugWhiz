@@ -132,3 +132,31 @@ WORKING WELL:
 Cleaning and selecting the important columns that I use in duplicate detection
 
 ////////////////////////////////////////////////////////////////////////
+
+DR.YAHIA:
+
+1- SVM loss: triplet loss ==> 3 samples
+anchor and duplicate and non duplicate
+anchor and duplicate exist in the file
+non duplicate: take any one randomly from the other duplicates
+
+2- PRIORITY AND SEVERITY: 2 OPTIONS
+concatenate with feature vector from lstm 
+concatenate with one hot encoding of tokens ( one hot encoding vector from tokens of description + one hot encoding of bug priority and bug severity )
+
+3- tf-idf:
+fit all bugs Once at the begining
+then when test perform transform then cos similarity
+
+////////////////////////////////////////////
+
+steps:
+------
+1- tf-idf
+2- lstm
+3- tensof flow ==> classification and top 10 duplicates
+
+can be used:
+word embeddings
+GloVe
+Word2Vec
