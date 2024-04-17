@@ -181,3 +181,19 @@ To use silhouette score for evaluating the performance of TF-IDF-based clusterin
 
 
 Remember to choose the appropriate clustering algorithm and parameters based on your dataset and problem domain, as well as to interpret the silhouette score in the context of your specific clustering results.
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+We need to calculate:
+accurcy:
+precision( most important factor): 80-90
+recall:
+
+if 0.9 is not acceptable to user we can decrese it to 0.8 an so on
+
+////////////////////////////////////////////////////////////////////////////////////////
+Bug categorization:
+1- get corpus for each category we need from internet
+2- need to measure how close each bug to each category with probabilities
+3- must be predefined categories
+( if we need to add new category ==> add corpus and the name of the category to the system )
