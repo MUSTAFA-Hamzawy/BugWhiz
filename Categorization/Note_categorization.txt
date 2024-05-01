@@ -1,3 +1,9 @@
+Try:
+----
+1- GloVe
+2- Zero-shot (the paper )
+
+
 1. Data Collection:
 Gather a dataset of bug reports from your software development project or from publicly available bug repositories. 
 Ensure that the dataset is diverse and representative of different types of bugs across various categories such as UI, performance, security, etc.

@@ -23,6 +23,7 @@ weighted avg       0.71      0.68      0.68      2332
 Confusion Matrix:
 [[810 535]
  [203 784]]
+
 Accuracy: 0.6835334476843911
 Precision: 0.7127493685438298
 Recall: 0.6835334476843911
