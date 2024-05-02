@@ -1,0 +1,399 @@
+I understand your frustration. Let's work on improving the results. Here are some strategies we can try:
+
+1. **Feature Engineering**: 
+Explore different features or representations of the text data that might capture more useful information. 
+This could include word embeddings, character n-grams, or other text representations.
+
+2. Model Selection: 
+Experiment with different machine learning models besides Random Forest, such as Gradient Boosting Machines (GBM), Support Vector Machines (SVM), 
+or deep learning models like Recurrent Neural Networks (RNNs) or Transformers.
+
+3. Hyperparameter Tuning: 
+Fine-tune the hyperparameters of your models to optimize performance. 
+This includes parameters such as the number of trees in Random Forest, learning rate in GBM, or regularization strength in SVM.
+
+4. Ensemble Methods: 
+Instead of simple majority voting, try more sophisticated ensemble methods like stacking, 
+where multiple models are trained and their predictions are combined using a meta-learner.
+
+5. **Data Augmentation**: 
+Augment your data further by generating synthetic samples using techniques 
+like SMOTE (Synthetic Minority Over-sampling Technique) if you have imbalanced classes.
+
+6. **Cross-Validation**: 
+Ensure that you're evaluating your models properly using techniques like cross-validation to get a more reliable estimate of performance.
+
+7. **Error Analysis**: 
+Analyze the errors made by your models to understand common patterns or types of mistakes, which can guide further improvements in feature engineering or model selection.
+
+------------------------------------------------------------------------
+
+                                              report class_name  class_index
+0  "For any event on my bookmarked projects" opti...    Backend            1
+1           Switch to using full l10n id's in urlbar   Frontend            2
+2  Consider removing hasicon property to simplify...   Frontend            2
+3  Method to obtain current URL from WebBrowserEd...   Frontend            2
+4              Fix: migration fails in MS SQL-Server    Backend            1
+                                              report class_name  class_index
+0  REST API - ability to list sub projects for a ...    Backend            1
+1  support selective text on right if set in GNOM...   Frontend            2
+2  [meta][userstory] Ship v1 of Pre-populated top...   Frontend            2
+3  Include updated_on and passwd_changed_on colum...    Backend            1
+4    Problem with email integration to MS Office 365    Backend            1
+"For any event on my bookmarked projects" option not sending notifications for non-member bookmarked projects
+for any event on my bookmarked project option not sending notification for non member bookmarked project
+                                     bug_description class_name
+0  for any event on my bookmarked project option ...    Backend
+1               switch to using full ln id in urlbar   Frontend
+2  consider removing hasicon property to simplify...   Frontend
+3  method to obtain current url from webbrowsered...   Frontend
+4                fix migration fails in m sql server    Backend
+                                     bug_description class_name
+0  rest api ability to list sub project for a pro...    Backend
+1  support selective text on right if set in gnom...   Frontend
+2  meta userstory ship v of pre populated topsite...   Frontend
+3  include updated on and passwd changed on colum...    Backend
+4         problem with email integration to m office    Backend
+for any event on my bookmarked project option not sending notification for non member bookmarked project
+event bookmarked project option sending notification non member bookmarked project
+rest api ability to list sub project for a project
+rest api ability list sub project project
+'rest api ability to list sub project for a project'
+rest api ability list sub project project
+event bookmarked project option sending notification non member bookmarked project
+Filtered Training Data:
+                                     bug_description class_name
+0  event bookmarked project option sending notifi...    Backend
+1                     switch using full ln id urlbar   Frontend
+2  consider removing hasicon property simplify st...   Frontend
+3         method obtain current url webbrowsereditor   Frontend
+4                     fix migration fails sql server    Backend
+
+Filtered Testing Data:
+                                     bug_description class_name
+0          rest api ability list sub project project    Backend
+1     support selective text right set gnome setting   Frontend
+2  meta userstory ship v pre populated topsites a...   Frontend
+3  include updated passwd changed column user api...    Backend
+4                   problem email integration office    Backend
+['Frontend' 'Backend' 'Security']
+['Frontend' 'Backend' 'Security']
+Processing n-gram range: (1, 1)
+Processing n-gram range: (1, 2)
+Processing n-gram range: (1, 3)
+Processing n-gram range: (1, 4)
+Processing n-gram range: (1, 5)
+Processing n-gram range: (1, 6)
+Processing n-gram range: (1, 7)
+Processing n-gram range: (2, 2)
+Processing n-gram range: (2, 3)
+Processing n-gram range: (2, 4)
+Processing n-gram range: (2, 5)
+Processing n-gram range: (2, 6)
+Processing n-gram range: (2, 7)
+Processing n-gram range: (3, 3)
+Processing n-gram range: (3, 4)
+Processing n-gram range: (3, 5)
+Processing n-gram range: (3, 6)
+Processing n-gram range: (3, 7)
+Processing n-gram range: (4, 4)
+Processing n-gram range: (4, 5)
+Processing n-gram range: (4, 6)
+Processing n-gram range: (4, 7)
+Processing n-gram range: (5, 5)
+Processing n-gram range: (5, 6)
+Processing n-gram range: (5, 7)
+Processing n-gram range: (6, 6)
+Processing n-gram range: (6, 7)
+Processing n-gram range: (7, 7)
+Shape of transformed data for n-gram range (1, 1): (13603, 7483)
+Shape of transformed data for n-gram range (1, 2): (13603, 53996)
+Shape of transformed data for n-gram range (1, 3): (13603, 103386)
+Shape of transformed data for n-gram range (1, 4): (13603, 144423)
+Shape of transformed data for n-gram range (1, 5): (13603, 176136)
+Shape of transformed data for n-gram range (1, 6): (13603, 199254)
+Shape of transformed data for n-gram range (1, 7): (13603, 215146)
+Shape of transformed data for n-gram range (2, 2): (13603, 46513)
+Shape of transformed data for n-gram range (2, 3): (13603, 95903)
+Shape of transformed data for n-gram range (2, 4): (13603, 136940)
+Shape of transformed data for n-gram range (2, 5): (13603, 168653)
+Shape of transformed data for n-gram range (2, 6): (13603, 191771)
+Shape of transformed data for n-gram range (2, 7): (13603, 207663)
+Shape of transformed data for n-gram range (3, 3): (13603, 49390)
+Shape of transformed data for n-gram range (3, 4): (13603, 90427)
+Shape of transformed data for n-gram range (3, 5): (13603, 122140)
+Shape of transformed data for n-gram range (3, 6): (13603, 145258)
+Shape of transformed data for n-gram range (3, 7): (13603, 161150)
+Shape of transformed data for n-gram range (4, 4): (13603, 41037)
+Shape of transformed data for n-gram range (4, 5): (13603, 72750)
+Shape of transformed data for n-gram range (4, 6): (13603, 95868)
+Shape of transformed data for n-gram range (4, 7): (13603, 111760)
+Shape of transformed data for n-gram range (5, 5): (13603, 31713)
+Shape of transformed data for n-gram range (5, 6): (13603, 54831)
+Shape of transformed data for n-gram range (5, 7): (13603, 70723)
+Shape of transformed data for n-gram range (6, 6): (13603, 23118)
+Shape of transformed data for n-gram range (6, 7): (13603, 39010)
+Shape of transformed data for n-gram range (7, 7): (13603, 15892)
+  (0, 6321)	0.39810213343122414
+  (0, 1005)	0.48891468317581693
+  (0, 6672)	0.5876471675976369
+  (0, 3503)	0.507097555059254
+3
+['Frontend' 'Backend' 'Security']
+Backend     7437
+Frontend    5799
+Security     367
+Name: class_name, dtype: int64
+[nltk_data] Downloading package stopwords to
+[nltk_data]     C:\Users\Lenovo\AppData\Roaming\nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\Lenovo\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     C:\Users\Lenovo\AppData\Roaming\nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+Model trained using n-gram range: (1, 1)
+              precision    recall  f1-score   support
+
+    Frontend       0.87      0.87      0.87       987
+     Backend       0.89      0.92      0.90      1345
+    Security       0.87      0.29      0.43        70
+
+    accuracy                           0.88      2402
+   macro avg       0.88      0.69      0.73      2402
+weighted avg       0.88      0.88      0.88      2402
+
+Predicted    0     1   2
+Actual                  
+0          861   123   3
+1          113  1232   0
+2           19    31  20
+Accuracy: 0.8796835970024979
+Model trained using n-gram range: (1, 2)
+              precision    recall  f1-score   support
+
+    Frontend       0.87      0.89      0.88       987
+     Backend       0.90      0.92      0.91      1345
+    Security       0.83      0.29      0.43        70
+
+    accuracy                           0.89      2402
+...
+0          45   942
+1           2  1343
+2           1    69
+Accuracy: 0.5778517901748543
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (4, 5)
+              precision    recall  f1-score   support
+
+    Frontend       0.96      0.05      0.09       987
+     Backend       0.57      1.00      0.73      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.58      2402
+   macro avg       0.51      0.35      0.27      2402
+weighted avg       0.71      0.58      0.44      2402
+
+Predicted   0     1
+Actual             
+0          45   942
+1           1  1344
+2           1    69
+Accuracy: 0.5782681099084097
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (4, 6)
+              precision    recall  f1-score   support
+
+    Frontend       0.96      0.05      0.09       987
+     Backend       0.57      1.00      0.73      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.58      2402
+   macro avg       0.51      0.35      0.27      2402
+weighted avg       0.71      0.58      0.44      2402
+
+Predicted   0     1
+Actual             
+0          45   942
+1           1  1344
+2           1    69
+Accuracy: 0.5782681099084097
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (4, 7)
+              precision    recall  f1-score   support
+
+    Frontend       0.96      0.05      0.09       987
+     Backend       0.57      1.00      0.73      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.58      2402
+   macro avg       0.51      0.35      0.27      2402
+weighted avg       0.71      0.58      0.44      2402
+
+Predicted   0     1
+Actual             
+0          45   942
+1           1  1344
+2           1    69
+Accuracy: 0.5782681099084097
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (5, 5)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.02      0.04       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.57      2402
+   macro avg       0.52      0.34      0.25      2402
+weighted avg       0.73      0.57      0.42      2402
+
+Predicted   0     1
+Actual             
+0          21   966
+1           0  1345
+2           0    70
+Accuracy: 0.5686927560366362
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (5, 6)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.02      0.04       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.57      2402
+   macro avg       0.52      0.34      0.25      2402
+weighted avg       0.73      0.57      0.42      2402
+
+Predicted   0     1
+Actual             
+0          21   966
+1           0  1345
+2           0    70
+Accuracy: 0.5686927560366362
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (5, 7)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.02      0.04       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.57      2402
+   macro avg       0.52      0.34      0.25      2402
+weighted avg       0.73      0.57      0.42      2402
+
+Predicted   0     1
+Actual             
+0          21   966
+1           0  1345
+2           0    70
+Accuracy: 0.5686927560366362
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (6, 6)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.01      0.02       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.56      2402
+   macro avg       0.52      0.34      0.25      2402
+weighted avg       0.73      0.56      0.41      2402
+
+Predicted   0     1
+Actual             
+0          11   976
+1           0  1345
+2           0    70
+Accuracy: 0.5645295587010825
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (6, 7)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.01      0.02       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.56      2402
+   macro avg       0.52      0.34      0.25      2402
+weighted avg       0.73      0.56      0.41      2402
+
+Predicted   0     1
+Actual             
+0          11   976
+1           0  1345
+2           0    70
+Accuracy: 0.5645295587010825
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (7, 7)
+              precision    recall  f1-score   support
+
+    Frontend       1.00      0.01      0.01       987
+     Backend       0.56      1.00      0.72      1345
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.56      2402
+   macro avg       0.52      0.34      0.24      2402
+weighted avg       0.73      0.56      0.41      2402
+
+Predicted  0     1
+Actual            
+0          7   980
+1          0  1345
+2          0    70
+Accuracy: 0.5628642797668609
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))

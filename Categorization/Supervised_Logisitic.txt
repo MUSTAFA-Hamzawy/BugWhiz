@@ -1,0 +1,485 @@
+Model trained using n-gram range: (1, 1)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.92      0.90      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.86      0.88      0.87       987
+Documentation       0.87      0.29      0.43        70
+
+     accuracy                           0.87      2423
+    macro avg       0.90      0.54      0.59      2423
+ weighted avg       0.88      0.87      0.87      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1232              0       113         0
+Documentation       14              2         5         0
+Frontend           119              0       865         3
+Security            30              0        20        20
+Accuracy: 0.8745356995460173
+Model trained using n-gram range: (1, 2)
+               precision    recall  f1-score   support
+
+     Frontend       0.89      0.92      0.90      1345
+      Backend       0.75      0.14      0.24        21
+     Security       0.87      0.89      0.88       987
+Documentation       0.83      0.29      0.43        70
+
+     accuracy                           0.88      2423
+    macro avg       0.84      0.56      0.61      2423
+ weighted avg       0.88      0.88      0.87      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1234              1       109         1
+Documentation       14              3         4         0
+Frontend           108              0       876         3
+Security            32              0        18        20
+Accuracy: 0.8803136607511349
+Model trained using n-gram range: (1, 3)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.91      0.90      1345
+      Backend       0.67      0.10      0.17        21
+     Security       0.86      0.88      0.87       987
+Documentation       0.83      0.29      0.43        70
+
+     accuracy                           0.87      2423
+    macro avg       0.81      0.54      0.59      2423
+ weighted avg       0.87      0.87      0.87      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1224              1       119         1
+Documentation       14              2         5         0
+Frontend           117              0       867         3
+Security            31              0        19        20
+Accuracy: 0.8720594304581097
+Model trained using n-gram range: (1, 4)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.91      0.89      1345
+      Backend       0.67      0.10      0.17        21
+     Security       0.85      0.88      0.87       987
+Documentation       0.83      0.29      0.43        70
+
+     accuracy                           0.87      2423
+    macro avg       0.81      0.54      0.59      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1218              1       125         1
+Documentation       14              2         5         0
+Frontend           117              0       867         3
+Security            30              0        20        20
+Accuracy: 0.8695831613702022
+Model trained using n-gram range: (1, 5)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.91      0.89      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.87      0.29      0.43        70
+
+     accuracy                           0.87      2423
+    macro avg       0.90      0.54      0.59      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1219              0       126         0
+Documentation       14              2         5         0
+Frontend           118              0       866         3
+Security            30              0        20        20
+Accuracy: 0.8695831613702022
+Model trained using n-gram range: (1, 6)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.86      0.27      0.41        70
+
+     accuracy                           0.87      2423
+    macro avg       0.90      0.54      0.59      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              0       128         0
+Documentation       14              2         5         0
+Frontend           120              0       864         3
+Security            32              0        19        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 7)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.86      0.27      0.41        70
+
+     accuracy                           0.87      2423
+    macro avg       0.90      0.53      0.56      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              0       128         0
+Documentation       14              1         6         0
+Frontend           119              0       865         3
+Security            32              0        19        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 8)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.86      0.27      0.41        70
+
+     accuracy                           0.87      2423
+    macro avg       0.90      0.52      0.56      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           120              0       864         3
+Security            33              0        18        19
+Accuracy: 0.8666941807676434
+Model trained using n-gram range: (1, 9)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 10)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 11)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 12)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 13)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 14)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (1, 15)
+               precision    recall  f1-score   support
+
+     Frontend       0.88      0.90      0.89      1345
+      Backend       1.00      0.05      0.09        21
+     Security       0.85      0.88      0.86       987
+Documentation       0.90      0.27      0.42        70
+
+     accuracy                           0.87      2423
+    macro avg       0.91      0.53      0.57      2423
+ weighted avg       0.87      0.87      0.86      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1216              0       129         0
+Documentation       14              1         6         0
+Frontend           119              0       866         2
+Security            33              0        18        19
+Accuracy: 0.8675196037969459
+Model trained using n-gram range: (2, 2)
+               precision    recall  f1-score   support
+
+     Frontend       0.90      0.83      0.87      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.76      0.91      0.83       987
+Documentation       0.89      0.11      0.20        70
+
+     accuracy                           0.84      2423
+    macro avg       0.64      0.46      0.47      2423
+ weighted avg       0.84      0.84      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1118       227         0
+Documentation        8        13         0
+Frontend            88       898         1
+Security            22        40         8
+Accuracy: 0.8353281056541477
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 3)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.91      0.83       987
+Documentation       0.88      0.10      0.18        70
+
+     accuracy                           0.83      2423
+    macro avg       0.63      0.46      0.47      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1109       236         0
+Documentation        8        13         0
+Frontend            84       902         1
+Security            19        44         7
+Accuracy: 0.8328518365662402
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 4)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.87      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.83       987
+Documentation       1.00      0.09      0.16        70
+
+     accuracy                           0.83      2423
+    macro avg       0.67      0.46      0.46      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1108       237         0
+Documentation        8        13         0
+Frontend            83       904         0
+Security            17        47         6
+Accuracy: 0.8328518365662402
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 5)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.83       987
+Documentation       1.00      0.09      0.16        70
+
+     accuracy                           0.83      2423
+    macro avg       0.67      0.46      0.46      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1105       240         0
+Documentation        8        13         0
+Frontend            82       905         0
+Security            16        48         6
+Accuracy: 0.8320264135369376
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 6)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.82       987
+Documentation       1.00      0.09      0.16        70
+
+     accuracy                           0.83      2423
+    macro avg       0.67      0.46      0.46      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1104       241         0
+Documentation        8        13         0
+Frontend            83       904         0
+Security            16        48         6
+Accuracy: 0.8312009905076352
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 7)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.82       987
+Documentation       1.00      0.09      0.16        70
+
+     accuracy                           0.83      2423
+    macro avg       0.66      0.46      0.46      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1102       243         0
+Documentation        8        13         0
+Frontend            83       904         0
+Security            16        48         6
+Accuracy: 0.8303755674783326
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 8)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.82       987
+Documentation       1.00      0.07      0.13        70
+
+     accuracy                           0.83      2423
+    macro avg       0.66      0.45      0.45      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1099       246         0
+Documentation        8        13         0
+Frontend            83       904         0
+Security            17        48         5
+Accuracy: 0.8287247214197276
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Model trained using n-gram range: (2, 9)
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.82      0.86      1345
+      Backend       0.00      0.00      0.00        21
+     Security       0.75      0.92      0.82       987
+Documentation       1.00      0.07      0.13        70
+
+     accuracy                           0.83      2423
+    macro avg       0.66      0.45      0.45      2423
+ weighted avg       0.84      0.83      0.82      2423
+
+Predicted      Backend  Frontend  Security
+Actual                                    
+Backend           1098       247         0
+Documentation        8        13         0
+Frontend            82       905         0
+Security            17        48         5
+Accuracy: 0.8287247214197276
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
