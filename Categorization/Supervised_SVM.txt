@@ -139,3 +139,442 @@ Frontend            87              0       897         3
 Security            15              0        22        33
 Accuracy: 0.889806025588114
 Model trained using n-gram range: (1, 8)
+Cross-Validation Scores: [0.85812772 0.87227866 0.85589837 0.86424682 0.87368421]
+               precision    recall  f1-score   support
+
+     Frontend       0.92      0.91      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.86      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1218              1       125         1
+Documentation       10              7         4         0
+Frontend            88              0       896         3
+Security            15              0        22        33
+Accuracy: 0.8889806025588114
+Model trained using n-gram range: (1, 9)
+Cross-Validation Scores: [0.85812772 0.87191582 0.85480944 0.86424682 0.87332123]
+               precision    recall  f1-score   support
+
+     Frontend       0.92      0.91      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.86      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1218              1       125         1
+Documentation       10              7         4         0
+Frontend            88              0       896         3
+Security            15              0        22        33
+Accuracy: 0.8889806025588114
+Model trained using n-gram range: (1, 10)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85517241 0.86424682 0.87332123]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.91      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.86      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1218              1       125         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8885678910441601
+Model trained using n-gram range: (1, 11)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85553539 0.86424682 0.87332123]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.90      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.85      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              1       126         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8881551795295088
+Model trained using n-gram range: (1, 12)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85553539 0.86424682 0.87295826]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.90      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.85      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              1       126         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8881551795295088
+Model trained using n-gram range: (1, 13)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85517241 0.86424682 0.87295826]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.90      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.85      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              1       126         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8881551795295088
+Model trained using n-gram range: (1, 14)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85517241 0.86388385 0.87332123]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.90      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.85      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              1       126         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8881551795295088
+Model trained using n-gram range: (1, 15)
+Cross-Validation Scores: [0.85776488 0.87191582 0.85517241 0.86388385 0.87332123]
+               precision    recall  f1-score   support
+
+     Frontend       0.91      0.90      0.91      1345
+      Backend       0.88      0.33      0.48        21
+     Security       0.85      0.91      0.88       987
+Documentation       0.89      0.47      0.62        70
+
+     accuracy                           0.89      2423
+    macro avg       0.88      0.65      0.72      2423
+ weighted avg       0.89      0.89      0.89      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1217              1       126         1
+Documentation       10              7         4         0
+Frontend            89              0       895         3
+Security            15              0        22        33
+Accuracy: 0.8881551795295088
+Model trained using n-gram range: (2, 2)
+Cross-Validation Scores: [0.80805515 0.81676343 0.81270417 0.80471869 0.81088929]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.90      0.86      1345
+      Backend       1.00      0.19      0.32        21
+     Security       0.82      0.75      0.78       987
+Documentation       0.75      0.26      0.38        70
+
+     accuracy                           0.82      2423
+    macro avg       0.85      0.53      0.59      2423
+ weighted avg       0.82      0.82      0.81      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1214              0       129         2
+Documentation       11              4         6         0
+Frontend           240              0       743         4
+Security            22              0        30        18
+Accuracy: 0.8167560874948411
+Model trained using n-gram range: (2, 3)
+Cross-Validation Scores: [0.78882438 0.79862119 0.78947368 0.7862069  0.7938294 ]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.88      0.85      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.79      0.77      0.78       987
+Documentation       0.80      0.23      0.36        70
+
+     accuracy                           0.81      2423
+    macro avg       0.85      0.49      0.54      2423
+ weighted avg       0.81      0.81      0.80      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1182              0       163         0
+Documentation       10              2         9         0
+Frontend           226              0       757         4
+Security            20              0        34        16
+Accuracy: 0.8076764341725134
+Model trained using n-gram range: (2, 4)
+Cross-Validation Scores: [0.77503628 0.78773585 0.77822142 0.77132486 0.78330309]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.87      0.85      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.77      0.78      0.77       987
+Documentation       0.82      0.20      0.32        70
+
+     accuracy                           0.80      2423
+    macro avg       0.86      0.48      0.53      2423
+ weighted avg       0.80      0.80      0.80      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1166              0       179         0
+Documentation       10              2         9         0
+Frontend           219              0       765         3
+Security            19              0        37        14
+Accuracy: 0.8035493190260008
+Model trained using n-gram range: (2, 5)
+Cross-Validation Scores: [0.76959361 0.78120464 0.7738657  0.76442831 0.77459165]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.86      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.76      0.78      0.77       987
+Documentation       0.83      0.14      0.24        70
+
+     accuracy                           0.80      2423
+    macro avg       0.85      0.47      0.51      2423
+ weighted avg       0.80      0.80      0.79      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1150              0       195         0
+Documentation       10              2         9         0
+Frontend           218              0       767         2
+Security            18              0        42        10
+Accuracy: 0.7961205117622782
+Model trained using n-gram range: (2, 6)
+Cross-Validation Scores: [0.7670537  0.77576197 0.76878403 0.76043557 0.76987296]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.91      0.14      0.25        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.47      0.51      2423
+ weighted avg       0.80      0.79      0.79      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1144              0       201         0
+Documentation       10              2         9         0
+Frontend           217              0       769         1
+Security            17              0        43        10
+Accuracy: 0.7944696657036732
+Model trained using n-gram range: (2, 7)
+Cross-Validation Scores: [0.76596517 0.77322206 0.76660617 0.75970962 0.76660617]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.91      0.14      0.25        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.47      0.51      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1141              0       204         0
+Documentation       10              2         9         0
+Frontend           216              0       770         1
+Security            17              0        43        10
+Accuracy: 0.7936442426743706
+Model trained using n-gram range: (2, 8)
+Cross-Validation Scores: [0.76415094 0.77213353 0.76551724 0.75934664 0.76624319]
+               precision    recall  f1-score   support
+
+     Frontend       0.83      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1141              0       204         0
+Documentation       10              2         9         0
+Frontend           214              0       772         1
+Security            18              0        43         9
+Accuracy: 0.7940569541890219
+Model trained using n-gram range: (2, 9)
+Cross-Validation Scores: [0.76306241 0.7703193  0.76442831 0.75898367 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           214              0       772         1
+Security            18              0        43         9
+Accuracy: 0.7932315311597193
+Model trained using n-gram range: (2, 10)
+Cross-Validation Scores: [0.76306241 0.76959361 0.76442831 0.75898367 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           214              0       772         1
+Security            18              0        43         9
+Accuracy: 0.7932315311597193
+Model trained using n-gram range: (2, 11)
+Cross-Validation Scores: [0.76306241 0.76923077 0.76442831 0.75898367 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           214              0       772         1
+Security            18              0        43         9
+Accuracy: 0.7932315311597193
+Model trained using n-gram range: (2, 12)
+Cross-Validation Scores: [0.76342525 0.76923077 0.76442831 0.75934664 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.77       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           214              0       772         1
+Security            18              0        43         9
+Accuracy: 0.7932315311597193
+Model trained using n-gram range: (2, 13)
+Cross-Validation Scores: [0.76342525 0.76886792 0.76406534 0.75934664 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.76       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           215              0       771         1
+Security            18              0        43         9
+Accuracy: 0.7928188196450681
+Model trained using n-gram range: (2, 14)
+Cross-Validation Scores: [0.7637881  0.76886792 0.76406534 0.75934664 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.76       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           215              0       771         1
+Security            18              0        43         9
+Accuracy: 0.7928188196450681
+Model trained using n-gram range: (2, 15)
+Cross-Validation Scores: [0.7637881  0.76886792 0.76406534 0.75934664 0.76551724]
+               precision    recall  f1-score   support
+
+     Frontend       0.82      0.85      0.84      1345
+      Backend       1.00      0.10      0.17        21
+     Security       0.75      0.78      0.76       987
+Documentation       0.90      0.13      0.23        70
+
+     accuracy                           0.79      2423
+    macro avg       0.87      0.46      0.50      2423
+ weighted avg       0.80      0.79      0.78      2423
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           1139              0       206         0
+Documentation       10              2         9         0
+Frontend           215              0       771         1
+Security            18              0        43         9
+Accuracy: 0.7928188196450681
