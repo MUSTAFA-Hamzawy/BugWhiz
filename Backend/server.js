@@ -28,7 +28,7 @@ app.use(express.json()) // Built-in Middleware To parse any request body
 
 
 /***************************   Routes  *************************************/
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 /***************************   Middlewares  *************************************/
 app.use(ErrorHandlerMiddleware);

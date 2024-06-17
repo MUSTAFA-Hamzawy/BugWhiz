@@ -22,6 +22,13 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Password is required']
     },
+    jobTitle: {
+        type: String,
+        required: [true, 'Job Title is required']
+    },
+    image: {
+        type: String,
+    },
 }, {
     timestamps: true
 })

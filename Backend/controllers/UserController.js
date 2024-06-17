@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 
 const getProfile = asyncHandler( async (req, res) => {
-    res.json(req.user);     // this data coming from the ValidateTokenMiddleware
+    res.json(req.user);
 })
 
 // To validate the data used for login
@@ -29,9 +29,12 @@ const generateToken = (userData, tokenType = 1)=>{
         // Payload
         {
             id: userData.id,
+            fullName: userData.fullName,
             username: userData.username,
             email: userData.email,
-            phoneNumber: userData.phoneNumber
+            phoneNumber: userData.phoneNumber,
+            jobTitle: userData.jobTitle,
+            image: userData.image,
         },
         SECRET_KEY,
         { expiresIn: EXPIRED_TIME} 
@@ -45,13 +48,12 @@ const login = asyncHandler( async (req, res)=>{
         res.status(status.VALIDATION_ERROR);
         throw new Error(JSON.stringify(error));
     }else{
-
         emailOrUsername.trim();
         const user = emailOrUsername.indexOf('@') == -1 ? await UserModel.findOne({username: emailOrUsername}) : await UserModel.findOne({email: emailOrUsername})
-        const passwordIsCorrect = await bcrypt.compare(password, user.password);
+        const passwordIsCorrect = user && await bcrypt.compare(password, user.password);
         if(!user || !passwordIsCorrect){
             res.status(status.NOT_FOUND);
-            throw new Error(JSON.stringify("Wrong email or password."));
+            throw new Error(JSON.stringify("Incorrect username or password."));
         }     
 
         const token = generateToken(user);
@@ -65,7 +67,7 @@ const login = asyncHandler( async (req, res)=>{
 
 const validateRegistrationData = async(data)=>{
 
-    const{fullName, email, username, phoneNumber} = data;
+    const{fullName, email, username, phoneNumber, image, jobTitle} = data;
     let errors = {};
 
 
@@ -78,6 +80,14 @@ const validateRegistrationData = async(data)=>{
         fullName.trim();
         if(!nameRegex.test(fullName))
             errors.fullName =  "Full name must contain only letters.";
+    }
+
+    // validate the job title
+    if(!jobTitle) errors.jobTitle =  "Job Title is required.";
+    else {
+        jobTitle.trim();
+        if(!nameRegex.test(jobTitle))
+            errors.jobTitle =  "Job Title must contain only letters.";
     }
 
     // Checking if user have already registered
@@ -109,10 +119,10 @@ const validateRegistrationData = async(data)=>{
 }
 
 const register = asyncHandler( async (req, res)=>{
-    const{fullName, email, username, phoneNumber, password} = req.body;
+    const{fullName, email, username, phoneNumber, password, image, jobTitle} = req.body;
 
 
-    const errors = await validateRegistrationData({fullName, email, username, phoneNumber, password});
+    const errors = await validateRegistrationData({fullName, email, username, phoneNumber, password, image, jobTitle});
     if(Object.keys(errors).length > 0){
         res.status(status.VALIDATION_ERROR);
         throw new Error(JSON.stringify(errors));
@@ -120,7 +130,7 @@ const register = asyncHandler( async (req, res)=>{
     // encrypting the password
     const SALT_ROUNDS = 10;
     const encryptedPSWD = await bcrypt.hash(password, SALT_ROUNDS);
-    const createdUser = await UserModel.create({fullName, email, username, phoneNumber, password: encryptedPSWD});
+    const createdUser = await UserModel.create({fullName, email, username, phoneNumber, password: encryptedPSWD, image, jobTitle});
     if(createdUser)
         res.status(status.CREATED).json(createdUser);
     else {
