@@ -23,7 +23,7 @@ const ErrorHandlerMiddleware = (err, req, res, next) => {
             break;
                     
         case status.FORBIDDEN:
-            errorType = "Forbiddend.";
+            errorType = "Forbidden.";
             break;
     }
 
