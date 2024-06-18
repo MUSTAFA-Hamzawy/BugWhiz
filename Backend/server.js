@@ -6,6 +6,9 @@ const status = require('./helpers/statusCodes');
 
 // Import route files
 const userRoutes = require('./routes/user');
+const projectRoutes = require('./routes/project');
+const ticketRoutes = require('./routes/ticket');
+const commentRoutes = require('./routes/comment');
 
 // Loading env file
 require('dotenv').config();
@@ -29,6 +32,9 @@ app.use(express.json()) // Built-in Middleware To parse any request body
 
 /***************************   Routes  *************************************/
 app.use('/api/user', userRoutes);
+app.use('/api/project', projectRoutes);
+app.use('/api/ticket', ticketRoutes);
+app.use('/api/comment', commentRoutes);
 
 /***************************   Middlewares  *************************************/
 app.use(ErrorHandlerMiddleware);
