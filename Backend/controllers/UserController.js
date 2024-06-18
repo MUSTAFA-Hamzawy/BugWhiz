@@ -10,6 +10,16 @@ const getProfile = asyncHandler( async (req, res) => {
     res.json(req.user);
 })
 
+const updateProfile = asyncHandler( async (req, res) => {
+    // TODO: validation for the request body
+    const updated = await UserModel.findByIdAndUpdate(
+        req.user.id,
+        req.body,
+        { new: true }
+    );
+    res.status(status.OK).json(updated);
+})
+
 // To validate the data used for login
 const validateLoginData = async (data)=>{
     const {emailOrUsername, password} = data;
@@ -65,7 +75,8 @@ const login = asyncHandler( async (req, res)=>{
 
 })
 
-const validateRegistrationData = async(data)=>{
+const validateRegistrationData = async(data)=>
+{
 
     const{fullName, email, username, phoneNumber, image, jobTitle} = data;
     let errors = {};
@@ -156,5 +167,6 @@ module.exports = {
     getProfile,
     login,
     register,
-    logout
+    logout,
+    updateProfile
 }
