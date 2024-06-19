@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { categories, priorities, ticketStatusObject } = require('../config/conf');
 
 const TicketSchema = new mongoose.Schema({
     name: {
@@ -24,28 +25,20 @@ const TicketSchema = new mongoose.Schema({
         },
         default: []
     },
-    startDate: {
-        type: Date,
-        default: null
-    },
-    endDate: {
-        type: Date,
-        default: null
-    },
     category: {
         type: String,
-        enum: ['None', 'Backend', 'Frontend', 'Security', 'Documentation'],
-        default: 'None'
+        enum: Object.values(categories), // Use enum values from config
+        default: categories.DEFAULT
     },
     priority: {
         type: String,
-        enum: ['P1', 'P2', 'P3', 'P4'],
-        default: 'P1'
+        enum: Object.values(priorities), // Use enum values from config
+        default: priorities.DEFAULT
     },
-    status: {
+    ticketStatus: {
         type: String,
-        enum: ['TODO', 'In Progress', 'Testing', 'Done'],
-        default: 'TODO'
+        enum: Object.values(ticketStatusObject), // Use enum values from config
+        default: ticketStatusObject.DEFAULT
     },
     projectID:{
         type: mongoose.Schema.Types.ObjectId,
@@ -53,6 +46,11 @@ const TicketSchema = new mongoose.Schema({
         ref: 'project'
     },
     developerID: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: null,
+        ref: 'user'
+    },
+    reporterID: {
         type: mongoose.Schema.Types.ObjectId,
         default: null,
         ref: 'user'

@@ -11,7 +11,27 @@ const getProfile = asyncHandler( async (req, res) => {
 })
 
 const updateProfile = asyncHandler( async (req, res) => {
-    // TODO: validation for the request body
+    const {fullName, phoneNumber, jobTitle, image, headerImage} = req.body;
+    // validate fullName
+    const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+    if(fullName && !nameRegex.test(fullName.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Full Name must contain only letters.");
+    }
+
+    // validate the job title
+    if(jobTitle && !nameRegex.test(jobTitle.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Job Title must contain only letters.");
+    }
+
+    // validate phoneNumber
+    const phoneNumberRegex = /^(\+\d{1,15}|\d{1,15})$/;
+    if(phoneNumber && !phoneNumberRegex.test(phoneNumber.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Invalid phone number.");
+    }
+
     const updated = await UserModel.findByIdAndUpdate(
         req.user.id,
         req.body,
@@ -45,6 +65,7 @@ const generateToken = (userData, tokenType = 1)=>{
             phoneNumber: userData.phoneNumber,
             jobTitle: userData.jobTitle,
             image: userData.image,
+            headerImage: userData.headerImage,
         },
         SECRET_KEY,
         { expiresIn: EXPIRED_TIME} 
@@ -78,11 +99,22 @@ const login = asyncHandler( async (req, res)=>{
 const validateRegistrationData = async(data)=>
 {
 
-    const{fullName, email, username, phoneNumber, image, jobTitle} = data;
+    const{fullName, email, username, phoneNumber, password, jobTitle} = data;
     let errors = {};
 
 
     username.trim();
+
+    // validate password
+    /*
+    * must contain one or more uppercase letter
+    * must be alphanumeric
+    * must be at least 8 characters
+    * no need to use special character ( optional )
+     */
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z0-9]{8,}$/;
+    if(password && !passwordRegex.test(password))
+        errors.password =  "Password is not strong enough.";
 
     // validate the name
     const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
@@ -156,7 +188,7 @@ const logout = asyncHandler( async (req, res)=>{
     const authHeader = req.headers.Authorization || req.headers.authorization;
     const token = authHeader.split(' ')[1];
 
-    // Just adding this token to the TokenBlackList
+    // Just add this token to the TokenBlackList
     await TokenBlackListModel.create({token});
     res.status(status.OK);
     res.json({"msg": "Logged out."});

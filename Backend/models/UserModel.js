@@ -28,6 +28,11 @@ const UserSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        default: null
+    },
+    headerImage: {
+        type: String,
+        default: null
     },
 }, {
     timestamps: true

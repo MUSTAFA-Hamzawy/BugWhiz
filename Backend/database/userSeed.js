@@ -8,39 +8,36 @@ const hashedPassword = bcrypt.hashSync(myPlaintextPassword, 10);
 const users = [
   {
     "fullName": "Mustafa Mahmoud",
-    "email": "hamzawy1@gmail.com",
-    "username": "hamzawy1",
+    "email": "hamzawy@gmail.com",
+    "username": "hamzawy",
     "phoneNumber": "+20123456781",
-    "password": hashedPassword
+    "password": hashedPassword,
+    "jobTitle": "Backend Developer",
   },
   {
-    "fullName": "Mustafa Mahmoud",
-    "email": "hamzawy2@gmail.com",
-    "username": "hamzawy2",
+    "fullName": "Karim Muhammed",
+    "email": "karim@gmail.com",
+    "username": "karim1",
     "phoneNumber": "+20123456782",
-    "password": hashedPassword
+    "password": hashedPassword,
+    "jobTitle": "Frontend Developer",
   },
   {
-    "fullName": "Mustafa Mahmoud",
-    "email": "hamzawy3@gmail.com",
-    "username": "hamzawy3",
+    "fullName": "Karim Mahmoud",
+    "email": "karim2@gmail.com",
+    "username": "karim2",
     "phoneNumber": "+20123456783",
-    "password": hashedPassword
+    "password": hashedPassword,
+    "jobTitle": "Documentation",
   },
   {
-    "fullName": "Mustafa Mahmoud",
-    "email": "hamzawy4@gmail.com",
-    "username": "hamzawy4",
+    "fullName": "Donia Gameel",
+    "email": "donia@gmail.com",
+    "username": "donia",
     "phoneNumber": "+20123456784",
-    "password": hashedPassword
-  },
-  {
-    "fullName": "Adidas",
-    "email": "hamzawy5@gmail.com",
-    "username": "hamzawy5",
-    "phoneNumber": "+20123456785",
-    "password": hashedPassword
-  },
+    "password": hashedPassword,
+    "jobTitle": "Security",
+  }
 ];
 
 module.exports = users;
