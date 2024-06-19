@@ -30,7 +30,8 @@ const createProject = asyncHandler(async (req, res) => {
 });
 
 const getProjects = asyncHandler( async (req, res) => {
-    const {page = 1, limit = 10} = req.query;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
     try {
         const data = await ProjectModel.find({}).skip((page - 1) * limit).limit(limit);
         res.status(status.OK).json(data);
