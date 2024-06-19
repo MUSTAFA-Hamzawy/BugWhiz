@@ -10,7 +10,7 @@ const CommentSchema = new mongoose.Schema({
         required: [true, "Id of the ticket is required."],
         ref: 'ticket'
     },
-    userRef:{
+    userID:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
