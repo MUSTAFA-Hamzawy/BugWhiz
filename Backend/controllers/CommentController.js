@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const createComment = asyncHandler(async (req, res) => {
     const { ticketID, comment } = req.body;
-    const userRef = req.user.id;
+    const userID = req.user.id;
 
     // Validate that the ticket exists
     if (!mongoose.Types.ObjectId.isValid(ticketID) || !await TicketModel.findById(ticketID)) {
@@ -20,7 +20,7 @@ const createComment = asyncHandler(async (req, res) => {
         throw new Error("Comment is required.");
     }
 
-    const newComment = await CommentModel.create({ ticketID, comment, userRef });
+    const newComment = await CommentModel.create({ ticketID, comment, userID });
     return res.status(status.CREATED).json(newComment);
 
 });
@@ -38,7 +38,7 @@ const getTicketComments = asyncHandler( async (req, res) => {
 
     // Fetch the comments with pagination
     const comments = await CommentModel.find({ ticketID })
-        .populate('userRef', 'fullName image')
+        .populate('userID', 'fullName image')
         .skip((page - 1) * limit)
         .limit(limit);
 
