@@ -11,7 +11,27 @@ const getProfile = asyncHandler( async (req, res) => {
 })
 
 const updateProfile = asyncHandler( async (req, res) => {
-    // TODO: validation for the request body
+    const {fullName, phoneNumber, jobTitle, image, coverImage} = req.body;
+    // validate fullName
+    const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+    if(fullName && !nameRegex.test(fullName.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Full Name must contain only letters.");
+    }
+
+    // validate the job title
+    if(jobTitle && !nameRegex.test(jobTitle.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Job Title must contain only letters.");
+    }
+
+    // validate phoneNumber
+    const phoneNumberRegex = /^(\+\d{1,15}|\d{1,15})$/;
+    if(phoneNumber && !phoneNumberRegex.test(phoneNumber.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Invalid phone number.");
+    }
+
     const updated = await UserModel.findByIdAndUpdate(
         req.user.id,
         req.body,
