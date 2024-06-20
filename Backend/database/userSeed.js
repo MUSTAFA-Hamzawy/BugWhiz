@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 
-const myPlaintextPassword = "open1234";
+const myPlaintextPassword = "Open12341234";
 
 
 const hashedPassword = bcrypt.hashSync(myPlaintextPassword, 10);

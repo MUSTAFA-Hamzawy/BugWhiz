@@ -41,20 +41,25 @@ const getProjects = asyncHandler( async (req, res) => {
 })
 
 const groupTicketsByStatus = asyncHandler((tickets) => {
-    const groupedTickets = tickets.reduce((accumulator, ticket) => {
-        const { status } = ticket;
-        if (!accumulator[status]) accumulator[status] = [];
-        accumulator[status].push(ticket);
+    return tickets.reduce((accumulator, ticket) => {
+        const {ticketStatus} = ticket;
+        if (!accumulator[ticketStatus]) accumulator[ticketStatus] = [];
+        accumulator[ticketStatus].push(ticket);
         return accumulator;
     }, {});
-    return groupedTickets;
 })
 
 const getProjectTickets = asyncHandler( async (req, res) => {
-    const {projectID} = req.body;
+    const {projectName} = req.body;
+    const project = await ProjectModel.findOne({projectName}).select('_id');
+
+    if (!project){
+        res.status(status.NOT_FOUND);
+        throw new Error("Project is not found.");
+    }
     try {
-        const tickets = await TicketModel.find({projectID}).
-        select("title name developerID status").
+        const tickets = await TicketModel.find({projectID: project._id.toString()}).
+        select("title name developerID ticketStatus").
         populate("developerID", "fullName image");
 
         // Group tickets by status
@@ -100,15 +105,16 @@ const updateProject = asyncHandler(async (req, res) => {
 });
 
 const deleteProject = asyncHandler( async (req, res) =>{
-    const {projectID} = req.body;
+    const {projectName} = req.body;
 
     // check if the project exists
-    if (!mongoose.Types.ObjectId.isValid(projectID) || !await ProjectModel.findById(projectID)){
-        res.status(status.VALIDATION_ERROR);
+    const project = await ProjectModel.findOne({projectName}).select('_id');
+    if (!project){
+        res.status(status.NOT_FOUND);
         throw new Error("Project not found.");
     }
 
-    const removed = await ProjectModel.findByIdAndRemove(projectID);
+    const removed = await ProjectModel.findByIdAndRemove(project._id.toString());
     if(removed) res.status(status.OK).json({deleted: 1})
     else{
         res.status(status.NOT_FOUND);

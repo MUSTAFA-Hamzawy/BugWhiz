@@ -45,13 +45,14 @@ const createTicket = asyncHandler(async (req, res) => {
 });
 
 const searchForTicket = asyncHandler(async (req, res) => {
-    const { projectID, keyword, ticketStatus, category, priority } = req.body;
+    const { projectName, keyword, ticketStatus, category, priority } = req.body;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    if (!projectID || !mongoose.Types.ObjectId.isValid(projectID)) {
+    const project = await ProjectModel.findOne({projectName}).select('_id');
+    if (!project) {
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Project ID is invalid.");
+        throw new Error("Project Name is invalid.");
     }
 
     if (!keyword || keyword.trim() === "") {
@@ -62,7 +63,7 @@ const searchForTicket = asyncHandler(async (req, res) => {
     try {
         // Build query object
         const query = {
-            projectID: projectID,
+            projectID: project._id.toString(),
             title: { $regex: keyword, $options: 'i' } // 'i' for case-insensitive search
         };
 
