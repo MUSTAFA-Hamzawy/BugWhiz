@@ -10,6 +10,11 @@ const getProfile = asyncHandler( async (req, res) => {
     res.json(req.user);
 })
 
+const getUsers = asyncHandler( async (req, res) => {
+    const users = await UserModel.find({}).select('fullName image');
+    res.status(status.OK).json(users);
+})
+
 const updateProfile = asyncHandler( async (req, res) => {
     const {fullName, phoneNumber, jobTitle, image, headerImage} = req.body;
     // validate fullName
@@ -200,5 +205,6 @@ module.exports = {
     login,
     register,
     logout,
-    updateProfile
+    updateProfile,
+    getUsers
 }

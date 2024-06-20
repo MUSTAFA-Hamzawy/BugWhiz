@@ -7,7 +7,8 @@ module.exports = {
     login,
     register,
     logout,
-    updateProfile
+    updateProfile,
+    getUsers
 } = UserController;
 
 
@@ -16,6 +17,7 @@ router.get('/profile', ValidateTokenMiddleware, getProfile);
 router.post('/login', login);
 router.post('/register', register);
 router.get('/logout', ValidateTokenMiddleware, logout);
+router.get('/', ValidateTokenMiddleware, getUsers);
 router.patch('/', ValidateTokenMiddleware, updateProfile);
 
 module.exports = router;
