@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const ProjectModel = require('../models/ProjectModel');
 const status = require('../helpers/statusCodes');
 const TicketModel = require("../models/TicketModel");
+const UserModel = require("../models/UserModel");
 const mongoose = require("mongoose");
 
 const createProject = asyncHandler(async (req, res) => {
@@ -12,7 +13,7 @@ const createProject = asyncHandler(async (req, res) => {
         throw new Error("Project name is required.");
     }
 
-    const duplicated = await ProjectModel.findOne({ projectName });
+    const duplicated = await ProjectModel.findOne({ projectName, createdBy:req.user.id });
     if (duplicated) {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Project name is taken before.");
@@ -20,7 +21,15 @@ const createProject = asyncHandler(async (req, res) => {
 
     try {
         // Create new project
-        const newProject = await ProjectModel.create({ projectName });
+        const newProject = await ProjectModel.create({ projectName, createdBy: req.user.id });
+
+        // Add this project to the user's projects
+        await UserModel.findByIdAndUpdate(
+            req.user.id,
+            { $push: { projects: newProject._id } },
+            { new: true, useFindAndModify: false }
+        );
+
         return res.status(status.CREATED).json(newProject);
 
     } catch (error) {
@@ -33,7 +42,10 @@ const getProjects = asyncHandler( async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     try {
-        const data = await ProjectModel.find({}).skip((page - 1) * limit).limit(limit);
+        const user = await UserModel.findById(req.user.id).select('projects');
+        const data = await ProjectModel.find({ _id: { $in: user.projects } })
+            .skip((page - 1) * limit)
+            .limit(limit);
         res.status(status.OK).json(data);
     } catch (error) {
         throw new Error("Failed to load projects");
@@ -79,7 +91,7 @@ const updateProject = asyncHandler(async (req, res) => {
     }
 
     // check if the project exists
-    if (!mongoose.Types.ObjectId.isValid(projectID) || !await ProjectModel.findById(projectID)){
+    if (!mongoose.Types.ObjectId.isValid(projectID) || !await ProjectModel.findOne({_id: projectID, createdBy: req.user.id.toString()})){
         res.status(status.VALIDATION_ERROR);
         throw new Error("Project not found.");
     }
@@ -121,6 +133,45 @@ const deleteProject = asyncHandler( async (req, res) =>{
         throw new Error("Project is not found.")
     }
 
+    // TODO: need to remove all tickets that associated to this project
+
+})
+
+const addUserToProject = asyncHandler( async (req, res) =>{
+    const {projectID, username} = req.body;
+
+    try {
+        // Check if the project exists
+        const project = await ProjectModel.findById(projectID);
+        if (!project) {
+            res.status(status.NOT_FOUND).json({ message: 'Project not found' });
+            return;
+        }
+
+        // Check if the user exists
+        const user = await UserModel.findOne({ username });
+        if (!user) {
+            res.status(status.NOT_FOUND).json({ message: 'User not found' });
+            return;
+        }
+
+        // Check if the user already has this project
+        if (user.projects.includes(project._id)) {
+            res.status(status.VALIDATION_ERROR).json({ message: 'User already assigned to this project' });
+            return;
+        }
+
+        // Add the project's ID to the user's projects array
+        user.projects.push(project._id);
+        await user.save();
+
+        res.status(status.OK).json({ message: 'Project successfully added to user' });
+    } catch (error) {
+        res.status(status.SERVER_ERROR).json({ message: 'Failed to add project to user' });
+        console.error(error);
+    }
+
+
 })
 
 module.exports = {
@@ -129,5 +180,5 @@ module.exports = {
     getProjectTickets,
     updateProject,
     deleteProject,
-
+    addUserToProject
 }

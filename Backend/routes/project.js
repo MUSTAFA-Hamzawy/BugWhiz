@@ -7,13 +7,15 @@ module.exports = {
     getProjects,
     getProjectTickets,
     updateProject,
-    deleteProject
+    deleteProject,
+    addUserToProject
 } = ProjectController;
 
 router.use(ValidateTokenMiddleware);
 
 
 router.get('/tickets', getProjectTickets)
+router.patch('/add_user', addUserToProject)
 
 
 router.route('/')
