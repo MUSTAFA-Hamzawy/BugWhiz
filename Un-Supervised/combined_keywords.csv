@@ -1,6 +1,0 @@
-class_index;class_name;keywords
-2;Frontend;UI&Browser&CSS&HTML&Layout&Broken&buttons&Incorrect&Font
-1;Backend;Database&API&Server&response&Data&Authentication&Server&configuration&Slow&loading&Database&Server&updating&Login
-3;Security;Authentication&vulnerabilities&Authorization&Injection&Cross-site scripting&Cross-site&request&forgery&Clickjacking&Data&exposure&Denial of Service&access&control&Unauthorized&access&Data&breach&Spam&Strange pop-ups&Account hacking attempts
-4;Documentation;Comments&Code explanations&Readability&Clarity&Consistency&Lack of documentation&Outdated documentation&Inaccurate documentation&Lack of explanations&Outdated comments&Misleading instructions&Unclear descriptions
-5;Performance;Speed&Latency&Response time&Memory usage&CPU usage&Bottlenecks&Caching issues&Scalability&Load balancing&Slow response time&Website freezes&Crashes&High memory usage&CPU overload

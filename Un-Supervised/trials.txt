@@ -1,5 +1,0 @@
-lbl2vec :
-need keywords for each category , and these keywords must be exist in the training data
-
-Bert:
-very low accuracy
