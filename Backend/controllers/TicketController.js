@@ -8,6 +8,12 @@ const { categories, priorities, ticketStatusObject } = require('../config/conf')
 const createTicket = asyncHandler(async (req, res) => {
     const { name, title, description, projectName, images } = req.body;
 
+    // validate authority
+    if (!await ProjectModel.findOne({projectName, createdBy: req.user.id.toString()})){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Only the project owner is allowed to create a ticket.");
+    }
+
     // validate name
     if (!name || name.trim() === '') {
         res.status(status.VALIDATION_ERROR);
