@@ -4,7 +4,11 @@ const ProjectSchema = new mongoose.Schema({
     projectName: {
         type: String,
         required: [true, 'Project Name is required'],
-        unique: true
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "Id of the ticket is required."],
+        ref: 'user'
     },
 }, {
     timestamps: true
