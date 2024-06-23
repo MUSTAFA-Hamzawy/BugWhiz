@@ -4,7 +4,6 @@ const { categories, priorities, ticketStatusObject } = require('../config/conf')
 const TicketSchema = new mongoose.Schema({
     name: {
         type: String,
-        unique: [true, 'Ticket name is taken before'],
         required: [true, 'Ticket name is required'],
     },
     title: {

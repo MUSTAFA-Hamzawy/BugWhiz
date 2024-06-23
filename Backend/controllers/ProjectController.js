@@ -62,15 +62,14 @@ const groupTicketsByStatus = asyncHandler((tickets) => {
 })
 
 const getProjectTickets = asyncHandler( async (req, res) => {
-    const {projectName} = req.body;
-    const project = await ProjectModel.findOne({projectName}).select('_id');
+    const {projectID} = req.body;
 
-    if (!project){
+    if (!await ProjectModel.findById(projectID)){
         res.status(status.NOT_FOUND);
         throw new Error("Project is not found.");
     }
     try {
-        const tickets = await TicketModel.find({projectID: project._id.toString()}).
+        const tickets = await TicketModel.find({projectID}).
         select("title name developerID ticketStatus").
         populate("developerID", "fullName image");
 
@@ -87,17 +86,17 @@ const updateProject = asyncHandler(async (req, res) => {
 
     if (!projectName || projectName.trim() === '') {
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Project name is required.");
+        throw new Error("Project new name is required.");
     }
 
     // check if the project exists
-    if (!mongoose.Types.ObjectId.isValid(projectID) || !await ProjectModel.findOne({_id: projectID, createdBy: req.user.id.toString()})){
+    if (!mongoose.Types.ObjectId.isValid(projectID) || !await ProjectModel.findById(projectID)){
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Project not found.");
+        throw new Error("Project is not found.");
     }
 
     // Check if the project name is unique
-    const existingProject = await ProjectModel.findOne({projectName});
+    const existingProject = await ProjectModel.findOne({projectName, createdBy:req.user.id});
     if (existingProject && existingProject._id.toString() !== projectID){
         res.status(status.VALIDATION_ERROR);
         throw new Error("Project name is taken before.");
@@ -117,23 +116,26 @@ const updateProject = asyncHandler(async (req, res) => {
 });
 
 const deleteProject = asyncHandler( async (req, res) =>{
-    const {projectName} = req.body;
+    const {projectID} = req.body;
 
     // check if the project exists
-    const project = await ProjectModel.findOne({projectName}).select('_id');
-    if (!project){
+    if (!await ProjectModel.findById(projectID)){
         res.status(status.NOT_FOUND);
         throw new Error("Project not found.");
     }
 
-    const removed = await ProjectModel.findByIdAndRemove(project._id.toString());
-    if(removed) res.status(status.OK).json({deleted: 1})
+    const removed = await ProjectModel.findByIdAndRemove(projectID);
+    if(removed){
+        res.status(status.OK).json({deleted: 1})
+    }
     else{
         res.status(status.NOT_FOUND);
         throw new Error("Project is not found.")
     }
 
     // TODO: need to remove all tickets that associated to this project
+    // TODO: need to remove all comments associated to each ticket that deleted
+    // TODO: need to remove this projectID from the user projects list
 
 })
 

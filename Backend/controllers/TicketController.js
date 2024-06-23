@@ -4,12 +4,34 @@ const ProjectModel = require('../models/ProjectModel');
 const status = require('../helpers/statusCodes');
 const mongoose = require("mongoose");
 const { categories, priorities, ticketStatusObject } = require('../config/conf');
+const { spawn } = require('child_process');
+const path = require('path');
+
+const predictCategory = asyncHandler(async (bugDescription) => {
+    return new Promise((resolve, reject) => {
+        const pythonProcess = spawn('python', [path.resolve(__dirname, '..', 'ML_models', 'Categorization', 'predict_category.py'), bugDescription]);
+
+        pythonProcess.stdout.on('data', (data) => {
+            resolve(data.toString().trim());
+        });
+
+        pythonProcess.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(`Python script exited with code ${code}`);
+            }
+        });
+    });
+});
 
 const createTicket = asyncHandler(async (req, res) => {
-    const { name, title, description, projectName, images } = req.body;
+    const { name, title, description, projectID, images } = req.body;
 
     // validate authority
-    if (!await ProjectModel.findOne({projectName, createdBy: req.user.id.toString()})){
+    if (!await ProjectModel.findOne({_id: projectID, createdBy: req.user.id.toString()})){
         res.status(status.VALIDATION_ERROR);
         throw new Error("Only the project owner is allowed to create a ticket.");
     }
@@ -19,7 +41,7 @@ const createTicket = asyncHandler(async (req, res) => {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Ticket Name is required.");
     }
-    if (await TicketModel.findOne({name})) {
+    if (await TicketModel.findOne({name, projectID})) {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Ticket Name is taken before.");
     }
@@ -35,30 +57,37 @@ const createTicket = asyncHandler(async (req, res) => {
         throw new Error("Ticket Description is required.");
     }
     // validate project
-    if (!projectName || projectName.trim() === '') {
+    if (!projectID) {
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Project Name is required.");
+        throw new Error("Project ID is required.");
     }
     // check project exists
-    const project = await ProjectModel.findOne({projectName}).select('_id');
+    const project = await ProjectModel.findOne({_id: projectID});
     if (!project) {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Invalid Project Name.");
     }
 
-    const newTicket = await TicketModel.create({ name, title, description, projectID:project._id.toString(), images, reporterID:req.user.id });
+    // predict category
+    let category = "None"  // default
+    try {
+        category = await predictCategory(description);
+    } catch (error) {
+        console.error(`Error while predicting the category : ${error}`);
+    }
+
+    const newTicket = await TicketModel.create({ name, title, description, category, projectID, images, reporterID:req.user.id });
     return res.status(status.CREATED).json(newTicket);
 });
 
 const searchForTicket = asyncHandler(async (req, res) => {
-    const { projectName, keyword, ticketStatus, category, priority } = req.body;
+    const { projectID, keyword, ticketStatus, category, priority } = req.body;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    const project = await ProjectModel.findOne({projectName}).select('_id');
-    if (!project) {
+    if (!await ProjectModel.findById(projectID)) {
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Project Name is invalid.");
+        throw new Error("Project ID is invalid.");
     }
 
     if (!keyword || keyword.trim() === "") {
@@ -69,7 +98,7 @@ const searchForTicket = asyncHandler(async (req, res) => {
     try {
         // Build query object
         const query = {
-            projectID: project._id.toString(),
+            projectID,
             title: { $regex: keyword, $options: 'i' } // 'i' for case-insensitive search
         };
 
@@ -91,8 +120,8 @@ const searchForTicket = asyncHandler(async (req, res) => {
 });
 
 const getTicket = asyncHandler( async (req, res) => {
-    const {name} = req.body;
-    const data = await TicketModel.findOne({name})
+    const {ticketID} = req.body;
+    const data = await TicketModel.findById(ticketID)
         .populate('developerID', 'fullName image')
         .populate('reporterID', 'fullName image')
         .populate('projectID', 'projectName');
@@ -105,11 +134,10 @@ const getTicket = asyncHandler( async (req, res) => {
 })
 
 const updateTicket = asyncHandler(async (req, res) => {
-    let {name, projectName, developerID, title, description, category, ticketStatus , priority} = req.body;
+    let {ticketID, projectID, developerID, title, description, category, ticketStatus , priority} = req.body;
 
     // check if the ticket exists
-    const ticket = await TicketModel.findOne({name}).select('_id');
-    if (!ticket){
+    if (!await TicketModel.findById(ticketID)){
         res.status(status.VALIDATION_ERROR);
         throw new Error("Ticket not found.");
     }
@@ -140,10 +168,9 @@ const updateTicket = asyncHandler(async (req, res) => {
         throw new Error("Invalid Ticket Status.");
     }
     // check project exists
-    const project = await ProjectModel.findOne({projectName}).select('_id');
-    if (!project) {
+    if (!await ProjectModel.findById(projectID)) {
         res.status(status.VALIDATION_ERROR);
-        throw new Error("Invalid Project Name.");
+        throw new Error("Invalid Project ID.");
     }
     // validate developer
     if (!developerID || !mongoose.Types.ObjectId.isValid(developerID)){
@@ -156,16 +183,16 @@ const updateTicket = asyncHandler(async (req, res) => {
     priority = priorities[priority.toUpperCase()];
 
     const updatedTicket = await TicketModel.findByIdAndUpdate(
-        ticket._id.toString(),
-        {projectID:project._id.toString(), developerID, title, description, category, ticketStatus , priority},
+        ticketID,
+        {projectID, developerID, title, description, category, ticketStatus , priority},
         { new: true }
     );
     res.status(status.OK).json(updatedTicket);
 });
 
 const deleteTicket = asyncHandler( async (req, res) =>{
-    const {name} = req.body;
-    const removed = await TicketModel.findOneAndRemove({name});
+    const {ticketID} = req.body;
+    const removed = await TicketModel.findByIdAndRemove(ticketID);
     if(removed)
         res.status(status.OK).json({deleted: 1})
     else{

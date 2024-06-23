@@ -26,19 +26,18 @@ const createComment = asyncHandler(async (req, res) => {
 });
 
 const getTicketComments = asyncHandler( async (req, res) => {
-    const { ticketName } = req.body;
+    const { ticketID } = req.body;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
     // Validate that the ticket exists
-    const ticket = await TicketModel.findOne({name: ticketName}).select('_id');
-    if (!ticket) {
+    if (!await TicketModel.findById(ticketID)) {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Ticket is not found.");
     }
 
     // Fetch the comments with pagination
-    const comments = await CommentModel.find({ ticketID : ticket._id.toString() })
+    const comments = await CommentModel.find({ ticketID  })
         .populate('userID', 'fullName image')
         .skip((page - 1) * limit)
         .limit(limit);
