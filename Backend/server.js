@@ -31,6 +31,7 @@ app.use(express.json()) // Built-in Middleware To parse any request body
 
 
 /***************************   Routes  *************************************/
+app.get('/', (req, res) => {res.json("Hello Bugwhiz.")})
 app.use('/api/user', userRoutes);
 app.use('/api/project', projectRoutes);
 app.use('/api/ticket', ticketRoutes);
