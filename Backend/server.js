@@ -3,7 +3,7 @@ const express = require('express');
 const connectDB = require('./config/connectDB');
 const ErrorHandlerMiddleware = require('./middlewares/ErrorHandlerMiddleware');
 const status = require('./helpers/statusCodes');
-
+const cors = require('cors');
 // Import route files
 const userRoutes = require('./routes/user');
 const projectRoutes = require('./routes/project');
@@ -14,6 +14,15 @@ const commentRoutes = require('./routes/comment');
 require('dotenv').config();
 
 const app = express();
+
+app.use(cors(
+    {
+        origin: ["https://bugwhiz-mustafa-hamzawys-projects.vercel.app"],
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+        credentials: true
+    }
+));
+
 
 // Listening for any request, if connected to db successfully
 const PORT = process.env.PORT || 3005;
