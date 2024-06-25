@@ -1,11 +1,13 @@
 const asyncHandler = require('express-async-handler');
 const TicketModel = require('../models/TicketModel');
 const ProjectModel = require('../models/ProjectModel');
+const UserModel = require('../models/UserModel');
 const status = require('../helpers/statusCodes');
 const mongoose = require("mongoose");
 const { categories, priorities, ticketStatusObject } = require('../config/conf');
 const { spawn } = require('child_process');
 const path = require('path');
+const {model} = require("mongoose");
 
 const predictCategory = asyncHandler(async (bugDescription) => {
     return new Promise((resolve, reject) => {
@@ -16,6 +18,57 @@ const predictCategory = asyncHandler(async (bugDescription) => {
         });
 
         pythonProcess.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(`Python script exited with code ${code}`);
+            }
+        });
+    });
+});
+
+const getTicketsByDevelopers = async (developers) => {
+    const developersWithDescriptions = await Promise.all(developers.map(async (developer) => {
+
+        const tickets = await TicketModel.find({ developerID: developer._id.toString() }).select('description');
+        const descriptions = tickets.map(ticket => ticket.description);
+        // return descriptions;
+        return {
+                developerID: developer._id,
+                jobTitle: developer.jobTitle,
+                oldBugsDescription: descriptions
+            }
+    }));
+
+    return developersWithDescriptions;
+};
+
+const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
+    // Prepare the input to predictDev model
+    const developers = await UserModel.find({ projects: projectID }).select('_id jobTitle');
+    const developersData = await getTicketsByDevelopers(developers);
+    const modelInput = {
+        bugDescription,
+        developersData
+    };
+    // Predict developers
+    let developersPredicted = "";
+    return new Promise((resolve, reject) => {
+        const pythonProcess = spawn('python', [path.resolve(__dirname, '..', 'ML_models', 'Developer Assign', 'dev_assign.py')]);
+
+        pythonProcess.stdin.write(JSON.stringify(modelInput));
+        pythonProcess.stdin.end();
+
+        pythonProcess.stdout.on('data', (data) => {
+            developersPredicted = data.toString();
+            // console.log(`Python output: ${developersPredicted}`);
+            resolve(developersPredicted.trim());
+        });
+
+        pythonProcess.stderr.on('data', (data) => {
+            // console.error(`Python error: ${data.toString()}`);
             reject(data.toString());
         });
 
@@ -70,14 +123,29 @@ const createTicket = asyncHandler(async (req, res) => {
 
     // predict category
     let category = "None"  // default
-    try {
-        category = await predictCategory(description);
-    } catch (error) {
-        console.error(`Error while predicting the category : ${error}`);
-    }
+    // try {
+    //     category = await predictCategory(description);
+    // } catch (error) {
+    //     console.error(`Error while predicting the category : ${error}`);
+    // }
+
+    // TODO: predict priority
+
+    // TODO: extract duplicates
+
+    // predict developer to assign
+    let predictedDevelopers = null
+    // try {
+    //     predictedDevelopers = await predictAssignee(description, projectID);
+    //     if (predictedDevelopers) {
+    //         predictedDevelopers = predictedDevelopers.split(',');
+    //     }
+    // } catch (error) {
+    //     console.error(`Error while predicting the developer assignee : ${error}`);
+    // }
 
     const newTicket = await TicketModel.create({ name, title, description, category, projectID, images, reporterID:req.user.id });
-    return res.status(status.CREATED).json(newTicket);
+    return res.status(status.CREATED).json({newTicket, predictedDevelopers});
 });
 
 const searchForTicket = asyncHandler(async (req, res) => {
