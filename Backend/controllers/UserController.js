@@ -167,6 +167,7 @@ const validateRegistrationData = async(data)=>
 }
 
 const register = asyncHandler( async (req, res)=>{
+    console.log('hiii');
     const{fullName, email, username, phoneNumber, password, image, jobTitle} = req.body;
 
 
