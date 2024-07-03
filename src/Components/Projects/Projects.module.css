@@ -1,0 +1,154 @@
+.projectsContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.projectList {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.projectLink {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginationItem {
+    min-width: 36px;
+    height: 36px;
+    margin: 0 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #1976d2;
+    background-color: #f1f8fe;
+    border: 1px solid #d3e1ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.paginationItem:hover {
+    background-color: #e3f2fd;
+}
+
+.paginationItem svg {
+    width: 20px;
+    height: 20px;
+}
+
+.updateButton,
+.viewIssuesButton,
+.okButton,
+.cancelButton {
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.updateButton:hover,
+.viewIssuesButton:hover,
+.okButton:hover,
+.cancelButton:hover {
+    background-color: #155a9e;
+}
+
+.cancelButton {
+    background-color: #f44336;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f;
+}
+
+.deleteButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f;
+}
+
+.editingContainer {
+    display: flex;
+    align-items: center;
+}
+
+.textField {
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+    /* Adjust the width as needed */
+}
+
+@media (max-width: 768px) {
+    .table {
+        width: 100%;
+    }
+    .projectsContainer {
+        padding: 10px;
+    }
+    .projectList {
+        width: 100%;
+        margin: 20px 0;
+    }
+    .textField {
+        margin-bottom: 10px;
+    }
+    .okButton,
+    .cancelButton {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}

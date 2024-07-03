@@ -1,0 +1,195 @@
+.issuesContainer {
+    height: 91.3vh;
+}
+
+.issueList {
+    width: 80%;
+    margin: 40px 70px 40px 70px;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 30px;
+    gap: 10px;
+    margin-left: 70px;
+}
+
+.searchInput {
+    width: 200px;
+    font-size: 16px;
+    height: 40px;
+}
+
+.filterSelect {
+    width: 150px;
+    font-size: 16px;
+    height: 36px;
+}
+
+.MuiOutlinedInput-root {
+    padding: 7px 5px;
+}
+
+.MuiOutlinedInput-input {
+    padding: 0px 12px;
+}
+
+.MuiSelect-select {
+    display: flex;
+    align-items: center;
+    padding: 9.5px 14px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.issueLink {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.issueLink:hover {
+    text-decoration: underline;
+}
+
+.issueText {
+    color: #333;
+}
+
+.deleteButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f;
+}
+
+.okButton {
+    background-color: #6b8e23 !important;
+    color: white !important;
+}
+
+.okButton:hover {
+    background-color: #155a9e !important;
+}
+
+.cancelButton {
+    background-color: #f44336 !important;
+    color: white !important;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f !important;
+}
+
+.starIcon {
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.issueLink {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 30px;
+}
+
+.issueLink:hover {
+    text-decoration: underline;
+}
+
+.leadIcon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #bdbdbd;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.issueText {
+    margin-right: 30px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #000000;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginationItem {
+    min-width: 36px;
+    height: 36px;
+    margin: 0 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #1976d2;
+    background-color: #f1f8fe;
+    border: 1px solid #d3e1ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.paginationItem:hover {
+    background-color: #e3f2fd;
+}
+
+.paginationItem svg {
+    width: 20px;
+    height: 20px;
+}
+
+.buttonCommon {
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.buttonCommon:hover {
+    background-color: #155a9e;
+}

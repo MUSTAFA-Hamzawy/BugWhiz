@@ -1,0 +1,17 @@
+.okButton {
+    color: white !important;
+    background-color: #6b8e23 !important;
+}
+
+.okButton:hover {
+    background-color: #155a9e !important;
+}
+
+.cancelButton {
+    color: white !important;
+    background-color: #f44336 !important;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f !important;
+}

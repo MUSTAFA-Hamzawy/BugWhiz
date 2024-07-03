@@ -1,0 +1,96 @@
+.buttonCommon {
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.buttonCommon:hover {
+    background-color: #155a9e;
+}
+
+.headerContainer {
+    background-color: var(--ds-surface, #fdfafa);
+    color: var(--ds-text-subtlest, #6B778C);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 65px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--ds-border, #EBECF0);
+}
+
+.headerLogo img {
+    height: 50px;
+}
+
+.headerLink {
+    display: flex;
+    align-items: center;
+}
+
+.headerLink a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.headerLink a:hover {
+    color: #0052cc;
+}
+
+.headerLink .active {
+    color: #0052cc;
+    border-bottom: 3.1px solid #0052cc;
+    padding-bottom: 5px;
+}
+
+.dropdownAccount {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dedada;
+}
+
+.dropdownDetails {
+    margin-left: 10px;
+}
+
+.accountMenuContainer {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+@media (max-width: 768px) {
+    .headerContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        height: auto;
+    }
+    .headerLink,
+    .buttonCommon,
+    .accountMenuContainer {
+        margin-top: 10px;
+    }
+    .headerLink a {
+        margin-left: 0;
+        margin-right: 20px;
+    }
+    .dropdownDetails {
+        font-size: 12px;
+    }
+}

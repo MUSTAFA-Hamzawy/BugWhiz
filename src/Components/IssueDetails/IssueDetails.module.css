@@ -1,0 +1,32 @@
+.issueContainer {
+    margin: 40px 70px;
+}
+
+.issueBody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.buttonCommon {
+    background-color: #6b8e23 !important;
+    color: white !important;
+    border: none;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.buttonCommon:hover {
+    background-color: #155a9e !important;
+}
+
+.commentSection {
+    margin-top: 16px;
+}
