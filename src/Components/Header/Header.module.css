@@ -29,10 +29,6 @@
     border-bottom: 1px solid var(--ds-border, #EBECF0);
 }
 
-.headerLogo img {
-    height: 50px;
-}
-
 .headerLink {
     display: flex;
     align-items: center;
@@ -65,13 +61,29 @@
 }
 
 .dropdownDetails {
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .accountMenuContainer {
     display: flex;
     align-items: center;
     gap: 45px;
+}
+
+.headerLogo {
+    /* Ensure that the logo is a block or inline-block for proper hover behavior */
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.headerLogo img {
+    height: 50px;
+    display: block;
+}
+
+.headerLogo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

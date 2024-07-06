@@ -5,7 +5,6 @@ import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { NavLink } from "react-router-dom";
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -18,6 +17,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from "./Issues.module.css";
 import CreateIssueModal from './CreateIssueModal'; // import the modal component
+import HelmetComponent from '../../HelmetComponent';
 
 const modalStyle = {
   position: 'absolute',
@@ -31,47 +31,79 @@ const modalStyle = {
   p: 4,
 };
 
-const getInitials = (name) => {
-  if (!name) return '';
-  const nameParts = name.split(' ');
-  return nameParts.map(part => part.charAt(0)).join('').toUpperCase();
-};
+// const getInitials = (name) => {
+//   if (!name) return '';
+//   const nameParts = name.split(' ');
+//   return nameParts.map(part => part.charAt(0)).join('').toUpperCase();
+// };
 
 const Issues = () => {
   const location = useLocation();
   const { projectId, projectName } = location.state || {};
 
-  const [modalOpen, setModalOpen] = React.useState(false); // modal state
+  const [modalOpen, setModalOpen] = useState(false); // modal state
 
   const [issues, setIssues] = useState([]);
   const [page, setPage] = useState(1);
   const [totalIssues, setTotalIssues] = useState(0);
-  const [status, setStatus] = useState('');
-  const [priority, setPriority] = useState('');
-  const [category, setCategory] = useState('');
+  const [status, setStatus] = useState('None');
+  const [priority, setPriority] = useState('None');
+  const [category, setCategory] = useState('None');
+  const [searchKeyword, setSearchKeyword] = useState('');
   const issuesPerPage = 5; // Set the number of issues per page
   const [deleteIssueId, setDeleteIssueId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  
   const navigate = useNavigate();
 
-
-  const fetchIssues = async () => {
+  const fetchIssues = async (search = false) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get('http://51.20.81.93:80/api/project/tickets', {
-        params: {
-          projectID: projectId,
-          page: page,
-          limit: issuesPerPage
-        },
-        headers: {
-          Authorization: `Bearer ${token}`
+      if (search) {
+        const response = await axios.get('http://51.20.81.93:80/api/ticket/search', {
+          params: {
+            projectID: projectId,
+            page: page,
+            limit: issuesPerPage,
+            keyword: searchKeyword,
+            ticketStatus: status,
+            priority: priority,
+            category: category
+          },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }); 
+        console.log(projectId, page, issuesPerPage, searchKeyword, status, priority, category);
+        console.log(response.data);
+        const { tickets, totalCount } = response.data;
+        setIssues(tickets);
+        setTotalIssues(totalCount);
+  
+        // Handle empty current page
+        if (tickets.length === 0 && page > 1) {
+          setPage(page - 1);
         }
-      });
+      } else {
+        const response = await axios.get('http://51.20.81.93:80/api/project/tickets', {
+          params: {
+            projectID: projectId,
+            page: page,
+            limit: issuesPerPage
+          },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }); 
+        const { tickets, totalCount } = response.data;
+        setIssues(tickets);
+        setTotalIssues(totalCount);
 
-      const { tickets, totalCount } = response.data;
-      setIssues(tickets);
-      setTotalIssues(totalCount);
+        // Handle empty current page
+        if (tickets.length === 0 && page > 1) {
+          setPage(page - 1);
+        }
+      }
     } catch (error) {
       console.error('Error fetching issues:', error);
     }
@@ -103,27 +135,6 @@ const Issues = () => {
     setCategory(event.target.value);
   };
 
-  const handleIssueStatusChange = (index, value) => {
-    const updatedIssues = [...issues];
-    updatedIssues[index].ticketStatus = value;
-    setIssues(updatedIssues);
-    // Add API call to update issue status on server
-  };
-
-  const handleIssuePriorityChange = (index, value) => {
-    const updatedIssues = [...issues];
-    updatedIssues[index].priority = value;
-    setIssues(updatedIssues);
-    // Add API call to update issue priority on server
-  };
-
-  const handleIssueCategoryChange = (index, value) => {
-    const updatedIssues = [...issues];
-    updatedIssues[index].category = value;
-    setIssues(updatedIssues);
-    // Add API call to update issue category on server
-  };
-
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('authToken');
@@ -151,44 +162,48 @@ const Issues = () => {
     setOpenDeleteModal(false);
   };
 
-  const filteredIssues = issues
-    .map(issue => ({
-      ...issue,
-      devNameInitials: issue.developerID ? getInitials(issue.developerName) : "",
-      reporterName: issue.reporterID ? getInitials(issue.reporterName) : ""
-    }))
-    .filter(issue => 
-      (status === '' || issue.ticketStatus === status) &&
-      (priority === '' || issue.priority === priority) &&
-      (category === '' || issue.category === category)
-    );
+  const handleSearch = () => {
+    setPage(1); // Reset to the first page for new search
+    fetchIssues(true);
+  };
 
-    const handleModalOpen = () => {
-      setModalOpen(true);
-    };
-    
-    const handleModalClose = () => {
-      setModalOpen(false);
-    };
+  const handleViewAll = () => {
+    setSearchKeyword('');
+    setStatus('None');
+    setPriority('None');
+    setCategory('None');
+    fetchIssues(false);
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className={styles.issuesContainer}>
-      <div style={{ margin: '40px 70px 0px 70px' }}>
+      <HelmetComponent title="Issues - BugWhiz" description="Manage project issues" />
+      <div style={{ margin: '40px 70px 0px 70px', display: 'flex', alignItems: 'center', gap: '80px' }}>
         <span style={{ fontSize: '17px', fontFamily: 'sans-serif', color: '#213351' }}>
           Projects / {projectName}
         </span>
+        <button className={styles.buttonCommon} onClick={handleModalOpen}>Create Issue</button>
       </div>
-      <div style={{ margin: '20px 70px 40px 70px',display:'flex', alignItems:'center', gap:'80px' }}>
+      <div style={{ margin: '20px 70px 40px 70px', display: 'flex', alignItems: 'center', gap: '80px' }}>
         <span style={{ fontSize: '21px', fontFamily: 'sans-serif', fontWeight: 'bold', color: '#213351' }}>
           Issues
         </span>
-        <button className={styles.buttonCommon} onClick={handleModalOpen} >Create Issue</button>
       </div>
       <div className={styles.header}>
         <TextField
           className={styles.searchInput}
           variant="outlined"
           placeholder="Search Issues"
+          value={searchKeyword}
+          onChange={(e) => setSearchKeyword(e.target.value)}
           sx={{
             width: '200px',
             '& .MuiOutlinedInput-root': {
@@ -246,92 +261,104 @@ const Issues = () => {
           <MenuItem value="Security">Security</MenuItem>
           <MenuItem value="Documentation">Documentation</MenuItem>
         </Select>
+        <Button onClick={handleSearch} className={styles.buttonCommon} sx={{ height: '36px', color: '#213351', textTransform: 'none', padding:'0 15px' }}>
+          Search
+        </Button>
+        <Button onClick={handleViewAll} className={styles.buttonCommon} sx={{ height: '36px', color: '#213351', textTransform: 'none' }}>
+          View All Issues
+        </Button>
       </div>
       <div className={styles.issueList}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th style={{ color: '#213351' }}>Name</th>
-              <th style={{ color: '#213351' }}>Title</th>
-              <th style={{ color: '#213351' }}>Status</th>
-              <th style={{ color: '#213351' }}>Priority</th>
-              <th style={{ color: '#213351' }}>Category</th>
-              <th style={{ color: '#213351' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredIssues.map((issue, index) => (
-              <tr key={index}>
-                <td>
-                  <NavLink to="#" className={styles.issueLink}>{issue.name}</NavLink>
-                </td>
-                <td>
-                  <span className={styles.issueText}>{issue.title}</span>
-                </td>
-                <td>
-                  <span>
-                  {issue.ticketStatus}
-                  </span>
-                </td>
-                <td>
-                  <span>{issue.priority}</span>
-                </td>
-                <td>
-                  <span>{issue.category}</span>
-                </td>
-                <td>
-                  <button 
-                    className={styles.buttonCommon}
-                    onClick={() => handleViewIssueDetails(issue._id, issue.name)}
+        {issues.length === 0 ? (
+          <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '20px' }}>
+            {searchKeyword || status !== 'None' || priority !== 'None' || category !== 'None' ? 'No issues found' : 'No issues yet'}
+          </Typography>
+        ) : (
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th style={{ color: '#213351' }}>Name</th>
+                <th style={{ color: '#213351' }}>Title</th>
+                <th style={{ color: '#213351' }}>Status</th>
+                <th style={{ color: '#213351' }}>Priority</th>
+                <th style={{ color: '#213351' }}>Category</th>
+                <th style={{ color: '#213351' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {issues.map((issue, index) => (
+                <tr key={index}>
+                  <td>
+                    <span onClick={() => handleViewIssueDetails(issue._id, issue.name)} className={styles.issueLink}>{issue.name}</span>
+                  </td>
+                  <td>
+                    <span className={styles.issueText}>{issue.title}</span>
+                  </td>
+                  <td>
+                    <span>{issue.ticketStatus}</span>
+                  </td>
+                  <td>
+                    <span>{issue.priority}</span>
+                  </td>
+                  <td>
+                    <span>{issue.category}</span>
+                  </td>
+                  <td>
+                    <button
+                      className={styles.buttonCommon}
+                      onClick={() => handleViewIssueDetails(issue._id, issue.name)}
                     >
                       View Details
-                  </button>
-                  <button 
-                    className={styles.deleteButton}
-                    onClick={() => handleOpenDeleteModal(issue._id)}
+                    </button>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleOpenDeleteModal(issue._id)}
                     >
                       Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
-      <div className={styles.paginationContainer}>
-        <Pagination
-          count={Math.ceil(totalIssues / issuesPerPage)}
-          page={page}
-          onChange={handleChange}
-          renderItem={(item) => (
-            <PaginationItem
-              components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-              {...item}
-              sx={{
-                minWidth: 36,
-                height: 36,
-                margin: '0 4px',
-                borderRadius: 4,
-                fontSize: 14,
-                color: '#1976d2',
-                border: '1px solid #d3e1ea',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                '&.Mui-selected': {
-                  backgroundColor: '#e3f2fd',
+      {issues.length !== 0 && (
+        <div className={styles.paginationContainer}>
+          <Pagination
+            count={Math.ceil(totalIssues / issuesPerPage)}
+            page={page}
+            onChange={handleChange}
+            renderItem={(item) => (
+              <PaginationItem
+                components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                {...item}
+                sx={{
+                  minWidth: 36,
+                  height: 36,
+                  margin: '0 4px',
+                  borderRadius: 4,
+                  fontSize: 14,
                   color: '#1976d2',
-                },
-                '&:hover': {
-                  backgroundColor: '#e3f2fd',
-                },
-              }}
-            />
-          )}
-        />
-      </div>
-      <CreateIssueModal open={modalOpen} handleClose={handleModalClose} />
+                  border: '1px solid #d3e1ea',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  '&.Mui-selected': {
+                    backgroundColor: '#e3f2fd',
+                    color: '#1976d2',
+                  },
+                  '&:hover': {
+                    backgroundColor: '#e3f2fd',
+                  },
+                }}
+              />
+            )}
+          />
+        </div>
+      )}
+      <CreateIssueModal open={modalOpen} handleClose={handleModalClose} projectId={projectId} fetchIssues={fetchIssues}/>
       <Modal
         open={openDeleteModal}
         onClose={handleCloseDeleteModal}
@@ -343,7 +370,7 @@ const Issues = () => {
             Confirm Deletion
           </Typography>
           <Typography id="delete-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete this issue ?
+            Are you sure you want to delete this issue?
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
             <Button className={styles.okButton} onClick={handleDelete}>

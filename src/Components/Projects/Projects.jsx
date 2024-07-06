@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from "./Projects.module.css";
+import Header from '../Header/Header';
+import HelmetComponent from '../../HelmetComponent';
 
 const modalStyle = {
   position: 'absolute',
@@ -23,7 +25,7 @@ const modalStyle = {
   p: 4,
 };
 
-const Projects = () => {
+const Projects = ({userState}) => {
   const [projects, setProjects] = useState([]);
   const [page, setPage] = useState(1);
   const [totalProjects, setTotalProjects] = useState(0);
@@ -56,6 +58,11 @@ const Projects = () => {
       const { projects, totalCount } = response.data;
       setProjects(projects);
       setTotalProjects(totalCount);
+
+      // Handle empty current page
+      if (projects.length === 0 && page > 1) {
+        setPage(page - 1);
+      }
     } catch (error) {
       console.error('Error fetching projects:', error);
     }
@@ -127,91 +134,104 @@ const Projects = () => {
   };
 
   return (
+    <>
+    <HelmetComponent title="Projects - BugWhiz" description="Manage your projects" />
+    <Header userState={userState} fetchProjects={fetchProjects} />
     <div className={styles.projectsContainer}>
       <div style={{ margin: '40px 70px 0px' }}>
         <span style={{ fontSize: '21px', fontFamily: 'sans-serif', fontWeight: 'bold', color: '#213351' }}>
-          Projects
+          {projects.length === 0 ? (
+            <span ></span>
+          ) : (<span >Projects</span>)}
         </span>
       </div>
       <div className={styles.projectList}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th style={{ color: '#213351' }}>Name</th>
-              <th style={{ color: '#213351' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(projects) && projects.map((project, index) => (
-              <tr key={index}>
-                <td>
-                  {editingProjectId === project._id ? (
-                    <div className={styles.editingContainer}>
-                      <input
-                        type="text"
-                        value={newProjectName}
-                        onChange={(e) => setNewProjectName(e.target.value)}
-                        className={styles.textField}
-                        style={{ width: '150px' }}
-                      />
-                      <button className={styles.okButton} onClick={() => handleUpdateProject(project._id)}>OK</button>
-                      <button className={styles.cancelButton} onClick={handleCancel}>Cancel</button>
-                    </div>
-                  ) : (
-                    <span className={styles.projectLink}>{project.projectName}</span>
-                  )}
-                </td>
-                <td>
-                  {editingProjectId !== project._id && (
-                    <>
-                      <button className={styles.updateButton} onClick={() => handleEdit(project)}>Update</button>
-                      <button className={styles.deleteButton} onClick={() => handleOpenDeleteModal(project._id)}>Delete</button>
-                    </>
-                  )}
-                  <button className={styles.viewIssuesButton} onClick={() => handleViewIssues(project._id, project.projectName)}>View Issues</button>
-                </td>
+        {projects.length === 0 ? (
+          <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '20px' }}>
+            No projects yet
+          </Typography>
+        ) : (
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th style={{ color: '#213351' }}>Name</th>
+                <th style={{ color: '#213351' }}>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className={styles.paginationContainer}>
-          <Pagination
-            count={Math.ceil(totalProjects / projectsPerPage)}
-            page={page}
-            onChange={handleChange}
-            renderItem={(item) => (
-              <PaginationItem
-                components={{
-                  previous: ArrowBackIcon,
-                  next: ArrowForwardIcon,
-                }}
-                {...item}
-                sx={{
-                  minWidth: 36,
-                  height: 36,
-                  margin: '0 4px',
-                  borderRadius: 4,
-                  fontSize: 14,
-                  color: '#1976d2',
-                  border: '1px solid #d3e1ea',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  '&.Mui-selected': {
-                    backgroundColor: '#e3f2fd',
+            </thead>
+            <tbody>
+              {Array.isArray(projects) && projects.map((project, index) => (
+                <tr key={index}>
+                  <td>
+                    {editingProjectId === project._id ? (
+                      <div className={styles.editingContainer}>
+                        <input
+                          type="text"
+                          value={newProjectName}
+                          onChange={(e) => setNewProjectName(e.target.value)}
+                          className={styles.textField}
+                          style={{ width: '150px' }}
+                        />
+                        <button className={styles.okButton} onClick={() => handleUpdateProject(project._id)}>OK</button>
+                        <button className={styles.cancelButton} onClick={handleCancel}>Cancel</button>
+                      </div>
+                    ) : (
+                      <span onClick={() => handleViewIssues(project._id, project.projectName)} className={styles.projectLink}>{project.projectName}</span>
+                    )}
+                  </td>
+                  <td>
+                    {editingProjectId !== project._id && (
+                      <>
+                        <button className={styles.updateButton} onClick={() => handleEdit(project)}>Update</button>
+                        <button className={styles.deleteButton} onClick={() => handleOpenDeleteModal(project._id)}>Delete</button>
+                      </>
+                    )}
+                    <button className={styles.viewIssuesButton} onClick={() => handleViewIssues(project._id, project.projectName)}>View Issues</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {projects.length > 0 && (
+          <div className={styles.paginationContainer}>
+            <Pagination
+              count={Math.ceil(totalProjects / projectsPerPage)}
+              page={page}
+              onChange={handleChange}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                  sx={{
+                    minWidth: 36,
+                    height: 36,
+                    margin: '0 4px',
+                    borderRadius: 4,
+                    fontSize: 14,
                     color: '#1976d2',
-                  },
-                  '&:hover': {
-                    backgroundColor: '#e3f2fd',
-                  },
-                }}
-              />
-            )}
-            shape="rounded"
-            variant="outlined"
-          />
-        </div>
+                    border: '1px solid #d3e1ea',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    '&.Mui-selected': {
+                      backgroundColor: '#e3f2fd',
+                      color: '#1976d2',
+                    },
+                    '&:hover': {
+                      backgroundColor: '#e3f2fd',
+                    },
+                  }}
+                />
+              )}
+              shape="rounded"
+              variant="outlined"
+            />
+          </div>
+        )}
       </div>
       <Modal
         open={openDeleteModal}
@@ -224,7 +244,7 @@ const Projects = () => {
             Confirm Deletion
           </Typography>
           <Typography id="delete-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete this project ?
+            Are you sure you want to delete this project?
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
             <Button className={styles.okButton} onClick={handleDelete}>
@@ -237,6 +257,7 @@ const Projects = () => {
         </Box>
       </Modal>
     </div>
+    </>
   );
 };
 

@@ -5,7 +5,6 @@
 .issueBody {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .buttonCommon {
@@ -29,4 +28,65 @@
 
 .commentSection {
     margin-top: 16px;
+}
+
+.outerDiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.issueImage {
+    width: 100%;
+    max-width: 350px;
+    /* Adjust as needed */
+    height: auto;
+    max-height: 280px;
+    /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 4px;
+    /* Optional: Adds rounded corners */
+}
+
+.imageGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjust the gap as needed */
+    margin-left: 20px;
+}
+
+.imageContainer {
+    flex: 1 1 calc(33.3% - 10px);
+    /* Adjust the width to fit your needs, 25% for 4 columns layout */
+    max-width: calc(33.3% - 10px);
+    display: flex;
+}
+
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detailsRow {
+    display: flex;
+    gap: 20px;
+}
+
+.detailsLabel {
+    font-weight: bold;
+    color: #007bff;
+    min-width: 80px;
+}
+
+.detailsLabelStatus {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.detailsValue {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

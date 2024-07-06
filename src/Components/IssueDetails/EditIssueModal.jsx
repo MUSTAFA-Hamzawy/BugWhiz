@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
@@ -28,15 +27,26 @@ const style = {
   p: 4,
 };
 
-const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => {
-  const [formData, setFormData] = useState(issueData);
+const EditIssueModal = ({ open, handleClose, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails }) => {
+  const [formCategory, setFormCategory] = useState(category);
+  const [formDescription, setFormDescription] = useState(description);
+  const [formDeveloperID, setFormDeveloperID] = useState(developerID);
+  const [formPriority, setFormPriority] = useState(priority);
+  const [formTitle, setFormTitle] = useState(title);
+  const [formTicketStatus, setFormTicketStatus] = useState(ticketStatus);
   const [developers, setDevelopers] = useState([]);
 
+  console.log(category, description, developerID, priority, title, ticketStatus, ticketID);
   useEffect(() => {
     if (open) {
-      setFormData(issueData);
+      setFormCategory(category);
+      setFormDescription(description);
+      setFormDeveloperID(developerID);
+      setFormPriority(priority);
+      setFormTitle(title);
+      setFormTicketStatus(ticketStatus);
     }
-  }, [issueData, open]);
+  }, [category, description, developerID, priority, title, ticketStatus, open]);
 
   const fetchDevelopers = async () => {
     try {
@@ -56,22 +66,17 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
     fetchDevelopers();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = async () => {
     try {
       const token = localStorage.getItem('authToken');
       const payload = {
-        ticketID: formData._id,
-        developerID: formData.developerID,
-        title: formData.title,
-        description: formData.description,
-        category: formData.category,
-        priority: formData.priority,
-        ticketStatus: formData.ticketStatus
+        ticketID,
+        developerID: formDeveloperID,
+        title: formTitle,
+        description: formDescription,
+        category: formCategory,
+        priority: formPriority,
+        ticketStatus: formTicketStatus
       };
       console.log(payload);
       await axios.patch('http://51.20.81.93:80/api/ticket', payload, {
@@ -91,7 +96,7 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
     return developer || { fullName: 'None', image: null };
   };
 
-  const selectedDeveloper = getDeveloperDetails(formData.developerID);
+  const selectedDeveloper = formDeveloperID ? getDeveloperDetails(formDeveloperID) : { fullName: 'None', image: null };
 
   return (
     <Modal
@@ -110,8 +115,11 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               fullWidth
               label="Title"
               name="title"
-              value={formData.title}
-              onChange={handleChange}
+              value={formTitle || ''}
+              onChange={(e) => setFormTitle(e.target.value)}
+              InputProps={{
+                style: { fontSize: '16px', padding: '10px 0' }
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -119,8 +127,11 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               fullWidth
               label="Description"
               name="description"
-              value={formData.description}
-              onChange={handleChange}
+              value={formDescription || ''}
+              onChange={(e) => setFormDescription(e.target.value)}
+              InputProps={{
+                style: { fontSize: '16px', padding: '10px 0' }
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -129,13 +140,13 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               <Select
                 label="Status"
                 name="ticketStatus"
-                value={formData.ticketStatus}
-                onChange={handleChange}
+                value={formTicketStatus || 'None'}
+                onChange={(e) => setFormTicketStatus(e.target.value)}
               >
                 <MenuItem value="None">None</MenuItem>
                 <MenuItem value="TODO">TODO</MenuItem>
-                <MenuItem value="In Progress">In Progress</MenuItem>
-                <MenuItem value="DONE">DONE</MenuItem>
+                <MenuItem value="Progress">In Progress</MenuItem>
+                <MenuItem value="Done">DONE</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -145,8 +156,8 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               <Select
                 label="Priority"
                 name="priority"
-                value={formData.priority}
-                onChange={handleChange}
+                value={formPriority || 'None'}
+                onChange={(e) => setFormPriority(e.target.value)}
               >
                 <MenuItem value="None">None</MenuItem>
                 <MenuItem value="P1">P1</MenuItem>
@@ -163,13 +174,14 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               <Select
                 label="Category"
                 name="category"
-                value={formData.category}
-                onChange={handleChange}
+                value={formCategory || 'None'}
+                onChange={(e) => setFormCategory(e.target.value)}
               >
                 <MenuItem value="None">None</MenuItem>
                 <MenuItem value="Frontend">Frontend</MenuItem>
                 <MenuItem value="Backend">Backend</MenuItem>
                 <MenuItem value="Security">Security</MenuItem>
+                <MenuItem value="Documentation">Documentation</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -179,8 +191,8 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
               <Select
                 label="Developer"
                 name="developerID"
-                value={formData.developerID}
-                onChange={handleChange}
+                value={formDeveloperID || ''}
+                onChange={(e) => setFormDeveloperID(e.target.value)}
                 MenuProps={{
                   PaperProps: {
                     style: {
@@ -196,11 +208,11 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
                 ))}
               </Select>
             </FormControl>
-            {formData.developerID.fullName && (
+            {formDeveloperID && selectedDeveloper.fullName !== 'None' && (
               <Box mt={2} display="flex" alignItems="center">
-                <Avatar alt={formData.developerID.fullName} src={formData.developerID.image} />
+                <Avatar alt={selectedDeveloper.fullName} src={selectedDeveloper.image} />
                 <Typography variant="body1" ml={2}>
-                  {formData.developerID.fullName}
+                  {selectedDeveloper.fullName}
                 </Typography>
               </Box>
             )}
@@ -220,4 +232,3 @@ const EditIssueModal = ({ open, handleClose, issueData, fetchIssueDetails }) => 
 };
 
 export default EditIssueModal;
-

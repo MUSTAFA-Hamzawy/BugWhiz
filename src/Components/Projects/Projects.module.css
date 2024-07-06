@@ -35,6 +35,11 @@
     color: #007bff;
 }
 
+.projectLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .paginationContainer {
     display: flex;
     justify-content: center;
@@ -69,8 +74,8 @@
 .viewIssuesButton,
 .okButton,
 .cancelButton {
-    background-color: #6b8e23;
-    color: white;
+    background-color: #6b8e23 !important;
+    color: white !important;
     border: none;
     padding: 8px 16px;
     text-align: center;
@@ -87,15 +92,15 @@
 .viewIssuesButton:hover,
 .okButton:hover,
 .cancelButton:hover {
-    background-color: #155a9e;
+    background-color: #155a9e !important;
 }
 
 .cancelButton {
-    background-color: #f44336;
+    background-color: #f44336 !important;
 }
 
 .cancelButton:hover {
-    background-color: #d32f2f;
+    background-color: #d32f2f !important;
 }
 
 .deleteButton {

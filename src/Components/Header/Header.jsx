@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../Assets/logo.jpeg';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -10,38 +10,58 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import styles from './Header.module.css';
 import CreateProjectModal from './CreateProjectModal'; // import the modal component
 
-const Header = () => {
+const Header = ({ userState, fetchProjects }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [modalOpen, setModalOpen] = React.useState(false); // modal state
   const open = Boolean(anchorEl);
-  
+  const navigate = useNavigate(); // get navigate function from react-router-dom
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   const handleModalOpen = () => {
     setModalOpen(true);
   };
-  
+
   const handleModalClose = () => {
     setModalOpen(false);
   };
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+    handleClose();
+  };
+
+  const handleLogout = () => {
+    // Clear the authentication token from local storage
+    localStorage.removeItem('authToken');
+    // Optionally reset any user state here
+    // Redirect to the login page
+    navigate("/login", { replace: true });
+  };
+
+  const userData = userState?.userData;
+  
+  console.log(userState);
+  console.log(userData);
+
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerLogo}>
-        <img src={logo} alt="BugWhiz Logo" />
+        <NavLink to="/projects">
+          <img src={logo} alt="BugWhiz Logo" />
+        </NavLink>
       </div>
-      <div style={{display:'flex', alignItems:'center', gap:'60px'}}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '60px' }}>
         <div className={styles.headerLink}>
           <NavLink to="/Projects" className={({ isActive }) => isActive ? styles.active : ''}>
             Projects
@@ -51,7 +71,10 @@ const Header = () => {
       </div>
       <div className={styles.accountMenuContainer}>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-          <Tooltip title="Account settings">
+          <div style={{cursor:'pointer'}}>
+            <NotificationsNoneOutlinedIcon fontSize="large"/>
+          </div>
+          <Tooltip title="Account Info">
             <IconButton
               onClick={handleClick}
               size="small"
@@ -60,7 +83,7 @@ const Header = () => {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
             >
-              <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }}>KM</Avatar>
+              <Avatar sx={{ width: 44, height: 44, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
             </IconButton>
           </Tooltip>
         </Box>
@@ -100,38 +123,27 @@ const Header = () => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <div className={styles.dropdownAccount}>
-            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }}>KM</Avatar>
+          <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
             <div className={styles.dropdownDetails}>
-              <div>Karim Mohamed</div>
-              <div style={{ fontSize: '13px' }}>karim.moh2052@gmail.com</div>
+              <div style={{fontWeight:'bold'}}>{userData?.fullName}</div>
+              <div style={{ fontSize: '14px' }}>{userData?.email}</div>
             </div>
           </div>
-          <MenuItem sx={{ marginTop: '7px' }} onClick={handleClose}>
-            <Avatar /> Profile
+          <MenuItem sx={{ marginTop: '7px' }} onClick={handleProfileClick}>
+          <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+              Profile
           </MenuItem>
           <Divider />
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Personal Settings
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <NotificationsNoneOutlinedIcon fontSize="small" />
-            </ListItemIcon>
-            Notifications
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleLogout}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
-            Log out
+            Logout
           </MenuItem>
         </Menu>
-        <button className={styles.buttonCommon}>Log out</button>
+        <button className={styles.buttonCommon} onClick={handleLogout}>Logout</button>
       </div>
-      <CreateProjectModal open={modalOpen} handleClose={handleModalClose} /> {/* render the modal */}
+      <CreateProjectModal open={modalOpen} handleClose={handleModalClose} fetchProjects={fetchProjects} /> {/* render the modal */}
     </div>
   );
 };

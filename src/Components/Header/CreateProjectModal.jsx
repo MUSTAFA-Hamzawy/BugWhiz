@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-const CreateProjectModal = ({ open, handleClose }) => {
+const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
   const [projectName, setProjectName] = React.useState('');
 
   const handleCreateProject = async () => {
@@ -31,6 +31,7 @@ const CreateProjectModal = ({ open, handleClose }) => {
           'Content-Type': 'application/json',
         },
       });
+      fetchProjects();
       handleModalClose();
     } catch (error) {
       console.error('There was an error creating the project!', error);
@@ -59,7 +60,10 @@ const CreateProjectModal = ({ open, handleClose }) => {
           fullWidth
           value={projectName}
           onChange={(e) => setProjectName(e.target.value)}
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, mb: 0.3 }}
+          InputProps={{
+            style: { fontSize: '16px' , padding:'10px 0'
+          }}}
         />
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
           <Button className={styles.okButton} onClick={handleCreateProject}>

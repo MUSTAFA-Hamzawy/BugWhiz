@@ -61,11 +61,6 @@
 
 .issueLink {
     color: #007bff;
-    text-decoration: none;
-}
-
-.issueLink:hover {
-    text-decoration: underline;
 }
 
 .issueText {
@@ -123,6 +118,7 @@
 
 .issueLink:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .leadIcon {
@@ -176,8 +172,8 @@
 }
 
 .buttonCommon {
-    background-color: #6b8e23;
-    color: white;
+    background-color: #6b8e23 !important;
+    color: white !important;
     border: none;
     padding: 8px 16px;
     text-align: center;
@@ -191,5 +187,5 @@
 }
 
 .buttonCommon:hover {
-    background-color: #155a9e;
+    background-color: #155a9e !important;
 }

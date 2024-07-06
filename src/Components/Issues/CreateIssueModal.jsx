@@ -20,12 +20,12 @@ const style = {
   p: 4,
 };
 
-const CreateIssueModal = ({ open, handleClose, projectId }) => {
+const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
   const [issueData, setIssueData] = useState({
     name: '',
     title: '',
     description: '',
-    images: [null, null],
+    images: [],
   });
 
   const handleChange = (e) => {
@@ -36,22 +36,15 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
     });
   };
 
-  const onDrop = useCallback((index, acceptedFiles) => {
-    const newImages = [...issueData.images];
-    newImages[index] = acceptedFiles[0]; // Only handle single file
-    setIssueData({
-      ...issueData,
-      images: newImages,
-    });
-  }, [issueData]);
+  const onDrop = useCallback((acceptedFiles) => {
+    setIssueData(prevState => ({
+      ...prevState,
+      images: [...prevState.images, ...acceptedFiles],
+    }));
+  }, []);
 
-  const { getRootProps: getRootProps0, getInputProps: getInputProps0 } = useDropzone({
-    onDrop: (acceptedFiles) => onDrop(0, acceptedFiles),
-    accept: 'image/*',
-  });
-
-  const { getRootProps: getRootProps1, getInputProps: getInputProps1 } = useDropzone({
-    onDrop: (acceptedFiles) => onDrop(1, acceptedFiles),
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
     accept: 'image/*',
   });
 
@@ -60,24 +53,27 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
       const token = localStorage.getItem('authToken');
       const { name, title, description, images } = issueData;
 
-      // Extract the file names
-      const imageNames = images.filter(image => image !== null).map(image => image.name);
+      // Create a new FormData object
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('projectID', projectId);
 
-      const requestData = {
-        name,
-        title,
-        description,
-        images: imageNames,
-        projectID: projectId,
-      };
+      // Append each image file to the FormData object
+      images.forEach((image, index) => {
+        formData.append(`images`, image);
+      });
 
-      await axios.post('http://51.20.81.93:80/api/ticket', requestData, {
+      // Make the POST request with FormData
+      await axios.post('http://51.20.81.93:80/api/ticket', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(requestData)
+
+      fetchIssues(false);
       handleModalClose();
     } catch (error) {
       console.error('There was an error creating the issue!', error);
@@ -89,7 +85,7 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
       name: '',
       title: '',
       description: '',
-      images: [null, null],
+      images: [],
     });
     handleClose();
   };
@@ -113,6 +109,9 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
           value={issueData.name}
           onChange={handleChange}
           sx={{ mt: 2, cursor: 'pointer' }}
+          InputProps={{
+            style: { fontSize: '16px', padding: '10px 0' }
+          }}
         />
         <TextField
           label="Title"
@@ -122,6 +121,9 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
           value={issueData.title}
           onChange={handleChange}
           sx={{ mt: 2, cursor: 'pointer' }}
+          InputProps={{
+            style: { fontSize: '16px', padding: '10px 0' }
+          }}
         />
         <TextField
           label="Description"
@@ -131,16 +133,20 @@ const CreateIssueModal = ({ open, handleClose, projectId }) => {
           value={issueData.description}
           onChange={handleChange}
           sx={{ mt: 2, cursor: 'pointer' }}
+          InputProps={{
+            style: { fontSize: '16px', padding: '10px 0' }
+          }}
         />
-        <div {...getRootProps0({ className: 'dropzone' })} style={{ color: '#007bff', border: '1px dashed #ccc', padding: '20px', textAlign: 'center', marginTop: '20px', cursor: 'pointer' }}>
-          <input {...getInputProps0()} />
-          <p>Drag 'n' drop an image here, or click to select an image</p>
-          {issueData.images[0] && <p>Selected file: {issueData.images[0].name}</p>}
-        </div>
-        <div {...getRootProps1({ className: 'dropzone' })} style={{ color: '#007bff', border: '1px dashed #ccc', padding: '20px', textAlign: 'center', marginTop: '20px', cursor: 'pointer' }}>
-          <input {...getInputProps1()} />
-          <p>Drag 'n' drop an image here, or click to select an image</p>
-          {issueData.images[1] && <p>Selected file: {issueData.images[1].name}</p>}
+        <div {...getRootProps({ className: 'dropzone' })} style={{ color: '#007bff', border: '1px dashed #ccc', padding: '20px', textAlign: 'center', marginTop: '20px', cursor: 'pointer' }}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop images here, or click to select images</p>
+          {issueData.images.length > 0 && (
+            <div>
+              {issueData.images.map((file, index) => (
+                <p style ={{color: '#000'}} key={index}>Selected file: {file.name}</p>
+              ))}
+            </div>
+          )}
         </div>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
           <Button className={styles.okButton} onClick={handleCreateIssue}>

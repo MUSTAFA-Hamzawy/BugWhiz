@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
+import HelmetComponent from '../../HelmetComponent';
 
 const Login = ({ setUserState }) => {
   const navigate = useNavigate();
@@ -49,12 +50,24 @@ const Login = ({ setUserState }) => {
               "Content-Type": "application/json",
             },
           });
-          setUserState(res.data.user);
-          localStorage.setItem("authToken", res.data.token);
-          navigate("/profile", { replace: true });
+          console.log(res.data)
+          const { token } = res.data;
+          localStorage.setItem("authToken", token);
+
+          const userProfileRes = await axios.get("http://51.20.81.93/api/user/profile", {
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          });
+
+          console.log(userProfileRes.data);
+
+          setUserState({ token, userData: userProfileRes.data });
+
+          navigate("/projects", { replace: true }); // Redirect to projects page
         } catch (error) {
           if (error.response) {
-            console.log(users)
+            console.log(users);
             console.log(error.response.data.message);
           } else if (error.request) {
             console.log("Network error. Please try again.");
@@ -65,10 +78,11 @@ const Login = ({ setUserState }) => {
       }
     };
     loginUser();
-  }, [validationErrors, hasSubmitted]);
+  }, [validationErrors, hasSubmitted, setUserState, navigate, users]);
 
   return (
     <div className={styles.loginContainer}>
+      <HelmetComponent title="Login - BugWhiz" description="Login" />
       <div className={styles.login}>
         <form onSubmit={handleLogin}>
           <h1>Login</h1>
@@ -90,7 +104,7 @@ const Login = ({ setUserState }) => {
             value={users.password}
           />
           <p className={styles.error}>{validationErrors.password}</p>
-          <button type="submit" className={styles.buttonCommon}>
+          <button type="submit" className={styles.buttonCommon} style={{cursor:'pointer'}}>
             Login
           </button>
         </form>

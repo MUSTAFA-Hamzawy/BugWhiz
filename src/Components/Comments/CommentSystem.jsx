@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from 'axios';
+
+import {
+  Grid,
+  Typography,
+  Avatar,
+} from '@mui/material';
+
 import styles from "./Comment.module.css";
 
 const Action = ({ handleClick, type, className }) => {
@@ -11,9 +18,6 @@ const Action = ({ handleClick, type, className }) => {
 };
 
 const Comment = ({
-  handleInsertNode,
-  handleEditNode,
-  handleDeleteNode,
   comment,
   issueId,
   fetchComments,
@@ -83,6 +87,7 @@ const Comment = ({
         });
 
         fetchComments();
+        setConfirmDelete(false);
       } catch (error) {
         console.error('Error deleting comment:', error);
       }
@@ -117,17 +122,25 @@ const Comment = ({
         </>
       ) : (
         <>
-          <span
-            contentEditable={editMode}
-            suppressContentEditableWarning={editMode}
-            ref={inputRef}
-            className={editMode ? styles.inputContainer__input : ''}
-            style={{ wordWrap: "break-word", width: '100%' }}
-          >
-            {comment.comment}
-          </span>
+          <div style={{marginBottom:'5px'}}>
+          <Grid item xs={9} display="flex" alignItems="center">
+              <Avatar sx={{ width: 24, height: 24, mr: 1 }} alt={comment.userID.fullName} src={comment.userID && comment.userID.image ? comment.userID.image : null} />
+              <Typography variant="body2">{comment.userID.fullName}</Typography>
+          </Grid>
+          </div>
+          <div style={{padding:'3px 15px'}}>
+            <span
+              contentEditable={editMode}
+              suppressContentEditableWarning={editMode}
+              ref={inputRef}
+              className={editMode ? styles.inputContainer__input : ''}
+              style={{ wordWrap: "break-word", width: '100%', color:'rgb(74 74 74' }}
+            >
+              {comment.comment}
+            </span>
+          </div>
 
-          <div style={{ display: "flex", marginTop: "5px" }}>
+          <div style={{ display: "flex", marginTop: "10px" }}>
             {editMode ? (
               <>
                 <Action
@@ -168,6 +181,16 @@ const Comment = ({
               </>
             )}
           </div>
+          <div>
+          <Grid item>
+              <Typography variant="caption" display="block" sx={{ mt: 1.1 }}>
+                <span style={{ color: 'grey',marginRight:'4px' }}>Created at</span> {new Date(comment.createdAt).toLocaleString('en-GB')}
+              </Typography>
+              <Typography variant="caption" display="block">
+                <span style={{ color: 'grey',marginRight:'4px' }}>Edited at</span> {new Date(comment.updatedAt).toLocaleString('en-GB')}
+              </Typography>
+            </Grid>
+          </div>
         </>
       )}
 
@@ -177,9 +200,6 @@ const Comment = ({
           {comment.items.map((cmnt) => (
             <Comment
               key={cmnt.id}
-              handleInsertNode={handleInsertNode}
-              handleEditNode={handleEditNode}
-              handleDeleteNode={handleDeleteNode}
               comment={cmnt}
               issueId={issueId}
               fetchComments={fetchComments}
@@ -191,38 +211,4 @@ const Comment = ({
   );
 };
 
-const useNode = () => {
-  const insertNode = (tree, commentId, item) => {
-    if (tree.id === commentId) {
-      tree.items.push({
-        id: new Date().getTime(),
-        name: item,
-        items: [],
-      });
-      return tree;
-    }
-
-    tree.items = tree.items.map((ob) => insertNode(ob, commentId, item));
-    return tree;
-  };
-
-  const editNode = (tree, commentId, value) => {
-    if (tree.id === commentId) {
-      tree.name = value;
-      return tree;
-    }
-
-    tree.items = tree.items.map((ob) => editNode(ob, commentId, value));
-    return tree;
-  };
-
-  const deleteNode = (tree, id) => {
-    tree.items = tree.items.filter((item) => item.id !== id);
-    tree.items.forEach((item) => deleteNode(item, id));
-    return tree;
-  };
-
-  return { insertNode, editNode, deleteNode };
-};
-
-export { Comment, useNode };
+export { Comment };

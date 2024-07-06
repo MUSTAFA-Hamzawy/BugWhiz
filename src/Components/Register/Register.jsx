@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Register.module.css"; // Importing CSS module
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
+import HelmetComponent from '../../HelmetComponent';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -96,6 +97,7 @@ const Register = () => {
 
   return (
     <div className={styles.registerContainer}>
+      <HelmetComponent title="Sign UP - BugWhiz" description="Sign UP" />
       <div className={styles.register}>
         <form>
           <h1>Create your account</h1>
@@ -162,7 +164,7 @@ const Register = () => {
             value={formData.confirmPassword}
           />
           <p className={styles.error}>{validationErrors.confirmPassword}</p>
-          <button className={styles.button_common} onClick={handleRegister}>
+          <button className={styles.button_common} onClick={handleRegister} style={{cursor:'pointer'}}>
             Register
           </button>
         </form>
