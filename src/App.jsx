@@ -74,7 +74,7 @@ function App() {
               <PrivateRoute userState={userState}>
                 <>
                   <Header userState={userState} />
-                  <IssueDetails />
+                  <IssueDetails userState={userState}/>
                 </>
               </PrivateRoute>
             }

@@ -137,6 +137,16 @@
     /* Adjust the width as needed */
 }
 
+.userDropdown {
+    width: 150px;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+    max-height: 100px;
+}
+
 @media (max-width: 768px) {
     .table {
         width: 100%;

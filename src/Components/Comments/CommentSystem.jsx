@@ -21,11 +21,13 @@ const Comment = ({
   comment,
   issueId,
   fetchComments,
+  // currentUserId,
 }) => {
   const [input, setInput] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const inputRef = useRef(null);
+  const currentUserId = localStorage.getItem('userId');
 
   useEffect(() => {
     if (editMode) inputRef.current?.focus();
@@ -140,6 +142,8 @@ const Comment = ({
             </span>
           </div>
 
+
+          {currentUserId === comment.userID._id ? (
           <div style={{ display: "flex", marginTop: "10px" }}>
             {editMode ? (
               <>
@@ -159,6 +163,8 @@ const Comment = ({
               </>
             ) : (
               <>
+              
+                <>
                 {!confirmDelete && (
                   <Action
                     className={styles.reply}
@@ -179,8 +185,10 @@ const Comment = ({
                   />
                 )}
               </>
+            </>
             )}
           </div>
+            ):null}
           <div>
           <Grid item>
               <Typography variant="caption" display="block" sx={{ mt: 1.1 }}>
@@ -203,6 +211,7 @@ const Comment = ({
               comment={cmnt}
               issueId={issueId}
               fetchComments={fetchComments}
+              // currentUserId = {currentUserId}
             />
           ))}
         </div>

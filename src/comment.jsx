@@ -1,281 +1,280 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import { Comment } from "../Comments/CommentSystem";
-// import {
-//   Card,
-//   CardContent,
-//   Grid,
-//   Typography,
-//   Avatar,
-//   Button,
-//   Box
-// } from '@mui/material';
-// import CircularProgress from '@mui/material/CircularProgress';
-// import EditIssueModal from './EditIssueModal'; // Import the modal
-// import styles from "./IssueDetails.module.css";
 
-// const comments = {
-//   id: 1,
-//   name: "",
-//   items: [],
-// };
 
-// const IssueDetails = () => {
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const { issueId } = location.state || {};
 
-//   const handleBack = () => {
-//     navigate('/issues', { state: { projectId: issueData.projectID._id, projectName: issueData.projectID.projectName } }); // Pass the projectId and projectName
-//   };
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import styles from "./Projects.module.css";
+import Header from '../Header/Header';
+import HelmetComponent from '../../HelmetComponent';
 
-//   const [commentsData, setCommentsData] = useState(comments);
-//   const [issueData, setIssueData] = useState(null);
-//   const [openModal, setOpenModal] = useState(false);
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
-//   const fetchComments = async () => {
-//     try {
-//       const token = localStorage.getItem('authToken');
-//       const response = await axios.get(`http://51.20.81.93:80/api/comment?ticketID=${issueId}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       console.log(response.data);
-//       setCommentsData({ id: 1, name: "", items: response.data });
-//     } catch (error) {
-//       console.error('Error fetching comments:', error);
-//     }
-//   };
+const Projects = ({ userState }) => {
+  const [projects, setProjects] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalProjects, setTotalProjects] = useState(0);
+  const [editingProjectId, setEditingProjectId] = useState(null);
+  const [newProjectName, setNewProjectName] = useState('');
+  const [deleteProjectId, setDeleteProjectId] = useState(null);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const projectsPerPage = 6;
+  const navigate = useNavigate();
 
-//   const fetchIssueDetails = async () => {
-//     try {
-//       const token = localStorage.getItem('authToken');
-//       const response = await axios.get(`http://51.20.81.93:80/api/ticket?ticketID=${issueId}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       setIssueData(response.data);
-//     } catch (error) {
-//       console.error('Error fetching issue details:', error);
-//     }
-//   };
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
-//   useEffect(() => {
-//     if (issueId) {
-//       fetchIssueDetails();
-//       fetchComments();
-//     }
-//   }, [issueId]);
+  const fetchProjects = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.get('http://51.20.81.93:80/api/project', {
+        params: {
+          page: page,
+          limit: projectsPerPage
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
 
-//   const handleOpenModal = async () => {
-//     await fetchIssueDetails();
-//     setOpenModal(true);
-//   };
+      const { projects, totalCount } = response.data;
+      setProjects(projects);
+      setTotalProjects(totalCount);
 
-//   if (!issueData) {
-//     return (
-//       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-//         <CircularProgress />
-//       </Box>
-//     );
-//   }
+      if (projects.length === 0 && page > 1) {
+        setPage(page - 1);
+      }
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
+  };
 
-//   const baseUrl = 'http://51.20.81.93';
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.get('http://51.20.81.93:80/api/user', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
 
-//   return (
-//     <Box className={styles.issueContainer} display="flex" flexDirection="column" alignItems="center" p={2}>
-//       <Box width="100%" maxWidth="1200px">
-//         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-//           <Typography variant="subtitle1" color="#213351" gutterBottom>
-//             Projects / {issueData.projectID.projectName} / {issueData.name}
-//           </Typography>
-//           <Button onClick={handleBack} className={styles.buttonCommon} sx={{ height: '36px', color: '#213351', textTransform: 'none' }}>
-//             Back To Issues
-//           </Button>
-//         </div>
-//         <Typography variant="h6" fontWeight="bold" color="#213351" gutterBottom>
-//           {issueData.title}
-//         </Typography>
-//         <Box className={styles.issueBody} flexDirection="column" gap={2}>
-//           <Card sx={{ flex: 1, boxShadow: 3 }}>
-//             <CardContent>
-//               <Typography sx={{ mb: 1.5 }} variant="h6" gutterBottom>Details</Typography>
-//               <Grid container direction="column" spacing={1.7}>
-//                 <Grid item>
-//                   <Typography variant="subtitle1">
-//                     <span style={{ color: '#007bff' }}>Name :</span> {issueData.name}
-//                   </Typography>
-//                 </Grid>
-//                 <Grid item>
-//                   <Typography variant="subtitle1">
-//                     <span style={{ color: '#007bff' }}>Title :</span> {issueData.title}
-//                   </Typography>
-//                 </Grid>
-//                 <Grid item container spacing={2}>
-//                   <Grid item>
-//                     <Typography variant="subtitle2" display="flex" alignItems="center" fontSize="17px" gap="4px">
-//                       <span style={{ color: '#007bff' }}>Status :</span> {issueData.ticketStatus}
-//                     </Typography>
-//                   </Grid>
-//                   <Grid item>
-//                     <Typography variant="subtitle2" display="flex" alignItems="center" fontSize="17px" gap="4px">
-//                       <span style={{ color: '#007bff' }}>Priority :</span> {issueData.priority}
-//                     </Typography>
-//                   </Grid>
-//                   <Grid item>
-//                     <Typography variant="subtitle2" display="flex" alignItems="center" fontSize="17px" gap="4px">
-//                       <span style={{ color: '#007bff' }}>Category :</span> {issueData.category}
-//                     </Typography>
-//                   </Grid>
-//                 </Grid>
-//                 <Grid item>
-//                   <Typography variant="subtitle2" display="flex" alignItems="center" fontSize="17px">
-//                     <span style={{ color: '#007bff' }}>Description</span>
-//                   </Typography>
-//                   <Typography variant="body2" sx={{ mb: 0 }}>
-//                     {issueData.description}
-//                   </Typography>
-//                 </Grid>
-//                 <div className={styles.outerDiv}>
-//                   {issueData.images && issueData.images.length > 0 && (
-//                     <div className={styles.imageGrid}>
-//                     {issueData.images.map((image, index) => (
-//                       <div key={index} className={styles.imageContainer}>
-//                         <img src={`${baseUrl}${image.replace('/home/ubuntu/bugwhiz-backend', '')}`} alt={`Issue related ${index}`} className={styles.issueImage} />
-//                       </div>
-//                     ))}
-//                   </div>
-//                   )}
-//                 </div>
-//                 <Grid item container spacing={-70} alignItems="center">
-//                   <Grid item xs={3}>
-//                     <Typography variant="body2" fontSize="17px"><span style={{ color: '#007bff' }}>Assignee</span></Typography>
-//                   </Grid>
-//                   <Grid item xs={9} display="flex" alignItems="center">
-//                     <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.developerID ? issueData.developerID.fullName : null} src={issueData.developerID && issueData.developerID.image ? `http://51.20.81.93/${issueData.developerID.image}` : null} />
-//                     <Typography variant="body1">{issueData.developerID ? issueData.developerID.fullName : 'Unassigned'}</Typography>
-//                   </Grid>
-//                 </Grid>
-//                 <Grid item container spacing={-70} alignItems="center">
-//                   <Grid item xs={3}>
-//                     <Typography variant="body2" fontSize="17px"><span style={{ color: '#007bff' }}>Reporter</span></Typography>
-//                   </Grid>
-//                   <Grid item xs={9} display="flex" alignItems="center">
-//                     <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.reporterID.fullName} src={issueData.reporterID && issueData.reporterID.image ? `http://51.20.81.93/${issueData.reporterID.image}` : null} />
-//                     <Typography variant="body1">{issueData.reporterID.fullName}</Typography>
-//                   </Grid>
-//                 </Grid>
-//                 <Grid item>
-//                   <Typography variant="caption" display="block" sx={{ mt: 2 }}>
-//                     <span style={{ color: '#007bff',marginRight:'4px' }}>Created at</span> {new Date(issueData.createdAt).toLocaleString('en-GB')}
-//                   </Typography>
-//                   <Typography variant="caption" display="block">
-//                     <span style={{ color: '#007bff',marginRight:'4px' }}>Updated at</span> {new Date(issueData.updatedAt).toLocaleString('en-GB')}
-//                   </Typography>
-//                 </Grid>
-//                 <Grid item container justifyContent="flex-end">
-//                   <Button className={styles.buttonCommon} variant="contained" color="primary" onClick={handleOpenModal}>
-//                     Update
-//                   </Button>
-//                 </Grid>
-//               </Grid>
-//             </CardContent>
-//           </Card>
-//           <Box flex={1.1} className={styles.commentSection}>
-//             <Comment
-//               comment={commentsData}
-//               issueId={issueId}
-//               fetchComments={fetchComments}
-//             />
-//           </Box>
-//         </Box>
-//       </Box>
-//       <EditIssueModal
-//         open={openModal}
-//         handleClose={() => setOpenModal(false)}
-//         category={issueData.category}
-//         description={issueData.description}
-//         developerID={issueData.developerID ? issueData.developerID._id : null}
-//         priority={issueData.priority}
-//         title={issueData.title}
-//         ticketStatus={issueData.ticketStatus}
-//         ticketID={issueData._id}
-//         fetchIssueDetails={fetchIssueDetails}
-//       />
-//     </Box>
-//   );
-// }
+  const handleAddUserToProject = async (projectID, username) => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.patch(`http://51.20.81.93:80/api/project/add_user`, {
+        projectID,
+        username
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log('User added to project:', response.data);
+      fetchProjects();
+    } catch (error) {
+      console.error('Error adding user to project:', error);
+    }
+  };
 
-// export default IssueDetails;
+  useEffect(() => {
+    fetchProjects();
+    fetchUsers();
+  }, [page]);
 
-// .issueContainer {
-//     margin: 40px 70px;
-// }
+  const handleEdit = (project) => {
+    setEditingProjectId(project._id);
+    setNewProjectName(project.projectName);
+  };
 
-// .issueBody {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 16px;
-// }
+  const handleCancel = () => {
+    setEditingProjectId(null);
+    setNewProjectName('');
+  };
 
-// .buttonCommon {
-//     background-color: #6b8e23 !important;
-//     color: white !important;
-//     border: none;
-//     padding: 5px 18px;
-//     text-align: center;
-//     text-decoration: none;
-//     display: inline-block;
-//     font-size: 14px;
-//     margin: 4px 2px;
-//     cursor: pointer;
-//     border-radius: 4px;
-//     transition: background-color 0.3s;
-// }
+  const handleUpdateProject = async (projectID) => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.patch(`http://51.20.81.93:80/api/project`, {
+        projectID: projectID,
+        projectName: newProjectName
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log('Project updated:', response.data);
+      fetchProjects();
+      setEditingProjectId(null);
+    } catch (error) {
+      console.error('Error updating project:', error);
+    }
+  };
 
-// .buttonCommon:hover {
-//     background-color: #155a9e !important;
-// }
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      await axios.delete(`http://51.20.81.93:80/api/project`, {
+        data: { projectID: deleteProjectId },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log('Project deleted');
+      fetchProjects();
+      setOpenDeleteModal(false);
+    } catch (error) {
+      console.error('Error deleting project:', error);
+    }
+  };
 
-// .commentSection {
-//     margin-top: 16px;
-// }
+  const handleOpenDeleteModal = (projectID) => {
+    setDeleteProjectId(projectID);
+    setOpenDeleteModal(true);
+  };
 
-// .outerDiv {
-//     display: flex;
-//     flex-direction: column;
-//     margin-bottom: 50px;
-// }
+  const handleCloseDeleteModal = () => {
+    setOpenDeleteModal(false);
+  };
 
-// .issueImage {
-//     width: 100%;
-//     max-width: 200px;
-//     /* Adjust as needed */
-//     height: auto;
-//     max-height: 200px;
-//     /* Adjust as needed */
-//     object-fit: cover;
-//     border-radius: 4px;
-//     /* Optional: Adds rounded corners */
-//     /* margin-bottom: 10px; */
-//     /* Optional: Adds space between images */
-// }
+  const handleViewIssues = (projectID, projectName) => {
+    navigate('/issues', { state: { projectId: projectID, projectName: projectName } });
+  };
 
-// .imageGrid {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 0px;
-//     /* margin-bottom: 32px; */
-//     margin-left: 20px;
-//     /* Adjust the gap as needed */
-// }
+  return (
+    <>
+      <HelmetComponent title="Projects - BugWhiz" description="Manage your projects" />
+      <Header userState={userState} fetchProjects={fetchProjects} />
+      <div className={styles.projectsContainer}>
+        <div style={{ margin: '40px 70px 0px' }}>
+          <span style={{ fontSize: '21px', fontFamily: 'sans-serif', fontWeight: 'bold', color: '#213351' }}>
+            {projects.length === 0 ? (
+              <span></span>
+            ) : (<span>Projects</span>)}
+          </span>
+        </div>
+        <div className={styles.projectList}>
+          {projects.length === 0 ? (
+            <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '20px' }}>
+              No projects yet
+            </Typography>
+          ) : (
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th style={{ color: '#213351' }}>Name</th>
+                  <th style={{ color: '#213351' }}>Actions</th>
+                  <th style={{ color: '#213351' }}>Add User to Project</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(projects) && projects.map((project, index) => (
+                  <tr key={index}>
+                    <td>
+                      {editingProjectId === project._id ? (
+                        <div className={styles.editingContainer}>
+                          <input
+                            type="text"
+                            value={newProjectName}
+                            onChange={(e) => setNewProjectName(e.target.value)}
+                            className={styles.textField}
+                          />
+                          <button className={styles.okButton} onClick={() => handleUpdateProject(project._id)}>OK</button>
+                          <button className={styles.cancelButton} onClick={handleCancel}>Cancel</button>
+                        </div>
+                      ) : (
+                        <span className={styles.projectLink}>{project.projectName}</span>
+                      )}
+                    </td>
+                    <td>
+                      <button className={styles.updateButton} onClick={() => handleEdit(project)}>Update</button>
+                      <button className={styles.deleteButton} onClick={() => handleOpenDeleteModal(project._id)}>Delete</button>
+                      <button className={styles.viewIssuesButton} onClick={() => handleViewIssues(project._id, project.projectName)}>View Issues</button>
+                    </td>
+                    <td style={{display:'flex',alignItems:'center', gap:'20px'}}>
+                      <select
+                        className={styles.userDropdown}
+                        onChange={(e) => handleAddUserToProject(project._id, e.target.value)}
+                      >
+                        <option value="">Select a user</option>
+                        {users.map((user, idx) => (
+                          <option key={idx} value={user.fullName}>{user.fullName}</option>
+                        ))}
+                      </select>
+                      <button className={styles.okButton}>Add</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          {projects.length > 0 && (
+            <div className={styles.paginationContainer}>
+              <Pagination
+                count={Math.ceil(totalProjects / projectsPerPage)}
+                page={page}
+                onChange={handleChange}
+                renderItem={(item) => (
+                  <PaginationItem
+                    components={{
+                      previous: ArrowBackIcon,
+                      next: ArrowForwardIcon,
+                    }}
+                    {...item}
+                  />
+                )}
+              />
+            </div>
+          )}
+        </div>
+        <Modal
+          open={openDeleteModal}
+          onClose={handleCloseDeleteModal}
+          aria-labelledby="delete-modal-title"
+          aria-describedby="delete-modal-description"
+        >
+          <Box sx={modalStyle}>
+            <Typography id="delete-modal-title" variant="h6" component="h2">
+              Confirm Delete
+            </Typography>
+            <Typography id="delete-modal-description" sx={{ mt: 2 }}>
+              Are you sure you want to delete this project?
+            </Typography>
+            <Button onClick={handleDelete}>Delete</Button>
+            <Button onClick={handleCloseDeleteModal}>Cancel</Button>
+          </Box>
+        </Modal>
+      </div>
+    </>
+  );
+};
 
-// .imageContainer {
-//     flex: 1 1 calc(25% - 16px);
-//     /* Adjust the width to fit your needs, 25% for 4 columns layout */
-//     max-width: calc(25% - 16px);
-//     display: flex;
-// }
+export default Projects;
+

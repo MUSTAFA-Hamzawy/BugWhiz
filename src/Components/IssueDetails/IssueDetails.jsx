@@ -21,7 +21,11 @@ const comments = {
   items: [],
 };
 
-const IssueDetails = () => {
+const IssueDetails = ({userState}) => {
+
+  console.log(userState);
+  // console.log(userState.userData._id);
+
   const location = useLocation();
   const navigate = useNavigate();
   const { issueId } = location.state || {};
@@ -186,6 +190,7 @@ const IssueDetails = () => {
               comment={commentsData}
               issueId={issueId}
               fetchComments={fetchComments}
+              // currentUserId = {userState.userData._id}
             />
           </Box>
         </Box>

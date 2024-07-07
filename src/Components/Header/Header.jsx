@@ -50,9 +50,6 @@ const Header = ({ userState, fetchProjects }) => {
   };
 
   const userData = userState?.userData;
-  
-  console.log(userState);
-  console.log(userData);
 
   return (
     <div className={styles.headerContainer}>

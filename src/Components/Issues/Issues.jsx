@@ -66,9 +66,9 @@ const Issues = () => {
             page: page,
             limit: issuesPerPage,
             keyword: searchKeyword,
-            ticketStatus: status,
-            priority: priority,
-            category: category
+            ticketStatus: status === "None" ? "" : status,
+            priority: priority === "None" ? "" : priority,
+            category: category === "None" ? "" : category
           },
           headers: {
             Authorization: `Bearer ${token}`
@@ -113,7 +113,7 @@ const Issues = () => {
     if (projectId) {
       fetchIssues();
     }
-  }, [projectId, page, status, priority, category]);
+  }, [projectId, page]); //, status, priority, category
 
   const handleViewIssueDetails = (issueID) => {
     navigate('/issueDetails', { state: { issueId: issueID} });

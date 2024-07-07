@@ -27,6 +27,8 @@ const modalStyle = {
 
 const Projects = ({userState}) => {
   const [projects, setProjects] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState({});
   const [page, setPage] = useState(1);
   const [totalProjects, setTotalProjects] = useState(0);
   const [editingProjectId, setEditingProjectId] = useState(null);
@@ -65,6 +67,45 @@ const Projects = ({userState}) => {
       }
     } catch (error) {
       console.error('Error fetching projects:', error);
+    }
+  };
+
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.get('http://51.20.81.93:80/api/user', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
+  const handleAddUserToProject = async (projectID) => {
+    try {
+      const username = selectedUsers[projectID];
+      console.log(username);
+      if (!username) {
+        console.log('No user selected');
+        return;
+      }
+      const token = localStorage.getItem('authToken');
+      const response = await axios.patch(`http://51.20.81.93:80/api/project/add_user`, {
+        projectID,
+        username
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log('User added to project:', response.data);
+      fetchProjects();
+    } catch (error) {
+      console.error('Error adding user to project:', error);
     }
   };
 
@@ -127,6 +168,7 @@ const Projects = ({userState}) => {
 
   useEffect(() => {
     fetchProjects();
+    fetchUsers();
   }, [page]);
 
   const handleViewIssues = (projectID, projectName) => {
@@ -156,6 +198,7 @@ const Projects = ({userState}) => {
               <tr>
                 <th style={{ color: '#213351' }}>Name</th>
                 <th style={{ color: '#213351' }}>Actions</th>
+                <th style={{ color: '#213351' }}>Add User to Project</th>
               </tr>
             </thead>
             <tbody>
@@ -187,6 +230,19 @@ const Projects = ({userState}) => {
                     )}
                     <button className={styles.viewIssuesButton} onClick={() => handleViewIssues(project._id, project.projectName)}>View Issues</button>
                   </td>
+                  <td style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <select
+                    className={styles.userDropdown}
+                    value={selectedUsers[project._id] || ''}
+                    onChange={(e) => setSelectedUsers({ ...selectedUsers, [project._id]: e.target.value })}
+                  >
+                    <option value="">Select a user</option>
+                    {users.map((user, idx) => (
+                      <option key={idx} value={user.fullName}>{user.fullName}</option>
+                    ))}
+                  </select>
+                  <button className={styles.okButton} onClick={() => handleAddUserToProject(project._id)}>Add</button>
+                </td>
                 </tr>
               ))}
             </tbody>
