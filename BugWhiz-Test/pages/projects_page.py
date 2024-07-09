@@ -19,37 +19,37 @@ class ProjectsPage(BasePage):
         self.page_number = "//button[@aria-label='page 1']"
 
     def click_create_project_button(self):
-        self.click((By.XPATH, self.create_project_button))
+        self.driver.find_element(By.XPATH, self.create_project_button).click()
 
     def click_notification_button(self):
-        self.click((By.XPATH, self.notification_button))
+        self.driver.find_element(By.XPATH, self.notification_button).click()
 
     def click_account_info_button(self):
-        self.click((By.XPATH, self.account_info_button))
+        self.driver.find_element(By.XPATH, self.account_info_button).click()
 
     def click_profile_button(self):
-        self.click((By.XPATH, self.profile_button))
+        self.driver.find_element(By.XPATH, self.profile_button).click()
 
     def click_logout_button(self):
-        self.click((By.XPATH, self.logout_button))
+        self.driver.find_element(By.XPATH, self.logout_button).click()
 
     def click_update_project_button(self):
-        self.click((By.XPATH, self.update_project_button))
+        self.driver.find_element(By.XPATH, self.update_project_button).click()
 
     def click_delete_project_button(self):
-        self.click((By.XPATH, self.delete_project_button))
+        self.driver.find_element(By.XPATH, self.delete_project_button).click()
 
     def click_view_issues_button(self):
-        self.click((By.XPATH, self.view_issues_button))
+        self.driver.find_element(By.XPATH, self.view_issues_button).click()
 
     def click_page_number(self):
-        self.click((By.XPATH, self.page_number))
+        self.driver.find_element(By.XPATH, self.page_number).click()
 
     def get_page_number(self):
-        return self.get_text((By.XPATH, self.page_number))
+        return self.driver.find_element(By.XPATH, self.page_number).text
     
     def get_project_name(self):
-        return self.get_text((By.XPATH, self.project_name_field))
+        return self.driver.find_element(By.XPATH, self.project_name_field).get_attribute("value")
     
     def enter_project_name(self, project_name):
-        self.enter_text((By.XPATH, self.project_name_field), project_name)
+        self.driver.find_element(By.XPATH, self.project_name_field).send_keys(project_name)

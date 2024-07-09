@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
+import time
 
 class LoginPage(BasePage):
     def __init__(self, driver):
@@ -16,3 +17,9 @@ class LoginPage(BasePage):
 
     def click_login(self):
         self.driver.find_element(By.XPATH, self.login_button).click()
+
+    def login(self):
+        self.enter_username("karimmohamed003")
+        self.enter_password("Karim123")
+        self.click_login()
+        time.sleep(2)
