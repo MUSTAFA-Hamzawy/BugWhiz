@@ -15,8 +15,9 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Swal from 'sweetalert2';
 import styles from "./Issues.module.css";
-import CreateIssueModal from './CreateIssueModal'; // import the modal component
+import CreateIssueModal from './CreateIssueModal'; 
 import HelmetComponent from '../../HelmetComponent';
 
 const modalStyle = {
@@ -31,17 +32,11 @@ const modalStyle = {
   p: 4,
 };
 
-// const getInitials = (name) => {
-//   if (!name) return '';
-//   const nameParts = name.split(' ');
-//   return nameParts.map(part => part.charAt(0)).join('').toUpperCase();
-// };
-
 const Issues = () => {
   const location = useLocation();
   const { projectId, projectName } = location.state || {};
 
-  const [modalOpen, setModalOpen] = useState(false); // modal state
+  const [modalOpen, setModalOpen] = useState(false); 
 
   const [issues, setIssues] = useState([]);
   const [page, setPage] = useState(1);
@@ -50,9 +45,11 @@ const Issues = () => {
   const [priority, setPriority] = useState('None');
   const [category, setCategory] = useState('None');
   const [searchKeyword, setSearchKeyword] = useState('');
-  const issuesPerPage = 5; // Set the number of issues per page
+  const issuesPerPage = 5; 
   const [deleteIssueId, setDeleteIssueId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+  const [error, setError] = React.useState('');
   
   const navigate = useNavigate();
 
@@ -77,10 +74,10 @@ const Issues = () => {
         console.log(projectId, page, issuesPerPage, searchKeyword, status, priority, category);
         console.log(response.data);
         const { tickets, totalCount } = response.data;
+        setError('');
         setIssues(tickets);
         setTotalIssues(totalCount);
   
-        // Handle empty current page
         if (tickets.length === 0 && page > 1) {
           setPage(page - 1);
         }
@@ -99,12 +96,16 @@ const Issues = () => {
         setIssues(tickets);
         setTotalIssues(totalCount);
 
-        // Handle empty current page
         if (tickets.length === 0 && page > 1) {
           setPage(page - 1);
         }
       }
     } catch (error) {
+      if (error.response.data.errorDescription === "Keyword ID is invalid."){
+        setError("Keyword in search input field is required");
+      } else {
+        setError(error.response.data.errorDescription);
+      }
       console.error('Error fetching issues:', error);
     }
   };
@@ -113,7 +114,7 @@ const Issues = () => {
     if (projectId) {
       fetchIssues();
     }
-  }, [projectId, page]); //, status, priority, category
+  }, [projectId, page]); 
 
   const handleViewIssueDetails = (issueID) => {
     navigate('/issueDetails', { state: { issueId: issueID} });
@@ -147,6 +148,18 @@ const Issues = () => {
       });
       console.log('Issue deleted');
       fetchIssues();
+      Swal.fire({
+        icon: 'success',
+        title: 'Issue deleted Successfully',
+        showConfirmButton: false,
+        timer: 1500,
+        position: 'center',
+        customClass: {
+          popup: styles.swalCustomPopup,
+          icon: styles.swalCustomIcon,
+          title: styles.swalCustomTitle,
+        }
+      });
       setOpenDeleteModal(false);
     } catch (error) {
       console.error('Error deleting issue:', error);
@@ -163,7 +176,7 @@ const Issues = () => {
   };
 
   const handleSearch = () => {
-    setPage(1); // Reset to the first page for new search
+    setPage(1); 
     fetchIssues(true);
   };
 
@@ -268,6 +281,9 @@ const Issues = () => {
           View All Issues
         </Button>
       </div>
+      {error ? (<div style={{marginLeft:'70px', marginTop:'-30px'}}>
+       <span style={{color:'red', fontSize:'15px'}}>{error}</span>
+      </div>) : null}
       <div className={styles.issueList}>
         {issues.length === 0 ? (
           <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '20px' }}>

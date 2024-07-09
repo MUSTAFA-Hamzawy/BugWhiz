@@ -6,7 +6,7 @@ import HelmetComponent from '../../HelmetComponent';
 
 const Login = ({ setUserState }) => {
   const navigate = useNavigate();
-  const [loginError, setLoginError] = useState(""); // New state for login error message
+  const [loginError, setLoginError] = useState("");
   const [users, setUsers] = useState({
     emailOrUsername: "",
     password: "",
@@ -43,10 +43,10 @@ const Login = ({ setUserState }) => {
       localStorage.setItem("userId", userProfileRes.data._id);
       setUserState({ token, userData: userProfileRes.data });
 
-      navigate("/projects", { replace: true }); // Redirect to projects page
+      navigate("/projects", { replace: true }); 
     } catch (error) {
       if (error.response) {
-        setLoginError(error.response.data.errorDescription); // Set the error message from backend
+        setLoginError(error.response.data.errorDescription); 
         console.log(error.response.data.errorDescription);
       } else if (error.request) {
         setLoginError("Network error. Please try again.");

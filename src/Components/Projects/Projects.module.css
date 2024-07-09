@@ -134,7 +134,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 150px;
-    /* Adjust the width as needed */
 }
 
 .userDropdown {
@@ -145,6 +144,24 @@
     border-radius: 4px;
     overflow-y: auto;
     max-height: 100px;
+}
+
+.swalCustomPopup {
+    width: 200px !important;
+    height: 105px !important;
+    margin: 0;
+}
+
+.swalCustomIcon {
+    font-size: 10px !important;
+    padding: 0 !important;
+    margin-top: 13px;
+}
+
+.swalCustomTitle {
+    font-size: 14px !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 @media (max-width: 768px) {

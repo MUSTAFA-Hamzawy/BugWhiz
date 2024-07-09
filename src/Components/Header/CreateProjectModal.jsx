@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import styles from './CreateProjectModal.module.css';
 
 const style = {
@@ -21,6 +22,7 @@ const style = {
 
 const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
   const [projectName, setProjectName] = React.useState('');
+  const [error, setError] = React.useState('');
 
   const handleCreateProject = async () => {
     try {
@@ -31,15 +33,31 @@ const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
           'Content-Type': 'application/json',
         },
       });
+      setError('');
       fetchProjects();
+      Swal.fire({
+        icon: 'success',
+        title: 'Project Created Successfully',
+        showConfirmButton: false,
+        timer: 1500,
+        position: 'center',
+        customClass: {
+          popup: styles.swalCustomPopup,
+          icon: styles.swalCustomIcon,
+          title: styles.swalCustomTitle,
+        }
+      });
       handleModalClose();
     } catch (error) {
+      setError(error.response.data.errorDescription);
+      console.log(error.response.data.errorDescription);
       console.error('There was an error creating the project!', error);
     }
   };
 
   const handleModalClose = () => {
     setProjectName('');
+    setError('');
     handleClose();
   };
 
@@ -65,6 +83,7 @@ const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
             style: { fontSize: '16px' , padding:'10px 0'
           }}}
         />
+        {error ? (<span style={{color:'red', fontSize:'15px'}}>{error}</span>):null}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
           <Button className={styles.okButton} onClick={handleCreateProject}>
             OK

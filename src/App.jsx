@@ -40,7 +40,7 @@ function App() {
     fetchUserProfile();
   }, [userState.token]);
 
-  console.log('App User State:', userState); // Verify this contains user data after login
+  console.log('App User State:', userState); 
 
   return (
     <div className="App">

@@ -71,7 +71,6 @@
 }
 
 .headerLogo {
-    /* Ensure that the logo is a block or inline-block for proper hover behavior */
     display: inline-block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

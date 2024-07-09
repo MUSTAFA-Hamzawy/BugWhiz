@@ -11,7 +11,7 @@ import {
   Box
 } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import EditIssueModal from './EditIssueModal'; // Import the modal
+import EditIssueModal from './EditIssueModal';
 import styles from "./IssueDetails.module.css";
 import HelmetComponent from '../../HelmetComponent';
 
@@ -24,14 +24,13 @@ const comments = {
 const IssueDetails = ({userState}) => {
 
   console.log(userState);
-  // console.log(userState.userData._id);
 
   const location = useLocation();
   const navigate = useNavigate();
   const { issueId } = location.state || {};
 
   const handleBack = () => {
-    navigate('/issues', { state: { projectId: issueData.projectID._id, projectName: issueData.projectID.projectName } }); // Pass the projectId and projectName
+    navigate('/issues', { state: { projectId: issueData.projectID._id, projectName: issueData.projectID.projectName } }); 
   };
 
   const [commentsData, setCommentsData] = useState(comments);
@@ -190,7 +189,6 @@ const IssueDetails = ({userState}) => {
               comment={commentsData}
               issueId={issueId}
               fetchComments={fetchComments}
-              // currentUserId = {userState.userData._id}
             />
           </Box>
         </Box>
@@ -198,6 +196,7 @@ const IssueDetails = ({userState}) => {
       <EditIssueModal
         open={openModal}
         handleClose={() => setOpenModal(false)}
+        setOpenModal = {setOpenModal}
         category={issueData.category}
         description={issueData.description}
         developerID={issueData.developerID ? issueData.developerID._id : null}

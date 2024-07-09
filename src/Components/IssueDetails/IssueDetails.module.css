@@ -39,26 +39,21 @@
 .issueImage {
     width: 100%;
     max-width: 350px;
-    /* Adjust as needed */
     height: auto;
     max-height: 280px;
-    /* Adjust as needed */
     object-fit: cover;
     border-radius: 4px;
-    /* Optional: Adds rounded corners */
 }
 
 .imageGrid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    /* Adjust the gap as needed */
     margin-left: 20px;
 }
 
 .imageContainer {
     flex: 1 1 calc(33.3% - 10px);
-    /* Adjust the width to fit your needs, 25% for 4 columns layout */
     max-width: calc(33.3% - 10px);
     display: flex;
 }

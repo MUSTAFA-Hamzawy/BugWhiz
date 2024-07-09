@@ -84,3 +84,21 @@ span[contenteditable="true"] {
     box-sizing: border-box;
     border: 1px solid #ccc;
 }
+
+.okButton {
+    background-color: #6b8e23 !important;
+    color: white !important;
+}
+
+.okButton:hover {
+    background-color: #155a9e !important;
+}
+
+.cancelButton {
+    background-color: #f44336 !important;
+    color: white !important;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f !important;
+}

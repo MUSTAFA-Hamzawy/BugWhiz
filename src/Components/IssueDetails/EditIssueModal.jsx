@@ -27,7 +27,7 @@ const style = {
   p: 4,
 };
 
-const EditIssueModal = ({ open, handleClose, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails }) => {
+const EditIssueModal = ({ open, handleClose, setOpenModal, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails }) => {
   const [formCategory, setFormCategory] = useState(category);
   const [formDescription, setFormDescription] = useState(description);
   const [formDeveloperID, setFormDeveloperID] = useState(developerID);
@@ -35,6 +35,9 @@ const EditIssueModal = ({ open, handleClose, category, description, developerID,
   const [formTitle, setFormTitle] = useState(title);
   const [formTicketStatus, setFormTicketStatus] = useState(ticketStatus);
   const [developers, setDevelopers] = useState([]);
+
+  const [error, setError] = React.useState('');
+
 
   console.log(category, description, developerID, priority, title, ticketStatus, ticketID);
   useEffect(() => {
@@ -84,9 +87,11 @@ const EditIssueModal = ({ open, handleClose, category, description, developerID,
           Authorization: `Bearer ${token}`,
         },
       });
+      setError('');
       fetchIssueDetails();
       handleClose();
     } catch (error) {
+      setError(error.response.data.errorDescription);
       console.error('Error updating issue:', error);
     }
   };
@@ -96,7 +101,13 @@ const EditIssueModal = ({ open, handleClose, category, description, developerID,
     return developer || { fullName: 'None', image: null };
   };
 
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setError('');
+  };
+
   const selectedDeveloper = formDeveloperID ? getDeveloperDetails(formDeveloperID) : { fullName: 'None', image: null };
+  console.log(selectedDeveloper);
 
   return (
     <Modal
@@ -196,7 +207,7 @@ const EditIssueModal = ({ open, handleClose, category, description, developerID,
                 MenuProps={{
                   PaperProps: {
                     style: {
-                      maxHeight: 200, // Adjust max height for the dropdown
+                      maxHeight: 200,
                     },
                   },
                 }}
@@ -210,15 +221,16 @@ const EditIssueModal = ({ open, handleClose, category, description, developerID,
             </FormControl>
             {formDeveloperID && selectedDeveloper.fullName !== 'None' && (
               <Box mt={2} display="flex" alignItems="center">
-                <Avatar alt={selectedDeveloper.fullName} src={selectedDeveloper.image} />
+                <Avatar alt={selectedDeveloper.fullName} src={`http://51.20.81.93/${selectedDeveloper.image}`} />
                 <Typography variant="body1" ml={2}>
                   {selectedDeveloper.fullName}
                 </Typography>
               </Box>
             )}
           </Grid>
+          {error ? (<span style={{color:'red', fontSize:'16px', marginTop:'13px', marginLeft:'150px'}}>{error}</span>):null}
           <Grid item xs={12} display="flex" justifyContent="space-between">
-            <Button className={styles.cancelButton} onClick={handleClose} variant="contained">
+            <Button className={styles.cancelButton} onClick={handleCloseModal} variant="contained">
               Cancel
             </Button>
             <Button className={styles.okButton} onClick={handleSubmit} variant="contained">

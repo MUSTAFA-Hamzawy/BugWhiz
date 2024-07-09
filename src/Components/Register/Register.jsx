@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Register.module.css"; // Importing CSS module
+import styles from "./Register.module.css"; 
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import HelmetComponent from '../../HelmetComponent';
@@ -27,7 +27,25 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    const errors = {};
+
+    if (!formData.fullName) errors.fullName = "Full Name is required.";
+    if (!formData.username) errors.username = "Username is required.";
+    if (!formData.email) errors.email = "Email is required.";
+    if (!formData.jobTitle) errors.jobTitle = "Job Title is required.";
+    if (!formData.password) errors.password = "Password is required.";
+    if (!formData.confirmPassword) errors.confirmPassword = "Confirm Password is required.";
+    if (formData.password !== formData.confirmPassword) {
+      errors.confirmPassword = "Passwords don't match.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
     setFieldErrors({});
+    
     try {
       const res = await axios.post("http://51.20.81.93:80/api/user/register/", formData, {
         headers: {
@@ -37,7 +55,8 @@ const Register = () => {
       navigate("/login", { replace: true });
     } catch (error) {
       if (error.response) {
-        setFieldErrors(error.response.data.errorDescription); // Set field-specific error messages from backend
+        const errorDescription = error.response.data.errorDescription || {};
+        setFieldErrors(errorDescription);
         console.log('Response error:', error.response.data.errorDescription);
       } else if (error.request) {
         setFieldErrors({ general: "Network error. Please try again." });
@@ -56,6 +75,8 @@ const Register = () => {
       <div className={styles.register}>
         <form onSubmit={handleRegister}>
           <h1>Create your account</h1>
+          <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
+          <div style={{width:'350px'}}>
           <input
             type="text"
             name="fullName"
@@ -91,7 +112,9 @@ const Register = () => {
             onChange={handleInputChange}
             value={formData.phoneNumber}
           />
-          <p className={styles.error}>{fieldErrors.phoneNumber}</p>
+          <p className={styles.error}>{fieldErrors.phoneNumber}</p> 
+          </div>
+          <div style={{width:'350px'}}>
           <input
             type="text"
             name="jobTitle"
@@ -119,6 +142,8 @@ const Register = () => {
             value={formData.confirmPassword}
           />
           <p className={styles.error}>{fieldErrors.confirmPassword}</p>
+          </div>
+        </div>
           <button className={styles.button_common} style={{ cursor: 'pointer' }}>
             Register
           </button>

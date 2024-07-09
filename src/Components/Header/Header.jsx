@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import logo from '../../Assets/logo.jpeg';
 import { NavLink, useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
@@ -9,23 +10,53 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import Badge from '@mui/material/Badge';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import Logout from '@mui/icons-material/Logout';
 import styles from './Header.module.css';
-import CreateProjectModal from './CreateProjectModal'; // import the modal component
+import CreateProjectModal from './CreateProjectModal';
 
 const Header = ({ userState, fetchProjects }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [modalOpen, setModalOpen] = React.useState(false); // modal state
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false); 
+  const [notifications, setNotifications] = useState([]);
+  const [anchorElNotif, setAnchorElNotif] = useState(null);
   const open = Boolean(anchorEl);
-  const navigate = useNavigate(); // get navigate function from react-router-dom
+  const openNotif = Boolean(anchorElNotif);
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const response = await axios.get('http://51.20.81.93/api/notify', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+          },
+        });
+        console.log(response);
+        setNotifications(response.data.notifications);
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    };
+
+    fetchNotifications();
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleNotifClick = (event) => {
+    setAnchorElNotif(event.currentTarget);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleNotifClose = () => {
+    setAnchorElNotif(null);
   };
 
   const handleModalOpen = () => {
@@ -42,10 +73,7 @@ const Header = ({ userState, fetchProjects }) => {
   };
 
   const handleLogout = () => {
-    // Clear the authentication token from local storage
     localStorage.removeItem('authToken');
-    // Optionally reset any user state here
-    // Redirect to the login page
     navigate("/login", { replace: true });
   };
 
@@ -68,8 +96,12 @@ const Header = ({ userState, fetchProjects }) => {
       </div>
       <div className={styles.accountMenuContainer}>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-          <div style={{cursor:'pointer'}}>
-            <NotificationsNoneOutlinedIcon fontSize="large"/>
+          <div style={{ cursor: 'pointer' }}>
+            <IconButton onClick={handleNotifClick}>
+              <Badge badgeContent={notifications?.length || 0} color="error">
+                <NotificationsNoneOutlinedIcon fontSize="large" />
+              </Badge>
+            </IconButton>
           </div>
           <Tooltip title="Account Info">
             <IconButton
@@ -120,15 +152,15 @@ const Header = ({ userState, fetchProjects }) => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <div className={styles.dropdownAccount}>
-          <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
             <div className={styles.dropdownDetails}>
-              <div style={{fontWeight:'bold'}}>{userData?.fullName}</div>
+              <div style={{ fontWeight: 'bold' }}>{userData?.fullName}</div>
               <div style={{ fontSize: '14px' }}>{userData?.email}</div>
             </div>
           </div>
           <MenuItem sx={{ marginTop: '7px' }} onClick={handleProfileClick}>
-          <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
-              Profile
+            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+            Profile
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleLogout}>
@@ -140,7 +172,55 @@ const Header = ({ userState, fetchProjects }) => {
         </Menu>
         <button className={styles.buttonCommon} onClick={handleLogout}>Logout</button>
       </div>
-      <CreateProjectModal open={modalOpen} handleClose={handleModalClose} fetchProjects={fetchProjects} /> {/* render the modal */}
+      <CreateProjectModal open={modalOpen} handleClose={handleModalClose} fetchProjects={fetchProjects} /> 
+      <Menu
+        anchorEl={anchorElNotif}
+        id="notification-menu"
+        open={openNotif}
+        onClose={handleNotifClose}
+        onClick={handleNotifClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+            '& .MuiAvatar-root': {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            '&::before': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: 'background.paper',
+              transform: 'translateY(-50%) rotate(45deg)',
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      >
+        {notifications?.length > 0 ? (
+          notifications.map((notification, index) => (
+            <MenuItem key={index}>
+              <div>
+                <strong>{notification.title}</strong>
+                <p>{notification.body}</p>
+              </div>
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem>No notifications</MenuItem>
+        )}
+      </Menu>
     </div>
   );
 };

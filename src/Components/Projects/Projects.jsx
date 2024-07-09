@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Swal from 'sweetalert2';
 import styles from "./Projects.module.css";
 import Header from '../Header/Header';
 import HelmetComponent from '../../HelmetComponent';
@@ -37,6 +38,8 @@ const Projects = ({userState}) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const projectsPerPage = 6;
   const navigate = useNavigate();
+  const [error, setError] = React.useState('');
+  const [errorMessages, setErrorMessages] = React.useState({});
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -61,7 +64,6 @@ const Projects = ({userState}) => {
       setProjects(projects);
       setTotalProjects(totalCount);
 
-      // Handle empty current page
       if (projects.length === 0 && page > 1) {
         setPage(page - 1);
       }
@@ -88,10 +90,6 @@ const Projects = ({userState}) => {
     try {
       const username = selectedUsers[projectID];
       console.log(username);
-      if (!username) {
-        console.log('No user selected');
-        return;
-      }
       const token = localStorage.getItem('authToken');
       const response = await axios.patch(`http://51.20.81.93:80/api/project/add_user`, {
         projectID,
@@ -102,9 +100,26 @@ const Projects = ({userState}) => {
           'Content-Type': 'application/json'
         }
       });
+      setErrorMessages(prevState => ({ ...prevState, [projectID]: '' }));
       console.log('User added to project:', response.data);
       fetchProjects();
+      Swal.fire({
+        icon: 'success',
+        title: 'user added Successfully',
+        showConfirmButton: false,
+        timer: 1500,
+        position: 'center',
+        customClass: {
+          popup: styles.swalCustomPopup,
+          icon: styles.swalCustomIcon,
+          title: styles.swalCustomTitle,
+        }
+      });
+
+      setSelectedUsers(prevState => ({ ...prevState, [projectID]: '' })); 
     } catch (error) {
+      console.log(error.response);
+      setErrorMessages(prevState => ({ ...prevState, [projectID]: error.response.data.message }));
       console.error('Error adding user to project:', error);
     }
   };
@@ -117,6 +132,7 @@ const Projects = ({userState}) => {
   const handleCancel = () => {
     setEditingProjectId(null);
     setNewProjectName('');
+    setError('');
   };
 
   const handleUpdateProject = async (projectID) => {
@@ -131,10 +147,12 @@ const Projects = ({userState}) => {
           'Content-Type': 'application/json'
         }
       });
+      setError('');
       console.log('Project updated:', response.data);
       fetchProjects();
       setEditingProjectId(null);
     } catch (error) {
+      setError(error.response.data.errorDescription);
       console.error('Error updating project:', error);
     }
   };
@@ -151,6 +169,18 @@ const Projects = ({userState}) => {
       });
       console.log('Project deleted');
       fetchProjects();
+      Swal.fire({
+        icon: 'success',
+        title: 'Project deleted Successfully',
+        showConfirmButton: false,
+        timer: 1500,
+        position: 'center',
+        customClass: {
+          popup: styles.swalCustomPopup,
+          icon: styles.swalCustomIcon,
+          title: styles.swalCustomTitle,
+        }
+      });
       setOpenDeleteModal(false);
     } catch (error) {
       console.error('Error deleting project:', error);
@@ -164,6 +194,11 @@ const Projects = ({userState}) => {
 
   const handleCloseDeleteModal = () => {
     setOpenDeleteModal(false);
+  };
+
+  const handleCancelAdd = (projectID) => {
+    setSelectedUsers(prevState => ({ ...prevState, [projectID]: '' }));
+    setErrorMessages(prevState => ({ ...prevState, [projectID]: '' }));
   };
 
   useEffect(() => {
@@ -206,6 +241,7 @@ const Projects = ({userState}) => {
                 <tr key={index}>
                   <td>
                     {editingProjectId === project._id ? (
+                      <>
                       <div className={styles.editingContainer}>
                         <input
                           type="text"
@@ -217,6 +253,8 @@ const Projects = ({userState}) => {
                         <button className={styles.okButton} onClick={() => handleUpdateProject(project._id)}>OK</button>
                         <button className={styles.cancelButton} onClick={handleCancel}>Cancel</button>
                       </div>
+                        {error ? (<span style={{color:'red', fontSize:'15px'}}>{error}</span>):null}
+                        </>
                     ) : (
                       <span onClick={() => handleViewIssues(project._id, project.projectName)} className={styles.projectLink}>{project.projectName}</span>
                     )}
@@ -230,19 +268,26 @@ const Projects = ({userState}) => {
                     )}
                     <button className={styles.viewIssuesButton} onClick={() => handleViewIssues(project._id, project.projectName)}>View Issues</button>
                   </td>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <select
-                    className={styles.userDropdown}
-                    value={selectedUsers[project._id] || ''}
-                    onChange={(e) => setSelectedUsers({ ...selectedUsers, [project._id]: e.target.value })}
-                  >
-                    <option value="">Select a user</option>
-                    {users.map((user, idx) => (
-                      <option key={idx} value={user.fullName}>{user.fullName}</option>
-                    ))}
-                  </select>
-                  <button className={styles.okButton} onClick={() => handleAddUserToProject(project._id)}>Add</button>
-                </td>
+                  <td>
+                      <div className={styles.addUserContainer}>
+                        <input
+                          type="text"
+                          placeholder="Username"
+                          value={selectedUsers[project._id] || ''}
+                          onChange={(e) =>
+                            setSelectedUsers((prevSelectedUsers) => ({
+                              ...prevSelectedUsers,
+                              [project._id]: e.target.value,
+                            }))
+                          }
+                          className={styles.textField}
+                          style={{ width: '165px',padding:'7px' }}
+                        />
+                        <button className={styles.okButton} onClick={() => handleAddUserToProject(project._id)}>Add</button>
+                        <button className={styles.cancelButton} onClick={() => handleCancelAdd(project._id)}>Cancel</button>
+                      </div>
+                      {errorMessages[project._id] && <span style={{ color: 'red', fontSize: '14px' }}>{errorMessages[project._id]}</span>}
+                    </td>
                 </tr>
               ))}
             </tbody>

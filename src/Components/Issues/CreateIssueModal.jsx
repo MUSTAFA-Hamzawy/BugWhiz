@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
+import Swal from 'sweetalert2';
 import styles from './CreateIssueModal.module.css';
 
 const style = {
@@ -27,6 +28,8 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
     description: '',
     images: [],
   });
+
+  const [error, setError] = React.useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,19 +56,16 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
       const token = localStorage.getItem('authToken');
       const { name, title, description, images } = issueData;
 
-      // Create a new FormData object
       const formData = new FormData();
       formData.append('name', name);
       formData.append('title', title);
       formData.append('description', description);
       formData.append('projectID', projectId);
 
-      // Append each image file to the FormData object
       images.forEach((image, index) => {
         formData.append(`images`, image);
       });
 
-      // Make the POST request with FormData
       await axios.post('http://51.20.81.93:80/api/ticket', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -73,9 +73,24 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         },
       });
 
+      setError('');
       fetchIssues(false);
+      Swal.fire({
+        icon: 'success',
+        title: 'Issue created Successfully',
+        showConfirmButton: false,
+        timer: 1500,
+        position: 'center',
+        customClass: {
+          popup: styles.swalCustomPopup,
+          icon: styles.swalCustomIcon,
+          title: styles.swalCustomTitle,
+        }
+      });
       handleModalClose();
     } catch (error) {
+      setError(error.response.data.errorDescription);
+      console.log(error.response.data.errorDescription);
       console.error('There was an error creating the issue!', error);
     }
   };
@@ -87,6 +102,7 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
       description: '',
       images: [],
     });
+    setError('');
     handleClose();
   };
 
@@ -147,6 +163,9 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
               ))}
             </div>
           )}
+        </div>
+        <div style={{textAlign:'center', marginTop:'8px'}}>
+        {error ? (<span style={{color:'red', fontSize:'16px'}}>{error}</span>):null}
         </div>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
           <Button className={styles.okButton} onClick={handleCreateIssue}>

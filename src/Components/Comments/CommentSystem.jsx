@@ -21,7 +21,6 @@ const Comment = ({
   comment,
   issueId,
   fetchComments,
-  // currentUserId,
 }) => {
   const [input, setInput] = useState("");
   const [editMode, setEditMode] = useState(false);
@@ -29,14 +28,29 @@ const Comment = ({
   const inputRef = useRef(null);
   const currentUserId = localStorage.getItem('userId');
 
+  const [error, setError] = React.useState('');
+
+  console.log(comment);
+
   useEffect(() => {
-    if (editMode) inputRef.current?.focus();
+    if (editMode) {
+      const elem = inputRef.current;
+      if (elem) {
+        const range = document.createRange();
+        const selection = window.getSelection();
+        range.selectNodeContents(elem);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        elem.focus();
+      }
+    }
   }, [editMode]);
 
   const onAddComment = async () => {
     if (editMode) {
       try {
-        const token = localStorage.getItem('authToken'); // Get token from local storage
+        const token = localStorage.getItem('authToken');
         await axios.patch('http://51.20.81.93:80/api/comment', {
           commentID: comment._id,
           comment: inputRef.current?.innerText
@@ -47,15 +61,16 @@ const Comment = ({
           }
         });
 
-        // handleEditNode(comment.id, inputRef.current?.innerText);
+        setError('');
         fetchComments();
         setEditMode(false);
       } catch (error) {
-        console.error('Error updating comment:', error);
+        console.log(error.response.data.message);
+        setError(error.response.data.message);
       }
     } else {
       try {
-        const token = localStorage.getItem('authToken'); // Get token from local storage
+        const token = localStorage.getItem('authToken');
         await axios.post('http://51.20.81.93:80/api/comment', {
           ticketID: issueId,
           comment: input
@@ -66,10 +81,12 @@ const Comment = ({
           }
         });
 
+        setError('');
         fetchComments();
         setInput("");
       } catch (error) {
         console.error('Error adding comment:', error);
+        setError(error.response.data.errorDescription);
       }
     }
   };
@@ -77,7 +94,7 @@ const Comment = ({
   const handleDelete = async () => {
     if (confirmDelete) {
       try {
-        const token = localStorage.getItem('authToken'); // Get token from local storage
+        const token = localStorage.getItem('authToken');
         await axios.delete('http://51.20.81.93:80/api/comment', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -106,6 +123,7 @@ const Comment = ({
     <div className={comment.id === 1 ? styles.inputContainer : styles.commentContainer}>
       {comment.id === 1 ? (
         <>
+          {error ? (<span style={{color:'red', fontSize:'16px', marginTop:'-10px'}}>{error}</span>):null}
           <div className={styles.inputSection}>
             <input
               type="text"
@@ -126,7 +144,7 @@ const Comment = ({
         <>
           <div style={{marginBottom:'5px'}}>
           <Grid item xs={9} display="flex" alignItems="center">
-              <Avatar sx={{ width: 24, height: 24, mr: 1 }} alt={comment.userID.fullName} src={comment.userID && comment.userID.image ? comment.userID.image : null} />
+              <Avatar sx={{ width: 28, height: 28, mr: 1 }} alt={comment.userID.fullName} src={comment.userID && comment.userID.image ? `http://51.20.81.93/${comment.userID.image}` : null} />
               <Typography variant="body2">{comment.userID.fullName}</Typography>
           </Grid>
           </div>
@@ -144,9 +162,14 @@ const Comment = ({
 
 
           {currentUserId === comment.userID._id ? (
-          <div style={{ display: "flex", marginTop: "10px" }}>
+          <div style={{marginTop: "10px" }}>
             {editMode ? (
               <>
+              {error ?
+              <div style={{marginTop:'-18px', marginBottom:'12px', marginLeft:'63px'}}>
+               <span style={{color:'red', fontSize:'16px'}}>{error}</span>
+              </div> :null}
+               <div style={{display:'flex'}}>
                 <Action
                   className={styles.reply}
                   type="SAVE"
@@ -158,12 +181,14 @@ const Comment = ({
                   handleClick={() => {
                     if (inputRef.current) inputRef.current.innerText = comment.comment;
                     setEditMode(false);
+                    setError('');
                   }}
                 />
+                </div>
               </>
             ) : (
               <>
-              
+              <div style={{display:'flex'}}>
                 <>
                 {!confirmDelete && (
                   <Action
@@ -185,6 +210,7 @@ const Comment = ({
                   />
                 )}
               </>
+              </div>
             </>
             )}
           </div>
@@ -211,7 +237,6 @@ const Comment = ({
               comment={cmnt}
               issueId={issueId}
               fetchComments={fetchComments}
-              // currentUserId = {currentUserId}
             />
           ))}
         </div>

@@ -22,6 +22,8 @@ const Profile = ({ userState, setUserState }) => {
   const [profileImageName, setProfileImageName] = useState('');
   const [coverImageName, setCoverImageName] = useState('');
 
+  const [error, setError] = React.useState('');
+
   const { 
     fullName, 
     email, 
@@ -46,6 +48,7 @@ const Profile = ({ userState, setUserState }) => {
   const handleClose = () => {
     setOpen(false);
     resetFileSelections();
+    setError('');
   };
 
   const handleChange = (e) => {
@@ -68,43 +71,75 @@ const Profile = ({ userState, setUserState }) => {
   };
 
   const handleSubmit = async () => {
+    const { fullName, phoneNumber, jobTitle } = formData;
+
+    if (!fullName) {
+        setError('Full Name is required');
+        return;
+    }
+
+    if (!jobTitle) {
+        setError('Job Title is required');
+        return;
+    }
+
+    if (!phoneNumber) {
+        setError('Phone Number is required');
+        return;
+    }
+
+    const validatePhoneNumber = (phoneNumber) => {
+        const regex = /^(?:\+2)?(011|012|015|010)\d{8}$/;
+        return regex.test(phoneNumber);
+    };
+
+    if (!validatePhoneNumber(phoneNumber)) {
+        setError('Phone Number is invalid');
+        return;
+    }
+
     const data = new FormData();
-    data.append('fullName', formData.fullName);
-    data.append('phoneNumber', formData.phoneNumber);
-    data.append('jobTitle', formData.jobTitle);
-    console.log("profileImageFile",profileImageFile);
+    data.append('fullName', fullName);
+    data.append('phoneNumber', phoneNumber);
+    data.append('jobTitle', jobTitle);
+
+    console.log("profileImageFile", profileImageFile);
     if (profileImageFile) {
-      data.append('image', profileImageFile);
+        data.append('image', profileImageFile);
     }
 
-    console.log("coverImageFile",coverImageFile);
+    console.log("coverImageFile", coverImageFile);
     if (coverImageFile) {
-      data.append('headerImage', coverImageFile);
+        data.append('headerImage', coverImageFile);
     }
 
-    console.log("data",data);
     try {
-      const token = localStorage.getItem('authToken');
-      console.log("data",data);
-      const response = await axios.patch('http://51.20.81.93:80/api/user', data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+        const token = localStorage.getItem('authToken');
+        const response = await axios.patch('http://51.20.81.93:80/api/user', data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        });
 
-      // Update userState with the new data
-      setUserState(prevState => ({
-        ...prevState,
-        userData: response.data
-      }));
+        setError('');
+        console.log("done-done");
+        console.log(response.data);
+        setUserState(prevState => ({
+            ...prevState,
+            userData: response.data
+        }));
+
+        setOpen(false);
+        resetFileSelections();
+
     } catch (error) {
-      console.error(error);
+        setError(error.response.data.errorDescription);
+        console.log(error.response.data.errorDescription);
+        console.error(error);
     }
+};
 
-    setOpen(false);
-    resetFileSelections();
-  };
 
   const resetFileSelections = () => {
     setProfileImageFile(null);
@@ -218,12 +253,13 @@ const Profile = ({ userState, setUserState }) => {
               {profileImageName ? `Selected file: ${profileImageName}` : "Drag 'n' drop profile image here, or click to select file"}
             </p>
           </div>
-          <div {...getCoverImageRootProps()} className={styles.dropzone}>
+          <div {...getCoverImageRootProps()} className={styles.dropzone} style={{marginBottom:'10px'}}>
             <input {...getCoverImageInputProps()} />
             <p style={{color:'rgb(0, 123, 255)'}}>
               {coverImageName ? `Selected file: ${coverImageName}` : "Drag 'n' drop cover image here, or click to select file"}
             </p>
           </div>
+          {error ? (<span style={{color:'red', fontSize:'15px', marginLeft:'195px'}}>{error}</span>):null}
         </DialogContent>
         <DialogActions sx={{display:'flex', justifyContent:'space-between'}}>
           <Button onClick={handleClose} className={styles.cancelButton}>
