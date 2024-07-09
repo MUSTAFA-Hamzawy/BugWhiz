@@ -39,7 +39,7 @@ const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
         icon: 'success',
         title: 'Project Created Successfully',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1200,
         position: 'center',
         customClass: {
           popup: styles.swalCustomPopup,
@@ -50,8 +50,6 @@ const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
       handleModalClose();
     } catch (error) {
       setError(error.response.data.errorDescription);
-      console.log(error.response.data.errorDescription);
-      console.error('There was an error creating the project!', error);
     }
   };
 

@@ -30,7 +30,6 @@ const Comment = ({
 
   const [error, setError] = React.useState('');
 
-  console.log(comment);
 
   useEffect(() => {
     if (editMode) {
@@ -65,7 +64,6 @@ const Comment = ({
         fetchComments();
         setEditMode(false);
       } catch (error) {
-        console.log(error.response.data.message);
         setError(error.response.data.message);
       }
     } else {
@@ -85,7 +83,6 @@ const Comment = ({
         fetchComments();
         setInput("");
       } catch (error) {
-        console.error('Error adding comment:', error);
         setError(error.response.data.errorDescription);
       }
     }
@@ -108,7 +105,6 @@ const Comment = ({
         fetchComments();
         setConfirmDelete(false);
       } catch (error) {
-        console.error('Error deleting comment:', error);
       }
     } else {
       setConfirmDelete(true);

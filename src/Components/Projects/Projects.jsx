@@ -58,7 +58,6 @@ const Projects = ({userState}) => {
         }
       });
 
-      console.log('API Response:', response);
 
       const { projects, totalCount } = response.data;
       setProjects(projects);
@@ -68,7 +67,6 @@ const Projects = ({userState}) => {
         setPage(page - 1);
       }
     } catch (error) {
-      console.error('Error fetching projects:', error);
     }
   };
 
@@ -82,14 +80,12 @@ const Projects = ({userState}) => {
       });
       setUsers(response.data);
     } catch (error) {
-      console.error('Error fetching users:', error);
     }
   };
 
   const handleAddUserToProject = async (projectID) => {
     try {
       const username = selectedUsers[projectID];
-      console.log(username);
       const token = localStorage.getItem('authToken');
       const response = await axios.patch(`http://51.20.81.93:80/api/project/add_user`, {
         projectID,
@@ -101,13 +97,12 @@ const Projects = ({userState}) => {
         }
       });
       setErrorMessages(prevState => ({ ...prevState, [projectID]: '' }));
-      console.log('User added to project:', response.data);
       fetchProjects();
       Swal.fire({
         icon: 'success',
         title: 'user added Successfully',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1200,
         position: 'center',
         customClass: {
           popup: styles.swalCustomPopup,
@@ -118,9 +113,7 @@ const Projects = ({userState}) => {
 
       setSelectedUsers(prevState => ({ ...prevState, [projectID]: '' })); 
     } catch (error) {
-      console.log(error.response);
       setErrorMessages(prevState => ({ ...prevState, [projectID]: error.response.data.message }));
-      console.error('Error adding user to project:', error);
     }
   };
 
@@ -148,12 +141,10 @@ const Projects = ({userState}) => {
         }
       });
       setError('');
-      console.log('Project updated:', response.data);
       fetchProjects();
       setEditingProjectId(null);
     } catch (error) {
       setError(error.response.data.errorDescription);
-      console.error('Error updating project:', error);
     }
   };
 
@@ -167,7 +158,6 @@ const Projects = ({userState}) => {
           'Content-Type': 'application/json'
         }
       });
-      console.log('Project deleted');
       fetchProjects();
       Swal.fire({
         icon: 'success',
@@ -183,7 +173,6 @@ const Projects = ({userState}) => {
       });
       setOpenDeleteModal(false);
     } catch (error) {
-      console.error('Error deleting project:', error);
     }
   };
 

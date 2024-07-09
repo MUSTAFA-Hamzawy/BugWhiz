@@ -79,7 +79,7 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         icon: 'success',
         title: 'Issue created Successfully',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1200,
         position: 'center',
         customClass: {
           popup: styles.swalCustomPopup,
@@ -90,8 +90,6 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
       handleModalClose();
     } catch (error) {
       setError(error.response.data.errorDescription);
-      console.log(error.response.data.errorDescription);
-      console.error('There was an error creating the issue!', error);
     }
   };
 

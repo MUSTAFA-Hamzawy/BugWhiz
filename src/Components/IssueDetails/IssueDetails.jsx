@@ -23,7 +23,6 @@ const comments = {
 
 const IssueDetails = ({userState}) => {
 
-  console.log(userState);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,10 +44,8 @@ const IssueDetails = ({userState}) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setCommentsData({ id: 1, name: "", items: response.data });
     } catch (error) {
-      console.error('Error fetching comments:', error);
     }
   };
 
@@ -62,7 +59,6 @@ const IssueDetails = ({userState}) => {
       });
       setIssueData(response.data);
     } catch (error) {
-      console.error('Error fetching issue details:', error);
     }
   };
 
@@ -121,7 +117,7 @@ const IssueDetails = ({userState}) => {
                 <div className={styles.detailsRow}>
                   <div className={styles.detailsItem}>
                     <Typography variant="subtitle2" display="flex" alignItems="center" fontSize="17px" gap="4px">
-                      <span style={{ color: '#007bff' }} className={styles.detailsLabelStatus}>Status :</span> {issueData.ticketStatus}
+                      <span style={{ color: '#007bff' }} className={styles.detailsLabelStatus}>Status :</span> {issueData.ticketStatus === "Progress" ? `In ${issueData.ticketStatus}` : issueData.ticketStatus}
                     </Typography>
                   </div>
                   <div className={styles.detailsItem}>

@@ -71,8 +71,6 @@ const Issues = () => {
             Authorization: `Bearer ${token}`
           }
         }); 
-        console.log(projectId, page, issuesPerPage, searchKeyword, status, priority, category);
-        console.log(response.data);
         const { tickets, totalCount } = response.data;
         setError('');
         setIssues(tickets);
@@ -106,7 +104,6 @@ const Issues = () => {
       } else {
         setError(error.response.data.errorDescription);
       }
-      console.error('Error fetching issues:', error);
     }
   };
 
@@ -146,13 +143,12 @@ const Issues = () => {
           'Content-Type': 'application/json'
         }
       });
-      console.log('Issue deleted');
       fetchIssues();
       Swal.fire({
         icon: 'success',
         title: 'Issue deleted Successfully',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1200,
         position: 'center',
         customClass: {
           popup: styles.swalCustomPopup,
@@ -162,7 +158,6 @@ const Issues = () => {
       });
       setOpenDeleteModal(false);
     } catch (error) {
-      console.error('Error deleting issue:', error);
     }
   };
 
@@ -246,8 +241,8 @@ const Issues = () => {
         >
           <MenuItem value="None">None</MenuItem>
           <MenuItem value="TODO">TODO</MenuItem>
-          <MenuItem value="IN PROGRESS">IN PROGRESS</MenuItem>
-          <MenuItem value="DONE">DONE</MenuItem>
+          <MenuItem value="Progress">IN PROGRESS</MenuItem>
+          <MenuItem value="Done">DONE</MenuItem>
         </Select>
         <Select
           value={priority}
@@ -311,7 +306,7 @@ const Issues = () => {
                     <span className={styles.issueText}>{issue.title}</span>
                   </td>
                   <td>
-                    <span>{issue.ticketStatus}</span>
+                    <span>{issue.ticketStatus === "Progress" ? `In ${issue.ticketStatus}` : issue.ticketStatus}</span>
                   </td>
                   <td>
                     <span>{issue.priority}</span>

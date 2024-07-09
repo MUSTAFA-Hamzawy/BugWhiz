@@ -17,19 +17,19 @@
 }
 
 .swalCustomPopup {
-    width: 200px !important;
-    height: 105px !important;
-    margin: 0;
+    width: 215px !important;
+    height: 115px !important;
+    margin: 0 !important;
 }
 
 .swalCustomIcon {
     font-size: 10px !important;
     padding: 0 !important;
-    margin-top: 13px;
+    margin-top: 13px !important;
 }
 
 .swalCustomTitle {
     font-size: 14px !important;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }

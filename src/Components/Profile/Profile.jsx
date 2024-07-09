@@ -103,12 +103,10 @@ const Profile = ({ userState, setUserState }) => {
     data.append('phoneNumber', phoneNumber);
     data.append('jobTitle', jobTitle);
 
-    console.log("profileImageFile", profileImageFile);
     if (profileImageFile) {
         data.append('image', profileImageFile);
     }
 
-    console.log("coverImageFile", coverImageFile);
     if (coverImageFile) {
         data.append('headerImage', coverImageFile);
     }
@@ -123,8 +121,6 @@ const Profile = ({ userState, setUserState }) => {
         });
 
         setError('');
-        console.log("done-done");
-        console.log(response.data);
         setUserState(prevState => ({
             ...prevState,
             userData: response.data
@@ -135,8 +131,6 @@ const Profile = ({ userState, setUserState }) => {
 
     } catch (error) {
         setError(error.response.data.errorDescription);
-        console.log(error.response.data.errorDescription);
-        console.error(error);
     }
 };
 

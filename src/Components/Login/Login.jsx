@@ -28,7 +28,6 @@ const Login = ({ setUserState }) => {
           "Content-Type": "application/json",
         },
       });
-      console.log(res.data)
       const { token } = res.data;
       localStorage.setItem("authToken", token);
 
@@ -38,7 +37,6 @@ const Login = ({ setUserState }) => {
         }
       });
 
-      console.log(userProfileRes.data);
 
       localStorage.setItem("userId", userProfileRes.data._id);
       setUserState({ token, userData: userProfileRes.data });
@@ -47,13 +45,10 @@ const Login = ({ setUserState }) => {
     } catch (error) {
       if (error.response) {
         setLoginError(error.response.data.errorDescription); 
-        console.log(error.response.data.errorDescription);
       } else if (error.request) {
         setLoginError("Network error. Please try again.");
-        console.log("Network error. Please try again.");
       } else {
         setLoginError("An unexpected error occurred.");
-        console.log("An unexpected error occurred.");
       }
     }
   };

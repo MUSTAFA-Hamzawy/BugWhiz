@@ -57,15 +57,11 @@ const Register = () => {
       if (error.response) {
         const errorDescription = error.response.data.errorDescription || {};
         setFieldErrors(errorDescription);
-        console.log('Response error:', error.response.data.errorDescription);
       } else if (error.request) {
         setFieldErrors({ general: "Network error. Please try again." });
-        console.log('Request error:', error.request);
       } else {
         setFieldErrors({ general: "An unexpected error occurred." });
-        console.log('Error', error.message);
       }
-      console.log('Error config:', error.config);
     }
   };
 

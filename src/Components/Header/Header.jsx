@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../Assets/logo.jpeg';
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -24,6 +24,7 @@ const Header = ({ userState, fetchProjects }) => {
   const open = Boolean(anchorEl);
   const openNotif = Boolean(anchorElNotif);
   const navigate = useNavigate(); 
+  const location = useLocation();
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -33,10 +34,8 @@ const Header = ({ userState, fetchProjects }) => {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
           },
         });
-        console.log(response);
         setNotifications(response.data.notifications);
       } catch (error) {
-        console.error('Error fetching notifications:', error);
       }
     };
 
@@ -92,7 +91,9 @@ const Header = ({ userState, fetchProjects }) => {
             Projects
           </NavLink>
         </div>
+        {(location.pathname === '/Projects' || location.pathname === '/projects') && (
         <button className={styles.buttonCommon} onClick={handleModalOpen}>Create Project</button>
+      )}
       </div>
       <div className={styles.accountMenuContainer}>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>

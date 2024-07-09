@@ -39,7 +39,6 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
   const [error, setError] = React.useState('');
 
 
-  console.log(category, description, developerID, priority, title, ticketStatus, ticketID);
   useEffect(() => {
     if (open) {
       setFormCategory(category);
@@ -61,7 +60,6 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
       });
       setDevelopers(response.data);
     } catch (error) {
-      console.error('Error fetching developers:', error);
     }
   };
 
@@ -70,6 +68,16 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
   }, []);
 
   const handleSubmit = async () => {
+    if (formTitle === '') {
+      setError('Title is required');
+      return;
+    }
+
+    if (formDescription === '') {
+      setError('Description is required');
+      return;
+    }
+
     try {
       const token = localStorage.getItem('authToken');
       const payload = {
@@ -81,7 +89,6 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
         priority: formPriority,
         ticketStatus: formTicketStatus
       };
-      console.log(payload);
       await axios.patch('http://51.20.81.93:80/api/ticket', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -91,8 +98,11 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
       fetchIssueDetails();
       handleClose();
     } catch (error) {
+      if (error.response.data.errorDescription === 'Invalid Developer ID.') {
+        setError('Developer is required');
+      } else {
       setError(error.response.data.errorDescription);
-      console.error('Error updating issue:', error);
+      }
     }
   };
 
@@ -107,7 +117,6 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
   };
 
   const selectedDeveloper = formDeveloperID ? getDeveloperDetails(formDeveloperID) : { fullName: 'None', image: null };
-  console.log(selectedDeveloper);
 
   return (
     <Modal
@@ -228,7 +237,7 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
               </Box>
             )}
           </Grid>
-          {error ? (<span style={{color:'red', fontSize:'16px', marginTop:'13px', marginLeft:'150px'}}>{error}</span>):null}
+          {error ? (<span style={{color:'red', fontSize:'16px', marginTop:'13px', marginLeft:'140px'}}>{error}</span>):null}
           <Grid item xs={12} display="flex" justifyContent="space-between">
             <Button className={styles.cancelButton} onClick={handleCloseModal} variant="contained">
               Cancel
