@@ -11,7 +11,7 @@ class SVM:
     rbf = lambda x, x_dash , gamma=10: np.exp(-gamma * distance.cdist(x, x_dash,'sqeuclidean'))
     kernel_functions = {'linear': linear, 'polynomial': polynomial, 'rbf': rbf}
 
-    def __init__(self, kernel='rbf', C=1, k=2):
+    def __init__(self, kernel='linear', C=1, k=2):
         # setting the hyperparameters
         self.kernel_str = kernel
         self.kernel = SVM.kernel_functions[kernel]
