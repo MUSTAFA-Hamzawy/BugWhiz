@@ -6,14 +6,14 @@ class ProfilePage(BasePage):
         super().__init__(driver)
         self.logo = "//img[@alt='BugWhiz Logo']"
         self.projects_tab = "//a[normalize-space()='Projects']"
-        self.notifications_tab = "//*[name()='path' and contains(@d,'M12 22c1.1')]"
+        self.notifications_tab = "//*[@id='root']/div/div[1]/div[3]/div/div/svg"
         self.profile_tab = "//div[@class='MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1e5gz81-MuiAvatar-root']//*[name()='svg']//*[name()='path' and contains(@d,'M12 12c2.2')]"
-        self.logout_button = "//button[normalize-space()='Logout']"
-        self.name = "//p[@class='MuiTypography-root MuiTypography-body1 Profile_fullName__8XrYo css-ahj2mt-MuiTypography-root']"
-        self.email = "//span[normalize-space()='karimmohamed003@gmail.com']"
-        self.user_name = "//span[normalize-space()='karimmohamed003']"
-        self.phone_number = "//span[normalize-space()='01558446250']"
-        self.job_title = "//span[normalize-space()='Student']"
+        self.logout_button = "//*[@id='root']/div/div[1]/div[3]/button"
+        self.name = "//*[@id='root']/div/div[2]/div[2]/p"
+        self.email = "//*[@id='root']/div/div[2]/div[2]/div/div[1]/span[2]"
+        self.user_name = "//*[@id='root']/div/div[2]/div[2]/div/div[2]/span[2]"
+        self.phone_number = "//*[@id='root']/div/div[2]/div[2]/div/div[3]/span[2]"
+        self.job_title = "//*[@id='root']/div/div[2]/div[2]/div/div[4]/span[2]"
 
     def click_projects_tab(self):
         self.driver.find_element(By.XPATH, self.projects_tab).click()

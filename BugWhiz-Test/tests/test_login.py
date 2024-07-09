@@ -15,8 +15,6 @@ class TestLogin(unittest.TestCase):
     def test_login_tab_title(self):
         self.assertEqual("Login - BugWhiz", self.driver.title)
 
-    '''
-
     # Positive test cases
     # Test case 1: Login with valid username and password
     def test_login_success(self):
@@ -149,8 +147,6 @@ class TestLogin(unittest.TestCase):
         self.login_page.click_login()
         self.assertEqual("Login - BugWhiz", self.driver.title)
         self.assertEqual(self.driver.current_url, BASE_URL + "/login")
-
-    '''
     
     # Quit the browser
     def tearDown(self):

@@ -11,7 +11,8 @@ class ProjectsPage(BasePage):
         self.cancel_project_name_button = "//button[normalize-space()='Cancel']"
         self.notification_button = "//body/div[@id='root']/div[@class='App']/div[@class='Header_headerContainer__mE2hL']/div[@class='Header_accountMenuContainer__yStny']/div[@class='MuiBox-root css-5nwj3y']/div[1]//*[name()='svg']"
         self.account_info_button = "//div[@class='MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1e5gz81-MuiAvatar-root']//*[name()='svg']"
-        self.profile_button = "//button[normalize-space()='Profile']"
+
+        self.profile_button = "//*[@id='account-menu']/div[3]/ul/li[1]/text()"
         self.logout_button = "//button[normalize-space()='Logout']"
         self.update_project_button = "//tbody/tr[1]/td[2]/button[1]"
         self.delete_project_button = "//tbody/tr[1]/td[2]/button[2]"
@@ -28,7 +29,7 @@ class ProjectsPage(BasePage):
         self.driver.find_element(By.XPATH, self.account_info_button).click()
 
     def click_profile_button(self):
-        self.driver.find_element(By.XPATH, self.profile_button).click()
+        self.driver.find_element(By.NAME, self.profile_button).click()
 
     def click_logout_button(self):
         self.driver.find_element(By.XPATH, self.logout_button).click()
@@ -53,3 +54,8 @@ class ProjectsPage(BasePage):
     
     def enter_project_name(self, project_name):
         self.driver.find_element(By.XPATH, self.project_name_field).send_keys(project_name)
+
+    def navigate_to_profile(self):
+        self.click_account_info_button()
+        self.click_profile_button()
+        
