@@ -1,0 +1,52 @@
+Train on Test data (2500) and Predict on Train data (14000)  ==> around 15%
+
+Model trained using n-gram range: (1, 1)
+Cross-Validation Scores (SVM): [0.84948454 0.80412371 0.83505155 0.84090909 0.82438017]
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:439: UserWarning: X does not have valid feature names, but LabelPropagation was fitted with feature names
+  warnings.warn(
+               precision    recall  f1-score   support
+
+     Frontend       0.84      0.90      0.87      7437
+      Backend       0.80      0.05      0.09       174
+     Security       0.84      0.82      0.83      5799
+Documentation       0.92      0.16      0.27       367
+
+     accuracy                           0.84     13777
+    macro avg       0.85      0.48      0.52     13777
+ weighted avg       0.84      0.84      0.83     13777
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           6717              1       717         2
+Documentation      122              8        44         0
+Frontend          1028              1      4767         3
+Security           156              0       152        59
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:439: UserWarning: X does not have valid feature names, but LabelPropagation was fitted with feature names
+  warnings.warn(
+Accuracy (LabelPropagation): 0.838426362778544
+Model trained using n-gram range: (1, 2)
+Cross-Validation Scores (SVM): [0.84948454 0.82061856 0.82061856 0.83884298 0.82438017]
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:439: UserWarning: X does not have valid feature names, but LabelPropagation was fitted with feature names
+  warnings.warn(
+               precision    recall  f1-score   support
+
+     Frontend       0.84      0.90      0.87      7437
+      Backend       1.00      0.02      0.04       174
+     Security       0.84      0.83      0.83      5799
+Documentation       0.91      0.14      0.24       367
+
+     accuracy                           0.84     13777
+    macro avg       0.90      0.47      0.50     13777
+ weighted avg       0.84      0.84      0.83     13777
+
+Predicted      Backend  Documentation  Frontend  Security
+Actual                                                   
+Backend           6730              0       703         4
+Documentation      131              4        39         0
+Frontend          1009              0      4789         1
+Security           162              0       155        50
+c:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:439: UserWarning: X does not have valid feature names, but LabelPropagation was fitted with feature names
+  warnings.warn(
+Accuracy (LabelPropagation): 0.8400232271176599
+Model trained using n-gram range: (1, 3)
+Cross-Validation Scores (SVM): [0.83298969 0.80824742 0.82061856 0.82231405 0.82231405]
