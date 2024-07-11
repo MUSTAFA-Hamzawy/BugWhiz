@@ -8,6 +8,47 @@ const { categories, priorities, ticketStatusObject } = require('../config/conf')
 const { spawn } = require('child_process');
 const path = require('path');
 const {model} = require("mongoose");
+const multer = require('multer');
+const NotificationModel = require('../models/NotificationModel');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, 'uploads'));
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + '-' + file.originalname);
+    },
+});
+const upload = multer({ storage });
+
+/**
+ * Retrieves tickets assigned to developers and includes their descriptions.
+ * This method is used to prepare the input to the model which predicts the developers to be assigned to a ticket
+ *
+ * @async
+ * @function getTicketsByDevelopers
+ * @param {Array<Object>} developers - An array of developer objects.
+ * @param {string} developers._id - The ID of the developer.
+ * @param {string} developers.jobTitle - The job title of the developer.
+ * @returns {Promise<Array<Object>>} - Returns a promise that resolves to an array of developer objects with their ticket descriptions.
+ * @throws {Error} - Throws an error if any operation fails.
+ */
+const getTicketsByDevelopers = async (developers) => {
+    const developersWithDescriptions = await Promise.all(developers.map(async (developer) => {
+
+        const tickets = await TicketModel.find({ developerID: developer._id.toString() }).select('description');
+        const descriptions = tickets.map(ticket => ticket.description);
+        // return descriptions;
+        return {
+            developerID: developer._id,
+            jobTitle: developer.jobTitle,
+            oldBugsDescription: descriptions
+        }
+    }));
+
+    return developersWithDescriptions;
+};
 
 const predictCategory = asyncHandler(async (bugDescription) => {
     return new Promise((resolve, reject) => {
@@ -29,21 +70,57 @@ const predictCategory = asyncHandler(async (bugDescription) => {
     });
 });
 
-const getTicketsByDevelopers = async (developers) => {
-    const developersWithDescriptions = await Promise.all(developers.map(async (developer) => {
+const predictPriority = asyncHandler(async (bugDescription) => {
+    return new Promise((resolve, reject) => {
+        const pythonProcess = spawn('python', [path.resolve(__dirname, '..', 'ML_models', 'Prioritization', 'predict_priority.py'), bugDescription]);
 
-        const tickets = await TicketModel.find({ developerID: developer._id.toString() }).select('description');
-        const descriptions = tickets.map(ticket => ticket.description);
-        // return descriptions;
-        return {
-                developerID: developer._id,
-                jobTitle: developer.jobTitle,
-                oldBugsDescription: descriptions
+        pythonProcess.stdout.on('data', (data) => {
+            resolve(data.toString().trim());
+        });
+
+        pythonProcess.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(`Python script exited with code ${code}`);
             }
-    }));
+        });
+    });
+});
 
-    return developersWithDescriptions;
-};
+const extractDuplicates = asyncHandler(async (bugDescription, projectID) => {
+    // Prepare the input to the model
+    const projectTickets = await TicketModel.find({ projectID }).select('_id description');
+    const modelInput = {
+        bugDescription,
+        projectTickets
+    };
+
+    // Predict developers
+    let duplicates = "";
+    return new Promise((resolve, reject) => {
+        const pythonProcess = spawn('python', [path.resolve(__dirname, '..', 'ML_models', 'Duplication', 'extract_duplicates.py')]);
+        pythonProcess.stdin.write(JSON.stringify(modelInput));
+        pythonProcess.stdin.end();
+
+        pythonProcess.stdout.on('data', (data) => {
+            duplicates = data.toString();
+            resolve(duplicates.trim());
+        });
+
+        pythonProcess.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(`Python script exited with code ${code}`);
+            }
+        });
+    });
+});
 
 const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
     // Prepare the input to predictDev model
@@ -53,6 +130,7 @@ const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
         bugDescription,
         developersData
     };
+
     // Predict developers
     let developersPredicted = "";
     return new Promise((resolve, reject) => {
@@ -63,12 +141,10 @@ const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
 
         pythonProcess.stdout.on('data', (data) => {
             developersPredicted = data.toString();
-            // console.log(`Python output: ${developersPredicted}`);
             resolve(developersPredicted.trim());
         });
 
         pythonProcess.stderr.on('data', (data) => {
-            // console.error(`Python error: ${data.toString()}`);
             reject(data.toString());
         });
 
@@ -121,38 +197,85 @@ const createTicket = asyncHandler(async (req, res) => {
         throw new Error("Invalid Project Name.");
     }
 
-    // predict category
+    // Handle image uploads
+    let imagePaths = [];
+    if (req.files && req.files.length > 0) {
+        imagePaths = req.files.map(file => file.path);
+    }
+
+    // predict category using ML model
     let category = "None"  // default
+    try {
+        category = await predictCategory(description);
+    } catch (error) {
+        console.error(`Error while predicting the category : ${error}`);
+    }
+
+    // TODO: predict priority using ML model
+    let priority = "P1"  // default
     // try {
-    //     category = await predictCategory(description);
+    //     priority = await predictPriority(description);
+    //     res.json(priority)
     // } catch (error) {
-    //     console.error(`Error while predicting the category : ${error}`);
+    //     console.error(`Error while predicting the priority : ${error}`);
     // }
 
-    // TODO: predict priority
+    // extract duplicates using NLP model
+    let duplicateTickets = [];
+    try {
+        duplicates = await extractDuplicates(description, projectID);
+        if (duplicates) {
+            duplicates = duplicates.split(',');
 
-    // TODO: extract duplicates
+            for (const duplicate of duplicates) {
+                const [id, similarity] = duplicate.split(' ');
+                const ticket = await TicketModel.findById(id, 'name');
+                if (ticket) {
+                    duplicateTickets.push({
+                        _id: ticket._id,
+                        name: ticket.name,
+                        similarity: `${parseFloat(similarity)}%`
+                    });
+                }
+            }
 
-    // predict developer to assign
-    let predictedDevelopers = null
-    // try {
-    //     predictedDevelopers = await predictAssignee(description, projectID);
-    //     if (predictedDevelopers) {
-    //         predictedDevelopers = predictedDevelopers.split(',');
-    //     }
-    // } catch (error) {
-    //     console.error(`Error while predicting the developer assignee : ${error}`);
-    // }
+        }
+    } catch (error) {
+        console.error(`Error while extracting duplicates : ${error}`);
+    }
 
-    const newTicket = await TicketModel.create({ name, title, description, category, projectID, images, reporterID:req.user.id });
-    return res.status(status.CREATED).json({newTicket, predictedDevelopers});
+
+    // predict developer to assign using ML model
+    let developerDetails = [];
+    try {
+        let predictedDevelopers = await predictAssignee(description, projectID);
+        if (predictedDevelopers) {
+            predictedDevelopers = predictedDevelopers.split(',');
+            for (const id of predictedDevelopers) {
+                const user = await UserModel.findById(id, 'fullName image');
+                if (user) {
+                    developerDetails.push({
+                        _id: user._id,
+                        fullName: user.fullName,
+                        image: user.image
+                    });
+                }
+            }
+        }
+    } catch (error) {
+        console.error(`Error while predicting the developer assignee : ${error}`);
+    }
+
+    const newTicket = await TicketModel.create({ name, title, description, priority,category, projectID, images: imagePaths,reporterID:req.user.id });
+    return res.status(status.CREATED).json({newTicket, predictedDevelopers:developerDetails, duplicates:duplicateTickets});
 });
 
 const searchForTicket = asyncHandler(async (req, res) => {
-    const { projectID, keyword, ticketStatus, category, priority } = req.body;
+    const { projectID, keyword, ticketStatus, category, priority } = req.query;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
+    // validation
     if (!await ProjectModel.findById(projectID)) {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Project ID is invalid.");
@@ -171,9 +294,12 @@ const searchForTicket = asyncHandler(async (req, res) => {
         };
 
         // Add optional filters if they are present
-        if (ticketStatus) query.status = ticketStatus;
+        if (ticketStatus) query.ticketStatus = ticketStatus;
         if (category) query.category = category;
         if (priority) query.priority = priority;
+
+        // Get total count of matching tickets
+        const totalCount = await TicketModel.countDocuments(query);
 
         const tickets = await TicketModel.find(query)
             .populate('developerID', 'fullName image')
@@ -181,14 +307,19 @@ const searchForTicket = asyncHandler(async (req, res) => {
             .skip((page - 1) * limit)
             .limit(limit);
 
-        res.status(status.OK).json(tickets);
+        res.status(status.OK).json({
+            totalCount,
+            tickets,
+            totalPages: Math.ceil(totalCount / limit),
+            currentPage: page
+        });
     } catch (error) {
         res.status(status.SERVER_ERROR).json({ message: "Failed to search for tickets" });
     }
 });
 
 const getTicket = asyncHandler( async (req, res) => {
-    const {ticketID} = req.body;
+    const { ticketID } = req.query;
     const data = await TicketModel.findById(ticketID)
         .populate('developerID', 'fullName image')
         .populate('reporterID', 'fullName image')
@@ -202,7 +333,7 @@ const getTicket = asyncHandler( async (req, res) => {
 })
 
 const updateTicket = asyncHandler(async (req, res) => {
-    let {ticketID, projectID, developerID, title, description, category, ticketStatus , priority} = req.body;
+    let {ticketID, developerID, title, description, category, ticketStatus , priority} = req.body;
 
     // check if the ticket exists
     if (!await TicketModel.findById(ticketID)){
@@ -235,34 +366,39 @@ const updateTicket = asyncHandler(async (req, res) => {
         res.status(status.VALIDATION_ERROR);
         throw new Error("Invalid Ticket Status.");
     }
-    // check project exists
-    if (!await ProjectModel.findById(projectID)) {
-        res.status(status.VALIDATION_ERROR);
-        throw new Error("Invalid Project ID.");
-    }
     // validate developer
     if (!developerID || !mongoose.Types.ObjectId.isValid(developerID)){
         res.status(status.VALIDATION_ERROR);
         throw new Error("Invalid Developer ID.");
     }
 
+    // preprocessing for some strings
     ticketStatus = ticketStatusObject[ticketStatus.toUpperCase()];
     category = categories[category.toUpperCase()];
     priority = priorities[priority.toUpperCase()];
 
+    // update the ticket
     const updatedTicket = await TicketModel.findByIdAndUpdate(
         ticketID,
-        {projectID, developerID, title, description, category, ticketStatus , priority},
+        { developerID, title, description, category, ticketStatus , priority},
         { new: true }
     );
+
+    // send a notification to the assigned developer
+    const notificationBody = {
+        content : `You are assigned by ${req.user.fullName} to work on ticket ${updatedTicket.name}`,
+        userID : developerID,
+        ticketID
+    }
+    const notification = new NotificationModel(notificationBody);
+    await notification.save();
     res.status(status.OK).json(updatedTicket);
 });
 
 const deleteTicket = asyncHandler( async (req, res) =>{
     const {ticketID} = req.body;
-    const removed = await TicketModel.findByIdAndRemove(ticketID);
-    if(removed)
-        res.status(status.OK).json({deleted: 1})
+    const removed = await TicketModel.findByIdAndDelete(ticketID);
+    if(removed) res.status(status.OK).json({deleted: 1})
     else{
         res.status(status.NOT_FOUND);
         throw new Error("Ticket is not found.")

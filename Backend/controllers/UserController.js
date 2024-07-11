@@ -5,58 +5,34 @@ const bcrypt = require('bcrypt');
 const status = require('../helpers/statusCodes');
 const jwt = require('jsonwebtoken');
 
-
-const getProfile = asyncHandler( async (req, res) => {
-    res.json(req.user);
-})
-
-const getUsers = asyncHandler( async (req, res) => {
-    const users = await UserModel.find({}).select('fullName image');
-    res.status(status.OK).json(users);
-})
-
-const updateProfile = asyncHandler( async (req, res) => {
-    const {fullName, phoneNumber, jobTitle, image, headerImage} = req.body;
-    // validate fullName
-    const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-    if(fullName && !nameRegex.test(fullName.trim())){
-        res.status(status.VALIDATION_ERROR);
-        throw new Error("Full Name must contain only letters.");
-    }
-
-    // validate the job title
-    if(jobTitle && !nameRegex.test(jobTitle.trim())){
-        res.status(status.VALIDATION_ERROR);
-        throw new Error("Job Title must contain only letters.");
-    }
-
-    // validate phoneNumber
-    const phoneNumberRegex = /^(\+\d{1,15}|\d{1,15})$/;
-    if(phoneNumber && !phoneNumberRegex.test(phoneNumber.trim())){
-        res.status(status.VALIDATION_ERROR);
-        throw new Error("Invalid phone number.");
-    }
-
-    const updated = await UserModel.findByIdAndUpdate(
-        req.user.id,
-        req.body,
-        { new: true }
-    );
-    res.status(status.OK).json(updated);
-})
-
-// To validate the data used for login
+/**
+ * Validates the data used for login.
+ *
+ * @async
+ * @function validateLoginData
+ * @param {Object} data - The data to validate.
+ * @param {string} data.emailOrUsername - The email or username provided by the user.
+ * @param {string} data.password - The password provided by the user.
+ * @returns {Promise<string|number>} - Returns an error message if validation fails, otherwise returns 0.
+ */
 const validateLoginData = async (data)=>{
     const {emailOrUsername, password} = data;
-   
+
     if(!emailOrUsername) return "Email is required.";
     if(!password) return "Password is required.";
-    
+
 
     return 0;
 }
 
-// tokenType : 1 : access or 2 : refresh
+/**
+ * Generates a JWT token.
+ *
+ * @function generateToken
+ * @param {Object} userData - The user data to include in the token payload.
+ * @param {number} [tokenType=1] - The type of token to generate (1 for access token, 2 for refresh token).
+ * @returns {string} - The generated JWT token.
+ */
 const generateToken = (userData, tokenType = 1)=>{
     const SECRET_KEY = tokenType == 1 ? process.env.JWT_ACCESS_TOKEN_KEY : process.env.JWT_REFRESH_TOKEN_KEY;
     const EXPIRED_TIME = tokenType == 1 ? process.env.ACCESS_TOKEN_EXPIRED_TIME : process.env.REFRESH_TOKEN_EXPIRED_TIME;
@@ -73,34 +49,24 @@ const generateToken = (userData, tokenType = 1)=>{
             headerImage: userData.headerImage,
         },
         SECRET_KEY,
-        { expiresIn: EXPIRED_TIME} 
+        { expiresIn: EXPIRED_TIME}
     )
 }
 
-const login = asyncHandler( async (req, res)=>{
-    const {emailOrUsername, password} = req.body;
-    const error = await validateLoginData({emailOrUsername, password});
-    if(error != 0){
-        res.status(status.VALIDATION_ERROR);
-        throw new Error(JSON.stringify(error));
-    }else{
-        emailOrUsername.trim();
-        const user = emailOrUsername.indexOf('@') == -1 ? await UserModel.findOne({username: emailOrUsername}) : await UserModel.findOne({email: emailOrUsername})
-        const passwordIsCorrect = user && await bcrypt.compare(password, user.password);
-        if(!user || !passwordIsCorrect){
-            res.status(status.NOT_FOUND);
-            throw new Error(JSON.stringify("Incorrect username or password."));
-        }     
-
-        const token = generateToken(user);
-        res.status(status.OK);
-        res.json({token});
-    }
-
-
-
-})
-
+/**
+ * Validates the data used for registration.
+ *
+ * @async
+ * @function validateRegistrationData
+ * @param {Object} data - The data to validate.
+ * @param {string} data.fullName - The full name provided by the user.
+ * @param {string} data.email - The email provided by the user.
+ * @param {string} data.username - The username provided by the user.
+ * @param {string} data.phoneNumber - The phone number provided by the user.
+ * @param {string} data.password - The password provided by the user.
+ * @param {string} data.jobTitle - The job title provided by the user.
+ * @returns {Promise<Object>} - Returns an object containing any validation errors.
+ */
 const validateRegistrationData = async(data)=>
 {
 
@@ -166,15 +132,91 @@ const validateRegistrationData = async(data)=>
     return errors;
 }
 
+const getProfile = asyncHandler( async (req, res) => {
+    const user = await UserModel.findById(req.user.id.toString()).populate('projects', 'projectName');
+    res.status(status.OK).json(user);
+})
+
+const getUsers = asyncHandler( async (req, res) => {
+    const users = await UserModel.find({}).select('fullName image');
+    res.status(status.OK).json(users);
+})
+
+const updateProfile = asyncHandler( async (req, res) => {
+    const {fullName, phoneNumber, jobTitle} = req.body;
+
+    // validate fullName
+    const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
+    if(fullName && !nameRegex.test(fullName.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Full Name must contain only letters.");
+    }
+
+    // validate the job title
+    if(jobTitle && !nameRegex.test(jobTitle.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Job Title must contain only letters.");
+    }
+
+    // validate phoneNumber
+    const phoneNumberRegex = /^(\+\d{1,15}|\d{1,15})$/;
+    if(phoneNumber && !phoneNumberRegex.test(phoneNumber.trim())){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error("Invalid phone number.");
+    }
+
+    // Check if images were uploaded
+    if (req.files ){
+        const { image, headerImage } = req.files;
+        if (image && image.length > 0) req.body.image = `uploads/${image[0].filename}`;
+        if (headerImage && headerImage.length > 0) req.body.headerImage = `uploads/${headerImage[0].filename}`;
+    }
+
+    // update the user data
+    const updated = await UserModel.findByIdAndUpdate(
+        req.user.id,
+        req.body,
+        { new: true }
+    );
+    res.status(status.OK).json(updated);
+})
+
+const login = asyncHandler( async (req, res)=>{
+    const {emailOrUsername, password} = req.body;
+    const error = await validateLoginData({emailOrUsername, password});
+
+    if(error != 0){
+        res.status(status.VALIDATION_ERROR);
+        throw new Error(JSON.stringify(error));
+    }else{
+        // validate the login credentials
+        emailOrUsername.trim();
+        const user = emailOrUsername.indexOf('@') == -1 ? await UserModel.findOne({username: emailOrUsername}) : await UserModel.findOne({email: emailOrUsername})
+        const passwordIsCorrect = user && await bcrypt.compare(password, user.password);
+        if(!user || !passwordIsCorrect){
+            res.status(status.NOT_FOUND);
+            throw new Error(JSON.stringify("Incorrect username or password."));
+        }     
+
+        const token = generateToken(user);
+        res.status(status.OK);
+        res.json({token});
+    }
+
+
+
+})
+
 const register = asyncHandler( async (req, res)=>{
     const{fullName, email, username, phoneNumber, password, image, jobTitle} = req.body;
 
-
+    // validation
     const errors = await validateRegistrationData({fullName, email, username, phoneNumber, password, image, jobTitle});
     if(Object.keys(errors).length > 0){
         res.status(status.VALIDATION_ERROR);
         throw new Error(JSON.stringify(errors));
     }
+
     // encrypting the password
     const SALT_ROUNDS = 10;
     const encryptedPSWD = await bcrypt.hash(password, SALT_ROUNDS);

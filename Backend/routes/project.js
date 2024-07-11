@@ -8,14 +8,14 @@ module.exports = {
     getProjectTickets,
     updateProject,
     deleteProject,
-    addUserToProject
+    addUserToProject,
+    getAnalytics,
+    getProjectDevelopers
 } = ProjectController;
 
 router.use(ValidateTokenMiddleware);
 
 
-router.get('/tickets', getProjectTickets)
-router.patch('/add_user', addUserToProject)
 
 
 router.route('/')
@@ -23,5 +23,10 @@ router.route('/')
     .post(createProject)
     .patch(updateProject)
     .delete(deleteProject);
+
+router.get('/tickets', getProjectTickets)
+router.patch('/add_user', addUserToProject)
+router.get('/analytics', getAnalytics)
+router.get('/developers', ValidateTokenMiddleware, getProjectDevelopers);
 
 module.exports = router;
