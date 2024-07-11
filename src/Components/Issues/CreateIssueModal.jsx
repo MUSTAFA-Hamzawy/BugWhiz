@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
-import Swal from 'sweetalert2';
+import PredictedDevelopersModal from './PredictedDevelopersModal'; // Import the new modal component
 import styles from './CreateIssueModal.module.css';
 
 const style = {
@@ -30,6 +30,8 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
   });
 
   const [error, setError] = React.useState('');
+  const [predictedData, setPredictedData] = useState(null); 
+  const [predictedModalOpen, setPredictedModalOpen] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,27 +68,19 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         formData.append(`images`, image);
       });
 
-      await axios.post('http://51.20.81.93:80/api/ticket', formData, {
+      const response = await axios.post('http://51.20.81.93:80/api/ticket', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
 
+      console.log("post response",response);
       setError('');
       fetchIssues(false);
-      Swal.fire({
-        icon: 'success',
-        title: 'Issue created Successfully',
-        showConfirmButton: false,
-        timer: 1200,
-        position: 'center',
-        customClass: {
-          popup: styles.swalCustomPopup,
-          icon: styles.swalCustomIcon,
-          title: styles.swalCustomTitle,
-        }
-      });
+      setPredictedData(response.data); // Store the response data
+      setPredictedModalOpen(true); // Open the new modal
+      
       handleModalClose();
     } catch (error) {
       setError(error.response.data.errorDescription);
@@ -105,6 +99,7 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
   };
 
   return (
+    <>
     <Modal
       open={open}
       onClose={handleModalClose}
@@ -175,6 +170,14 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         </Box>
       </Box>
     </Modal>
+    {predictedData && (
+        <PredictedDevelopersModal
+          open={predictedModalOpen}
+          handleClose={() => setPredictedModalOpen(false)}
+          predictedData={predictedData}
+        />
+      )}
+    </>
   );
 };
 

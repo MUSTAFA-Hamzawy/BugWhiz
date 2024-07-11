@@ -1,0 +1,12 @@
+.headerName {
+    color: rgb(33, 51, 81) !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+    margin-bottom: 30px !important;
+}
+
+.branchName {
+    color: red !important;
+    font-size: 19px !important;
+    margin-bottom: 5px !important;
+}

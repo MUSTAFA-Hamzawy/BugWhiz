@@ -214,10 +214,7 @@ const Comment = ({
           <div>
           <Grid item>
               <Typography variant="caption" display="block" sx={{ mt: 1.1 }}>
-                <span style={{ color: 'grey',marginRight:'4px' }}>Created at</span> {new Date(comment.createdAt).toLocaleString('en-GB')}
-              </Typography>
-              <Typography variant="caption" display="block">
-                <span style={{ color: 'grey',marginRight:'4px' }}>Edited at</span> {new Date(comment.updatedAt).toLocaleString('en-GB')}
+                <span style={{ color: 'grey',marginRight:'4px' }}>{comment.createdAt}</span> 
               </Typography>
             </Grid>
           </div>

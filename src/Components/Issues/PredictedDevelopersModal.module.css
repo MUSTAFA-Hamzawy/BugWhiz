@@ -1,0 +1,74 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.okButton {
+    color: white !important;
+    background-color: #6b8e23 !important;
+}
+
+.okButton:hover {
+    background-color: #155a9e !important;
+}
+
+.cancelButton {
+    color: white !important;
+    background-color: #f44336 !important;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f !important;
+}
+
+.issueLink {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 30px;
+}
+
+.issueLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.swalCustomPopup {
+    width: 215px !important;
+    height: 115px !important;
+    margin: 0 !important;
+    z-index: 2000 !important;
+}
+
+.swalCustomIcon {
+    font-size: 10px !important;
+    padding: 0 !important;
+    margin-top: 13px !important;
+}
+
+.swalCustomTitle {
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}

@@ -16,7 +16,7 @@ import Logout from '@mui/icons-material/Logout';
 import styles from './Header.module.css';
 import CreateProjectModal from './CreateProjectModal';
 
-const Header = ({ userState, fetchProjects }) => {
+const Header = ({ userState, fetchProjects, updateNotify }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [modalOpen, setModalOpen] = useState(false); 
   const [notifications, setNotifications] = useState([]);
@@ -34,13 +34,15 @@ const Header = ({ userState, fetchProjects }) => {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
           },
         });
-        setNotifications(response.data.notifications);
+        console.log(response.data);
+        setNotifications(response.data);
       } catch (error) {
+        console.error(error);
       }
     };
 
     fetchNotifications();
-  }, []);
+  }, [updateNotify]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -56,6 +58,14 @@ const Header = ({ userState, fetchProjects }) => {
 
   const handleNotifClose = () => {
     setAnchorElNotif(null);
+  };
+
+  const handleViewIssueDetails = (issueID) => {
+    navigate('/issueDetails', { state: { issueId: issueID} });
+  };
+
+  const handleViewIssues = (projectID, projectName) => {
+    navigate('/issues', { state: { projectId: projectID, projectName: projectName } });
   };
 
   const handleModalOpen = () => {
@@ -76,6 +86,21 @@ const Header = ({ userState, fetchProjects }) => {
     navigate("/login", { replace: true });
   };
 
+  const handleMarkAsRead = async () => {
+    try {
+      const response = await axios.patch('http://51.20.81.93/api/notify', {}, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      });
+      console.log(response.data);
+      // Optionally update notifications state if needed
+      setNotifications([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const userData = userState?.userData;
 
   return (
@@ -87,7 +112,7 @@ const Header = ({ userState, fetchProjects }) => {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '60px' }}>
         <div className={styles.headerLink}>
-          <NavLink to="/Projects" className={({ isActive }) => isActive ? styles.active : ''}>
+          <NavLink style={{fontSize:'19px'}} to="/Projects" className={({ isActive }) => isActive ? styles.active : ''}>
             Projects
           </NavLink>
         </div>
@@ -179,13 +204,14 @@ const Header = ({ userState, fetchProjects }) => {
         id="notification-menu"
         open={openNotif}
         onClose={handleNotifClose}
-        onClick={handleNotifClose}
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: 'visible',
+            overflow: 'auto',
+            maxHeight: 300, // Set the maximum height here
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
+            width: 280,  // Set a fixed width for the notification menu
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
@@ -193,28 +219,42 @@ const Header = ({ userState, fetchProjects }) => {
               mr: 1,
             },
             '&::before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+                zIndex: 0,
+              },
+          },
+        }}
+        MenuListProps={{
+          sx: {
+            paddingBottom: 0, // Set padding bottom to zero
+            paddingTop:0,
           },
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
+        {notifications?.length > 0 ? (<MenuItem className={styles.buttonMenu} onClick={handleMarkAsRead}>Mark as read</MenuItem>) :null}
         {notifications?.length > 0 ? (
           notifications.map((notification, index) => (
-            <MenuItem key={index}>
-              <div>
-                <strong>{notification.title}</strong>
-                <p>{notification.body}</p>
+            <MenuItem key={index} className={styles.notificationItem} 
+            onClick={() => {
+              if (notification.projectID === null) {
+                handleViewIssueDetails(notification.ticketID);
+              } else {
+                handleViewIssues(notification.projectID,notification.projectName);
+              }
+            }}
+            >
+              <div className={styles.notificationContent}>
+                <p style={{marginTop:'8px', marginBottom:'5px'}}>{notification.content}</p>
               </div>
             </MenuItem>
           ))

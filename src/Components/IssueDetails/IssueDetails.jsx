@@ -14,6 +14,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import EditIssueModal from './EditIssueModal';
 import styles from "./IssueDetails.module.css";
 import HelmetComponent from '../../HelmetComponent';
+import Header from '../Header/Header';
 
 const comments = {
   id: 1,
@@ -27,6 +28,8 @@ const IssueDetails = ({userState}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { issueId } = location.state || {};
+
+  const [updateNotify, setUpdateNotify] = useState(false);
 
   const handleBack = () => {
     navigate('/issues', { state: { projectId: issueData.projectID._id, projectName: issueData.projectID.projectName } }); 
@@ -85,8 +88,10 @@ const IssueDetails = ({userState}) => {
   const baseUrl = 'http://51.20.81.93';
 
   return (
+    <>
+    <Header userState={userState} updateNotify={updateNotify}/>
     <Box className={styles.issueContainer} display="flex" flexDirection="column" alignItems="center" p={1}>
-      <HelmetComponent title="Issue Details - BugWhiz" description="Manage issue details" />
+    <HelmetComponent title="Issue Details - BugWhiz" description="Manage issue details" />
       <Box width="100%" maxWidth="1200px">
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <Typography variant="subtitle1" color="#213351" gutterBottom>
@@ -201,8 +206,10 @@ const IssueDetails = ({userState}) => {
         ticketStatus={issueData.ticketStatus}
         ticketID={issueData._id}
         fetchIssueDetails={fetchIssueDetails}
+        setUpdateNotify={setUpdateNotify} 
       />
     </Box>
+    </>
   );
 }
 

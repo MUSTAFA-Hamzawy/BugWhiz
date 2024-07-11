@@ -150,6 +150,7 @@ const Projects = ({userState}) => {
 
   const handleDelete = async () => {
     try {
+      console.log(deleteProjectId);
       const token = localStorage.getItem('authToken');
       await axios.delete(`http://51.20.81.93:80/api/project`, {
         data: { projectID: deleteProjectId },
@@ -173,6 +174,7 @@ const Projects = ({userState}) => {
       });
       setOpenDeleteModal(false);
     } catch (error) {
+      console.log(error);
     }
   };
 
@@ -199,6 +201,10 @@ const Projects = ({userState}) => {
     navigate('/issues', { state: { projectId: projectID, projectName: projectName } });
   };
 
+  const handleAnalyticsClick = (projectID) => {
+    navigate("/analytics", { state: { projectId: projectID} });
+  };
+
   return (
     <>
     <HelmetComponent title="Projects - BugWhiz" description="Manage your projects" />
@@ -208,7 +214,7 @@ const Projects = ({userState}) => {
         <span style={{ fontSize: '21px', fontFamily: 'sans-serif', fontWeight: 'bold', color: '#213351' }}>
           {projects.length === 0 ? (
             <span ></span>
-          ) : (<span >Projects</span>)}
+          ) : (<><span >Projects</span> </>)}
         </span>
       </div>
       <div className={styles.projectList}>
@@ -223,6 +229,7 @@ const Projects = ({userState}) => {
                 <th style={{ color: '#213351' }}>Name</th>
                 <th style={{ color: '#213351' }}>Actions</th>
                 <th style={{ color: '#213351' }}>Add User to Project</th>
+                <th style={{ color: '#213351' }}>Analytics</th>
               </tr>
             </thead>
             <tbody>
@@ -276,6 +283,9 @@ const Projects = ({userState}) => {
                         <button className={styles.cancelButton} onClick={() => handleCancelAdd(project._id)}>Cancel</button>
                       </div>
                       {errorMessages[project._id] && <span style={{ color: 'red', fontSize: '14px' }}>{errorMessages[project._id]}</span>}
+                    </td>
+                    <td>
+                    <button className={styles.updateButton} onClick={() => handleAnalyticsClick(project._id)}>Show</button>
                     </td>
                 </tr>
               ))}

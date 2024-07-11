@@ -54,6 +54,7 @@ const Register = () => {
       });
       navigate("/login", { replace: true });
     } catch (error) {
+      console.log(error);
       if (error.response) {
         const errorDescription = error.response.data.errorDescription || {};
         setFieldErrors(errorDescription);

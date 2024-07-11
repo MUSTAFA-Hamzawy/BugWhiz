@@ -27,7 +27,7 @@ const style = {
   p: 4,
 };
 
-const EditIssueModal = ({ open, handleClose, setOpenModal, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails }) => {
+const EditIssueModal = ({ open, handleClose, setOpenModal, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails, setUpdateNotify }) => {
   const [formCategory, setFormCategory] = useState(category);
   const [formDescription, setFormDescription] = useState(description);
   const [formDeveloperID, setFormDeveloperID] = useState(developerID);
@@ -96,6 +96,7 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
       });
       setError('');
       fetchIssueDetails();
+      setUpdateNotify(prevState => !prevState);
       handleClose();
     } catch (error) {
       if (error.response.data.errorDescription === 'Invalid Developer ID.') {
