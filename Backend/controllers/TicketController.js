@@ -122,9 +122,9 @@ const extractDuplicates = asyncHandler(async (bugDescription, projectID) => {
     });
 });
 
-const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
+const predictAssignee = asyncHandler(async (bugDescription, projectID, jobTitle) => {
     // Prepare the input to predictDev model
-    const developers = await UserModel.find({ projects: projectID }).select('_id jobTitle');
+    const developers = await UserModel.find({ projects: projectID, jobTitle }).select('_id jobTitle');
     const developersData = await getTicketsByDevelopers(developers);
     const modelInput = {
         bugDescription,
@@ -211,14 +211,13 @@ const createTicket = asyncHandler(async (req, res) => {
         console.error(`Error while predicting the category : ${error}`);
     }
 
-    // TODO: predict priority using ML model
+    // predict priority using ML model
     let priority = "P1"  // default
-    // try {
-    //     priority = await predictPriority(description);
-    //     res.json(priority)
-    // } catch (error) {
-    //     console.error(`Error while predicting the priority : ${error}`);
-    // }
+    try {
+        priority = await predictPriority(description);
+    } catch (error) {
+        console.error(`Error while predicting the priority : ${error}`);
+    }
 
     // extract duplicates using NLP model
     let duplicateTickets = [];
@@ -248,7 +247,7 @@ const createTicket = asyncHandler(async (req, res) => {
     // predict developer to assign using ML model
     let developerDetails = [];
     try {
-        let predictedDevelopers = await predictAssignee(description, projectID);
+        let predictedDevelopers = await predictAssignee(description, projectID, `${category} Developer`);
         if (predictedDevelopers) {
             predictedDevelopers = predictedDevelopers.split(',');
             for (const id of predictedDevelopers) {
