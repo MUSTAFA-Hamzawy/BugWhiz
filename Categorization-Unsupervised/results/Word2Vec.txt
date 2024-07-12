@@ -1,0 +1,686 @@
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Training Word2Vec model with vector_size=1000 and window=1...
+Evaluating model with vector_size=1000 and window=1...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.56      0.23      0.32      1345
+    Frontend       0.51      0.39      0.44       987
+    Security       0.03      0.41      0.05        70
+
+    accuracy                           0.30      2402
+   macro avg       0.37      0.34      0.27      2402
+weighted avg       0.53      0.30      0.36      2402
+
+Confusion Matrix:
+[[305 340 700]
+ [223 386 378]
+ [ 15  26  29]]
+Accuracy: 0.2997502081598668
+Training Word2Vec model with vector_size=1000 and window=2...
+Evaluating model with vector_size=1000 and window=2...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.65      0.26      0.37      1345
+    Frontend       0.27      0.16      0.20       987
+    Security       0.04      0.66      0.07        70
+
+    accuracy                           0.23      2402
+   macro avg       0.32      0.36      0.21      2402
+weighted avg       0.47      0.23      0.29      2402
+
+Confusion Matrix:
+[[352 419 574]
+ [181 157 649]
+ [ 11  13  46]]
+Accuracy: 0.23105745212323064
+Training Word2Vec model with vector_size=1000 and window=3...
+Evaluating model with vector_size=1000 and window=3...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.53      0.28      0.37      1345
+    Frontend       0.52      0.34      0.41       987
+    Security       0.03      0.41      0.05        70
+
+    accuracy                           0.31      2402
+   macro avg       0.36      0.34      0.28      2402
+weighted avg       0.51      0.31      0.38      2402
+
+Confusion Matrix:
+[[380 291 674]
+ [318 333 336]
+ [ 19  22  29]]
+Accuracy: 0.3089092422980849
+Training Word2Vec model with vector_size=1000 and window=4...
+Evaluating model with vector_size=1000 and window=4...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.42      0.26      0.32      1345
+    Frontend       0.33      0.31      0.32       987
+    Security       0.04      0.33      0.06        70
+
+    accuracy                           0.28      2402
+   macro avg       0.26      0.30      0.23      2402
+weighted avg       0.37      0.28      0.31      2402
+
+Confusion Matrix:
+[[351 604 390]
+ [448 302 237]
+ [ 27  20  23]]
+Accuracy: 0.28143213988343047
+Training Word2Vec model with vector_size=1000 and window=5...
+Evaluating model with vector_size=1000 and window=5...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.51      0.39      0.44      1345
+    Frontend       0.34      0.22      0.27       987
+    Security       0.03      0.29      0.05        70
+
+    accuracy                           0.32      2402
+   macro avg       0.29      0.30      0.25      2402
+weighted avg       0.42      0.32      0.36      2402
+
+Confusion Matrix:
+[[527 410 408]
+ [475 217 295]
+ [ 33  17  20]]
+Accuracy: 0.3180682764363031
+Training Word2Vec model with vector_size=1000 and window=6...
+Evaluating model with vector_size=1000 and window=6...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.46      0.18      0.26      1345
+    Frontend       0.50      0.29      0.37       987
+    Security       0.03      0.54      0.06        70
+
+    accuracy                           0.24      2402
+   macro avg       0.33      0.34      0.23      2402
+weighted avg       0.46      0.24      0.30      2402
+
+Confusion Matrix:
+[[247 278 820]
+ [274 287 426]
+ [ 18  14  38]]
+Accuracy: 0.23813488759367193
+Training Word2Vec model with vector_size=1000 and window=7...
+Evaluating model with vector_size=1000 and window=7...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.50      0.32      0.39      1345
+    Frontend       0.30      0.20      0.24       987
+    Security       0.03      0.36      0.05        70
+
+    accuracy                           0.27      2402
+   macro avg       0.28      0.29      0.23      2402
+weighted avg       0.41      0.27      0.32      2402
+
+Confusion Matrix:
+[[432 438 475]
+ [398 200 389]
+ [ 27  18  25]]
+Accuracy: 0.27352206494587844
+Training Word2Vec model with vector_size=1000 and window=8...
+Evaluating model with vector_size=1000 and window=8...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.37      0.10      0.15      1345
+    Frontend       0.48      0.28      0.36       987
+    Security       0.03      0.59      0.05        70
+
+    accuracy                           0.19      2402
+   macro avg       0.29      0.32      0.19      2402
+weighted avg       0.41      0.19      0.23      2402
+
+Confusion Matrix:
+[[128 283 934]
+ [206 279 502]
+ [ 10  19  41]]
+Accuracy: 0.186511240632806
+Training Word2Vec model with vector_size=1000 and window=9...
+Evaluating model with vector_size=1000 and window=9...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.34      0.44      1345
+    Frontend       0.51      0.36      0.42       987
+    Security       0.03      0.43      0.06        70
+
+    accuracy                           0.35      2402
+   macro avg       0.38      0.38      0.31      2402
+weighted avg       0.55      0.35      0.42      2402
+
+Confusion Matrix:
+[[464 315 566]
+ [280 353 354]
+ [ 20  20  30]]
+Accuracy: 0.35262281432139886
+Training Word2Vec model with vector_size=1000 and window=10...
+Evaluating model with vector_size=1000 and window=10...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.62      0.42      0.50      1345
+    Frontend       0.58      0.24      0.34       987
+    Security       0.02      0.31      0.04        70
+
+    accuracy                           0.34      2402
+   macro avg       0.41      0.32      0.29      2402
+weighted avg       0.59      0.34      0.42      2402
+
+Confusion Matrix:
+[[562 154 629]
+ [311 237 439]
+ [ 30  18  22]]
+Accuracy: 0.3417985012489592
+Training Word2Vec model with vector_size=1000 and window=11...
+Evaluating model with vector_size=1000 and window=11...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.46      0.30      0.36      1345
+    Frontend       0.44      0.27      0.34       987
+    Security       0.02      0.33      0.05        70
+
+    accuracy                           0.29      2402
+   macro avg       0.31      0.30      0.25      2402
+weighted avg       0.44      0.29      0.34      2402
+
+Confusion Matrix:
+[[399 316 630]
+ [444 269 274]
+ [ 26  21  23]]
+Accuracy: 0.287676935886761
+Training Word2Vec model with vector_size=1000 and window=12...
+Evaluating model with vector_size=1000 and window=12...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.30      0.40      1345
+    Frontend       0.67      0.30      0.42       987
+    Security       0.03      0.47      0.05        70
+
+    accuracy                           0.31      2402
+   macro avg       0.43      0.36      0.29      2402
+weighted avg       0.61      0.31      0.40      2402
+
+Confusion Matrix:
+[[402 135 808]
+ [249 300 438]
+ [ 26  11  33]]
+Accuracy: 0.30599500416319736
+Training Word2Vec model with vector_size=1000 and window=13...
+Evaluating model with vector_size=1000 and window=13...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.62      0.35      0.44      1345
+    Frontend       0.58      0.47      0.51       987
+    Security       0.02      0.29      0.04        70
+
+    accuracy                           0.39      2402
+   macro avg       0.41      0.37      0.33      2402
+weighted avg       0.58      0.39      0.46      2402
+
+Confusion Matrix:
+[[467 313 565]
+ [264 459 264]
+ [ 24  26  20]]
+Accuracy: 0.3938384679433805
+Training Word2Vec model with vector_size=1000 and window=14...
+Evaluating model with vector_size=1000 and window=14...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.68      0.30      0.42      1345
+    Frontend       0.39      0.26      0.31       987
+    Security       0.04      0.66      0.07        70
+
+    accuracy                           0.29      2402
+   macro avg       0.37      0.40      0.27      2402
+weighted avg       0.54      0.29      0.36      2402
+
+Confusion Matrix:
+[[404 386 555]
+ [174 252 561]
+ [ 16   8  46]]
+Accuracy: 0.2922564529558701
+Training Word2Vec model with vector_size=1000 and window=15...
+Evaluating model with vector_size=1000 and window=15...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.45      0.32      0.37      1345
+    Frontend       0.45      0.28      0.34       987
+    Security       0.02      0.26      0.04        70
+
+    accuracy                           0.30      2402
+   macro avg       0.30      0.28      0.25      2402
+weighted avg       0.43      0.30      0.35      2402
+
+Confusion Matrix:
+[[429 324 592]
+ [498 274 215]
+ [ 35  17  18]]
+Accuracy: 0.30016652789342213
+Training Word2Vec model with vector_size=10000 and window=1...
+Evaluating model with vector_size=10000 and window=1...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.36      0.01      0.01      1345
+    Frontend       0.41      0.96      0.57       987
+    Security       0.05      0.03      0.04        70
+
+    accuracy                           0.40      2402
+   macro avg       0.27      0.33      0.21      2402
+weighted avg       0.37      0.40      0.24      2402
+
+Confusion Matrix:
+[[  10 1315   20]
+ [  16  949   22]
+ [   2   66    2]]
+Accuracy: 0.40008326394671107
+Training Word2Vec model with vector_size=10000 and window=2...
+Evaluating model with vector_size=10000 and window=2...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.41      0.24      2402
+
+Confusion Matrix:
+[[   0 1334   11]
+ [   0  983    4]
+ [   0   70    0]]
+Accuracy: 0.40924229808492923
+Training Word2Vec model with vector_size=10000 and window=3...
+Evaluating model with vector_size=10000 and window=3...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.38      0.01      0.01      1345
+    Frontend       0.41      0.98      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.26      0.33      0.20      2402
+weighted avg       0.38      0.41      0.24      2402
+
+Confusion Matrix:
+[[   9 1332    4]
+ [  12  969    6]
+ [   3   67    0]]
+Accuracy: 0.4071606994171524
+Training Word2Vec model with vector_size=10000 and window=4...
+Evaluating model with vector_size=10000 and window=4...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.41      0.24      2402
+
+Confusion Matrix:
+[[   0 1338    7]
+ [   0  985    2]
+ [   0   70    0]]
+Accuracy: 0.41007493755203994
+Training Word2Vec model with vector_size=10000 and window=5...
+Evaluating model with vector_size=10000 and window=5...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.67      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.36      0.33      0.20      2402
+weighted avg       0.54      0.41      0.24      2402
+
+Confusion Matrix:
+[[   2 1329   14]
+ [   1  985    1]
+ [   0   70    0]]
+Accuracy: 0.4109075770191507
+Training Word2Vec model with vector_size=10000 and window=6...
+Evaluating model with vector_size=10000 and window=6...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.67      0.09      0.16      1345
+    Frontend       0.41      0.84      0.56       987
+    Security       0.06      0.17      0.08        70
+
+    accuracy                           0.40      2402
+   macro avg       0.38      0.37      0.27      2402
+weighted avg       0.55      0.40      0.32      2402
+
+Confusion Matrix:
+[[ 123 1117  105]
+ [  59  830   98]
+ [   2   56   12]]
+Accuracy: 0.40174854288093254
+Training Word2Vec model with vector_size=10000 and window=7...
+Evaluating model with vector_size=10000 and window=7...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.55      0.00      0.01      1345
+    Frontend       0.41      0.99      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.32      0.33      0.20      2402
+weighted avg       0.48      0.41      0.24      2402
+
+Confusion Matrix:
+[[   6 1314   25]
+ [   5  976    6]
+ [   0   70    0]]
+Accuracy: 0.40882597835137385
+Training Word2Vec model with vector_size=10000 and window=8...
+Evaluating model with vector_size=10000 and window=8...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.42      0.98      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.40      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.40      0.24      2402
+
+Confusion Matrix:
+[[   0 1285   60]
+ [   1  965   21]
+ [   0   70    0]]
+Accuracy: 0.40174854288093254
+Training Word2Vec model with vector_size=10000 and window=9...
+Evaluating model with vector_size=10000 and window=9...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.62      0.07      0.13      1345
+    Frontend       0.42      0.89      0.57       987
+    Security       0.01      0.03      0.02        70
+
+    accuracy                           0.41      2402
+   macro avg       0.35      0.33      0.24      2402
+weighted avg       0.52      0.41      0.31      2402
+
+Confusion Matrix:
+[[  95 1133  117]
+ [  56  876   55]
+ [   3   65    2]]
+Accuracy: 0.40507910074937553
+Training Word2Vec model with vector_size=10000 and window=10...
+Evaluating model with vector_size=10000 and window=10...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.74      0.02      0.04      1345
+    Frontend       0.40      0.82      0.54       987
+    Security       0.03      0.14      0.05        70
+
+    accuracy                           0.35      2402
+   macro avg       0.39      0.33      0.21      2402
+weighted avg       0.58      0.35      0.24      2402
+
+Confusion Matrix:
+[[  25 1153  167]
+ [   9  812  166]
+ [   0   60   10]]
+Accuracy: 0.35262281432139886
+Training Word2Vec model with vector_size=10000 and window=11...
+Evaluating model with vector_size=10000 and window=11...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.76      0.12      0.21      1345
+    Frontend       0.40      0.71      0.52       987
+    Security       0.03      0.21      0.06        70
+
+    accuracy                           0.37      2402
+   macro avg       0.40      0.35      0.26      2402
+weighted avg       0.59      0.37      0.33      2402
+
+Confusion Matrix:
+[[162 986 197]
+ [ 47 705 235]
+ [  5  50  15]]
+Accuracy: 0.3671940049958368
+Training Word2Vec model with vector_size=10000 and window=12...
+Evaluating model with vector_size=10000 and window=12...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.75      0.06      0.11      1345
+    Frontend       0.44      0.90      0.59       987
+    Security       0.03      0.11      0.05        70
+
+    accuracy                           0.41      2402
+   macro avg       0.41      0.36      0.25      2402
+weighted avg       0.60      0.41      0.31      2402
+
+Confusion Matrix:
+[[  80 1085  180]
+ [  27  892   68]
+ [   0   62    8]]
+Accuracy: 0.4079933388842631
+Training Word2Vec model with vector_size=10000 and window=13...
+Evaluating model with vector_size=10000 and window=13...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.41      0.24      2402
+
+Confusion Matrix:
+[[   0 1345    0]
+ [   0  987    0]
+ [   0   70    0]]
+Accuracy: 0.4109075770191507
+Training Word2Vec model with vector_size=10000 and window=14...
+Evaluating model with vector_size=10000 and window=14...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.41      0.24      2402
+
+Confusion Matrix:
+[[   0 1345    0]
+ [   0  987    0]
+ [   0   70    0]]WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+
+Accuracy: 0.4109075770191507
+Training Word2Vec model with vector_size=10000 and window=15...
+Evaluating model with vector_size=10000 and window=15...
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_nmf.py:1665: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/usr/local/lib/python3.10/dist-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+WARNING:gensim.models.word2vec:Each 'sentences' item should be a list of words (usually unicode strings). First item here is instead plain <class 'str'>.
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.00      0.00      0.00      1345
+    Frontend       0.41      1.00      0.58       987
+    Security       0.00      0.00      0.00        70
+
+    accuracy                           0.41      2402
+   macro avg       0.14      0.33      0.19      2402
+weighted avg       0.17      0.41      0.24      2402
+
+Confusion Matrix:
+[[   0 1345    0]
+ [   0  987    0]
+ [   0   70    0]]
+Accuracy: 0.4109075770191507
+Training Word2Vec model with vector_size=100000 and window=1...
