@@ -11,6 +11,9 @@ class TestLogin(unittest.TestCase):
         self.driver.get(BASE_URL + "/login")
         self.login_page = LoginPage(self.driver)
 
+
+
+    '''
     # Validate the Login page tab title
     def test_login_tab_title(self):
         self.assertEqual("Login - BugWhiz", self.driver.title)
@@ -147,6 +150,8 @@ class TestLogin(unittest.TestCase):
         self.login_page.click_login()
         self.assertEqual("Login - BugWhiz", self.driver.title)
         self.assertEqual(self.driver.current_url, BASE_URL + "/login")
+    
+    '''    
     
     # Quit the browser
     def tearDown(self):

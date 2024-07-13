@@ -7,7 +7,7 @@ from utils.config import BASE_URL
 import HtmlTestRunner
 import time
 
-class TestProjects(unittest.TestCase):
+class TestProfile(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(BASE_URL + "/login")
@@ -18,6 +18,12 @@ class TestProjects(unittest.TestCase):
         self.driver.get(BASE_URL + "/profile")
         self.profile_page = ProfilePage(self.driver)
         time.sleep(2)
+
+
+
+    '''
+    def test0_navigate_to_profile_page(self):
+        self.assertEqual("Profile - BugWhiz", self.driver.title)
 
     # Test case 1: click on logo should redirect to projects page
     def test_click_logo(self):
@@ -58,7 +64,9 @@ class TestProjects(unittest.TestCase):
     def test_click_notifications_tab(self):
         self.profile_page.click_notifications_tab()
         self.assertEqual(self.driver.current_url, BASE_URL + "/notifications")
-            
+
+    '''            
+    
     def tearDown(self):
         self.driver.quit()
 

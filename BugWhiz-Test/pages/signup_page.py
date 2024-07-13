@@ -12,7 +12,7 @@ class SignupPage(BasePage):
         self.job_field = "//input[@id='jobTitle']"
         self.password_field = "//input[@id='password']"
         self.confirm_password_field = "//input[@id='confirmPassword']"
-        self.signup_button = "//button[@class='Register_button_common__THSL8']"
+        self.signup_button = "//*[@id='root']/div/div/div/form/button"
         self.login_link = "//a[@class='Register_loginLink__PyYqn']"
 
         # login page locators
@@ -21,16 +21,16 @@ class SignupPage(BasePage):
         self.login_button = "//button[@type='submit']"
 
         # error messages
-        self.fullname_error = "//p[normalize-space()='Full Name is required']"
-        self.username_error = "//p[normalize-space()='Username is required']"
-        self.email_required_error = "//p[normalize-space()='Email is required']"
-        self.email_invalid_error = "//p[normalize-space()='This is not a valid email format!']"
-        self.phone_error = "//p[normalize-space()='Phone Number is required']"
-        self.job_error = "//p[normalize-space()='Job Title is required']"
-        self.password_error = "//p[normalize-space()='Password is required']"
-        self.password_short_error = "//p[normalize-space()='Password must be more than 4 characters']"
-        self.confirm_password_error = "//p[normalize-space()='Confirm Password is required']"
-        self.confirm_password_mismatch_error = "//p[normalize-space()='Confirm password and password should be the same']"
+        self.fullname_error = "//p[normalize-space()='Full Name is required.']"
+        self.username_error = "//p[normalize-space()='Username is required.']"
+        self.email_required_error = "//p[normalize-space()='Email is required.']"
+        self.email_invalid_error = "//p[normalize-space()='This email is invalid.']"
+        self.phone_error = "//p[normalize-space()='Phone Number is required.']"
+        self.job_error = "//p[normalize-space()='Job Title is required.']"
+        self.password_error = "//p[normalize-space()='Password is required.']"
+        self.password_short_error = "//*[@id='root']/div/div/div/form/div/div[2]/p[2]"
+        self.confirm_password_error = "//p[normalize-space()='Confirm Password is required.']"
+        self.confirm_password_mismatch_error = "//*[@id='root']/div/div/div/form/div/div[2]/p[3]"
         
 
     def enter_username(self, username):
