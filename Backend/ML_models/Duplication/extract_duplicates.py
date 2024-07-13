@@ -215,6 +215,9 @@ if __name__ == "__main__":
         similarity = cosine_similarity(new_bug_tfidf, [features])[0][0]
         similarities[bug_id] = similarity
 
+    # if the similarity is less than 0.5, remove it from the similarities dictionary
+    similarities = {bug_id: similarity for bug_id, similarity in similarities.items() if similarity >= 0.5}
+
     # 9- Sort the tickets based on the cosine similarity in descending order
     sorted_tickets = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
