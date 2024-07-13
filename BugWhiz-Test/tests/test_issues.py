@@ -20,6 +20,7 @@ class TestIssues(unittest.TestCase):
         self.issue_details_page = IssueDetailsPage(self.driver)
 
     '''
+
     def test0_navigate_to_issues_page(self):
         self.assertEqual("Issues - BugWhiz", self.driver.title)
 

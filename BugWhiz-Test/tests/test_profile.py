@@ -19,9 +19,8 @@ class TestProfile(unittest.TestCase):
         self.profile_page = ProfilePage(self.driver)
         time.sleep(2)
 
-
-
     '''
+
     def test0_navigate_to_profile_page(self):
         self.assertEqual("Profile - BugWhiz", self.driver.title)
 
@@ -65,8 +64,8 @@ class TestProfile(unittest.TestCase):
         self.profile_page.click_notifications_tab()
         self.assertEqual(self.driver.current_url, BASE_URL + "/notifications")
 
-    '''            
-    
+    '''
+
     def tearDown(self):
         self.driver.quit()
 

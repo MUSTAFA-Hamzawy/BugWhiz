@@ -11,9 +11,8 @@ class TestSignup(unittest.TestCase):
         self.driver.get(BASE_URL + "/signup")
         self.signup_page = SignupPage(self.driver)
 
-
-
     '''
+
     def test_navigate_to_signup(self):
         self.assertEqual(self.driver.current_url, BASE_URL + "/signup")
         self.assertEqual("Sign UP - BugWhiz", self.driver.title)
@@ -280,7 +279,7 @@ class TestSignup(unittest.TestCase):
         self.assertEqual("Sign UP - BugWhiz", self.driver.title)
 
     '''
-
+    
     # Quit the browser after running the test
     def tearDown(self):
         self.driver.quit()

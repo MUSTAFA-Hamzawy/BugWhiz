@@ -8,13 +8,13 @@ class ProjectsPage(BasePage):
         self.logo = "//img[@alt='BugWhiz Logo']"
         self.projects_tab = "//a[@class='Header_active__cG4iu']"
 
-        self.project_name_field = "//*[@id='root']/div/div[2]/div[2]/table/tbody/tr[2]/td[1]/span"
+        self.project_name_field = "//h2[@id='modal-modal-title']/parent::*/child::*/div/input"
 
         self.first_project_name = " //*[@id='root']/div/div[2]/div[2]/table/tbody/tr[1]/td[1]/span"
         self.create_project_button = "//button[normalize-space()='Create Project']"
-        self.cancel_project_name_button = "/html/body/div[3]/div[3]/div[2]/button[2]"
+        self.cancel_project_name_button = "//button[contains(text(),'Cancel')]"
         
-        self.submit_project_name_button = "/html/body/div[3]/div[3]/div[2]/button[1]"
+        self.submit_project_name_button = "//button[contains(text(),'OK')]"
 
         self.notification_button = "//*[@id='root']/div/div[1]/div[3]/div/div/button/span[1]/svg"
 
@@ -77,10 +77,8 @@ class ProjectsPage(BasePage):
     def get_project_name(self):
         return self.driver.find_element(By.XPATH, self.first_project_name).text
     
-    def enter_project_name(self, project_name, project_number):
-        self.project_name_field = self.project_name_field.replace("1", project_number)
-        self.driver.find_element(By.XPATH, self.project_name_field).clear()
-        self.driver.find_element(By.XPATH, self.project_name_field).send_keys(project_name)
+    def enter_project_name(self):
+        self.driver.find_element(By.XPATH, self.project_name_field).send_keys("sprint2")
 
     def click_submit_project_name_button(self):
         self.driver.find_element(By.XPATH, self.submit_project_name_button).click()

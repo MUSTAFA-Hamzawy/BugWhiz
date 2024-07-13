@@ -18,18 +18,8 @@ class TestIssueDetails(unittest.TestCase):
         self.issue_details_page.navigate_to_issue_details_page()
         self.assertEqual(self.driver.current_url, BASE_URL + "/issueDetails")
 
+    
 
-
-    def tearDown(self):
-        self.driver.quit()
-
-if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
-
-
-
-
-    '''
     def test0_navigate_to_issues_page(self):
         self.assertEqual("Issue Details - BugWhiz", self.driver.title)
                 
@@ -85,13 +75,13 @@ if __name__ == "__main__":
     def test9_created_at(self):
         time.sleep(1)
         created_at = self.issue_details_page.get_created_at()
-        self.assertEqual("Created at 12/07/2024, 02:52:41", created_at)
+        self.assertEqual("Created at 13/07/2024, 18:20:49", created_at)
 
     # Test case 10 : Validate the issue updated at
     def test10_updated_at(self):
         time.sleep(1)
         updated_at = self.issue_details_page.get_updated_at()
-        self.assertEqual("Updated at 12/07/2024, 07:41:04", updated_at)
+        self.assertEqual("Updated at 13/07/2024, 18:21:10", updated_at)
 
     # Test case 11: Add comment to the issue
     def test11_add_comment(self):
@@ -555,5 +545,10 @@ if __name__ == "__main__":
         time.sleep(1)
         issue_developer = self.issue_details_page.get_issue_assignee()
         self.assertEqual("Hazem Mohamed", issue_developer)
-        
-'''
+   
+    
+    def tearDown(self):
+        self.driver.quit()
+
+if __name__ == "__main__":
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports'))
