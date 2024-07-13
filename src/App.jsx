@@ -63,7 +63,7 @@ function App() {
     const fetchUserProfile = async () => {
       if (userState.token && !userState.userData) {
         try {
-          const userProfileRes = await axios.get("http://51.20.81.93/api/user/profile", {
+          const userProfileRes = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user/profile`, {
             headers: {
               "Authorization": `Bearer ${userState.token}`
             }

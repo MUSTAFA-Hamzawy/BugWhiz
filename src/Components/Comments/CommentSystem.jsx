@@ -50,7 +50,7 @@ const Comment = ({
     if (editMode) {
       try {
         const token = localStorage.getItem('authToken');
-        await axios.patch('http://51.20.81.93:80/api/comment', {
+        await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/comment`, {
           commentID: comment._id,
           comment: inputRef.current?.innerText
         }, {
@@ -69,7 +69,7 @@ const Comment = ({
     } else {
       try {
         const token = localStorage.getItem('authToken');
-        await axios.post('http://51.20.81.93:80/api/comment', {
+        await axios.post(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/comment`, {
           ticketID: issueId,
           comment: input
         }, {
@@ -92,7 +92,7 @@ const Comment = ({
     if (confirmDelete) {
       try {
         const token = localStorage.getItem('authToken');
-        await axios.delete('http://51.20.81.93:80/api/comment', {
+        await axios.delete(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/comment`, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ const Comment = ({
         <>
           <div style={{marginBottom:'5px'}}>
           <Grid item xs={9} display="flex" alignItems="center">
-              <Avatar sx={{ width: 28, height: 28, mr: 1 }} alt={comment.userID.fullName} src={comment.userID && comment.userID.image ? `http://51.20.81.93/${comment.userID.image}` : null} />
+              <Avatar sx={{ width: 28, height: 28, mr: 1 }} alt={comment.userID.fullName} src={comment.userID && comment.userID.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${comment.userID.image}` : null} />
               <Typography variant="body2">{comment.userID.fullName}</Typography>
           </Grid>
           </div>

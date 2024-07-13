@@ -110,31 +110,22 @@
     width: 100% !important;
     white-space: normal !important;
     background-color: #f7f5f5 !important;
-    /* Light gray background */
     border-bottom: 1px solid #e3e0e0 !important;
-    /* Bottom border */
     padding: 10px 15px !important;
     margin-right: 0 !important;
-    /* Add some padding */
     transition: background-color 0.3s ease !important;
-    /* Smooth background color transition */
 }
 
 .notificationItem:hover {
     background-color: #eae6e6 !important;
-    /* Slightly darker background on hover */
 }
 
 .notificationContent {
     white-space: normal !important;
     word-wrap: break-word !important;
-    /* Ensure long words break */
     overflow: hidden !important;
-    /* Hide any overflowing text */
     color: #333 !important;
-    /* Text color */
     font-size: 14px !important;
-    /* Font size */
 }
 
 .buttonMenu {

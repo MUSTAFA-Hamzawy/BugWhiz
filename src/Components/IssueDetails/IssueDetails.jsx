@@ -42,7 +42,7 @@ const IssueDetails = ({userState}) => {
   const fetchComments = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get(`http://51.20.81.93:80/api/comment?ticketID=${issueId}`, {
+      const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/comment?ticketID=${issueId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -55,12 +55,13 @@ const IssueDetails = ({userState}) => {
   const fetchIssueDetails = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get(`http://51.20.81.93:80/api/ticket?ticketID=${issueId}`, {
+      const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/ticket?ticketID=${issueId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setIssueData(response.data);
+      console.log("issueData",response.data)
     } catch (error) {
     }
   };
@@ -85,7 +86,7 @@ const IssueDetails = ({userState}) => {
     );
   }
 
-  const baseUrl = 'http://51.20.81.93';
+  const baseUrl = `${process.env.REACT_APP_BUGWHIZ_API_URL}`;
 
   return (
     <>
@@ -158,14 +159,14 @@ const IssueDetails = ({userState}) => {
                 <div className={styles.detailsRow}>
                   <div className={styles.detailsLabel}>Assignee</div>
                   <div className={styles.detailsValue}>
-                    <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.developerID ? issueData.developerID.fullName : null} src={issueData.developerID && issueData.developerID.image ? `http://51.20.81.93/${issueData.developerID.image}` : null} />
+                    <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.developerID ? issueData.developerID.fullName : null} src={issueData.developerID && issueData.developerID.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${issueData.developerID.image}` : null} />
                     <Typography variant="body1">{issueData.developerID ? issueData.developerID.fullName : 'Unassigned'}</Typography>
                   </div>
                 </div>
                 <div className={styles.detailsRow}>
                   <div className={styles.detailsLabel}>Reporter</div>
                   <div className={styles.detailsValue}>
-                    <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.reporterID.fullName} src={issueData.reporterID && issueData.reporterID.image ? `http://51.20.81.93/${issueData.reporterID.image}` : null} />
+                    <Avatar sx={{ width: 32, height: 32, mr: 1 }} alt={issueData.reporterID.fullName} src={issueData.reporterID && issueData.reporterID.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${issueData.reporterID.image}` : null} />
                     <Typography variant="body1">{issueData.reporterID.fullName}</Typography>
                   </div>
                 </div>
@@ -207,6 +208,7 @@ const IssueDetails = ({userState}) => {
         ticketID={issueData._id}
         fetchIssueDetails={fetchIssueDetails}
         setUpdateNotify={setUpdateNotify} 
+        projectID={issueData.projectID._id}
       />
     </Box>
     </>

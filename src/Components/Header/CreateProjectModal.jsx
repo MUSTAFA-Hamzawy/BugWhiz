@@ -27,7 +27,7 @@ const CreateProjectModal = ({ open, handleClose, fetchProjects }) => {
   const handleCreateProject = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.post('http://51.20.81.93:80/api/project', { projectName }, {
+      await axios.post(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project`, { projectName }, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

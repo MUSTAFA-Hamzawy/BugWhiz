@@ -29,7 +29,7 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get('http://51.20.81.93/api/notify', {
+        const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/notify`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
           },
@@ -88,13 +88,12 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
 
   const handleMarkAsRead = async () => {
     try {
-      const response = await axios.patch('http://51.20.81.93/api/notify', {}, {
+      const response = await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/notify`, {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
       console.log(response.data);
-      // Optionally update notifications state if needed
       setNotifications([]);
     } catch (error) {
       console.error(error);
@@ -138,7 +137,7 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
             >
-              <Avatar sx={{ width: 44, height: 44, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+              <Avatar sx={{ width: 44, height: 44, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${userData?.image}` : null} />
             </IconButton>
           </Tooltip>
         </Box>
@@ -178,14 +177,14 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <div className={styles.dropdownAccount}>
-            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${userData?.image}` : null} />
             <div className={styles.dropdownDetails}>
               <div style={{ fontWeight: 'bold' }}>{userData?.fullName}</div>
               <div style={{ fontSize: '14px' }}>{userData?.email}</div>
             </div>
           </div>
           <MenuItem sx={{ marginTop: '7px' }} onClick={handleProfileClick}>
-            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `http://51.20.81.93/${userData?.image}` : null} />
+            <Avatar sx={{ width: 32, height: 32, fontSize: '17px', fontWeight: 'bold' }} alt={userData?.fullName} src={userData?.image ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${userData?.image}` : null} />
             Profile
           </MenuItem>
           <Divider />
@@ -208,10 +207,10 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
           elevation: 0,
           sx: {
             overflow: 'auto',
-            maxHeight: 300, // Set the maximum height here
+            maxHeight: 300, 
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
-            width: 280,  // Set a fixed width for the notification menu
+            width: 280,  
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
@@ -234,7 +233,7 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
         }}
         MenuListProps={{
           sx: {
-            paddingBottom: 0, // Set padding bottom to zero
+            paddingBottom: 0, 
             paddingTop:0,
           },
         }}
@@ -243,7 +242,7 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
       >
         {notifications?.length > 0 ? (<MenuItem className={styles.buttonMenu} onClick={handleMarkAsRead}>Mark as read</MenuItem>) :null}
         {notifications?.length > 0 ? (
-          notifications.map((notification, index) => (
+          notifications.slice().reverse().map((notification, index) => (
             <MenuItem key={index} className={styles.notificationItem} 
             onClick={() => {
               if (notification.projectID === null) {

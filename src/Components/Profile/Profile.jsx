@@ -113,7 +113,7 @@ const Profile = ({ userState, setUserState }) => {
 
     try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.patch('http://51.20.81.93:80/api/user', data, {
+        const response = await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data',
@@ -158,9 +158,9 @@ const Profile = ({ userState, setUserState }) => {
       <Card className={styles.profileContainer}>
         <div 
           className={styles.coverImage}
-          style={{ backgroundImage: `url(${`http://51.20.81.93/${coverImage}` || ''})` }}
+          style={{ backgroundImage: `url(${`${process.env.REACT_APP_BUGWHIZ_API_URL}/${coverImage}` || ''})` }}
         >
-          <Avatar className={styles.profileAvatar} alt={fullName} src={profileImage ? `http://51.20.81.93/${profileImage}` : null} />
+          <Avatar className={styles.profileAvatar} alt={fullName} src={profileImage ? `${process.env.REACT_APP_BUGWHIZ_API_URL}/${profileImage}` : null} />
           <Button 
             variant="contained" 
             color="primary" 

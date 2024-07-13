@@ -4,9 +4,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress'; 
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
-import PredictedDevelopersModal from './PredictedDevelopersModal'; // Import the new modal component
+import PredictedDevelopersModal from './PredictedDevelopersModal'; 
 import styles from './CreateIssueModal.module.css';
 
 const style = {
@@ -30,8 +31,9 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
   });
 
   const [error, setError] = React.useState('');
-  const [predictedData, setPredictedData] = useState(null); 
-  const [predictedModalOpen, setPredictedModalOpen] = useState(false); 
+  const [predictedData, setPredictedData] = useState(null);
+  const [predictedModalOpen, setPredictedModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,6 +56,7 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
   });
 
   const handleCreateIssue = async () => {
+    setLoading(true); 
     try {
       const token = localStorage.getItem('authToken');
       const { name, title, description, images } = issueData;
@@ -68,22 +71,24 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         formData.append(`images`, image);
       });
 
-      const response = await axios.post('http://51.20.81.93:80/api/ticket', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/ticket`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      console.log("post response",response);
+      console.log("post response",response.data);
       setError('');
       fetchIssues(false);
-      setPredictedData(response.data); // Store the response data
-      setPredictedModalOpen(true); // Open the new modal
+      setPredictedData(response.data); 
+      setPredictedModalOpen(true); 
       
       handleModalClose();
     } catch (error) {
       setError(error.response.data.errorDescription);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -161,10 +166,10 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         {error ? (<span style={{color:'red', fontSize:'16px'}}>{error}</span>):null}
         </div>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-          <Button className={styles.okButton} onClick={handleCreateIssue}>
-            OK
+          <Button className={styles.okButton} onClick={handleCreateIssue} disabled={loading}>
+            {loading ? <CircularProgress size={24} /> : 'OK'}
           </Button>
-          <Button className={styles.cancelButton} onClick={handleModalClose}>
+          <Button className={styles.cancelButton} onClick={handleModalClose} disabled={loading}>
             Cancel
           </Button>
         </Box>

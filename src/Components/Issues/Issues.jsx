@@ -57,7 +57,7 @@ const Issues = () => {
     try {
       const token = localStorage.getItem('authToken');
       if (search) {
-        const response = await axios.get('http://51.20.81.93:80/api/ticket/search', {
+        const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/ticket/search`, {
           params: {
             projectID: projectId,
             page: page,
@@ -80,7 +80,7 @@ const Issues = () => {
           setPage(page - 1);
         }
       } else {
-        const response = await axios.get('http://51.20.81.93:80/api/project/tickets', {
+        const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project/tickets`, {
           params: {
             projectID: projectId,
             page: page,
@@ -136,7 +136,7 @@ const Issues = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`http://51.20.81.93:80/api/ticket`, {
+      await axios.delete(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/ticket`, {
         data: { ticketID: deleteIssueId },
         headers: {
           Authorization: `Bearer ${token}`,

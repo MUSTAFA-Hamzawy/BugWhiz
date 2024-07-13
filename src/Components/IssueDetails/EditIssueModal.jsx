@@ -27,7 +27,7 @@ const style = {
   p: 4,
 };
 
-const EditIssueModal = ({ open, handleClose, setOpenModal, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails, setUpdateNotify }) => {
+const EditIssueModal = ({ open, handleClose, setOpenModal, category, description, developerID, priority, title, ticketStatus, ticketID, fetchIssueDetails, setUpdateNotify, projectID }) => {
   const [formCategory, setFormCategory] = useState(category);
   const [formDescription, setFormDescription] = useState(description);
   const [formDeveloperID, setFormDeveloperID] = useState(developerID);
@@ -53,11 +53,12 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
   const fetchDevelopers = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get('http://51.20.81.93:80/api/user', {
+      const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project/developers?projectID=${projectID}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('devs', response.data);
       setDevelopers(response.data);
     } catch (error) {
     }
@@ -89,7 +90,7 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
         priority: formPriority,
         ticketStatus: formTicketStatus
       };
-      await axios.patch('http://51.20.81.93:80/api/ticket', payload, {
+      await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/ticket`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -161,10 +162,9 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
               <Select
                 label="Status"
                 name="ticketStatus"
-                value={formTicketStatus || 'None'}
+                value={formTicketStatus || ''}
                 onChange={(e) => setFormTicketStatus(e.target.value)}
               >
-                <MenuItem value="None">None</MenuItem>
                 <MenuItem value="TODO">TODO</MenuItem>
                 <MenuItem value="Progress">In Progress</MenuItem>
                 <MenuItem value="Done">DONE</MenuItem>
@@ -177,10 +177,9 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
               <Select
                 label="Priority"
                 name="priority"
-                value={formPriority || 'None'}
+                value={formPriority || ''}
                 onChange={(e) => setFormPriority(e.target.value)}
               >
-                <MenuItem value="None">None</MenuItem>
                 <MenuItem value="P1">P1</MenuItem>
                 <MenuItem value="P2">P2</MenuItem>
                 <MenuItem value="P3">P3</MenuItem>
@@ -195,10 +194,9 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
               <Select
                 label="Category"
                 name="category"
-                value={formCategory || 'None'}
+                value={formCategory || ''}
                 onChange={(e) => setFormCategory(e.target.value)}
               >
-                <MenuItem value="None">None</MenuItem>
                 <MenuItem value="Frontend">Frontend</MenuItem>
                 <MenuItem value="Backend">Backend</MenuItem>
                 <MenuItem value="Security">Security</MenuItem>
@@ -231,7 +229,7 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
             </FormControl>
             {formDeveloperID && selectedDeveloper.fullName !== 'None' && (
               <Box mt={2} display="flex" alignItems="center">
-                <Avatar alt={selectedDeveloper.fullName} src={`http://51.20.81.93/${selectedDeveloper.image}`} />
+                <Avatar alt={selectedDeveloper.fullName} src={`${process.env.REACT_APP_BUGWHIZ_API_URL}/${selectedDeveloper.image}`} />
                 <Typography variant="body1" ml={2}>
                   {selectedDeveloper.fullName}
                 </Typography>

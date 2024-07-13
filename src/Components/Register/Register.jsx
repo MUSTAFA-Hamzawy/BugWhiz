@@ -39,6 +39,11 @@ const Register = () => {
       errors.confirmPassword = "Passwords don't match.";
     }
 
+    const phoneRegex = /^(011|012|010|015|\+2011|\+2012|\+2010|\+2015)\d{8}$/;
+    if (!formData.phoneNumber.match(phoneRegex)) {
+      errors.phoneNumber = "Phone number is invalid.";
+    }
+
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       return;
@@ -47,7 +52,7 @@ const Register = () => {
     setFieldErrors({});
     
     try {
-      const res = await axios.post("http://51.20.81.93:80/api/user/register/", formData, {
+      const res = await axios.post(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user/register/`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -73,74 +78,79 @@ const Register = () => {
         <form onSubmit={handleRegister}>
           <h1>Create your account</h1>
           <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
-          <div style={{width:'350px'}}>
-          <input
-            type="text"
-            name="fullName"
-            id="fullName"
-            placeholder="Full Name"
-            onChange={handleInputChange}
-            value={formData.fullName}
-          />
-          <p className={styles.error}>{fieldErrors.fullName}</p>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-            onChange={handleInputChange}
-            value={formData.username}
-          />
-          <p className={styles.error}>{fieldErrors.username}</p>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            onChange={handleInputChange}
-            value={formData.email}
-          />
-          <p className={styles.error}>{fieldErrors.email}</p>
-          <input
-            type="text"
-            name="phoneNumber"
-            id="phoneNumber"
-            placeholder="Phone Number"
-            onChange={handleInputChange}
-            value={formData.phoneNumber}
-          />
-          <p className={styles.error}>{fieldErrors.phoneNumber}</p> 
+            <div style={{width:'350px'}}>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                placeholder="Full Name"
+                onChange={handleInputChange}
+                value={formData.fullName}
+              />
+              <p className={styles.error}>{fieldErrors.fullName}</p>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                onChange={handleInputChange}
+                value={formData.username}
+              />
+              <p className={styles.error}>{fieldErrors.username}</p>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                onChange={handleInputChange}
+                value={formData.email}
+              />
+              <p className={styles.error}>{fieldErrors.email}</p>
+              <input
+                type="text"
+                name="phoneNumber"
+                id="phoneNumber"
+                placeholder="Phone Number"
+                onChange={handleInputChange}
+                value={formData.phoneNumber}
+              />
+              <p className={styles.error}>{fieldErrors.phoneNumber}</p> 
+            </div>
+            <div style={{width:'350px'}}>
+              <select
+                name="jobTitle"
+                id="jobTitle"
+                onChange={handleInputChange}
+                value={formData.jobTitle}
+                className={`${styles.select} ${!formData.jobTitle && styles.placeholder}`}
+              >
+                <option value="">Select Job Title</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+                <option value="Security Developer">Security Developer</option>
+                <option value="Documentation Developer">Documentation Developer</option>
+              </select>
+              <p className={styles.error}>{fieldErrors.jobTitle}</p>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                onChange={handleInputChange}
+                value={formData.password}
+              />
+              <p className={styles.error}>{fieldErrors.password}</p>
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                onChange={handleInputChange}
+                value={formData.confirmPassword}
+              />
+              <p className={styles.error}>{fieldErrors.confirmPassword}</p>
+            </div>
           </div>
-          <div style={{width:'350px'}}>
-          <input
-            type="text"
-            name="jobTitle"
-            id="jobTitle"
-            placeholder="Job Title"
-            onChange={handleInputChange}
-            value={formData.jobTitle}
-          />
-          <p className={styles.error}>{fieldErrors.jobTitle}</p>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={handleInputChange}
-            value={formData.password}
-          />
-          <p className={styles.error}>{fieldErrors.password}</p>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            placeholder="Confirm Password"
-            onChange={handleInputChange}
-            value={formData.confirmPassword}
-          />
-          <p className={styles.error}>{fieldErrors.confirmPassword}</p>
-          </div>
-        </div>
           <button className={styles.button_common} style={{ cursor: 'pointer' }}>
             Register
           </button>

@@ -23,7 +23,7 @@ const Login = ({ setUserState }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://51.20.81.93/api/user/login/", users, {
+      const res = await axios.post(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user/login/`, users, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -31,7 +31,7 @@ const Login = ({ setUserState }) => {
       const { token } = res.data;
       localStorage.setItem("authToken", token);
 
-      const userProfileRes = await axios.get("http://51.20.81.93/api/user/profile", {
+      const userProfileRes = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user/profile`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }

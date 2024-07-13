@@ -48,7 +48,7 @@ const Projects = ({userState}) => {
   const fetchProjects = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get('http://51.20.81.93:80/api/project', {
+      const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project`, {
         params: {
           page: page,
           limit: projectsPerPage
@@ -73,7 +73,7 @@ const Projects = ({userState}) => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get('http://51.20.81.93:80/api/user', {
+      const response = await axios.get(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -87,7 +87,7 @@ const Projects = ({userState}) => {
     try {
       const username = selectedUsers[projectID];
       const token = localStorage.getItem('authToken');
-      const response = await axios.patch(`http://51.20.81.93:80/api/project/add_user`, {
+      const response = await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project/add_user`, {
         projectID,
         username
       }, {
@@ -131,7 +131,7 @@ const Projects = ({userState}) => {
   const handleUpdateProject = async (projectID) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.patch(`http://51.20.81.93:80/api/project`, {
+      const response = await axios.patch(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project`, {
         projectID: projectID,
         projectName: newProjectName
       }, {
@@ -152,7 +152,7 @@ const Projects = ({userState}) => {
     try {
       console.log(deleteProjectId);
       const token = localStorage.getItem('authToken');
-      await axios.delete(`http://51.20.81.93:80/api/project`, {
+      await axios.delete(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project`, {
         data: { projectID: deleteProjectId },
         headers: {
           Authorization: `Bearer ${token}`,

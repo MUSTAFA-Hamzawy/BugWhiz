@@ -6,7 +6,8 @@
 }
 
 .branchName {
-    color: red !important;
-    font-size: 19px !important;
+    font-size: 21px !important;
     margin-bottom: 5px !important;
+    font-weight: bold !important;
+    text-align: center !important;
 }

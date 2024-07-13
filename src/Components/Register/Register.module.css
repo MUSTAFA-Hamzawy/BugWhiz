@@ -25,7 +25,8 @@
     width: 100%;
 }
 
-.register>form input {
+.register>form input,
+.register>form select {
     border-radius: 20px;
     border: 2px solid lightgrey;
     outline: none;
@@ -38,8 +39,45 @@
     transition: border-color 0.3s ease;
 }
 
-.register>form input:focus {
+.register>form input:focus,
+.register>form select:focus {
     border-color: #3b5998;
+}
+
+.register>form select {
+    cursor: pointer;
+}
+
+.select {
+    color: black;
+}
+
+.select.placeholder {
+    color: #808080;
+}
+
+.select.placeholder:second-child {
+    color: black;
+}
+
+.select option:last-child {
+    color: black;
+}
+
+.select option:nth-child(2) {
+    color: black;
+}
+
+.select option:nth-child(3) {
+    color: black;
+}
+
+.select option:nth-child(4) {
+    color: black;
+}
+
+.select option:first-child {
+    color: #808080;
 }
 
 .register .loginLink {
