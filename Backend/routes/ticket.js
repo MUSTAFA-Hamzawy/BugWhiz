@@ -21,13 +21,15 @@ module.exports = {
     searchForTicket,
     getTicket,
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    getTicketDuplicates
 } = TicketController;
 
 router.use(ValidateTokenMiddleware);
 
 
 router.get('/search', searchForTicket)
+router.get('/duplicates', getTicketDuplicates)
 
 router.post('/', upload.array('images'), createTicket);
 router.route('/')

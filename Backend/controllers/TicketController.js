@@ -157,7 +157,7 @@ const predictAssignee = asyncHandler(async (bugDescription, projectID, jobTitle)
 });
 
 const createTicket = asyncHandler(async (req, res) => {
-    const { name, title, description, projectID, images } = req.body;
+    const { name, title, description, projectID } = req.body;
 
     // validate authority
     if (!await ProjectModel.findOne({_id: projectID, createdBy: req.user.id.toString()})){
@@ -405,10 +405,49 @@ const deleteTicket = asyncHandler( async (req, res) =>{
 
 })
 
+const getTicketDuplicates = asyncHandler( async (req, res) =>{
+    const {ticketID, projectID} = req.query;
+    let ticketDescription = '';
+    try{
+        const ticket = await TicketModel.findById(ticketID)?.select('description');
+        if (ticket) ticketDescription = ticket['description'];
+
+        // extract duplicates using NLP model
+        let duplicateTickets = [];
+        try {
+            duplicates = await extractDuplicates(ticketDescription, projectID);
+            if (duplicates) {
+                duplicates = duplicates.split(',');
+
+                for (const duplicate of duplicates) {
+                    const [id, similarity] = duplicate.split(' ');
+                    if (id === ticketID) continue; // Skip this iteration if the id matches ticketID
+                    const ticket = await TicketModel.findById(id, 'name');
+                    if (ticket) {
+                        duplicateTickets.push({
+                            _id: ticket._id,
+                            name: ticket.name,
+                            similarity: `${parseFloat(similarity)}%`
+                        });
+                    }
+                }
+
+            }
+            res.json(duplicateTickets);
+        } catch (error) {
+            console.error(`Error while extracting duplicates : ${error}`);
+        }
+    }catch(error){
+        console.error(`Error while predicting the developer assignee : ${error}`);
+    }
+
+})
+
 module.exports = {
     createTicket,
     searchForTicket,
     getTicket,
     updateTicket,
     deleteTicket,
+    getTicketDuplicates
 }

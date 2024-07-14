@@ -270,10 +270,25 @@ const getAnalytics = asyncHandler(async (req, res) => {
         // 5. Developers
         const developersAggregation = await TicketModel.aggregate([
             { $match: { projectID: new mongoose.Types.ObjectId(projectID) } },
-            { $group: { _id: "$developerID", ticketsAssigned: { $sum: 1 }, todo: { $sum: { $cond: [{ $eq: ["$ticketStatus", "todo"] }, 1, 0] } }, progress: { $sum: { $cond: [{ $eq: ["$ticketStatus", "progress"] }, 1, 0] } }, done: { $sum: { $cond: [{ $eq: ["$ticketStatus", "done"] }, 1, 0] } } } },
+            { $group: {
+                    _id: "$developerID",
+                    ticketsAssigned: { $sum: 1 },
+                    todo: { $sum: { $cond: [{ $eq: ["$ticketStatus", "TODO"] }, 1, 0] } },
+                    progress: { $sum: { $cond: [{ $eq: ["$ticketStatus", "Progress"] }, 1, 0] } },
+                    done: { $sum: { $cond: [{ $eq: ["$ticketStatus", "Done"] }, 1, 0] } }
+                }},
             { $lookup: { from: "users", localField: "_id", foreignField: "_id", as: "developer" } },
             { $unwind: "$developer" },
-            { $project: { _id: 1, ticketsAssigned: 1, todo: 1, progress: 1, done: 1, "developer._id": 1, "developer.fullName": 1, "developer.image": 1 } }
+            { $project: {
+                    _id: 1,
+                    ticketsAssigned: 1,
+                    todo: 1,
+                    progress: 1,
+                    done: 1,
+                    "developer._id": 1,
+                    "developer.fullName": 1,
+                    "developer.image": 1
+                }}
         ]);
 
         const developers = developersAggregation.map(dev => ({
