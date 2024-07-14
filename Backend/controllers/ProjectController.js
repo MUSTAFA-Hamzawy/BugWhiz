@@ -57,6 +57,8 @@ const createProject = asyncHandler(async (req, res) => {
         await UserModel.findByIdAndUpdate(
             req.user.id,
             { $push: { projects: newProject._id } },
+            // useFindAndModify: false, to tell Mongoose to use the MongoDB driver's findOneAndUpdate() function
+            // rather than the deprecated findAndModify() function.
             { new: true, useFindAndModify: false }
         );
 
@@ -166,6 +168,7 @@ const deleteProject = asyncHandler(async (req, res) => {
             // Remove this projectID from the user's projects list
             await UserModel.updateMany(
                 { projects: projectID },
+                // $pull : to remove all instances of a specified value from an array in db
                 { $pull: { projects: projectID } }
             );
 
@@ -237,8 +240,24 @@ const getAnalytics = asyncHandler(async (req, res) => {
         // 2. Ticket Status
         const ticketStatusAggregation = await TicketModel.aggregate([
             { $match: { projectID: new mongoose.Types.ObjectId(projectID) } },
+            // $sum: 1 means that for each document in a group, 1 is added to the count.
             { $group: { _id: "$ticketStatus", count: { $sum: 1 } } }
         ]);
+
+        /*
+        ticketStatusAggregation now is something like this
+        [
+          { _id: 'TODO', count: 2 },
+          { _id: 'Done', count: 1 },
+          { _id: 'Progress', count: 2 }
+        ]
+        Need to apply reduce function to convert to this format
+        "ticketStatus": {
+                "TODO": 2,
+                "Done": 1,
+                "Progress": 2
+            },
+        * */
 
         const ticketStatus = ticketStatusAggregation.reduce((acc, status) => {
             acc[status._id] = status.count;
@@ -270,15 +289,22 @@ const getAnalytics = asyncHandler(async (req, res) => {
         // 5. Developers
         const developersAggregation = await TicketModel.aggregate([
             { $match: { projectID: new mongoose.Types.ObjectId(projectID) } },
+            // This stage groups the documents by the developerID field.
             { $group: {
                     _id: "$developerID",
+                    // { $sum: 1 }: Counts the total number of tickets assigned to each developer.
                     ticketsAssigned: { $sum: 1 },
+                    // { $sum: { $cond: [{ $eq: ["$ticketStatus", "TODO"] }, 1, 0] } }: Counts the number of tickets with the status "TODO" for each developer.
                     todo: { $sum: { $cond: [{ $eq: ["$ticketStatus", "TODO"] }, 1, 0] } },
                     progress: { $sum: { $cond: [{ $eq: ["$ticketStatus", "Progress"] }, 1, 0] } },
                     done: { $sum: { $cond: [{ $eq: ["$ticketStatus", "Done"] }, 1, 0] } }
                 }},
+            // This stage performs a left outer join with the users collection to get additional information about each developer.
             { $lookup: { from: "users", localField: "_id", foreignField: "_id", as: "developer" } },
+            // This stage deconstructs the developer array field from the previous stage so that each element of the array becomes a separate document.
+            // This is necessary because the join operation ($lookup) creates an array, but we want to work with single objects.
             { $unwind: "$developer" },
+            // Projection : This stage specifies which fields to include in the output documents.
             { $project: {
                     _id: 1,
                     ticketsAssigned: 1,

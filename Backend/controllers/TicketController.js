@@ -11,6 +11,8 @@ const {model} = require("mongoose");
 const multer = require('multer');
 const NotificationModel = require('../models/NotificationModel');
 
+// multer.diskStorage is a method provided by multer to set up the storage engine.
+// It specifies how and where to store the uploaded files on the disk.
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, 'uploads'));
@@ -20,6 +22,9 @@ const storage = multer.diskStorage({
         cb(null, uniqueSuffix + '-' + file.originalname);
     },
 });
+
+// Initialization multer with the defined storage configuration.
+// storage : is the storage engine defined earlier using multer.diskStorage.
 const upload = multer({ storage });
 
 /**
@@ -289,6 +294,7 @@ const searchForTicket = asyncHandler(async (req, res) => {
         // Build query object
         const query = {
             projectID,
+            // filtering the documents by the title field using a regular expression ($regex).
             title: { $regex: keyword, $options: 'i' } // 'i' for case-insensitive search
         };
 

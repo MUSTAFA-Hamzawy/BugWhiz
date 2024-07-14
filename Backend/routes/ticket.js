@@ -4,6 +4,8 @@ const TicketController = require('../controllers/TicketController');
 const multer = require('multer');
 const path = require('path');
 
+// multer.diskStorage is a method provided by multer to set up the storage engine.
+// It specifies how and where to store the uploaded files on the disk.
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '..', 'uploads'));
@@ -14,6 +16,8 @@ const storage = multer.diskStorage({
     },
 });
 
+// Initialization multer with the defined storage configuration.
+// storage : is the storage engine defined earlier using multer.diskStorage.
 const upload = multer({ storage });
 
 module.exports = {
