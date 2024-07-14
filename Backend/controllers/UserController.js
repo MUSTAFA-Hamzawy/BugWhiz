@@ -83,6 +83,8 @@ const validateRegistrationData = async(data)=>
     * must be at least 8 characters
     * no need to use special character ( optional )
      */
+    // (?=.*[A-Z]) : This is a positive lookahead that ensures at least one uppercase letter is present in the password.
+    // (?=.*\d) : This is another positive lookahead that ensures at least one digit is present in the password.
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z0-9]{8,}$/;
     if(password && !passwordRegex.test(password))
         errors.password =  "Password is not strong enough.";
@@ -146,6 +148,8 @@ const updateProfile = asyncHandler( async (req, res) => {
     const {fullName, phoneNumber, jobTitle} = req.body;
 
     // validate fullName
+    // (?!.*\s{2}) : This is a negative lookahead that ensures the string does not contain two consecutive spaces anywhere.
+    // (?:\s[a-zA-Z]+)* : This is a non-capturing group that matches zero or more occurrences of a space followed by one or more alphabetic characters.
     const nameRegex = /^(?!.*\s{2})[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
     if(fullName && !nameRegex.test(fullName.trim())){
         res.status(status.VALIDATION_ERROR);

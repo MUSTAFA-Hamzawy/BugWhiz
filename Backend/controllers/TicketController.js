@@ -11,6 +11,8 @@ const {model} = require("mongoose");
 const multer = require('multer');
 const NotificationModel = require('../models/NotificationModel');
 
+// multer.diskStorage is a method provided by multer to set up the storage engine.
+// It specifies how and where to store the uploaded files on the disk.
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, 'uploads'));
@@ -20,6 +22,9 @@ const storage = multer.diskStorage({
         cb(null, uniqueSuffix + '-' + file.originalname);
     },
 });
+
+// Initialization multer with the defined storage configuration.
+// storage : is the storage engine defined earlier using multer.diskStorage.
 const upload = multer({ storage });
 
 /**
@@ -122,9 +127,9 @@ const extractDuplicates = asyncHandler(async (bugDescription, projectID) => {
     });
 });
 
-const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
+const predictAssignee = asyncHandler(async (bugDescription, projectID, jobTitle) => {
     // Prepare the input to predictDev model
-    const developers = await UserModel.find({ projects: projectID }).select('_id jobTitle');
+    const developers = await UserModel.find({ projects: projectID, jobTitle }).select('_id jobTitle');
     const developersData = await getTicketsByDevelopers(developers);
     const modelInput = {
         bugDescription,
@@ -157,7 +162,7 @@ const predictAssignee = asyncHandler(async (bugDescription, projectID) => {
 });
 
 const createTicket = asyncHandler(async (req, res) => {
-    const { name, title, description, projectID, images } = req.body;
+    const { name, title, description, projectID } = req.body;
 
     // validate authority
     if (!await ProjectModel.findOne({_id: projectID, createdBy: req.user.id.toString()})){
@@ -211,14 +216,13 @@ const createTicket = asyncHandler(async (req, res) => {
         console.error(`Error while predicting the category : ${error}`);
     }
 
-    // TODO: predict priority using ML model
+    // predict priority using ML model
     let priority = "P1"  // default
-    // try {
-    //     priority = await predictPriority(description);
-    //     res.json(priority)
-    // } catch (error) {
-    //     console.error(`Error while predicting the priority : ${error}`);
-    // }
+    try {
+        priority = await predictPriority(description);
+    } catch (error) {
+        console.error(`Error while predicting the priority : ${error}`);
+    }
 
     // extract duplicates using NLP model
     let duplicateTickets = [];
@@ -248,7 +252,7 @@ const createTicket = asyncHandler(async (req, res) => {
     // predict developer to assign using ML model
     let developerDetails = [];
     try {
-        let predictedDevelopers = await predictAssignee(description, projectID);
+        let predictedDevelopers = await predictAssignee(description, projectID, `${category} Developer`);
         if (predictedDevelopers) {
             predictedDevelopers = predictedDevelopers.split(',');
             for (const id of predictedDevelopers) {
@@ -290,6 +294,7 @@ const searchForTicket = asyncHandler(async (req, res) => {
         // Build query object
         const query = {
             projectID,
+            // filtering the documents by the title field using a regular expression ($regex).
             title: { $regex: keyword, $options: 'i' } // 'i' for case-insensitive search
         };
 
@@ -406,10 +411,49 @@ const deleteTicket = asyncHandler( async (req, res) =>{
 
 })
 
+const getTicketDuplicates = asyncHandler( async (req, res) =>{
+    const {ticketID, projectID} = req.query;
+    let ticketDescription = '';
+    try{
+        const ticket = await TicketModel.findById(ticketID)?.select('description');
+        if (ticket) ticketDescription = ticket['description'];
+
+        // extract duplicates using NLP model
+        let duplicateTickets = [];
+        try {
+            duplicates = await extractDuplicates(ticketDescription, projectID);
+            if (duplicates) {
+                duplicates = duplicates.split(',');
+
+                for (const duplicate of duplicates) {
+                    const [id, similarity] = duplicate.split(' ');
+                    if (id === ticketID) continue; // Skip this iteration if the id matches ticketID
+                    const ticket = await TicketModel.findById(id, 'name');
+                    if (ticket) {
+                        duplicateTickets.push({
+                            _id: ticket._id,
+                            name: ticket.name,
+                            similarity: `${parseFloat(similarity)}%`
+                        });
+                    }
+                }
+
+            }
+            res.json(duplicateTickets);
+        } catch (error) {
+            console.error(`Error while extracting duplicates : ${error}`);
+        }
+    }catch(error){
+        console.error(`Error while predicting the developer assignee : ${error}`);
+    }
+
+})
+
 module.exports = {
     createTicket,
     searchForTicket,
     getTicket,
     updateTicket,
     deleteTicket,
+    getTicketDuplicates
 }

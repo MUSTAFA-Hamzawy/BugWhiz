@@ -1,4 +1,3 @@
-
 import numpy as np
 from scipy.spatial import distance  # to compute the Gaussian kernel
 import cvxopt                       # to solve the dual optimization problem
