@@ -6,8 +6,12 @@ from scipy.sparse import csr_matrix
 
 class SVM:
     linear = lambda x, x_dash , c=0: x @ x_dash .T
-    polynomial = lambda x, x_dash , Q=5: (1 + x @ x_dash.T)**Q
-    rbf = lambda x, x_dash , gamma=10: np.exp(-gamma * distance.cdist(x, x_dash,'sqeuclidean'))
+    # Q parameter controls the degree of non-linearity in the decision boundary.
+    polynomial = lambda x, x_dash , Q=3: (1 + x @ x_dash.T)**Q
+    # gamma parameter controls the kernel's width.
+    # Low values leading to a smoother decision boundary with more points considered similar.
+    # High values leading to a decision boundary that is more sensitive to individual points, potentially resulting in overfitting.
+    rbf = lambda x, x_dash , gamma=1: np.exp(-gamma * distance.cdist(x, x_dash,'sqeuclidean'))
     kernel_functions = {'linear': linear, 'polynomial': polynomial, 'rbf': rbf}
 
     def __init__(self, kernel='linear', C=1, k=2):
@@ -21,7 +25,7 @@ class SVM:
         self.X, y = None, None
         self.alpha = None
         self.multiclass = False
-        self.classifiers = []  
+        self.classifiers = []
 
     def fit(self, X, y, eval_train=False):
       if len(np.unique(y)) > 2:
@@ -29,18 +33,20 @@ class SVM:
           return self.multi_fit(X, y, eval_train)
 
       # relabel if needed
+      # if given labels are 0,1 --> change it to -1,1
       if set(np.unique(y)) == {0, 1}: y[y == 0] = -1
 
 
       # ensure y has dimensions Nx1
-      self.y = y.reshape(-1, 1).astype(np.double) # Has to be a column vector
+      self.y = y.reshape(-1, 1).astype(np.double)
 
       self.X = X
-      N = X.shape[0]
+      N = X.shape[0] # Number of points
 
       # compute the kernel over all possible pairs of (x, x') in the data
-      self.K = self.kernel(X, X, self.k)
+      self.K = self.kernel(X, X, self.k)   # slef.K now is a matrix contains results of applying the kernal function for each x,x'
 
+      # optimization problem : 1/2 alpha^T(yy^T*K)*alpha -1^T*alpha
       # For 1/2 x^T P x + q^T x
       P = cvxopt.matrix(self.y @ self.y.T * self.K)
       q = cvxopt.matrix(-np.ones((N, 1)))
@@ -54,40 +60,41 @@ class SVM:
       h = cvxopt.matrix(np.vstack((np.zeros((N,1)), np.ones((N,1)) * self.C)))
 
       # Solve
-      cvxopt.solvers.options['show_progress'] = False
       sol = cvxopt.solvers.qp(P, q, G, h, A, b)
-      self.alpha = np.array(sol["x"])
+      self.alpha = np.array(sol["x"])   # out support vectores now stored in self.alpha (α₁ α₂ … α_N)^T
 
       # Maps into support vectors
-      self.isSupportVector = ((self.alpha > 1e-3) & (self.alpha <= self.C)).squeeze()
-      self.marginSupportVector = np.argmax((1e-3 < self.alpha) & (self.alpha < self.C - 1e-3))
+      self.isSupportVector = ((self.alpha > 1e-3) & (self.alpha <= self.C)).squeeze()  # A boolean array indicating which data points are support vectors.
+      self.marginSupportVector = np.argmax((self.alpha > 1e-3) & (self.alpha < self.C - 1e-3))  # The index of one of the margin support vectors. This is used later for calculating the bias term b.
+
 
     def multi_fit(self, X, y, eval_train=False):
         self.k = len(np.unique(y))      # number of classes
         y = np.array(y)
-        # for each pair of classes
+        # We train a binary SVM classifier for each class present
         for i in range(self.k):
             # get the data for the pair
             Xs, Ys = X, copy.copy(y)
 
-            # change the labels to -1 and 1
+            # relabel points belonging to the current class into +1 and points from all other classes into -1.
             Ys[Ys!=i], Ys[Ys==i] = -1, +1
 
             # fit the classifier
             classifier = SVM(kernel=self.kernel_str, C=self.C, k=self.k)
             classifier.fit(Xs, Ys)
-            
+
             # save the classifier
             self.classifiers.append(classifier)
 
 
+    # prediction = sum(alhpa[i]y[i]K(x, x'))+(y_s - sum(alhpa[i]y[i]K(x,x_s)))
     def predict(self, X_t):
         if self.multiclass: return self.multi_predict(X_t)
+        # compute (x_s, y_s)
         x_s, y_s = self.X[self.marginSupportVector, np.newaxis], self.y[self.marginSupportVector]
         alpha, y, X= self.alpha[self.isSupportVector], self.y[self.isSupportVector], self.X[self.isSupportVector]
 
-        b = y_s - np.sum(alpha * y * self.kernel(X, x_s, self.k), axis=0)
-        score = np.sum(alpha * y * self.kernel(X, X_t, self.k), axis=0) + b
+        score = np.sum(alpha * y * self.kernel(X, X_t, self.k), axis=0) + y_s - np.sum(alpha * y * self.kernel(X, x_s, self.k), axis=0)
         return np.sign(score).astype(int), score
 
     def multi_predict(self, X):
