@@ -8,6 +8,26 @@ import joblib
 
 
 def try_ngram_combinations(data, ngram_range):
+    """
+        Generates TF-IDF weighted n-gram combinations from the input text data.
+
+        Parameters:
+        -----------
+        data : list of str
+            A list of textual data (documents) to be transformed into n-gram combinations.
+
+        ngram_range : tuple (min_n, max_n)
+            The lower and upper boundary of the range of n-values for different n-grams to be extracted.
+
+        Returns:
+        --------
+        X_transformed : sparse matrix of shape (n_samples, n_features)
+            The transformed data as a TF-IDF weighted term-document matrix.
+
+        vectorizer : TfidfVectorizer
+            The TfidfVectorizer instance that was used to perform the transformation, which includes
+            the fitted vocabulary and IDF values.
+    """
     results = []
 
     # Initialize the TfidfVectorizer
