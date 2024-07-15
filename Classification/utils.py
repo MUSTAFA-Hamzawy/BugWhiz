@@ -8,13 +8,23 @@ import string
 
 # Download the 'punkt' tokenizer from NLTK (Natural Language Toolkit) if not already downloaded
 nltk.download('punkt')
+"""
+
+The Punkt tokenizer from the Natural Language Toolkit (nltk) is a pre-trained unsupervised machine learning tokenizer
+that can segment a text into sentences.
+It splits text into sentences based on punctuation and context.
+"""
 
 # Download the stopwords dataset from NLTK if not already downloaded
 nltk.download('stopwords')
 
 # Initialize a Porter stemmer from NLTK for stemming words
 stemmer = PorterStemmer()
-
+"""
+Stemming is the process of reducing words to their root form or base form. 
+Computationally efficient and effective for large text corpora.
+iteratively strip suffixes from a word.
+"""
 # Retrieve the set of stopwords in English from NLTK
 stop_words = set(stopwords.words('english'))
 
@@ -78,6 +88,10 @@ def preprocess_summary(text):
 
     Returns:
     str: The preprocessed summary string.
+    """
+
+    """
+    re.sub(pattern, replacement, string)
     """
     # Remove hyperlinks from the text using regular expressions
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
