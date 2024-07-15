@@ -16,21 +16,87 @@ stop_words = set(stopwords.words('english'))
 
 
 def remove_punctuation(data):
+    """
+        Removes punctuation from the input text data.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data from which punctuation will be removed.
+
+        Returns:
+        --------
+        str
+            The text data with punctuation replaced by spaces.
+    """
     symbols = "!\"#$%&()*+-./:;<=>?@[\]^_`{|}~\n"
     for i in symbols:
         data = np.char.replace(data, i, ' ')
     return str(data)
 
 def convert_lower_case(data):
+    """
+        Converts all characters in the input text data to lowercase.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data to be converted to lowercase.
+
+        Returns:
+        --------
+        str
+            The text data with all characters in lowercase.
+    """
     return str(data).lower()
 
 def remove_apostrophe(data):
+    """
+        Removes apostrophes from the input text data.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data from which apostrophes will be removed.
+
+        Returns:
+        --------
+        str
+            The text data with apostrophes removed.
+
+    """
     return np.char.replace(data, "'", "")
 
 def remove_numbers(data):
+    """
+        Removes all numerical digits from the input text data.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data from which numbers will be removed.
+
+        Returns:
+        --------
+        str
+            The text data with all numerical digits removed.
+    """
     return re.sub(r'\d+', '', str(data))
 
 def remove_single_characters(tokens):
+    """
+        Removes single-character tokens from a list of tokens.
+
+        Parameters:
+        -----------
+        tokens : list of str
+            A list of tokens (words) from which single-character tokens will be removed.
+
+        Returns:
+        --------
+        str
+            A string with single-character tokens removed.
+    """
     new_text = ""
     for w in tokens:
         if len(w) > 1:
@@ -38,6 +104,19 @@ def remove_single_characters(tokens):
     return new_text
 
 def lemmatization(data):
+    """
+        Performs lemmatization on the input text data, reducing words to their base or root form.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data to be lemmatized.
+
+        Returns:
+        --------
+        str
+            The lemmatized text data.
+    """
     lemmatizer = WordNetLemmatizer()
     tokens = word_tokenize(data)
     data = remove_single_characters(tokens)
@@ -45,11 +124,39 @@ def lemmatization(data):
     return lemmatized_output
 
 def remove_stop_words(data):
+    """
+        Removes common stop words from the input text data.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data from which stop words will be removed.
+
+        Returns:
+        --------
+        str
+            The text data with stop words removed.
+    """
     tokens = word_tokenize(data)
     data = ' '.join([i for i in tokens if not i in stop_words])
     return data
 
 def preprocess(data):
+    """
+        Preprocesses the input text data by applying a series of transformations:
+        converting to lowercase, removing punctuation, removing apostrophes,
+        removing numbers, and lemmatizing.
+
+        Parameters:
+        -----------
+        data : str
+            The input text data to be preprocessed.
+
+        Returns:
+        --------
+        str
+            The preprocessed text data.
+    """
     data = convert_lower_case(data)
     data = remove_punctuation(data)
     data = remove_apostrophe(data)
