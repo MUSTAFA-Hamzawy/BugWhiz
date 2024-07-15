@@ -1,4 +1,0 @@
-joblib
-sklearn
-pandas
-nltk

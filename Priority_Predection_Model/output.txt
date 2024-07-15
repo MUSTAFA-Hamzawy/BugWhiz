@@ -1,0 +1,28 @@
+Custom Softmax Regression Train Accuracy: 0.9654
+Classification Report:
+              precision    recall  f1-score   support
+
+          P1       0.94      0.85      0.90      4110
+          P2       0.95      0.66      0.78      1866
+          P3       0.95      0.99      0.97     24599
+          P4       1.00      1.00      1.00      4304
+          P5       0.99      0.99      0.99     10500
+
+    accuracy                           0.97     45379
+   macro avg       0.97      0.90      0.93     45379
+weighted avg       0.97      0.97      0.96     45379
+
+Custom Softmax Regression Test Accuracy: 0.9432
+Classification Report:
+              precision    recall  f1-score   support
+
+          P1       0.88      0.74      0.80      1020
+          P2       0.87      0.51      0.64       458
+          P3       0.93      0.98      0.96      6132
+          P4       1.00      1.00      1.00      1107
+          P5       0.99      0.98      0.98      2628
+
+    accuracy                           0.94     11345
+   macro avg       0.93      0.84      0.88     11345
+weighted avg       0.94      0.94      0.94     11345
+
