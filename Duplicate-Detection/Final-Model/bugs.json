@@ -1,0 +1,45 @@
+{
+    "bugDescription": "Manual guide installation is not clear",
+    "projectTickets": [
+        {
+            "_id": "667ae020d82f1025bf6d18ec",
+            "description": "We need to enhance the logs page, and add filter to search by category"
+        },
+        {
+            "_id": "667ae03cd82f1025bf6d18f5",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae847247458fd23005e12",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae87292c61b91ae6d8df9",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae89c034b7e50dd2637c6",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae8b063b3024e3a7d0ff9",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae8dce3dfc6e8e99fd684",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae8e8c32f424f37186403",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667ae8f601729c25f807aa4c",
+            "description": "Manual guide installation is not clear"
+        },
+        {
+            "_id": "667c31adda673d8338f67339",
+            "description": "We need to enhance the logs page, and add filter to search by category"
+        }
+    ]
+}
