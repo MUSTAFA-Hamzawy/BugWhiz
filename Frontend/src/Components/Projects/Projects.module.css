@@ -6,7 +6,7 @@
 }
 
 .projectList {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     margin: 40px 0;
 }
@@ -164,23 +164,27 @@
     padding-bottom: 0 !important;
 }
 
-@media (max-width: 768px) {
-    .table {
-        width: 100%;
-    }
-    .projectsContainer {
-        padding: 10px;
-    }
-    .projectList {
-        width: 100%;
-        margin: 20px 0;
-    }
-    .textField {
-        margin-bottom: 10px;
-    }
+@media (max-width: 905px) {
     .okButton,
-    .cancelButton {
-        padding: 5px 10px;
-        font-size: 12px;
+    .deleteButton,
+    .cancelButton,
+    .viewIssuesButton,
+    .updateButton {
+        display: flex;
+        width: 67px;
+        padding: 7px;
+        padding-right: 5px;
+    }
+}
+
+@media (max-width: 746px) {
+    .deleteButton {
+        display: flex;
+    }
+}
+
+@media (max-width: 700px) {
+    .projectsContainer {
+        display: flow;
     }
 }

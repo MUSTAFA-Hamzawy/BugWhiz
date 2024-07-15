@@ -85,3 +85,63 @@
     align-items: center;
     gap: 10px;
 }
+
+.overlayModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 24px;
+    padding: 16px;
+    outline: none;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.duplicatesTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.duplicatesTable th,
+.duplicatesTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.duplicatesTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.issueLink {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 30px;
+}
+
+.issueLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .cardBody {
+        width: 590px;
+    }
+    .buttonCommon {
+        font-size: 10px !important;
+    }
+}

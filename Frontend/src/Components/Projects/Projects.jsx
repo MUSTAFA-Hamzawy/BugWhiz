@@ -150,7 +150,6 @@ const Projects = ({userState}) => {
 
   const handleDelete = async () => {
     try {
-      console.log(deleteProjectId);
       const token = localStorage.getItem('authToken');
       await axios.delete(`${process.env.REACT_APP_BUGWHIZ_API_URL}/api/project`, {
         data: { projectID: deleteProjectId },

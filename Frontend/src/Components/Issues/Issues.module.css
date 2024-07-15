@@ -207,3 +207,12 @@
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
+
+@media (max-width: 974px) {
+    .header {
+        display: inline-flex;
+    }
+    .buttonCommon {
+        font-size: 11.5px !important;
+    }
+}

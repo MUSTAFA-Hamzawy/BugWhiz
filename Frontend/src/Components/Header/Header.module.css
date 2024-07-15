@@ -137,3 +137,17 @@
 .buttonMenu:hover {
     background-color: #b3c2d7 !important;
 }
+
+@media (max-width: 775px) {
+    .headerContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 620px) {
+    .headerContainer {
+        width: 600px;
+    }
+}

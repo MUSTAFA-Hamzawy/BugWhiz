@@ -34,7 +34,6 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
           },
         });
-        console.log(response.data);
         setNotifications(response.data);
       } catch (error) {
         console.error(error);
@@ -93,7 +92,6 @@ const Header = ({ userState, fetchProjects, updateNotify }) => {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      console.log(response.data);
       setNotifications([]);
     } catch (error) {
       console.error(error);

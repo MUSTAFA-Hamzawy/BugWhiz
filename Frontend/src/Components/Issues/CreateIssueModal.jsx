@@ -78,7 +78,6 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
         },
       });
 
-      console.log("post response",response.data);
       setError('');
       fetchIssues(false);
       setPredictedData(response.data); 
@@ -86,6 +85,7 @@ const CreateIssueModal = ({ open, handleClose, projectId, fetchIssues }) => {
       
       handleModalClose();
     } catch (error) {
+      console.log('error',error.response);
       setError(error.response.data.errorDescription);
     } finally {
       setLoading(false);

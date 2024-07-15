@@ -58,7 +58,6 @@ const EditIssueModal = ({ open, handleClose, setOpenModal, category, description
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('devs', response.data);
       setDevelopers(response.data);
     } catch (error) {
     }

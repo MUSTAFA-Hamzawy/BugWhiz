@@ -29,7 +29,6 @@ const PredictedDevelopersModal = ({ open, handleClose, predictedData }) => {
   const [error, setError] = useState('');
   const [done, setDone] = useState('');
 
-  console.log('predictedData', predictedData);
 
   const handleViewIssueDetails = (issueID) => {
     navigate('/issueDetails', { state: { issueId: issueID } });
@@ -63,7 +62,6 @@ const PredictedDevelopersModal = ({ open, handleClose, predictedData }) => {
       setError('');
       setDone('User assigned successfully');
 
-      console.log('Ticket updated successfully', response.data);
 
     } catch (error) {
       console.error('There was an error updating the ticket!', error);
