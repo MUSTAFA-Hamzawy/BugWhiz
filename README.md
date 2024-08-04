@@ -8,9 +8,9 @@
 An Automated Bug Triaging System aims to streamline the process of handling bug reports in software development. It makes use of AI and machine learning to analyze bug reports, identify duplicates, assign them to the right developers, and prioritize them based on their criticality.
 <br/>
 <br/>
-<a href="https://drive.google.com/file/d/1pxL8Yt2HJNUQvWWIRSxTZZZNAAWxu3SN/view?usp=drive_link">View Demo .</a>  
-<a href="https://github.com/MUSTAFA-Hamzawy/BugWhiz/issues/new?labels=bug&amp;template=bug_report.md">Report Bug .</a>
-<a href="https://github.com/MUSTAFA-Hamzawy/BugWhiz/issues/new?labels=enhancement&amp;&template=feature_request.md">Request Feature</a>
+<a href="https://drive.google.com/file/d/1pxL8Yt2HJNUQvWWIRSxTZZZNAAWxu3SN/view?usp=drive_link" target="_blank">View Demo .</a>  
+<a href="https://github.com/MUSTAFA-Hamzawy/BugWhiz/issues/new?labels=bug&amp;template=bug_report.md" target="_blank">Report Bug .</a>
+<a href="https://github.com/MUSTAFA-Hamzawy/BugWhiz/issues/new?labels=enhancement&amp;&template=feature_request.md" target="_blank">Request Feature</a>
 </p>
 </div>
 
@@ -122,7 +122,7 @@ Don&#39;t forget to give the project a star! Thanks again!
 
 ## API Documentation
 
-<a href="https://documenter.getpostman.com/view/17672386/2sA2rDxfzx">Click here to explore API Docs.</a>
+<a href="https://documenter.getpostman.com/view/17672386/2sA2rDxfzx" target="_blank">Click here to explore API Docs.</a>
 
 ## Screenshots
 In progress ...
@@ -132,27 +132,27 @@ In progress ...
 <table>
   <tr>
     <td align="center">
-    <a href="https://github.com/MUSTAFA-Hamzawy" target="_black">
+    <a href="https://github.com/MUSTAFA-Hamzawy" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/72188665?v=4" width="150px;" alt="Mustafa Hamzawy"/>
     <br />
     <sub><b>Mustafa Hamzawy</b></sub></a>
     </td>
     <td align="center">
-    <a href="https://github.com/karimmahmoud22" target="_black">
+    <a href="https://github.com/karimmahmoud22" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/82693464?v=4" width="150px;" alt="Karim Mahmoud"/>
     <br />
     <sub><b>Karim Mahmoud</b></sub></a>
     </td>
         </td>
     <td align="center">
-    <a href="https://github.com/DoniaGameel" target="_black">
+    <a href="https://github.com/DoniaGameel" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/95960340?v=4" width="150px;" alt="Donia Gameel"/>
     <br />
     <sub><b>Donia Gameel</b></sub></a>
     </td>
         </td>
     <td align="center">
-    <a href="https://github.com/Karim-Mohamed20" target="_black">
+    <a href="https://github.com/Karim-Mohamed20" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/101477261?v=4" width="150px;" alt="Karim Muhammed"/>
     <br />
     <sub><b>Karim Muhammed</b></sub></a>
