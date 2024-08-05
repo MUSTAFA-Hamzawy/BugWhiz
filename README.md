@@ -24,7 +24,6 @@ An Automated Bug Triaging System aims to streamline the process of handling bug 
   - [Installation](#installation)
 - [Contributing](#contributing)
 - [API Documentation](#api-documentation)
-- [Screenshots](#screenshots)
 - [Contributors](#contributors)
 
 ## About The Project
@@ -123,9 +122,6 @@ Don&#39;t forget to give the project a star! Thanks again!
 ## API Documentation
 
 <a href="https://documenter.getpostman.com/view/17672386/2sA2rDxfzx" target="_blank">Click here to explore API Docs.</a>
-
-## Screenshots
-In progress ...
 
 ## Contributors
 
