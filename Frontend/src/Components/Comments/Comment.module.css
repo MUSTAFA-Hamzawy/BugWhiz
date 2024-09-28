@@ -1,0 +1,104 @@
+.commentContainer {
+    margin-top: 15px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.commentContainer:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+    margin-left: -7px;
+    width: 430px;
+}
+
+.inputContainer__input {
+    margin: 6px 0;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.first_input {
+    margin: 0;
+    padding: 10px;
+    width: 430px;
+}
+
+.commentContainer>span {
+    margin: 0 5px;
+    flex: 1;
+}
+
+.reply {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 5px;
+    background-color: #007bff;
+}
+
+.reply:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    color: #ffffff;
+    background-color: #007bff;
+}
+
+.inputSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 114px;
+}
+
+.commentButton {
+    padding: 6px;
+}
+
+input[type="text"] {
+    box-sizing: border-box;
+}
+
+span[contenteditable="true"] {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.okButton {
+    background-color: #6b8e23 !important;
+    color: white !important;
+}
+
+.okButton:hover {
+    background-color: #155a9e !important;
+}
+
+.cancelButton {
+    background-color: #f44336 !important;
+    color: white !important;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f !important;
+}
