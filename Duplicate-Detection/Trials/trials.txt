@@ -1,0 +1,36 @@
+some common methods:
+
+1. TF-IDF (Term Frequency-Inverse Document Frequency):
+   - Term Frequency (TF): Measures the frequency of a term in a document.
+   - Inverse Document Frequency (IDF): Measures the importance of a term by considering its frequency across all documents.
+   - TF-IDF: The product of TF and IDF, highlighting terms that are frequent in a document but infrequent in the entire corpus.
+    
+    Results:
+    --------
+    Precision: 0.8125
+    Recall: 0.8666666666666667
+    F1 Score: 0.8387096774193549
+    Accuracy Score: 0.9725274725274725
+================================================================================================
+2. Bag of Words (BoW):
+   - Represents text by the frequency of each word in the corpus.
+   - Simple but effective method where each document is represented as a vector of word counts.
+
+    Results:   
+    --------
+    Precision: 0.6190476190476191
+    Recall: 0.8219850486321256
+    F1 Score: 0.7222222222222222
+    Accuracy Score: 0.945054945054945
+
+================================================================================================
+
+3. Latent Semantic Analysis (LSA):
+   - Uses singular value decomposition (SVD) on term-document matrices to reduce dimensionality and capture latent semantic structures.
+
+   Results:
+   --------
+   Precision: 0.4482758620689655
+   Recall: 0.8483212785214235
+   F1 Score: 0.5909090909090909
+   Accuracy Score: 0.9010989010989011

@@ -1,0 +1,3272 @@
+BEST RESULTS:
+--------------
+
+Processing ngram_range: (3, 5)
+Top words for topic #0:
+['modify email template', 'set value reminder', 'problem smtp setup', 'attachment rest api', 'option project manager', 'notification removing assignment', 'abstraction layer notification', 'optional email header', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['changed email template', 'issue assigned group', 'cant delete account', 'smtp authentication failed', 'email configuration error', 'unify email notification', 'email dropped timeout', 'due date redmine', 'email notification error', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.82      0.34      0.48      1345
+    Frontend       0.50      0.90      0.64       987
+
+    accuracy                           0.58      2332
+   macro avg       0.66      0.62      0.56      2332
+weighted avg       0.69      0.58      0.55      2332
+
+Confusion Matrix:
+[[454 891]
+ [ 98 889]]
+Accuracy: 0.5759005145797599
+Precision: 0.5759005145797599
+Recall: 0.5759005145797599
+F1-Score: 0.5759005145797599
+
+*************************************************************************8
+
+Processing ngram_range: (1, 1)
+Top words for topic #0:
+['type', 'option', 'window', 'file', 'menu', 'notification', 'redmine', 'error', 'email', 'tab']
+
+
+Top words for topic #1:
+['email', 'rest', 'field', 'project', 'page', 'user', 'search', 'add', 'issue', 'api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.58      0.47      0.52      1345
+    Frontend       0.43      0.54      0.48       987
+
+    accuracy                           0.50      2332
+   macro avg       0.51      0.51      0.50      2332
+weighted avg       0.52      0.50      0.50      2332
+
+Confusion Matrix:
+[[638 707]
+ [453 534]]
+Accuracy: 0.5025728987993139
+Precision: 0.5025728987993139
+Recall: 0.5025728987993139
+F1-Score: 0.5025728987993139
+------------------------------------------------------------------
+Processing ngram_range: (1, 2)
+Top words for topic #0:
+['file', 'type', 'work', 'rest', 'issue', 'redmine', 'search', 'user', 'api', 'tab']
+
+
+Top words for topic #1:
+['tab', 'error', 'user', 'api', 'add', 'project', 'email notification', 'issue', 'email', 'notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.55      0.51      0.53      1345
+    Frontend       0.40      0.44      0.42       987
+
+    accuracy                           0.48      2332
+   macro avg       0.47      0.47      0.47      2332
+weighted avg       0.49      0.48      0.48      2332
+
+Confusion Matrix:
+[[686 659]
+ [555 432]]
+Accuracy: 0.4794168096054888
+Precision: 0.4794168096054888
+Recall: 0.4794168096054888
+F1-Score: 0.4794168096054888
+------------------------------------------------------------------
+Processing ngram_range: (1, 3)
+Top words for topic #0:
+['rest', 'add', 'issue', 'email notification', 'project', 'notification', 'email', 'user', 'tab', 'api']
+
+
+Top words for topic #1:
+['page', 'api', 'tab', 'redmine', 'add', 'notification', 'error', 'search', 'issue', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.60      0.50      0.55      1345
+    Frontend       0.44      0.55      0.49       987
+
+    accuracy                           0.52      2332
+   macro avg       0.52      0.52      0.52      2332
+weighted avg       0.53      0.52      0.52      2332
+
+Confusion Matrix:
+[[672 673]
+ [449 538]]
+Accuracy: 0.5188679245283019
+Precision: 0.5188679245283019
+Recall: 0.5188679245283019
+F1-Score: 0.5188679245283019
+------------------------------------------------------------------
+Processing ngram_range: (1, 4)
+Top words for topic #0:
+['new', 'search', 'error', 'redmine', 'add', 'user', 'project', 'api', 'issue', 'tab']
+
+
+Top words for topic #1:
+['error', 'search', 'tab', 'add', 'issue', 'user', 'api', 'email notification', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.67      0.50      0.57      1345
+    Frontend       0.49      0.66      0.56       987
+
+    accuracy                           0.57      2332
+   macro avg       0.58      0.58      0.57      2332
+weighted avg       0.59      0.57      0.57      2332
+
+Confusion Matrix:
+[[668 677]
+ [335 652]]
+Accuracy: 0.5660377358490566
+Precision: 0.5660377358490566
+Recall: 0.5660377358490566
+F1-Score: 0.5660377358490566
+------------------------------------------------------------------
+Processing ngram_range: (1, 5)
+Top words for topic #0:
+['error', 'project', 'add', 'issue', 'email notification', 'redmine', 'api', 'user', 'email', 'notification']
+
+
+Top words for topic #1:
+['new', 'user', 'project', 'add', 'error', 'search', 'api', 'issue', 'email', 'tab']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.53      0.49      0.51      1345
+    Frontend       0.37      0.41      0.39       987
+
+    accuracy                           0.46      2332
+   macro avg       0.45      0.45      0.45      2332
+weighted avg       0.46      0.46      0.46      2332
+
+Confusion Matrix:
+[[654 691]
+ [579 408]]
+Accuracy: 0.4554030874785592
+Precision: 0.4554030874785592
+Recall: 0.4554030874785592
+F1-Score: 0.4554030874785592
+------------------------------------------------------------------
+Processing ngram_range: (1, 6)
+Top words for topic #0:
+['file', 'page', 'error', 'project', 'email', 'api', 'user', 'search', 'tab', 'add']
+
+
+Top words for topic #1:
+['project', 'error', 'user', 'tab', 'email notification', 'redmine', 'api', 'issue', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.57      0.58      1345
+    Frontend       0.44      0.46      0.45       987
+
+    accuracy                           0.52      2332
+   macro avg       0.51      0.51      0.51      2332
+weighted avg       0.53      0.52      0.52      2332
+
+Confusion Matrix:
+[[769 576]
+ [537 450]]
+Accuracy: 0.5227272727272727
+Precision: 0.5227272727272727
+Recall: 0.5227272727272727
+F1-Score: 0.5227272727272727
+------------------------------------------------------------------
+Processing ngram_range: (1, 7)
+Top words for topic #0:
+['email notification', 'redmine', 'project', 'user', 'tab', 'error', 'search', 'issue', 'notification', 'email']
+
+
+Top words for topic #1:
+['project', 'rest', 'redmine', 'issue', 'add', 'user', 'notification', 'tab', 'email', 'api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.57      0.59      1345
+    Frontend       0.46      0.50      0.48       987
+
+    accuracy                           0.54      2332
+   macro avg       0.53      0.53      0.53      2332
+weighted avg       0.55      0.54      0.54      2332
+
+Confusion Matrix:
+[[763 582]
+ [492 495]]
+Accuracy: 0.5394511149228131
+Precision: 0.5394511149228131
+Recall: 0.5394511149228131
+F1-Score: 0.5394511149228131
+------------------------------------------------------------------
+Processing ngram_range: (1, 8)
+Top words for topic #0:
+['project', 'search', 'rest', 'error', 'add', 'tab', 'redmine', 'issue', 'user', 'api']
+
+
+Top words for topic #1:
+['user', 'search', 'add', 'error', 'project', 'issue', 'tab', 'email notification', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.56      0.49      0.52      1345
+    Frontend       0.40      0.47      0.43       987
+
+    accuracy                           0.48      2332
+   macro avg       0.48      0.48      0.48      2332
+weighted avg       0.49      0.48      0.48      2332
+
+Confusion Matrix:
+[[661 684]
+ [527 460]]
+Accuracy: 0.4807032590051458
+Precision: 0.4807032590051458
+Recall: 0.4807032590051458
+F1-Score: 0.4807032590051458
+------------------------------------------------------------------
+Processing ngram_range: (1, 9)
+Top words for topic #0:
+['support', 'notification', 'error', 'email', 'tab', 'user', 'add', 'issue', 'redmine', 'api']
+
+
+Top words for topic #1:
+['error', 'issue', 'search', 'api', 'email notification', 'project', 'user', 'tab', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.54      0.54      0.54      1345
+    Frontend       0.38      0.38      0.38       987
+
+    accuracy                           0.47      2332
+   macro avg       0.46      0.46      0.46      2332
+weighted avg       0.47      0.47      0.47      2332
+
+Confusion Matrix:
+[[725 620]
+ [614 373]]
+Accuracy: 0.47084048027444253
+Precision: 0.47084048027444253
+Recall: 0.47084048027444253
+F1-Score: 0.47084048027444253
+------------------------------------------------------------------
+Processing ngram_range: (1, 10)
+Top words for topic #0:
+['redmine', 'search', 'error', 'issue', 'email', 'tab', 'user', 'add', 'api', 'project']
+
+
+Top words for topic #1:
+['error', 'search', 'redmine', 'user', 'api', 'tab', 'issue', 'email notification', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.57      0.49      0.53      1345
+    Frontend       0.42      0.51      0.46       987
+
+    accuracy                           0.50      2332
+   macro avg       0.50      0.50      0.49      2332
+weighted avg       0.51      0.50      0.50      2332
+
+Confusion Matrix:
+[[653 692]
+ [483 504]]
+Accuracy: 0.4961406518010292
+Precision: 0.4961406518010292
+Recall: 0.4961406518010292
+F1-Score: 0.4961406518010292
+------------------------------------------------------------------
+Processing ngram_range: (1, 11)
+Top words for topic #0:
+['add', 'search', 'email', 'project', 'page', 'api', 'error', 'user', 'issue', 'tab']
+
+
+Top words for topic #1:
+['search', 'tab', 'add', 'user', 'issue', 'redmine', 'email notification', 'api', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.57      0.49      0.53      1345
+    Frontend       0.42      0.50      0.46       987
+
+    accuracy                           0.50      2332
+   macro avg       0.50      0.50      0.49      2332
+weighted avg       0.51      0.50      0.50      2332
+
+Confusion Matrix:
+[[658 687]
+ [490 497]]
+Accuracy: 0.49528301886792453
+Precision: 0.49528301886792453
+Recall: 0.49528301886792453
+F1-Score: 0.49528301886792453
+------------------------------------------------------------------
+Processing ngram_range: (1, 12)
+Top words for topic #0:
+['page', 'notification', 'api', 'new', 'issue', 'redmine', 'email', 'user', 'add', 'tab']
+
+
+Top words for topic #1:
+['redmine', 'search', 'project', 'error', 'user', 'email notification', 'issue', 'api', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.63      0.59      0.61      1345
+    Frontend       0.49      0.54      0.51       987
+
+    accuracy                           0.57      2332
+   macro avg       0.56      0.56      0.56      2332
+weighted avg       0.57      0.57      0.57      2332
+
+Confusion Matrix:
+[[787 558]
+ [454 533]]
+Accuracy: 0.5660377358490566
+Precision: 0.5660377358490566
+Recall: 0.5660377358490566
+F1-Score: 0.5660377358490566
+------------------------------------------------------------------
+Processing ngram_range: (1, 13)
+Top words for topic #0:
+['notification', 'file', 'search', 'issue', 'page', 'project', 'add', 'api', 'tab', 'user']
+
+
+Top words for topic #1:
+['add', 'search', 'tab', 'error', 'redmine', 'api', 'email notification', 'issue', 'notification', 'email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.58      0.49      0.53      1345
+    Frontend       0.42      0.51      0.46       987
+
+    accuracy                           0.50      2332
+   macro avg       0.50      0.50      0.50      2332
+weighted avg       0.51      0.50      0.50      2332
+
+Confusion Matrix:
+[[658 687]
+ [484 503]]
+Accuracy: 0.4978559176672384
+Precision: 0.4978559176672384
+Recall: 0.4978559176672384
+F1-Score: 0.4978559176672384
+------------------------------------------------------------------
+Processing ngram_range: (1, 14)
+Top words for topic #0:
+['tab', 'error', 'user', 'project', 'api', 'redmine', 'email notification', 'issue', 'notification', 'email']
+
+
+Top words for topic #1:
+['project', 'page', 'issue', 'new', 'error', 'search', 'add', 'user', 'api', 'tab']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.57      0.50      0.53      1345
+    Frontend       0.42      0.48      0.45       987
+
+    accuracy                           0.49      2332
+   macro avg       0.49      0.49      0.49      2332
+weighted avg       0.50      0.49      0.50      2332
+
+Confusion Matrix:
+[[677 668]
+ [513 474]]
+Accuracy: 0.4935677530017153
+Precision: 0.4935677530017153
+Recall: 0.4935677530017153
+F1-Score: 0.4935677530017153
+------------------------------------------------------------------
+Processing ngram_range: (1, 15)
+Top words for topic #0:
+['project', 'add', 'api', 'user', 'search', 'email notification', 'tab', 'issue', 'notification', 'email']
+
+
+Top words for topic #1:
+['notification', 'project', 'add', 'issue', 'email', 'tab', 'user', 'error', 'redmine', 'api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.50      0.54      1345
+    Frontend       0.43      0.52      0.47       987
+
+    accuracy                           0.51      2332
+   macro avg       0.51      0.51      0.51      2332
+weighted avg       0.52      0.51      0.51      2332
+
+Confusion Matrix:
+[[670 675]
+ [470 517]]
+Accuracy: 0.5090051457975986
+Precision: 0.5090051457975986
+Recall: 0.5090051457975986
+F1-Score: 0.5090051457975986
+------------------------------------------------------------------
+Processing ngram_range: (2, 2)
+Top words for topic #0:
+['working set', 'doe work', 'address bar', 'context menu', 'send email', 'search engine', 'custom field', 'new tab', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['content assist', 'error message', 'doesnt work', 'internal error', 'via rest', 'new tab', 'due date', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.63      0.45      0.52      1345
+    Frontend       0.46      0.64      0.54       987
+
+    accuracy                           0.53      2332
+   macro avg       0.55      0.55      0.53      2332
+weighted avg       0.56      0.53      0.53      2332
+
+Confusion Matrix:
+[[604 741]
+ [353 634]]
+Accuracy: 0.5308747855917667
+Precision: 0.5308747855917667
+Recall: 0.5308747855917667
+F1-Score: 0.5308747855917667
+------------------------------------------------------------------
+Processing ngram_range: (2, 3)
+Top words for topic #0:
+['send email notification', 'doesnt work', 'doe work', 'context menu', 'org eclipse', 'content assist', 'new tab', 'rest api', 'custom field', 'email notification']
+
+
+Top words for topic #1:
+['email template', 'custom field', 'context menu', 'working set', 'send notification', 'redmine api', 'new tab', 'due date', 'email notification', 'rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.45      0.52      1345
+    Frontend       0.45      0.61      0.52       987
+
+    accuracy                           0.52      2332
+   macro avg       0.53      0.53      0.52      2332
+weighted avg       0.54      0.52      0.52      2332
+
+Confusion Matrix:
+[[606 739]
+ [386 601]]
+Accuracy: 0.5175814751286449
+Precision: 0.5175814751286449
+Recall: 0.5175814751286449
+F1-Score: 0.5175814751286449
+------------------------------------------------------------------
+Processing ngram_range: (2, 4)
+Top words for topic #0:
+['issue status', 'internal error', 'context menu', 'address bar', 'redmine api', 'doesnt work', 'custom field', 'new tab', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['internal server error', 'internal server', 'server error', 'api response', 'due date', 'context menu', 'doe work', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.42      0.49      1345
+    Frontend       0.43      0.59      0.50       987
+
+    accuracy                           0.49      2332
+   macro avg       0.51      0.51      0.49      2332
+weighted avg       0.52      0.49      0.49      2332
+
+Confusion Matrix:
+[[570 775]
+ [403 584]]
+Accuracy: 0.49485420240137223
+Precision: 0.49485420240137223
+Recall: 0.49485420240137223
+F1-Score: 0.49485420240137223
+------------------------------------------------------------------
+Processing ngram_range: (2, 5)
+Top words for topic #0:
+['notification setting', 'search engine', 'email configuration', 'via rest', 'via rest api', 'email template', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['send mail', 'server error', 'error message', 'content assist', 'context menu', 'redmine api', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.45      0.52      1345
+    Frontend       0.45      0.61      0.52       987
+
+    accuracy                           0.52      2332
+   macro avg       0.53      0.53      0.52      2332
+weighted avg       0.54      0.52      0.52      2332
+
+Confusion Matrix:
+[[602 743]
+ [384 603]]
+Accuracy: 0.5167238421955404
+Precision: 0.5167238421955404
+Recall: 0.5167238421955404
+F1-Score: 0.5167238421955404
+------------------------------------------------------------------
+Processing ngram_range: (2, 6)
+Top words for topic #0:
+['api key', 'address bar', 'context menu', 'email configuration', 'send email', 'send email notification', 'send mail', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['notification email', 'context menu', 'content assist', 'doesnt work', 'redmine api', 'doe work', 'custom field', 'rest api', 'new tab', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.47      0.53      1345
+    Frontend       0.45      0.59      0.51       987
+
+    accuracy                           0.52      2332
+   macro avg       0.53      0.53      0.52      2332
+weighted avg       0.54      0.52      0.52      2332
+
+Confusion Matrix:
+[[628 717]
+ [403 584]]
+Accuracy: 0.5197255574614065
+Precision: 0.5197255574614065
+Recall: 0.5197255574614065
+F1-Score: 0.5197255574614065
+------------------------------------------------------------------
+Processing ngram_range: (2, 7)
+Top words for topic #0:
+['internal server error', 'server error', 'send mail', 'send email notification', 'redmine api', 'send email', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['address bar', 'doe work', 'email configuration', 'new tab', 'email template', 'due date', 'context menu', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.62      0.46      0.53      1345
+    Frontend       0.46      0.62      0.52       987
+
+    accuracy                           0.53      2332
+   macro avg       0.54      0.54      0.53      2332
+weighted avg       0.55      0.53      0.53      2332
+
+Confusion Matrix:
+[[618 727]
+ [378 609]]
+Accuracy: 0.5261578044596913
+Precision: 0.5261578044596913
+Recall: 0.5261578044596913
+F1-Score: 0.5261578044596913
+------------------------------------------------------------------
+Processing ngram_range: (2, 8)
+Top words for topic #0:
+['content assist', 'notification setting', 'context menu', 'error message', 'send notification', 'notification email', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['internal server error', 'internal server', 'email configuration', 'context menu', 'send email', 'send mail', 'redmine api', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.60      0.45      0.52      1345
+    Frontend       0.44      0.59      0.50       987
+
+    accuracy                           0.51      2332
+   macro avg       0.52      0.52      0.51      2332
+weighted avg       0.53      0.51      0.51      2332
+
+Confusion Matrix:
+[[609 736]
+ [408 579]]
+Accuracy: 0.5094339622641509
+Precision: 0.5094339622641509
+Recall: 0.5094339622641509
+F1-Score: 0.5094339622641509
+------------------------------------------------------------------
+Processing ngram_range: (2, 9)
+Top words for topic #0:
+['internal server', 'doe work', 'custom field', 'send email', 'server error', 'context menu', 'new tab', 'send notification', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['user api', 'content assist', 'doesnt work', 'context menu', 'redmine api', 'due date', 'new tab', 'custom field', 'email notification', 'rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.61      0.45      0.52      1345
+    Frontend       0.45      0.60      0.51       987
+
+    accuracy                           0.52      2332
+   macro avg       0.53      0.53      0.51      2332
+weighted avg       0.54      0.52      0.52      2332
+
+Confusion Matrix:
+[[610 735]
+ [396 591]]
+Accuracy: 0.5150085763293311
+Precision: 0.5150085763293311
+Recall: 0.5150085763293311
+F1-Score: 0.5150085763293311
+------------------------------------------------------------------
+Processing ngram_range: (2, 10)
+Top words for topic #0:
+['error message', 'mention user', 'mention user username', 'user username', 'doe work', 'new tab', 'redmine api', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['doesnt work', 'internal error', 'content assist', 'context menu', 'send email', 'due date', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.60      0.43      0.50      1345
+    Frontend       0.44      0.60      0.51       987
+
+    accuracy                           0.50      2332
+   macro avg       0.52      0.52      0.50      2332
+weighted avg       0.53      0.50      0.50      2332
+
+Confusion Matrix:
+[[581 764]
+ [392 595]]
+Accuracy: 0.5042881646655232
+Precision: 0.5042881646655232
+Recall: 0.5042881646655232
+F1-Score: 0.5042881646655232
+------------------------------------------------------------------
+Processing ngram_range: (2, 11)
+Top words for topic #0:
+['via rest api', 'via rest', 'send email notification', 'send email', 'redmine api', 'due date', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['doesnt work', 'email configuration', 'doe work', 'new tab', 'context menu', 'error message', 'email template', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.44      0.51      1345
+    Frontend       0.44      0.59      0.50       987
+
+    accuracy                           0.50      2332
+   macro avg       0.52      0.52      0.50      2332
+weighted avg       0.53      0.50      0.50      2332
+
+Confusion Matrix:
+[[592 753]
+ [404 583]]
+Accuracy: 0.5038593481989708
+Precision: 0.5038593481989708
+Recall: 0.5038593481989708
+F1-Score: 0.5038593481989708
+------------------------------------------------------------------
+Processing ngram_range: (2, 12)
+Top words for topic #0:
+['send notification', 'send email notification', 'send mail', 'redmine api', 'send email', 'content assist', 'custom field', 'new tab', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['notification email', 'email configuration', 'context menu', 'error message', 'email template', 'due date', 'new tab', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.43      0.50      1345
+    Frontend       0.43      0.58      0.50       987
+
+    accuracy                           0.50      2332
+   macro avg       0.51      0.51      0.50      2332
+weighted avg       0.52      0.50      0.50      2332
+
+Confusion Matrix:
+[[580 765]
+ [410 577]]
+Accuracy: 0.4961406518010292
+Precision: 0.4961406518010292
+Recall: 0.4961406518010292
+F1-Score: 0.4961406518010292
+------------------------------------------------------------------
+Processing ngram_range: (2, 13)
+Top words for topic #0:
+['user api', 'doe work', 'internal error', 'due date', 'content assist', 'new tab', 'email template', 'custom field', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['server error', 'send email notification', 'send mail', 'context menu', 'send notification', 'send email', 'redmine api', 'new tab', 'email notification', 'rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.59      0.45      0.51      1345
+    Frontend       0.44      0.57      0.49       987
+
+    accuracy                           0.50      2332
+   macro avg       0.51      0.51      0.50      2332
+weighted avg       0.53      0.50      0.51      2332
+
+Confusion Matrix:
+[[610 735]
+ [421 566]]
+Accuracy: 0.5042881646655232
+Precision: 0.5042881646655232
+Recall: 0.5042881646655232
+F1-Score: 0.5042881646655232
+------------------------------------------------------------------
+Processing ngram_range: (2, 14)
+Top words for topic #0:
+['notification setting', 'send email notification', 'content assist', 'send email', 'send mail', 'context menu', 'custom field', 'new tab', 'rest api', 'email notification']
+
+
+Top words for topic #1:
+['internal server', 'internal server error', 'email configuration', 'org eclipse', 'new tab', 'send notification', 'redmine api', 'custom field', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.62      0.44      0.51      1345
+    Frontend       0.45      0.63      0.53       987
+
+    accuracy                           0.52      2332
+   macro avg       0.53      0.53      0.52      2332
+weighted avg       0.55      0.52      0.52      2332
+
+Confusion Matrix:
+[[587 758]
+ [365 622]]
+Accuracy: 0.5184391080617495
+Precision: 0.5184391080617495
+Recall: 0.5184391080617495
+F1-Score: 0.5184391080617495
+------------------------------------------------------------------
+Processing ngram_range: (2, 15)
+Top words for topic #0:
+['server error', 'address bar', 'db migrate', 'notification email', 'context menu', 'new tab', 'due date', 'custom field', 'email notification', 'rest api']
+
+
+Top words for topic #1:
+['user username', 'mention user username', 'mention user', 'error message', 'content assist', 'doe work', 'new tab', 'redmine api', 'rest api', 'email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.63      0.47      0.54      1345
+    Frontend       0.47      0.63      0.54       987
+
+    accuracy                           0.54      2332
+   macro avg       0.55      0.55      0.54      2332
+weighted avg       0.56      0.54      0.54      2332
+
+Confusion Matrix:
+[[630 715]
+ [363 624]]
+Accuracy: 0.5377358490566038
+Precision: 0.5377358490566038
+Recall: 0.5377358490566038
+F1-Score: 0.5377358490566038
+------------------------------------------------------------------
+Processing ngram_range: (3, 3)
+Top words for topic #0:
+['cant delete account', 'unify email notification', 'due date redmine', 'email dropped timeout', 'email configuration error', 'email notification error', 'org eclipse ui', 'attachment rest api', 'mention user username', 'send email notification']
+
+
+Top words for topic #1:
+['optional email header', 'smtp authentication failed', 'abstraction layer notification', 'new tab page', 'value custom field', 'issue assigned group', 'add automated test', 'single tracking bug', 'internal server error', 'via rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.79      0.31      0.45      1345
+    Frontend       0.49      0.89      0.63       987
+
+    accuracy                           0.56      2332
+   macro avg       0.64      0.60      0.54      2332
+weighted avg       0.66      0.56      0.52      2332
+
+Confusion Matrix:
+[[421 924]
+ [112 875]]
+Accuracy: 0.5557461406518011
+Precision: 0.5557461406518011
+Recall: 0.5557461406518011
+F1-Score: 0.5557461406518011
+------------------------------------------------------------------
+Processing ngram_range: (3, 4)
+Top words for topic #0:
+['changed email template', 'modify email template', 'picture email notification', 'author name mail', 'via rest api', 'optional email header', 'unify email notification', 'email configuration error', 'email notification error', 'send email notification']
+
+
+Top words for topic #1:
+['email notification setting', 'option project manager', 'due date redmine', 'email dropped timeout', 'notification removing assignment', 'cant delete account', 'abstraction layer notification', 'smtp authentication failed', 'internal server error', 'mention user username']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.82      0.30      0.44      1345
+    Frontend       0.49      0.91      0.64       987
+
+    accuracy                           0.56      2332
+   macro avg       0.65      0.61      0.54      2332
+weighted avg       0.68      0.56      0.52      2332
+
+Confusion Matrix:
+[[405 940]
+ [ 89 898]]
+Accuracy: 0.5587478559176673
+Precision: 0.5587478559176673
+Recall: 0.5587478559176673
+F1-Score: 0.5587478559176673
+------------------------------------------------------------------
+Processing ngram_range: (3, 5)
+Top words for topic #0:
+['modify email template', 'set value reminder', 'problem smtp setup', 'attachment rest api', 'option project manager', 'notification removing assignment', 'abstraction layer notification', 'optional email header', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['changed email template', 'issue assigned group', 'cant delete account', 'smtp authentication failed', 'email configuration error', 'unify email notification', 'email dropped timeout', 'due date redmine', 'email notification error', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.82      0.34      0.48      1345
+    Frontend       0.50      0.90      0.64       987
+
+    accuracy                           0.58      2332
+   macro avg       0.66      0.62      0.56      2332
+weighted avg       0.69      0.58      0.55      2332
+
+Confusion Matrix:
+[[454 891]
+ [ 98 889]]
+Accuracy: 0.5759005145797599
+Precision: 0.5759005145797599
+Recall: 0.5759005145797599
+F1-Score: 0.5759005145797599
+------------------------------------------------------------------
+Processing ngram_range: (3, 6)
+Top words for topic #0:
+['associated revision api', 'issue assigned group', 'send mail option', 'mail ssl working', 'smtp authentication failed', 'option project manager', 'cant delete account', 'optional email header', 'internal server error', 'send email notification']
+
+
+Top words for topic #1:
+['set value reminder', 'issue email notification', 'abstraction layer notification', 'email configuration error', 'unify email notification', 'due date redmine', 'notification removing assignment', 'email dropped timeout', 'email notification error', 'mention user username']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.81      0.32      0.46      1345
+    Frontend       0.49      0.90      0.64       987
+
+    accuracy                           0.56      2332
+   macro avg       0.65      0.61      0.55      2332
+weighted avg       0.67      0.56      0.53      2332
+
+Confusion Matrix:
+[[431 914]
+ [102 885]]
+Accuracy: 0.5643224699828473
+Precision: 0.5643224699828473
+Recall: 0.5643224699828473
+F1-Score: 0.5643224699828473
+------------------------------------------------------------------
+Processing ngram_range: (3, 7)
+Top words for topic #0:
+['private issue notification', 'problem smtp setup', 'author name mail', 'email configuration error', 'smtp authentication failed', 'abstraction layer notification', 'option project manager', 'cant delete account', 'internal server error', 'send email notification']
+
+
+Top words for topic #1:
+['picture email notification', 'modify email template', 'email notification setting', 'attachment rest api', 'unify email notification', 'due date redmine', 'optional email header', 'email dropped timeout', 'notification removing assignment', 'mention user username']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.81      0.31      0.45      1345
+    Frontend       0.49      0.90      0.63       987
+
+    accuracy                           0.56      2332
+   macro avg       0.65      0.61      0.54      2332
+weighted avg       0.68      0.56      0.53      2332
+
+Confusion Matrix:
+[[416 929]
+ [ 96 891]]
+Accuracy: 0.5604631217838765
+Precision: 0.5604631217838765
+Recall: 0.5604631217838765
+F1-Score: 0.5604631217838765
+------------------------------------------------------------------
+Processing ngram_range: (3, 8)
+Top words for topic #0:
+['set value reminder', 'send mail option', 'email notification setting', 'email configuration error', 'cant delete account', 'email dropped timeout', 'due date redmine', 'email notification error', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['picture email notification', 'private issue notification', 'problem smtp setup', 'option project manager', 'optional email header', 'unify email notification', 'notification removing assignment', 'abstraction layer notification', 'smtp authentication failed', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.80      0.30      0.43      1345
+    Frontend       0.48      0.90      0.63       987
+
+    accuracy                           0.55      2332
+   macro avg       0.64      0.60      0.53      2332
+weighted avg       0.67      0.55      0.52      2332
+
+Confusion Matrix:
+[[399 946]
+ [ 99 888]]
+Accuracy: 0.5518867924528302
+Precision: 0.5518867924528302
+Recall: 0.5518867924528302
+F1-Score: 0.5518867924528302
+------------------------------------------------------------------
+Processing ngram_range: (3, 9)
+Top words for topic #0:
+['send mail option', 'problem smtp setup', 'email dropped timeout', 'due date redmine', 'abstraction layer notification', 'notification removing assignment', 'option project manager', 'unify email notification', 'optional email header', 'send email notification']
+
+
+Top words for topic #1:
+['notification setting group', 'private issue notification', 'picture email notification', 'mail ssl working', 'email configuration error', 'smtp authentication failed', 'cant delete account', 'email notification error', 'internal server error', 'mention user username']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.79      0.33      0.47      1345
+    Frontend       0.49      0.88      0.63       987
+
+    accuracy                           0.56      2332
+   macro avg       0.64      0.61      0.55      2332
+weighted avg       0.67      0.56      0.54      2332
+
+Confusion Matrix:
+[[447 898]
+ [117 870]]
+Accuracy: 0.5647512864493996
+Precision: 0.5647512864493996
+Recall: 0.5647512864493996
+F1-Score: 0.5647512864493996
+------------------------------------------------------------------
+Processing ngram_range: (3, 10)
+Top words for topic #0:
+['send mail option', 'set value reminder', 'unify email notification', 'email configuration error', 'optional email header', 'notification removing assignment', 'option project manager', 'due date redmine', 'attachment rest api', 'mention user username']
+
+
+Top words for topic #1:
+['picture email notification', 'private issue notification', 'changed email template', 'mail ssl working', 'email dropped timeout', 'abstraction layer notification', 'cant delete account', 'smtp authentication failed', 'internal server error', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.81      0.32      0.46      1345
+    Frontend       0.49      0.90      0.64       987
+
+    accuracy                           0.57      2332
+   macro avg       0.65      0.61      0.55      2332
+weighted avg       0.68      0.57      0.54      2332
+
+Confusion Matrix:
+[[437 908]
+ [101 886]]
+Accuracy: 0.5673241852487135
+Precision: 0.5673241852487135
+Recall: 0.5673241852487135
+F1-Score: 0.5673241852487135
+------------------------------------------------------------------
+Processing ngram_range: (3, 11)
+Top words for topic #0:
+['problem smtp setup', 'changed email template', 'email notification setting', 'send mail option', 'email dropped timeout', 'abstraction layer notification', 'option project manager', 'optional email header', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['modify email template', 'set value reminder', 'attachment rest api', 'due date redmine', 'cant delete account', 'email configuration error', 'notification removing assignment', 'unify email notification', 'smtp authentication failed', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.80      0.31      0.44      1345
+    Frontend       0.49      0.89      0.63       987
+
+    accuracy                           0.55      2332
+   macro avg       0.64      0.60      0.54      2332
+weighted avg       0.67      0.55      0.52      2332
+
+Confusion Matrix:
+[[412 933]
+ [105 882]]
+Accuracy: 0.5548885077186964
+Precision: 0.5548885077186964
+Recall: 0.5548885077186964
+F1-Score: 0.5548885077186964
+------------------------------------------------------------------
+Processing ngram_range: (3, 12)
+Top words for topic #0:
+['notification removing assignment', 'due date redmine', 'unify email notification', 'option project manager', 'abstraction layer notification', 'email dropped timeout', 'cant delete account', 'optional email header', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['set value reminder', 'private issue notification', 'picture email notification', 'email notification setting', 'mail ssl working', 'smtp authentication failed', 'email configuration error', 'attachment rest api', 'email notification error', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.82      0.32      0.46      1345
+    Frontend       0.49      0.90      0.64       987
+
+    accuracy                           0.57      2332
+   macro avg       0.66      0.61      0.55      2332
+weighted avg       0.68      0.57      0.54      2332
+
+Confusion Matrix:
+[[430 915]
+ [ 96 891]]
+Accuracy: 0.5664665523156089
+Precision: 0.5664665523156089
+Recall: 0.5664665523156089
+F1-Score: 0.5664665523156089
+------------------------------------------------------------------
+Processing ngram_range: (3, 13)
+Top words for topic #0:
+['send mail option', 'picture email notification', 'private issue notification', 'abstraction layer notification', 'notification removing assignment', 'smtp authentication failed', 'unify email notification', 'attachment rest api', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['changed email template', 'author name mail', 'mail ssl working', 'optional email header', 'option project manager', 'cant delete account', 'email configuration error', 'due date redmine', 'email dropped timeout', 'send email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.80      0.31      0.45      1345
+    Frontend       0.49      0.89      0.63       987
+
+    accuracy                           0.56      2332
+   macro avg       0.64      0.60      0.54      2332
+weighted avg       0.67      0.56      0.53      2332
+
+Confusion Matrix:
+[[422 923]
+ [106 881]]
+Accuracy: 0.5587478559176673
+Precision: 0.5587478559176673
+Recall: 0.5587478559176673
+F1-Score: 0.5587478559176673
+------------------------------------------------------------------
+Processing ngram_range: (3, 14)
+Top words for topic #0:
+['notification removing assignment', 'due date redmine', 'email dropped timeout', 'cant delete account', 'optional email header', 'abstraction layer notification', 'email configuration error', 'attachment rest api', 'send email notification', 'mention user username']
+
+
+Top words for topic #1:
+['picture email notification', 'mail ssl working', 'changed email template', 'send mail option', 'via rest api', 'unify email notification', 'option project manager', 'smtp authentication failed', 'email notification error', 'internal server error']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.80      0.30      0.43      1345
+    Frontend       0.48      0.90      0.63       987
+
+    accuracy                           0.55      2332
+   macro avg       0.64      0.60      0.53      2332
+weighted avg       0.67      0.55      0.51      2332
+
+Confusion Matrix:
+[[397 948]
+ [100 887]]
+Accuracy: 0.5506003430531733
+Precision: 0.5506003430531733
+Recall: 0.5506003430531733
+F1-Score: 0.5506003430531733
+------------------------------------------------------------------
+Processing ngram_range: (3, 15)
+Top words for topic #0:
+['private issue notification', 'set value reminder', 'due date redmine', 'optional email header', 'cant delete account', 'smtp authentication failed', 'abstraction layer notification', 'option project manager', 'internal server error', 'mention user username']
+
+
+Top words for topic #1:
+['send mail option', 'changed email template', 'email notification setting', 'attachment rest api', 'send email notification', 'email dropped timeout', 'unify email notification', 'notification removing assignment', 'email configuration error', 'email notification error']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.81      0.32      0.46      1345
+    Frontend       0.49      0.90      0.64       987
+
+    accuracy                           0.56      2332
+   macro avg       0.65      0.61      0.55      2332
+weighted avg       0.68      0.56      0.53      2332
+
+Confusion Matrix:
+[[429 916]
+ [100 887]]
+Accuracy: 0.5643224699828473
+Precision: 0.5643224699828473
+Recall: 0.5643224699828473
+F1-Score: 0.5643224699828473
+------------------------------------------------------------------
+Processing ngram_range: (4, 4)
+Top words for topic #0:
+['change url automatic mail', 'time send email long', 'issue email notification setup', 'added formatting email notification', 'email notification specified filter', 'redmine send reminder work', 'email notification involved clarification', 'hiding field email notification', 'notify user high issue', 'need email configuration redmine']
+
+
+Top words for topic #1:
+['warning comment go nowhere', 'reporter watcher receiving mail', 'add button send notification', 'problem email integration office', 'dont want notified change', 'want notified change make', 'custom template email notification', 'mention working status changed', 'issue via rest api', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.26      0.41      1345
+    Frontend       0.49      0.98      0.65       987
+
+    accuracy                           0.56      2332
+   macro avg       0.72      0.62      0.53      2332
+weighted avg       0.75      0.56      0.51      2332
+
+Confusion Matrix:
+[[348 997]
+ [ 21 966]]
+Accuracy: 0.5634648370497427
+Precision: 0.5634648370497427
+Recall: 0.5634648370497427
+F1-Score: 0.5634648370497427
+------------------------------------------------------------------
+Processing ngram_range: (4, 5)
+Top words for topic #0:
+['time send email long', 'add button send notification', 'larger font email notification', 'email notification involved clarification', 'mention working status changed', 'redmine send reminder work', 'notify user high issue', 'custom template email notification', 'hiding field email notification', 'need email configuration redmine']
+
+
+Top words for topic #1:
+['extended watcher notification feature', 'get tag via api', 'warning comment go nowhere', 'send reminder working redmine', 'api archive unarchive project', 'issue email notification setup', 'change url automatic mail', 'problem email integration office', 'added formatting email notification', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.93      0.26      0.40      1345
+    Frontend       0.49      0.98      0.65       987
+
+    accuracy                           0.56      2332
+   macro avg       0.71      0.62      0.53      2332
+weighted avg       0.75      0.56      0.51      2332
+
+Confusion Matrix:
+[[ 345 1000]
+ [  24  963]]
+Accuracy: 0.5608919382504288
+Precision: 0.5608919382504288
+Recall: 0.5608919382504288
+F1-Score: 0.5608919382504288
+------------------------------------------------------------------
+Processing ngram_range: (4, 6)
+Top words for topic #0:
+['added formatting email notification', 'issue email notification setup', 'add button send notification', 'reporter watcher receiving mail', 'larger font email notification', 'email notification involved clarification', 'notify user high issue', 'hiding field email notification', 'custom template email notification', 'delete attachment rest api']
+
+
+Top words for topic #1:
+['extended watcher notification feature', 'send reminder working redmine', 'email notification create ticket', 'problem email integration office', 'change url automatic mail', 'time send email long', 'email notification specified filter', 'need email configuration redmine', 'mention working status changed', 'redmine send reminder work']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.93      0.26      0.40      1345
+    Frontend       0.49      0.97      0.65       987
+
+    accuracy                           0.56      2332
+   macro avg       0.71      0.61      0.53      2332
+weighted avg       0.74      0.56      0.51      2332
+
+Confusion Matrix:
+[[ 344 1001]
+ [  26  961]]
+Accuracy: 0.5596054888507719
+Precision: 0.5596054888507719
+Recall: 0.5596054888507719
+F1-Score: 0.5596054888507719
+------------------------------------------------------------------
+Processing ngram_range: (4, 7)
+Top words for topic #0:
+['email truncated use deleted', 'api key user page', 'issue via rest api', 'get tag via api', 'email notification create ticket', 'add button send notification', 'added formatting email notification', 'issue email notification setup', 'email notification specified filter', 'mention working status changed']
+
+
+Top words for topic #1:
+['time send email long', 'reporter watcher receiving mail', 'larger font email notification', 'redmine send reminder work', 'hiding field email notification', 'custom template email notification', 'email notification involved clarification', 'need email configuration redmine', 'notify user high issue', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.95      0.25      0.40      1345
+    Frontend       0.49      0.98      0.65       987
+
+    accuracy                           0.56      2332
+   macro avg       0.72      0.62      0.53      2332
+weighted avg       0.75      0.56      0.51      2332
+
+Confusion Matrix:
+[[ 340 1005]
+ [  19  968]]
+Accuracy: 0.5608919382504288
+Precision: 0.5608919382504288
+Recall: 0.5608919382504288
+F1-Score: 0.5608919382504288
+------------------------------------------------------------------
+Processing ngram_range: (4, 8)
+Top words for topic #0:
+['api key user page', 'api redmine configuration information', 'warning comment go nowhere', 'wiki watch option working', 'get tag via api', 'reporter watcher receiving mail', 'added formatting email notification', 'hiding field email notification', 'need email configuration redmine', 'custom template email notification']
+
+
+Top words for topic #1:
+['problem email integration office', 'add button send notification', 'larger font email notification', 'change url automatic mail', 'time send email long', 'redmine send reminder work', 'email notification involved clarification', 'mention working status changed', 'notify user high issue', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.28      0.43      1345
+    Frontend       0.50      0.98      0.66       987
+
+    accuracy                           0.57      2332
+   macro avg       0.72      0.63      0.54      2332
+weighted avg       0.75      0.57      0.53      2332
+
+Confusion Matrix:
+[[372 973]
+ [ 23 964]]
+Accuracy: 0.5728987993138936
+Precision: 0.5728987993138936
+Recall: 0.5728987993138936
+F1-Score: 0.5728987993138936
+------------------------------------------------------------------
+Processing ngram_range: (4, 9)
+Top words for topic #0:
+['wiki watch option working', 'change url automatic mail', 'added formatting email notification', 'problem email integration office', 'reporter watcher receiving mail', 'time send email long', 'custom template email notification', 'need email configuration redmine', 'mention working status changed', 'delete attachment rest api']
+
+
+Top words for topic #1:
+['email notification create ticket', 'warning comment go nowhere', 'email notification specified filter', 'issue email notification setup', 'add button send notification', 'larger font email notification', 'redmine send reminder work', 'hiding field email notification', 'notify user high issue', 'email notification involved clarification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.93      0.23      0.37      1345
+    Frontend       0.48      0.97      0.65       987
+
+    accuracy                           0.55      2332
+   macro avg       0.70      0.60      0.51      2332
+weighted avg       0.74      0.55      0.49      2332
+
+Confusion Matrix:
+[[ 313 1032]
+ [  25  962]]
+Accuracy: 0.5467409948542024
+Precision: 0.5467409948542024
+Recall: 0.5467409948542024
+F1-Score: 0.5467409948542024
+------------------------------------------------------------------
+Processing ngram_range: (4, 10)
+Top words for topic #0:
+['problem email integration office', 'time send email long', 'email notification specified filter', 'add button send notification', 'added formatting email notification', 'change url automatic mail', 'email notification involved clarification', 'hiding field email notification', 'notify user high issue', 'delete attachment rest api']
+
+
+Top words for topic #1:
+['extended watcher notification feature', 'send reminder working redmine', 'warning comment go nowhere', 'reporter watcher receiving mail', 'issue email notification setup', 'larger font email notification', 'need email configuration redmine', 'redmine send reminder work', 'mention working status changed', 'custom template email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.93      0.27      0.41      1345
+    Frontend       0.49      0.97      0.65       987
+
+    accuracy                           0.57      2332
+   macro avg       0.71      0.62      0.53      2332
+weighted avg       0.74      0.57      0.52      2332
+
+Confusion Matrix:
+[[359 986]
+ [ 28 959]]
+Accuracy: 0.565180102915952
+Precision: 0.565180102915952
+Recall: 0.565180102915952
+F1-Score: 0.565180102915952
+------------------------------------------------------------------
+Processing ngram_range: (4, 11)
+Top words for topic #0:
+['get tag via api', 'issue email notification setup', 'email notification specified filter', 'reporter watcher receiving mail', 'notify user high issue', 'mention working status changed', 'email notification involved clarification', 'hiding field email notification', 'redmine send reminder work', 'custom template email notification']
+
+
+Top words for topic #1:
+['warning comment go nowhere', 'send reminder working redmine', 'add button send notification', 'larger font email notification', 'added formatting email notification', 'time send email long', 'problem email integration office', 'change url automatic mail', 'need email configuration redmine', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.92      0.24      0.38      1345
+    Frontend       0.48      0.97      0.65       987
+
+    accuracy                           0.55      2332
+   macro avg       0.70      0.61      0.52      2332
+weighted avg       0.73      0.55      0.50      2332
+
+Confusion Matrix:
+[[ 327 1018]
+ [  30  957]]
+Accuracy: 0.5506003430531733
+Precision: 0.5506003430531733
+Recall: 0.5506003430531733
+F1-Score: 0.5506003430531733
+------------------------------------------------------------------
+Processing ngram_range: (4, 12)
+Top words for topic #0:
+['api archive unarchive project', 'issue email notification setup', 'add button send notification', 'added formatting email notification', 'larger font email notification', 'custom template email notification', 'redmine send reminder work', 'hiding field email notification', 'mention working status changed', 'notify user high issue']
+
+
+Top words for topic #1:
+['wiki watch option working', 'warning comment go nowhere', 'time send email long', 'problem email integration office', 'reporter watcher receiving mail', 'email notification specified filter', 'change url automatic mail', 'email notification involved clarification', 'need email configuration redmine', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.93      0.25      0.39      1345
+    Frontend       0.49      0.97      0.65       987
+
+    accuracy                           0.56      2332
+   macro avg       0.71      0.61      0.52      2332
+weighted avg       0.74      0.56      0.50      2332
+
+Confusion Matrix:
+[[ 335 1010]
+ [  25  962]]
+Accuracy: 0.5561749571183533
+Precision: 0.5561749571183533
+Recall: 0.5561749571183533
+F1-Score: 0.5561749571183533
+------------------------------------------------------------------
+Processing ngram_range: (4, 13)
+Top words for topic #0:
+['extended watcher notification feature', 'email notification create ticket', 'issue email notification setup', 'added formatting email notification', 'problem email integration office', 'time send email long', 'email notification specified filter', 'add button send notification', 'email notification involved clarification', 'notify user high issue']
+
+
+Top words for topic #1:
+['get tag via api', 'reporter watcher receiving mail', 'larger font email notification', 'change url automatic mail', 'mention working status changed', 'redmine send reminder work', 'hiding field email notification', 'custom template email notification', 'need email configuration redmine', 'delete attachment rest api']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.27      0.41      1345
+    Frontend       0.49      0.98      0.66       987
+
+    accuracy                           0.57      2332
+   macro avg       0.72      0.62      0.54      2332
+weighted avg       0.75      0.57      0.52      2332
+
+Confusion Matrix:
+[[357 988]
+ [ 21 966]]
+Accuracy: 0.5673241852487135
+Precision: 0.5673241852487135
+Recall: 0.5673241852487135
+F1-Score: 0.5673241852487135
+------------------------------------------------------------------
+Processing ngram_range: (4, 14)
+Top words for topic #0:
+['extended watcher notification feature', 'api archive unarchive project', 'wiki watch option working', 'larger font email notification', 'time send email long', 'issue email notification setup', 'hiding field email notification', 'custom template email notification', 'notify user high issue', 'delete attachment rest api']
+
+
+Top words for topic #1:
+['problem email integration office', 'added formatting email notification', 'reporter watcher receiving mail', 'email notification specified filter', 'add button send notification', 'change url automatic mail', 'mention working status changed', 'need email configuration redmine', 'email notification involved clarification', 'redmine send reminder work']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.27      0.42      1345
+    Frontend       0.50      0.98      0.66       987
+
+    accuracy                           0.57      2332
+   macro avg       0.72      0.62      0.54      2332
+weighted avg       0.75      0.57      0.52      2332
+
+Confusion Matrix:
+[[360 985]
+ [ 21 966]]
+Accuracy: 0.5686106346483705
+Precision: 0.5686106346483705
+Recall: 0.5686106346483705
+F1-Score: 0.5686106346483705
+------------------------------------------------------------------
+Processing ngram_range: (4, 15)
+Top words for topic #0:
+['warning comment go nowhere', 'add button send notification', 'time send email long', 'problem email integration office', 'email notification specified filter', 'added formatting email notification', 'mention working status changed', 'redmine send reminder work', 'notify user high issue', 'delete attachment rest api']
+
+
+Top words for topic #1:
+['api archive unarchive project', 'email notification create ticket', 'reporter watcher receiving mail', 'change url automatic mail', 'issue email notification setup', 'larger font email notification', 'email notification involved clarification', 'need email configuration redmine', 'hiding field email notification', 'custom template email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.92      0.23      0.37      1345
+    Frontend       0.48      0.97      0.65       987
+
+    accuracy                           0.55      2332
+   macro avg       0.70      0.60      0.51      2332
+weighted avg       0.74      0.55      0.49      2332
+
+Confusion Matrix:
+[[ 316 1029]
+ [  27  960]]
+Accuracy: 0.5471698113207547
+Precision: 0.5471698113207547
+Recall: 0.5471698113207547
+F1-Score: 0.5471698113207547
+------------------------------------------------------------------
+Processing ngram_range: (5, 5)
+Top words for topic #0:
+['api authentication json web token', 'auto watch issue issue creation', 'outgoing email doesnt work upgrade', 'notification mail issue creation email', 'show gravatar icon email notification', 'edit mail subject form default', 'sending email changing subject line', 'show due day email notification', 'try send email notification failed', 'change email notification sending time']
+
+
+Top words for topic #1:
+['show custom field notification email', 'mailer synched delivery thread safe', 'redmine doe send notification email', 'send mail full name commenter', 'add table border email notification', 'due date alert email notification', 'reminder rake ignore blank parameter', 'send fa security notification asynchronously', 'need patch enable email queue', 'unable view login page localhost']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.19      0.32      1345
+    Frontend       0.47      0.98      0.64       987
+
+    accuracy                           0.53      2332
+   macro avg       0.71      0.59      0.48      2332
+weighted avg       0.74      0.53      0.45      2332
+
+Confusion Matrix:
+[[ 259 1086]
+ [  16  971]]
+Accuracy: 0.5274442538593482
+Precision: 0.5274442538593482
+Recall: 0.5274442538593482
+F1-Score: 0.5274442538593482
+------------------------------------------------------------------
+Processing ngram_range: (5, 6)
+Top words for topic #0:
+['make api paging limit configurable', 'create issue via rest api', 'make account endpoint accessible api', 'outgoing email doesnt work upgrade', 'show gravatar icon email notification', 'redmine doe send notification email', 'add style blockquote email notification', 'reminder rake ignore blank parameter', 'try send email notification failed', 'change email notification sending time']
+
+
+Top words for topic #1:
+['auto watch issue issue creation', 'unnecessary encoded cr character mail', 'due date alert email notification', 'sending email changing subject line', 'send fa security notification asynchronously', 'need patch enable email queue', 'unable view login page localhost', 'add table border email notification', 'send mail full name commenter', 'show due day email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.21      0.34      1345
+    Frontend       0.48      0.99      0.65       987
+
+    accuracy                           0.54      2332
+   macro avg       0.73      0.60      0.50      2332
+weighted avg       0.76      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 282 1063]
+ [   8  979]]
+Accuracy: 0.54073756432247
+Precision: 0.54073756432247
+Recall: 0.54073756432247
+F1-Score: 0.54073756432247
+------------------------------------------------------------------
+Processing ngram_range: (5, 7)
+Top words for topic #0:
+['add style blockquote email notification', 'separated email template closed status', 'mailer synched delivery thread safe', 'add style pre email notification', 'show gravatar icon email notification', 'notification mail issue creation email', 'sending email changing subject line', 'send fa security notification asynchronously', 'reminder rake ignore blank parameter', 'change email notification sending time']
+
+
+Top words for topic #1:
+['show custom field notification email', 'outgoing email doesnt work upgrade', 'auto watch issue issue creation', 'try send email notification failed', 'send mail full name commenter', 'unable view login page localhost', 'due date alert email notification', 'need patch enable email queue', 'show due day email notification', 'add table border email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.95      0.20      0.33      1345
+    Frontend       0.47      0.99      0.64       987
+
+    accuracy                           0.53      2332
+   macro avg       0.71      0.59      0.48      2332
+weighted avg       0.75      0.53      0.46      2332
+
+Confusion Matrix:
+[[ 266 1079]
+ [  14  973]]
+Accuracy: 0.5313036020583191
+Precision: 0.5313036020583191
+Recall: 0.5313036020583191
+F1-Score: 0.5313036020583191
+------------------------------------------------------------------
+Processing ngram_range: (5, 8)
+Top words for topic #0:
+['include attachment news post notification', 'make account endpoint accessible api', 'show parent issue notification email', 'edit mail subject form default', 'notification mail issue creation email', 'add table border email notification', 'send fa security notification asynchronously', 'change email notification sending time', 'try send email notification failed', 'need patch enable email queue']
+
+
+Top words for topic #1:
+['redmine doe send notification email', 'add style pre email notification', 'mailer synched delivery thread safe', 'servidor de correo está configurado', 'due date alert email notification', 'reminder rake ignore blank parameter', 'send mail full name commenter', 'sending email changing subject line', 'show due day email notification', 'unable view login page localhost']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.21      0.35      1345
+    Frontend       0.48      0.98      0.64       987
+
+    accuracy                           0.54      2332
+   macro avg       0.71      0.60      0.50      2332
+weighted avg       0.75      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 287 1058]
+ [  17  970]]
+Accuracy: 0.5390222984562607
+Precision: 0.5390222984562607
+Recall: 0.5390222984562607
+F1-Score: 0.5390222984562607
+------------------------------------------------------------------
+Processing ngram_range: (5, 9)
+Top words for topic #0:
+['notification mail issue creation email', 'edit mail subject form default', 'redmine doe send notification email', 'show custom field notification email', 'outgoing email doesnt work upgrade', 'separated email template closed status', 'need patch enable email queue', 'change email notification sending time', 'sending email changing subject line', 'unable view login page localhost']
+
+
+Top words for topic #1:
+['add style blockquote email notification', 'auto watch issue issue creation', 'show gravatar icon email notification', 'send fa security notification asynchronously', 'add table border email notification', 'reminder rake ignore blank parameter', 'show due day email notification', 'try send email notification failed', 'send mail full name commenter', 'due date alert email notification']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.21      0.34      1345
+    Frontend       0.48      0.99      0.65       987
+
+    accuracy                           0.54      2332
+   macro avg       0.73      0.60      0.49      2332
+weighted avg       0.77      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 276 1069]
+ [   6  981]]
+Accuracy: 0.5390222984562607
+Precision: 0.5390222984562607
+Recall: 0.5390222984562607
+F1-Score: 0.5390222984562607
+------------------------------------------------------------------
+Processing ngram_range: (5, 10)
+Top words for topic #0:
+['add style pre email notification', 'add style blockquote email notification', 'unnecessary encoded cr character mail', 'separated email template closed status', 'mailer synched delivery thread safe', 'send fa security notification asynchronously', 'add table border email notification', 'change email notification sending time', 'try send email notification failed', 'show due day email notification']
+
+
+Top words for topic #1:
+['redmine doe send notification email', 'auto watch issue issue creation', 'notification mail issue creation email', 'edit mail subject form default', 'sending email changing subject line', 'due date alert email notification', 'reminder rake ignore blank parameter', 'send mail full name commenter', 'unable view login page localhost', 'need patch enable email queue']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.21      0.34      1345
+    Frontend       0.48      0.99      0.65       987
+
+    accuracy                           0.54      2332
+   macro avg       0.73      0.60      0.49      2332
+weighted avg       0.76      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 278 1067]
+ [   8  979]]
+Accuracy: 0.5390222984562607
+Precision: 0.5390222984562607
+Recall: 0.5390222984562607
+F1-Score: 0.5390222984562607
+------------------------------------------------------------------
+Processing ngram_range: (5, 11)
+Top words for topic #0:
+['unnecessary encoded cr character mail', 'outgoing email doesnt work upgrade', 'edit mail subject form default', 'unable view login page localhost', 'sending email changing subject line', 'try send email notification failed', 'send mail full name commenter', 'add table border email notification', 'due date alert email notification', 'reminder rake ignore blank parameter']
+
+
+Top words for topic #1:
+['create issue via rest api', 'notification mail issue creation email', 'add style blockquote email notification', 'separated email template closed status', 'show custom field notification email', 'mailer synched delivery thread safe', 'send fa security notification asynchronously', 'show due day email notification', 'change email notification sending time', 'need patch enable email queue']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.95      0.21      0.34      1345
+    Frontend       0.48      0.98      0.64       987
+
+    accuracy                           0.54      2332
+   macro avg       0.71      0.60      0.49      2332
+weighted avg       0.75      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 281 1064]
+ [  16  971]]
+Accuracy: 0.5368782161234992
+Precision: 0.5368782161234992
+Recall: 0.5368782161234992
+F1-Score: 0.5368782161234992
+------------------------------------------------------------------
+Processing ngram_range: (5, 12)
+Top words for topic #0:
+['url outgoing email get mutilated', 'make api paging limit configurable', 'include workflow creation rest api', 'outgoing email doesnt work upgrade', 'edit mail subject form default', 'need patch enable email queue', 'unable view login page localhost', 'try send email notification failed', 'send mail full name commenter', 'change email notification sending time']
+
+
+Top words for topic #1:
+['auto watch issue issue creation', 'show custom field notification email', 'add style blockquote email notification', 'show gravatar icon email notification', 'due date alert email notification', 'add table border email notification', 'sending email changing subject line', 'show due day email notification', 'send fa security notification asynchronously', 'reminder rake ignore blank parameter']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.22      0.36      1345
+    Frontend       0.48      0.99      0.65       987
+
+    accuracy                           0.55      2332
+   macro avg       0.73      0.61      0.51      2332
+weighted avg       0.77      0.55      0.48      2332
+
+Confusion Matrix:
+[[ 299 1046]
+ [   7  980]]
+Accuracy: 0.5484562607204116
+Precision: 0.5484562607204116
+Recall: 0.5484562607204116
+F1-Score: 0.5484562607204116
+------------------------------------------------------------------
+Processing ngram_range: (5, 13)
+Top words for topic #0:
+['add style pre email notification', 'show custom field notification email', 'show gravatar icon email notification', 'servidor de correo está configurado', 'sending email changing subject line', 'add table border email notification', 'change email notification sending time', 'send mail full name commenter', 'send fa security notification asynchronously', 'due date alert email notification']
+
+
+Top words for topic #1:
+['add style blockquote email notification', 'mailer synched delivery thread safe', 'outgoing email doesnt work upgrade', 'edit mail subject form default', 'separated email template closed status', 'need patch enable email queue', 'try send email notification failed', 'show due day email notification', 'unable view login page localhost', 'reminder rake ignore blank parameter']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.94      0.20      0.33      1345
+    Frontend       0.47      0.98      0.64       987
+
+    accuracy                           0.53      2332
+   macro avg       0.71      0.59      0.49      2332
+weighted avg       0.74      0.53      0.46      2332
+
+Confusion Matrix:
+[[ 271 1074]
+ [  17  970]]
+Accuracy: 0.5321612349914236
+Precision: 0.5321612349914236
+Recall: 0.5321612349914236
+F1-Score: 0.5321612349914236
+------------------------------------------------------------------
+Processing ngram_range: (5, 14)
+Top words for topic #0:
+['servidor de correo está configurado', 'mailer synched delivery thread safe', 'add style blockquote email notification', 'show custom field notification email', 'auto watch issue issue creation', 'due date alert email notification', 'sending email changing subject line', 'change email notification sending time', 'show due day email notification', 'add table border email notification']
+
+
+Top words for topic #1:
+['edit mail subject form default', 'add style pre email notification', 'redmine doe send notification email', 'unnecessary encoded cr character mail', 'unable view login page localhost', 'send mail full name commenter', 'need patch enable email queue', 'send fa security notification asynchronously', 'try send email notification failed', 'reminder rake ignore blank parameter']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.20      0.33      1345
+    Frontend       0.48      0.99      0.64       987
+
+    accuracy                           0.54      2332
+   macro avg       0.73      0.60      0.49      2332
+weighted avg       0.76      0.54      0.47      2332
+
+Confusion Matrix:
+[[ 271 1074]
+ [   7  980]]
+Accuracy: 0.5364493996569468
+Precision: 0.5364493996569468
+Recall: 0.5364493996569468
+F1-Score: 0.5364493996569468
+------------------------------------------------------------------
+Processing ngram_range: (5, 15)
+Top words for topic #0:
+['add style blockquote email notification', 'mailer synched delivery thread safe', 'add table border email notification', 'try send email notification failed', 'unable view login page localhost', 'due date alert email notification', 'send fa security notification asynchronously', 'send mail full name commenter', 'sending email changing subject line', 'reminder rake ignore blank parameter']
+
+
+Top words for topic #1:
+['include attachment news post notification', 'make assignee prominent email notification', 'edit mail subject form default', 'separated email template closed status', 'redmine doe send notification email', 'show custom field notification email', 'unnecessary encoded cr character mail', 'change email notification sending time', 'show due day email notification', 'need patch enable email queue']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.23      0.37      1345
+    Frontend       0.48      0.99      0.65       987
+
+    accuracy                           0.55      2332
+   macro avg       0.73      0.61      0.51      2332
+weighted avg       0.76      0.55      0.49      2332
+
+Confusion Matrix:
+[[ 305 1040]
+ [  10  977]]
+Accuracy: 0.5497427101200686
+Precision: 0.5497427101200686
+Recall: 0.5497427101200686
+F1-Score: 0.5497427101200686
+------------------------------------------------------------------
+Processing ngram_range: (6, 6)
+Top words for topic #0:
+['rest api version roadmap relationship percentage', 'create issue doe allow category id', 'rake redmine load default data error', 'notification overdue task specific person assignee', 'redmine block deliever email help needed', 'remainder email due date get elapsed', 'inline email diff issue description change', 'add link issue list reminder email', 'email notification error mailbox accessed office', 'ability disable distribution notification group member']
+
+
+Top words for topic #1:
+['show open closed badge email notification', 'send mail smtp due tl error', 'add additional mail header issue tracker', 'new notfication setting value role setting', 'redmine wont send email latest version', 'notification thing watch im involed work', 'openssl verify mode honored working anymore', 'updating custom related field emil email', 'fullwidth character enclosed removed email notification', 'rake db migrate rail env production']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.15      0.26      1345
+    Frontend       0.46      1.00      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.73      0.57      0.45      2332
+weighted avg       0.77      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 201 1144]
+ [   1  986]]
+Accuracy: 0.5090051457975986
+Precision: 0.5090051457975986
+Recall: 0.5090051457975986
+F1-Score: 0.5090051457975986
+------------------------------------------------------------------
+Processing ngram_range: (6, 7)
+Top words for topic #0:
+['add extra notification destiny issue status', 'create issue doe allow category id', 'issue private journal deleted accessed api', 'expose repository version via rest api', 'notification thing watch im involed work', 'redmine wont send email latest version', 'updating custom related field emil email', 'rake db migrate rail env production', 'ability disable distribution notification group member', 'fullwidth character enclosed removed email notification']
+
+
+Top words for topic #1:
+['notification overdue task specific person assignee', 'add additional mail header issue tracker', 'send mail smtp due tl error', 'openssl verify mode honored working anymore', 'new notfication setting value role setting', 'remainder email due date get elapsed', 'add link issue list reminder email', 'email notification error mailbox accessed office', 'redmine block deliever email help needed', 'inline email diff issue description change']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.96      0.16      0.27      1345
+    Frontend       0.46      0.99      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.71      0.57      0.45      2332
+weighted avg       0.75      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 211 1134]
+ [   8  979]]
+Accuracy: 0.5102915951972555
+Precision: 0.5102915951972555
+Recall: 0.5102915951972555
+F1-Score: 0.5102915951972555
+------------------------------------------------------------------
+Processing ngram_range: (6, 8)
+Top words for topic #0:
+['add user status user list api', 'email notification based custom field value', 'get allowed issue status issue api', 'issue creation failed email notification fail', 'notification thing watch im involed work', 'redmine wont send email latest version', 'rake db migrate rail env production', 'remainder email due date get elapsed', 'fullwidth character enclosed removed email notification', 'add link issue list reminder email']
+
+
+Top words for topic #1:
+['show open closed badge email notification', 'send mail smtp due tl error', 'notification overdue task specific person assignee', 'updating custom related field emil email', 'openssl verify mode honored working anymore', 'new notfication setting value role setting', 'ability disable distribution notification group member', 'redmine block deliever email help needed', 'email notification error mailbox accessed office', 'inline email diff issue description change']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.14      0.25      1345
+    Frontend       0.46      0.99      0.63       987
+
+    accuracy                           0.50      2332
+   macro avg       0.72      0.57      0.44      2332
+weighted avg       0.76      0.50      0.41      2332
+
+Confusion Matrix:
+[[ 194 1151]
+ [   5  982]]
+Accuracy: 0.5042881646655232
+Precision: 0.5042881646655232
+Recall: 0.5042881646655232
+F1-Score: 0.5042881646655232
+------------------------------------------------------------------
+Processing ngram_range: (6, 9)
+Top words for topic #0:
+['create update custom field via api', 'rest api user add support status', 'new notfication setting value role setting', 'show open closed badge email notification', 'notification overdue task specific person assignee', 'fullwidth character enclosed removed email notification', 'email notification error mailbox accessed office', 'inline email diff issue description change', 'add link issue list reminder email', 'remainder email due date get elapsed']
+
+
+Top words for topic #1:
+['add support updating attachment rest api', 'updating custom related field emil email', 'redmine wont send email latest version', 'add additional mail header issue tracker', 'send mail smtp due tl error', 'notification thing watch im involed work', 'openssl verify mode honored working anymore', 'rake db migrate rail env production', 'ability disable distribution notification group member', 'redmine block deliever email help needed']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.95      0.15      0.26      1345
+    Frontend       0.46      0.99      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.71      0.57      0.44      2332
+weighted avg       0.74      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 203 1142]
+ [  10  977]]
+Accuracy: 0.5060034305317325
+Precision: 0.5060034305317325
+Recall: 0.5060034305317325
+F1-Score: 0.5060034305317325
+------------------------------------------------------------------
+Processing ngram_range: (6, 10)
+Top words for topic #0:
+['notification overdue task specific person assignee', 'notification thing watch im involed work', 'openssl verify mode honored working anymore', 'show open closed badge email notification', 'new notfication setting value role setting', 'rake db migrate rail env production', 'add link issue list reminder email', 'fullwidth character enclosed removed email notification', 'ability disable distribution notification group member', 'email notification error mailbox accessed office']
+
+
+Top words for topic #1:
+['issue creation failed email notification fail', 'add checkbox user turn daily reminder', 'email notification based custom field value', 'expose repository version via rest api', 'send mail smtp due tl error', 'updating custom related field emil email', 'redmine wont send email latest version', 'redmine block deliever email help needed', 'remainder email due date get elapsed', 'inline email diff issue description change']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.99      0.16      0.27      1345
+    Frontend       0.46      1.00      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.73      0.58      0.45      2332
+weighted avg       0.77      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 210 1135]
+ [   3  984]]
+Accuracy: 0.5120068610634648
+Precision: 0.5120068610634648
+Recall: 0.5120068610634648
+F1-Score: 0.5120068610634648
+------------------------------------------------------------------
+Processing ngram_range: (6, 11)
+Top words for topic #0:
+['issue private journal deleted accessed api', 'create update custom field via api', 'better error message api format recognised', 'expose repository version via rest api', 'support active attribute enumeration rest api', 'redmine wont send email latest version', 'new notfication setting value role setting', 'updating custom related field emil email', 'fullwidth character enclosed removed email notification', 'remainder email due date get elapsed']
+
+
+Top words for topic #1:
+['notification thing watch im involed work', 'send mail smtp due tl error', 'openssl verify mode honored working anymore', 'show open closed badge email notification', 'rake db migrate rail env production', 'inline email diff issue description change', 'email notification error mailbox accessed office', 'add link issue list reminder email', 'ability disable distribution notification group member', 'redmine block deliever email help needed']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.17      0.29      1345
+    Frontend       0.47      1.00      0.64       987
+
+    accuracy                           0.52      2332
+   macro avg       0.73      0.58      0.46      2332
+weighted avg       0.77      0.52      0.44      2332
+
+Confusion Matrix:
+[[ 225 1120]
+ [   1  986]]
+Accuracy: 0.5192967409948542
+Precision: 0.5192967409948542
+Recall: 0.5192967409948542
+F1-Score: 0.5192967409948542
+------------------------------------------------------------------
+Processing ngram_range: (6, 12)
+Top words for topic #0:
+['add extra notification destiny issue status', 'make redmine email delivery compatible activejob', 'allow redmine provide reply email header', 'email reminder sent even ticket closed', 'add additional mail header issue tracker', 'updating custom related field emil email', 'redmine wont send email latest version', 'send mail smtp due tl error', 'ability disable distribution notification group member', 'redmine block deliever email help needed']
+
+
+Top words for topic #1:
+['new notfication setting value role setting', 'notification overdue task specific person assignee', 'show open closed badge email notification', 'notification thing watch im involed work', 'rake db migrate rail env production', 'email notification error mailbox accessed office', 'fullwidth character enclosed removed email notification', 'add link issue list reminder email', 'remainder email due date get elapsed', 'inline email diff issue description change']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.16      0.27      1345
+    Frontend       0.46      0.99      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.72      0.58      0.45      2332
+weighted avg       0.75      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 213 1132]
+ [   7  980]]
+Accuracy: 0.5115780445969125
+Precision: 0.5115780445969125
+Recall: 0.5115780445969125
+F1-Score: 0.5115780445969125
+------------------------------------------------------------------
+Processing ngram_range: (6, 13)
+Top words for topic #0:
+['redmine wont send email latest version', 'notification thing watch im involed work', 'add additional mail header issue tracker', 'updating custom related field emil email', 'send mail smtp due tl error', 'notification overdue task specific person assignee', 'rake db migrate rail env production', 'inline email diff issue description change', 'email notification error mailbox accessed office', 'fullwidth character enclosed removed email notification']
+
+
+Top words for topic #1:
+['double mail notification issue next day', 'add extra notification destiny issue status', 'rest api need created field api', 'show open closed badge email notification', 'openssl verify mode honored working anymore', 'new notfication setting value role setting', 'redmine block deliever email help needed', 'ability disable distribution notification group member', 'add link issue list reminder email', 'remainder email due date get elapsed']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.16      0.28      1345
+    Frontend       0.47      1.00      0.64       987
+
+    accuracy                           0.52      2332
+   macro avg       0.72      0.58      0.46      2332
+weighted avg       0.76      0.52      0.43      2332
+
+Confusion Matrix:
+[[ 220 1125]
+ [   4  983]]
+Accuracy: 0.5158662092624356
+Precision: 0.5158662092624356
+Recall: 0.5158662092624356
+F1-Score: 0.5158662092624356
+------------------------------------------------------------------
+Processing ngram_range: (6, 14)
+Top words for topic #0:
+['issue creation failed email notification fail', 'updating custom related field emil email', 'add additional mail header issue tracker', 'notification thing watch im involed work', 'notification overdue task specific person assignee', 'rake db migrate rail env production', 'email notification error mailbox accessed office', 'fullwidth character enclosed removed email notification', 'redmine block deliever email help needed', 'remainder email due date get elapsed']
+
+
+Top words for topic #1:
+['allow redmine provide reply email header', 'rest api version roadmap relationship percentage', 'openssl verify mode honored working anymore', 'send mail smtp due tl error', 'new notfication setting value role setting', 'redmine wont send email latest version', 'show open closed badge email notification', 'inline email diff issue description change', 'ability disable distribution notification group member', 'add link issue list reminder email']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.15      0.26      1345
+    Frontend       0.46      1.00      0.63       987
+
+    accuracy                           0.51      2332
+   macro avg       0.72      0.57      0.45      2332
+weighted avg       0.76      0.51      0.42      2332
+
+Confusion Matrix:
+[[ 206 1139]
+ [   4  983]]
+Accuracy: 0.5098627787307033
+Precision: 0.5098627787307033
+Recall: 0.5098627787307033
+F1-Score: 0.5098627787307033
+------------------------------------------------------------------
+Processing ngram_range: (6, 15)
+Top words for topic #0:
+['make destination visible redmine notification email', 'send notification new issue created email', 'rest api issue doesnt work sort', 'issue private journal deleted accessed api', 'add additional mail header issue tracker', 'notification overdue task specific person assignee', 'new notfication setting value role setting', 'rake db migrate rail env production', 'email notification error mailbox accessed office', 'ability disable distribution notification group member']
+
+
+Top words for topic #1:
+['notification thing watch im involed work', 'openssl verify mode honored working anymore', 'send mail smtp due tl error', 'redmine wont send email latest version', 'updating custom related field emil email', 'redmine block deliever email help needed', 'fullwidth character enclosed removed email notification', 'add link issue list reminder email', 'inline email diff issue description change', 'remainder email due date get elapsed']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.96      0.14      0.25      1345
+    Frontend       0.46      0.99      0.63       987
+
+    accuracy                           0.50      2332
+   macro avg       0.71      0.57      0.44      2332
+weighted avg       0.75      0.50      0.41      2332
+
+Confusion Matrix:
+[[ 192 1153]
+ [   7  980]]
+Accuracy: 0.5025728987993139
+Precision: 0.5025728987993139
+Recall: 0.5025728987993139
+F1-Score: 0.5025728987993139
+------------------------------------------------------------------
+Processing ngram_range: (7, 7)
+Top words for topic #0:
+['make issue id email notification linkable issue', 'api dont show value label costum field', 'time entry post doesnt work json format', 'add missing homepage attribute project api response', 'redmine java api journal missing user data', 'render custom field value enumeration api request', 'get project list rest api xml call', 'new email notification option event bookmarked project', 'redmine version sometimes doesnt send mail notification', 'remove async smtp async sendmail delivery method']
+
+
+Top words for topic #1:
+['mention notification sent mention pattern link inconsistency', 'security notification changing password password forgotten empty', 'url email sub uri sub uri duplication', 'send individual notification mail per mail recipient', 'email notification possibly sent whole transaction complete', 'drop setting blind carbon copy recipient bcc', 'security notification sent admin change password user', 'mail notification override ticket submitted via email', 'user notify issue consider issue wathced user', 'actionmailer need limit many maximum connection open']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.11      0.19      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.71      0.55      0.41      2332
+weighted avg       0.76      0.48      0.37      2332
+
+Confusion Matrix:
+[[ 144 1201]
+ [   3  984]]
+Accuracy: 0.483704974271012
+Precision: 0.483704974271012
+Recall: 0.483704974271012
+F1-Score: 0.483704974271012
+------------------------------------------------------------------
+Processing ngram_range: (7, 8)
+Top words for topic #0:
+['option stop sending reminder non working day', 'api creating issue project identifier longer possible', 'doe api rest show field added plugins', 'change default notification option thing watch assigned', 'mention notification sent mention pattern link inconsistency', 'url email sub uri sub uri duplication', 'redmine version sometimes doesnt send mail notification', 'email notification possibly sent whole transaction complete', 'security notification changing password password forgotten empty', 'mail notification override ticket submitted via email']
+
+
+Top words for topic #1:
+['redmine java api journal missing user data', 'show number day left due date reminder', 'new email notification option event bookmarked project', 'start date due date issue email notification', 'security notification sent admin change password user', 'actionmailer need limit many maximum connection open', 'send individual notification mail per mail recipient', 'remove async smtp async sendmail delivery method', 'drop setting blind carbon copy recipient bcc', 'user notify issue consider issue wathced user']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.99      0.10      0.18      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.72      0.55      0.40      2332
+weighted avg       0.76      0.48      0.37      2332
+
+Confusion Matrix:
+[[ 137 1208]
+ [   2  985]]
+Accuracy: 0.4811320754716981
+Precision: 0.4811320754716981
+Recall: 0.4811320754716981
+F1-Score: 0.4811320754716981
+------------------------------------------------------------------
+Processing ngram_range: (7, 9)
+Top words for topic #0:
+['start date due date issue email notification', 'email notification possibly sent whole transaction complete', 'mail notification override ticket submitted via email', 'send individual notification mail per mail recipient', 'actionmailer need limit many maximum connection open', 'security notification sent admin change password user', 'security notification changing password password forgotten empty', 'url email sub uri sub uri duplication', 'redmine version sometimes doesnt send mail notification', 'remove async smtp async sendmail delivery method']
+
+
+Top words for topic #1:
+['get project list rest api xml call', 'doe api rest show field added plugins', 'rest api add full crud support news', 'impossible validate api key without modifying anything', 'redmine java api journal missing user data', 'api dont show value label costum field', 'option stop sending reminder non working day', 'new email notification option event bookmarked project', 'user notify issue consider issue wathced user', 'drop setting blind carbon copy recipient bcc']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.11      0.20      1345
+    Frontend       0.45      0.99      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.71      0.55      0.41      2332
+weighted avg       0.75      0.48      0.38      2332
+
+Confusion Matrix:
+[[ 147 1198]
+ [   5  982]]
+Accuracy: 0.4841337907375643
+Precision: 0.4841337907375643
+Recall: 0.4841337907375643
+F1-Score: 0.4841337907375643
+------------------------------------------------------------------
+Processing ngram_range: (7, 10)
+Top words for topic #0:
+['show number day left due date reminder', 'mention notification sent mention pattern link inconsistency', 'send individual notification mail per mail recipient', 'url email sub uri sub uri duplication', 'user notify issue consider issue wathced user', 'drop setting blind carbon copy recipient bcc', 'actionmailer need limit many maximum connection open', 'remove async smtp async sendmail delivery method', 'mail notification override ticket submitted via email', 'redmine version sometimes doesnt send mail notification']
+
+
+Top words for topic #1:
+['option stop sending reminder non working day', 'impossible validate api key without modifying anything', 'filtering issue multiple project rest api return', 'issue timeentry api doe report root id', 'api dont show value label costum field', 'start date due date issue email notification', 'new email notification option event bookmarked project', 'security notification changing password password forgotten empty', 'email notification possibly sent whole transaction complete', 'security notification sent admin change password user']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.99      0.11      0.20      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.49      2332
+   macro avg       0.72      0.55      0.41      2332
+weighted avg       0.76      0.49      0.38      2332
+
+Confusion Matrix:
+[[ 149 1196]
+ [   2  985]]
+Accuracy: 0.4862778730703259
+Precision: 0.4862778730703259
+Recall: 0.4862778730703259
+F1-Score: 0.4862778730703259
+------------------------------------------------------------------
+Processing ngram_range: (7, 11)
+Top words for topic #0:
+['api dont show value label costum field', 'doe api rest show field added plugins', 'show number day left due date reminder', 'new email notification option event bookmarked project', 'change default notification option thing watch assigned', 'user notify issue consider issue wathced user', 'security notification changing password password forgotten empty', 'remove async smtp async sendmail delivery method', 'email notification possibly sent whole transaction complete', 'redmine version sometimes doesnt send mail notification']
+
+
+Top words for topic #1:
+['time entry post doesnt work json format', 'rest api add full crud support news', 'mention notification sent mention pattern link inconsistency', 'start date due date issue email notification', 'security notification sent admin change password user', 'drop setting blind carbon copy recipient bcc', 'send individual notification mail per mail recipient', 'mail notification override ticket submitted via email', 'url email sub uri sub uri duplication', 'actionmailer need limit many maximum connection open']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.96      0.11      0.20      1345
+    Frontend       0.45      0.99      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.71      0.55      0.41      2332
+weighted avg       0.75      0.48      0.38      2332
+
+Confusion Matrix:
+[[ 149 1196]
+ [   6  981]]
+Accuracy: 0.48456260720411665
+Precision: 0.48456260720411665
+Recall: 0.48456260720411665
+F1-Score: 0.48456260720411665
+------------------------------------------------------------------
+Processing ngram_range: (7, 12)
+Top words for topic #0:
+['mention notification sent mention pattern link inconsistency', 'change default notification option thing watch assigned', 'new email notification option event bookmarked project', 'drop setting blind carbon copy recipient bcc', 'send individual notification mail per mail recipient', 'remove async smtp async sendmail delivery method', 'redmine version sometimes doesnt send mail notification', 'email notification possibly sent whole transaction complete', 'security notification sent admin change password user', 'user notify issue consider issue wathced user']
+
+
+Top words for topic #1:
+['render custom field value enumeration api request', 'rest api add full crud support news', 'add missing homepage attribute project api response', 'time entry post doesnt work json format', 'show number day left due date reminder', 'start date due date issue email notification', 'url email sub uri sub uri duplication', 'actionmailer need limit many maximum connection open', 'mail notification override ticket submitted via email', 'security notification changing password password forgotten empty']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.10      0.18      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.71      0.55      0.40      2332
+weighted avg       0.75      0.48      0.37      2332
+
+Confusion Matrix:
+[[ 133 1212]
+ [   4  983]]
+Accuracy: 0.47855917667238423
+Precision: 0.47855917667238423
+Recall: 0.47855917667238423
+F1-Score: 0.47855917667238423
+------------------------------------------------------------------
+Processing ngram_range: (7, 13)
+Top words for topic #0:
+['retrieve gantt png pdf using rest api', 'start date due date issue email notification', 'new email notification option event bookmarked project', 'drop setting blind carbon copy recipient bcc', 'security notification changing password password forgotten empty', 'actionmailer need limit many maximum connection open', 'redmine version sometimes doesnt send mail notification', 'email notification possibly sent whole transaction complete', 'remove async smtp async sendmail delivery method', 'url email sub uri sub uri duplication']
+
+
+Top words for topic #1:
+['issue timeentry api doe report root id', 'option stop sending reminder non working day', 'redmine java api journal missing user data', 'show number day left due date reminder', 'mention notification sent mention pattern link inconsistency', 'change default notification option thing watch assigned', 'user notify issue consider issue wathced user', 'security notification sent admin change password user', 'mail notification override ticket submitted via email', 'send individual notification mail per mail recipient']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.99      0.11      0.19      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.48      2332
+   macro avg       0.72      0.55      0.41      2332
+weighted avg       0.76      0.48      0.37      2332
+
+Confusion Matrix:
+[[ 143 1202]
+ [   1  986]]
+Accuracy: 0.4841337907375643
+Precision: 0.4841337907375643
+Recall: 0.4841337907375643
+F1-Score: 0.4841337907375643
+------------------------------------------------------------------
+Processing ngram_range: (7, 14)
+Top words for topic #0:
+['retrieve gantt png pdf using rest api', 'doe api rest show field added plugins', 'show number day left due date reminder', 'mention notification sent mention pattern link inconsistency', 'remove async smtp async sendmail delivery method', 'redmine version sometimes doesnt send mail notification', 'mail notification override ticket submitted via email', 'user notify issue consider issue wathced user', 'send individual notification mail per mail recipient', 'drop setting blind carbon copy recipient bcc']
+
+
+Top words for topic #1:
+['issue timeentry api doe report root id', 'rest api add full crud support news', 'start date due date issue email notification', 'new email notification option event bookmarked project', 'change default notification option thing watch assigned', 'security notification changing password password forgotten empty', 'security notification sent admin change password user', 'url email sub uri sub uri duplication', 'actionmailer need limit many maximum connection open', 'email notification possibly sent whole transaction complete']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.12      0.21      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.49      2332
+   macro avg       0.72      0.56      0.42      2332
+weighted avg       0.76      0.49      0.38      2332
+
+Confusion Matrix:
+[[ 156 1189]
+ [   3  984]]
+Accuracy: 0.4888507718696398
+Precision: 0.4888507718696398
+Recall: 0.4888507718696398
+F1-Score: 0.4888507718696398
+------------------------------------------------------------------
+Processing ngram_range: (7, 15)
+Top words for topic #0:
+['issue timeentry api doe report root id', 'retrieve gantt png pdf using rest api', 'start date due date issue email notification', 'mention notification sent mention pattern link inconsistency', 'new email notification option event bookmarked project', 'mail notification override ticket submitted via email', 'security notification changing password password forgotten empty', 'drop setting blind carbon copy recipient bcc', 'user notify issue consider issue wathced user', 'security notification sent admin change password user']
+
+
+Top words for topic #1:
+['option stop sending reminder non working day', 'redmine java api journal missing user data', 'show number day left due date reminder', 'change default notification option thing watch assigned', 'email notification possibly sent whole transaction complete', 'remove async smtp async sendmail delivery method', 'redmine version sometimes doesnt send mail notification', 'send individual notification mail per mail recipient', 'actionmailer need limit many maximum connection open', 'url email sub uri sub uri duplication']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.11      0.19      1345
+    Frontend       0.45      1.00      0.62       987
+
+    accuracy                           0.49      2332
+   macro avg       0.73      0.55      0.41      2332
+weighted avg       0.77      0.49      0.38      2332
+
+Confusion Matrix:
+[[ 145 1200]
+ [   0  987]]
+Accuracy: 0.4854202401372213
+Precision: 0.4854202401372213
+Recall: 0.4854202401372213
+F1-Score: 0.4854202401372213
+------------------------------------------------------------------
+Processing ngram_range: (8, 8)
+Top words for topic #0:
+['rest api json content missing attribute false value', 'get possible value custom field non admin user', 'include new status allowed workflow issue rest api', 'locked user group receive notification group added watcher', 'add ability emit update email mass update ticket', 'add option make header info notification mail configurable', 'issue assigned group listed reminder user parameter specified', 'missing translation email reminder user set language auto', 'notification mail working redmine microsoft exchange mail server', 'make issue id email notification linkable issue page']
+
+
+Top words for topic #1:
+['ajax request return error event fired instead success', 'support wiki page title attribute version rest api', 'plugin includes spent hour issue rest api response', 'get response even specifying id value doe exist', 'email notification going assignee user enabled otification project', 'option send email notification importing issue csv file', 'test send mail connection refused connect localhost port', 'email notification watcher cc list creating updating issue', 'new issue updating issue email notification receiving delay', 'changing subject line email notification issue created updated']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.08      0.15      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.47      2332
+   macro avg       0.71      0.54      0.38      2332
+weighted avg       0.75      0.47      0.34      2332
+
+Confusion Matrix:
+[[ 106 1239]
+ [   3  984]]
+Accuracy: 0.467409948542024
+Precision: 0.467409948542024
+Recall: 0.467409948542024
+F1-Score: 0.467409948542024
+------------------------------------------------------------------
+Processing ngram_range: (8, 9)
+Top words for topic #0:
+['rfe add option display watcher list email notification', 'implement cron endpoint script allow calling scheduled task', 'locked user group receive notification group added watcher', 'add option make header info notification mail configurable', 'option send email notification importing issue csv file', 'email notification watcher cc list creating updating issue', 'notification mail working redmine microsoft exchange mail server', 'make issue id email notification linkable issue page', 'missing translation email reminder user set language auto', 'changing subject line email notification issue created updated']
+
+
+Top words for topic #1:
+['enable adding attachment wiki entry using rest api', 'author ticket still get update ticket changed private', 'lose hostname path news email notification including wiki', 'plugin includes spent hour issue rest api response', 'rest api json content missing attribute false value', 'add ability emit update email mass update ticket', 'test send mail connection refused connect localhost port', 'email notification going assignee user enabled otification project', 'issue assigned group listed reminder user parameter specified', 'new issue updating issue email notification receiving delay']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.07      0.13      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.70      0.53      0.37      2332
+weighted avg       0.74      0.46      0.33      2332
+
+Confusion Matrix:
+[[  93 1252]
+ [   3  984]]
+Accuracy: 0.4618353344768439
+Precision: 0.4618353344768439
+Recall: 0.4618353344768439
+F1-Score: 0.4618353344768439
+------------------------------------------------------------------
+Processing ngram_range: (8, 10)
+Top words for topic #0:
+['lose hostname path news email notification including wiki', 'rest api json content missing attribute false value', 'email notification watcher cc list creating updating issue', 'test send mail connection refused connect localhost port', 'add ability emit update email mass update ticket', 'locked user group receive notification group added watcher', 'missing translation email reminder user set language auto', 'issue assigned group listed reminder user parameter specified', 'changing subject line email notification issue created updated', 'new issue updating issue email notification receiving delay']
+
+
+Top words for topic #1:
+['author ticket still get update ticket changed private', 'plugin includes spent hour issue rest api response', 'get possible value custom field non admin user', 'support wiki page title attribute version rest api', 'rfe add option display watcher list email notification', 'option send email notification importing issue csv file', 'add option make header info notification mail configurable', 'email notification going assignee user enabled otification project', 'make issue id email notification linkable issue page', 'notification mail working redmine microsoft exchange mail server']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.07      0.12      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.71      0.53      0.37      2332
+weighted avg       0.75      0.46      0.33      2332
+
+Confusion Matrix:
+[[  89 1256]
+ [   2  985]]
+Accuracy: 0.46054888507718694
+Precision: 0.46054888507718694
+Recall: 0.46054888507718694
+F1-Score: 0.46054888507718694
+------------------------------------------------------------------
+Processing ngram_range: (8, 11)
+Top words for topic #0:
+['lose hostname path news email notification including wiki', 'email delivery error end file reached sending reminder', 'author ticket still get update ticket changed private', 'include new status allowed workflow issue rest api', 'support wiki page title attribute version rest api', 'get also label key value custom field api', 'option send email notification importing issue csv file', 'locked user group receive notification group added watcher', 'issue assigned group listed reminder user parameter specified', 'notification mail working redmine microsoft exchange mail server']
+
+
+Top words for topic #1:
+['enable adding attachment wiki entry using rest api', 'add ability emit update email mass update ticket', 'add option make header info notification mail configurable', 'test send mail connection refused connect localhost port', 'email notification watcher cc list creating updating issue', 'email notification going assignee user enabled otification project', 'changing subject line email notification issue created updated', 'missing translation email reminder user set language auto', 'make issue id email notification linkable issue page', 'new issue updating issue email notification receiving delay']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.97      0.07      0.14      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.71      0.54      0.37      2332
+weighted avg       0.75      0.46      0.34      2332
+
+Confusion Matrix:
+[[  99 1246]
+ [   3  984]]
+Accuracy: 0.4644082332761578
+Precision: 0.4644082332761578
+Recall: 0.4644082332761578
+F1-Score: 0.4644082332761578
+------------------------------------------------------------------
+Processing ngram_range: (8, 12)
+Top words for topic #0:
+['rfe add option display watcher list email notification', 'test send mail connection refused connect localhost port', 'email notification going assignee user enabled otification project', 'email notification watcher cc list creating updating issue', 'add option make header info notification mail configurable', 'option send email notification importing issue csv file', 'issue assigned group listed reminder user parameter specified', 'missing translation email reminder user set language auto', 'notification mail working redmine microsoft exchange mail server', 'make issue id email notification linkable issue page']
+
+
+Top words for topic #1:
+['rest api json content missing attribute false value', 'plugin includes spent hour issue rest api response', 'lose hostname path news email notification including wiki', 'ajax request return error event fired instead success', 'get also label key value custom field api', 'implement cron endpoint script allow calling scheduled task', 'add ability emit update email mass update ticket', 'locked user group receive notification group added watcher', 'new issue updating issue email notification receiving delay', 'changing subject line email notification issue created updated']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.08      0.14      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.47      2332
+   macro avg       0.71      0.54      0.38      2332
+weighted avg       0.75      0.47      0.34      2332
+
+Confusion Matrix:
+[[ 101 1244]
+ [   2  985]]
+Accuracy: 0.46569468267581476
+Precision: 0.46569468267581476
+Recall: 0.46569468267581476
+F1-Score: 0.46569468267581476
+------------------------------------------------------------------
+Processing ngram_range: (8, 13)
+Top words for topic #0:
+['rfe add option display watcher list email notification', 'ajax request return error event fired instead success', 'enable adding attachment wiki entry using rest api', 'option send email notification importing issue csv file', 'add ability emit update email mass update ticket', 'test send mail connection refused connect localhost port', 'add option make header info notification mail configurable', 'email notification going assignee user enabled otification project', 'changing subject line email notification issue created updated', 'missing translation email reminder user set language auto']
+
+
+Top words for topic #1:
+['email delivery error end file reached sending reminder', 'get also label key value custom field api', 'get possible value custom field non admin user', 'author ticket still get update ticket changed private', 'email notification watcher cc list creating updating issue', 'locked user group receive notification group added watcher', 'new issue updating issue email notification receiving delay', 'notification mail working redmine microsoft exchange mail server', 'issue assigned group listed reminder user parameter specified', 'make issue id email notification linkable issue page']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.06      0.12      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.71      0.53      0.36      2332
+weighted avg       0.75      0.46      0.33      2332
+
+Confusion Matrix:
+[[  85 1260]
+ [   2  985]]
+Accuracy: 0.4588336192109777
+Precision: 0.4588336192109777
+Recall: 0.4588336192109777
+F1-Score: 0.4588336192109777
+------------------------------------------------------------------
+Processing ngram_range: (8, 14)
+Top words for topic #0:
+['rest api time entry doe support updated filter', 'rfe add option display watcher list email notification', 'add option make header info notification mail configurable', 'email notification watcher cc list creating updating issue', 'locked user group receive notification group added watcher', 'changing subject line email notification issue created updated', 'missing translation email reminder user set language auto', 'make issue id email notification linkable issue page', 'notification mail working redmine microsoft exchange mail server', 'new issue updating issue email notification receiving delay']
+
+
+Top words for topic #1:
+['enable adding attachment wiki entry using rest api', 'plugin includes spent hour issue rest api response', 'support wiki page title attribute version rest api', 'get possible value custom field non admin user', 'implement cron endpoint script allow calling scheduled task', 'add ability emit update email mass update ticket', 'test send mail connection refused connect localhost port', 'option send email notification importing issue csv file', 'email notification going assignee user enabled otification project', 'issue assigned group listed reminder user parameter specified']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.07      0.14      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.71      0.54      0.37      2332
+weighted avg       0.75      0.46      0.34      2332
+
+Confusion Matrix:
+[[  99 1246]
+ [   2  985]]
+Accuracy: 0.4648370497427101
+Precision: 0.4648370497427101
+Recall: 0.4648370497427101
+F1-Score: 0.4648370497427101
+------------------------------------------------------------------
+Processing ngram_range: (8, 15)
+Top words for topic #0:
+['email delivery error end file reached sending reminder', 'ajax request return error event fired instead success', 'implement cron endpoint script allow calling scheduled task', 'include new status allowed workflow issue rest api', 'get response even specifying id value doe exist', 'option send email notification importing issue csv file', 'test send mail connection refused connect localhost port', 'add ability emit update email mass update ticket', 'make issue id email notification linkable issue page', 'issue assigned group listed reminder user parameter specified']
+
+
+Top words for topic #1:
+['get also label key value custom field api', 'enable adding attachment wiki entry using rest api', 'add option make header info notification mail configurable', 'email notification watcher cc list creating updating issue', 'email notification going assignee user enabled otification project', 'locked user group receive notification group added watcher', 'new issue updating issue email notification receiving delay', 'missing translation email reminder user set language auto', 'changing subject line email notification issue created updated', 'notification mail working redmine microsoft exchange mail server']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.99      0.07      0.12      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.46      2332
+   macro avg       0.71      0.53      0.37      2332
+weighted avg       0.76      0.46      0.33      2332
+
+Confusion Matrix:
+[[  89 1256]
+ [   1  986]]
+Accuracy: 0.4609777015437393
+Precision: 0.4609777015437393
+Recall: 0.4609777015437393
+F1-Score: 0.4609777015437393
+------------------------------------------------------------------
+Processing ngram_range: (9, 9)
+Top words for topic #0:
+['issue assignee email header field empty assignee issue group', 'redmine issue assignee email header field empty assignee issue', 'bookmarked project option sending notification non member bookmarked project', 'event bookmarked project option sending notification non member bookmarked', 'time entry rest api user id parameter doesnt work', 'creating new issue custom field using rest api redmine', 'send notification user created via ldap fly user creation', 'api include issue count list version filter issue count', 'delay notification mail allow edits error correction without resend', 'mailer synched delivery doesnt correctly detect async queue adapter']
+
+
+Top words for topic #1:
+['add setting hide optional user custom field registration form', 'add notification reason email instead default static email footer', 'add total spent hour estimated hour rest api response', 'access custom field project specific activity via redmine api', 'make user profile rendering consistent speed user show api', 'add possibility configure limit used retrieve object api response', 'missing space notification sentence author name edit wiki page', 'ability set default value dont want notified change make', 'email notification status change triggered fixing keywords repository commits', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.05      0.10      1345
+    Frontend       0.44      1.00      0.61       987
+
+    accuracy                           0.45      2332
+   macro avg       0.72      0.53      0.35      2332
+weighted avg       0.76      0.45      0.32      2332
+
+Confusion Matrix:
+[[  71 1274]
+ [   0  987]]
+Accuracy: 0.45368782161234994
+Precision: 0.45368782161234994
+Recall: 0.45368782161234994
+F1-Score: 0.45368782161234994
+------------------------------------------------------------------
+Processing ngram_range: (9, 10)
+Top words for topic #0:
+['add setting hide optional user custom field registration form', 'add notification reason email instead default static email footer', 'add auth source id get request endpoint user format', 'missing space notification sentence author name edit wiki page', 'time entry rest api user id parameter doesnt work', 'creating new issue custom field using rest api redmine', 'email notification status change triggered fixing keywords repository commits', 'ability set default value dont want notified change make', 'mailer synched delivery doesnt correctly detect async queue adapter', 'delay notification mail allow edits error correction without resend']
+
+
+Top words for topic #1:
+['make user profile rendering consistent speed user show api', 'rest group api doe work user already member group', 'add possibility configure limit used retrieve object api response', 'password reset count password change user must change passwd', 'access custom field project specific activity via redmine api', 'prevent user getting stuck expired password recovery token session', 'add total spent hour estimated hour rest api response', 'send notification user created via ldap fly user creation', 'api include issue count list version filter issue count', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.04      0.08      1345
+    Frontend       0.43      1.00      0.61       987
+
+    accuracy                           0.45      2332
+   macro avg       0.72      0.52      0.34      2332
+weighted avg       0.76      0.45      0.30      2332
+
+Confusion Matrix:
+[[  59 1286]
+ [   0  987]]
+Accuracy: 0.4485420240137221
+Precision: 0.4485420240137221
+Recall: 0.4485420240137221
+F1-Score: 0.4485420240137221
+------------------------------------------------------------------
+Processing ngram_range: (9, 11)
+Top words for topic #0:
+['add auth source id get request endpoint user format', 'add total spent hour estimated hour rest api response', 'add notification reason email instead default static email footer', 'searching issue number rest api redirects issue html page', 'add setting hide optional user custom field registration form', 'rest group api doe work user already member group', 'time entry rest api user id parameter doesnt work', 'api include issue count list version filter issue count', 'missing space notification sentence author name edit wiki page', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Top words for topic #1:
+['project xml api doenst include closed project since redmine', 'basic api authentication doe work http user pas url', 'add possibility configure limit used retrieve object api response', 'prevent user getting stuck expired password recovery token session', 'creating new issue custom field using rest api redmine', 'send notification user created via ldap fly user creation', 'ability set default value dont want notified change make', 'email notification status change triggered fixing keywords repository commits', 'mailer synched delivery doesnt correctly detect async queue adapter', 'delay notification mail allow edits error correction without resend']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.96      0.03      0.06      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.44      2332
+   macro avg       0.69      0.52      0.33      2332
+weighted avg       0.73      0.44      0.29      2332
+
+Confusion Matrix:
+[[  45 1300]
+ [   2  985]]
+Accuracy: 0.44168096054888506
+Precision: 0.44168096054888506
+Recall: 0.44168096054888506
+F1-Score: 0.44168096054888506
+------------------------------------------------------------------
+Processing ngram_range: (9, 12)
+Top words for topic #0:
+['make user profile rendering consistent speed user show api', 'add notification reason email instead default static email footer', 'prevent user getting stuck expired password recovery token session', 'add setting hide optional user custom field registration form', 'time entry rest api user id parameter doesnt work', 'api include issue count list version filter issue count', 'creating new issue custom field using rest api redmine', 'email notification status change triggered fixing keywords repository commits', 'ability set default value dont want notified change make', 'mailer synched delivery doesnt correctly detect async queue adapter']
+
+
+Top words for topic #1:
+['searching issue number rest api redirects issue html page', 'password reset count password change user must change passwd', 'access custom field project specific activity via redmine api', 'project xml api doenst include closed project since redmine', 'rest group api doe work user already member group', 'add possibility configure limit used retrieve object api response', 'missing space notification sentence author name edit wiki page', 'send notification user created via ldap fly user creation', 'delay notification mail allow edits error correction without resend', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.04      0.07      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.44      2332
+   macro avg       0.71      0.52      0.34      2332
+weighted avg       0.75      0.44      0.30      2332
+
+Confusion Matrix:
+[[  50 1295]
+ [   1  986]]
+Accuracy: 0.444253859348199
+Precision: 0.444253859348199
+Recall: 0.444253859348199
+F1-Score: 0.444253859348199
+------------------------------------------------------------------
+Processing ngram_range: (9, 13)
+Top words for topic #0:
+['add possibility configure limit used retrieve object api response', 'prevent user getting stuck expired password recovery token session', 'access custom field project specific activity via redmine api', 'add notification reason email instead default static email footer', 'searching issue number rest api redirects issue html page', 'add total spent hour estimated hour rest api response', 'make user profile rendering consistent speed user show api', 'password reset count password change user must change passwd', 'missing space notification sentence author name edit wiki page', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Top words for topic #1:
+['basic api authentication doe work http user pas url', 'add setting hide optional user custom field registration form', 'creating new issue custom field using rest api redmine', 'api include issue count list version filter issue count', 'send notification user created via ldap fly user creation', 'time entry rest api user id parameter doesnt work', 'ability set default value dont want notified change make', 'email notification status change triggered fixing keywords repository commits', 'mailer synched delivery doesnt correctly detect async queue adapter', 'delay notification mail allow edits error correction without resend']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.96      0.04      0.08      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.45      2332
+   macro avg       0.70      0.52      0.34      2332
+weighted avg       0.74      0.45      0.30      2332
+
+Confusion Matrix:
+[[  53 1292]
+ [   2  985]]
+Accuracy: 0.4451114922813036
+Precision: 0.4451114922813036
+Recall: 0.4451114922813036
+F1-Score: 0.4451114922813036
+------------------------------------------------------------------
+Processing ngram_range: (9, 14)
+Top words for topic #0:
+['add notification reason email instead default static email footer', 'password reset count password change user must change passwd', 'add auth source id get request endpoint user format', 'access custom field project specific activity via redmine api', 'project xml api doenst include closed project since redmine', 'prevent user getting stuck expired password recovery token session', 'rest group api doe work user already member group', 'creating new issue custom field using rest api redmine', 'time entry rest api user id parameter doesnt work', 'delay notification mail allow edits error correction without resend']
+
+
+Top words for topic #1:
+['make user profile rendering consistent speed user show api', 'basic api authentication doe work http user pas url', 'add total spent hour estimated hour rest api response', 'missing space notification sentence author name edit wiki page', 'send notification user created via ldap fly user creation', 'api include issue count list version filter issue count', 'ability set default value dont want notified change make', 'email notification status change triggered fixing keywords repository commits', 'mailer synched delivery doesnt correctly detect async queue adapter', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.98      0.04      0.08      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.45      2332
+   macro avg       0.71      0.52      0.34      2332
+weighted avg       0.75      0.45      0.30      2332
+
+Confusion Matrix:
+[[  58 1287]
+ [   1  986]]
+Accuracy: 0.44768439108061747
+Precision: 0.44768439108061747
+Recall: 0.44768439108061747
+F1-Score: 0.44768439108061747
+------------------------------------------------------------------
+Processing ngram_range: (9, 15)
+Top words for topic #0:
+['project xml api doenst include closed project since redmine', 'make user profile rendering consistent speed user show api', 'add total spent hour estimated hour rest api response', 'add auth source id get request endpoint user format', 'add notification reason email instead default static email footer', 'password reset count password change user must change passwd', 'creating new issue custom field using rest api redmine', 'time entry rest api user id parameter doesnt work', 'email notification status change triggered fixing keywords repository commits', 'mail notification feature back allow mail sent multiple recipient']
+
+
+Top words for topic #1:
+['basic api authentication doe work http user pas url', 'add possibility configure limit used retrieve object api response', 'rest group api doe work user already member group', 'prevent user getting stuck expired password recovery token session', 'missing space notification sentence author name edit wiki page', 'send notification user created via ldap fly user creation', 'api include issue count list version filter issue count', 'ability set default value dont want notified change make', 'mailer synched delivery doesnt correctly detect async queue adapter', 'delay notification mail allow edits error correction without resend']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       0.95      0.03      0.06      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.44      2332
+   macro avg       0.69      0.51      0.33      2332
+weighted avg       0.73      0.44      0.29      2332
+
+Confusion Matrix:
+[[  42 1303]
+ [   2  985]]
+Accuracy: 0.4403945111492281
+Precision: 0.4403945111492281
+Recall: 0.4403945111492281
+F1-Score: 0.4403945111492281
+------------------------------------------------------------------
+Processing ngram_range: (10, 10)
+Top words for topic #0:
+['rest api method available see used status list per tracker', 'add revision changeset api end point support inclusion associated issue', 'unable read target version redmine issue using python redmine module', 'rest api timesheet allow ability include issue detail timesheet api', 'creating issue api project without tracker give wrong error message', 'default sort email reminder due date list due date email', 'add option decide default value dont want notified change make', 'redmine generates notification email fail dmarc therefore often rejected quarantined', 'notification sub event issue updated doe cover event consist parent', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Top words for topic #1:
+['create new user via rest api user adding project role', 'new user via rest api user adding project role way', 'redirect user path instead edit user path order avoid confusion', 'use config relative url root default path session autologin cooky', 'cant set author id creating new issue via rest api', 'custom acknowledgement meesage resposne body redmine rest api post call', 'rest api parameter get issue json assigned id doesnt work', 'parameter back url set redirect login page session ha expired', 'allows option temporarily mute email notification per user per role', 'event bookmarked project option sending notification non member bookmarked project']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.02      0.04      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.51      0.32      2332
+weighted avg       0.76      0.43      0.28      2332
+
+Confusion Matrix:
+[[  26 1319]
+ [   0  987]]
+Accuracy: 0.4343910806174957
+Precision: 0.4343910806174957
+Recall: 0.4343910806174957
+F1-Score: 0.4343910806174957
+------------------------------------------------------------------
+Processing ngram_range: (10, 11)
+Top words for topic #0:
+['use config relative url root default path session autologin cooky', 'unable read target version redmine issue using python redmine module', 'redirect user path instead edit user path order avoid confusion', 'rest api parameter get issue json assigned id doesnt work', 'cant set author id creating new issue via rest api', 'rest api method available see used status list per tracker', 'add option decide default value dont want notified change make', 'allows option temporarily mute email notification per user per role', 'notification sub event issue updated doe cover event consist parent', 'event bookmarked project option sending notification non member bookmarked project']
+
+
+Top words for topic #1:
+['text pre issue mail renderred large font multiple line break', 'rest api timesheet allow ability include issue detail timesheet api', 'parameter back url set redirect login page session ha expired', 'add revision changeset api end point support inclusion associated issue', 'custom acknowledgement meesage resposne body redmine rest api post call', 'user api doe accept boolean like string value generate password', 'default sort email reminder due date list due date email', 'creating issue api project without tracker give wrong error message', 'redmine generates notification email fail dmarc therefore often rejected quarantined', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.03      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.51      0.31      2332
+weighted avg       0.76      0.43      0.27      2332
+
+Confusion Matrix:
+[[  20 1325]
+ [   0  987]]
+Accuracy: 0.4318181818181818
+Precision: 0.4318181818181818
+Recall: 0.4318181818181818
+F1-Score: 0.4318181818181818
+------------------------------------------------------------------
+Processing ngram_range: (10, 12)
+Top words for topic #0:
+['rest api method available see used status list per tracker', 'add revision changeset api end point support inclusion associated issue', 'redirect user path instead edit user path order avoid confusion', 'rest api parameter get issue json assigned id doesnt work', 'user api doe accept boolean like string value generate password', 'creating issue api project without tracker give wrong error message', 'add option decide default value dont want notified change make', 'redmine generates notification email fail dmarc therefore often rejected quarantined', 'event bookmarked project option sending notification non member bookmarked project', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Top words for topic #1:
+['project admin need able set notification rule project level based', 'rest api timesheet allow ability include issue detail timesheet api', 'custom acknowledgement meesage resposne body redmine rest api post call', 'unable read target version redmine issue using python redmine module', 'parameter back url set redirect login page session ha expired', 'cant set author id creating new issue via rest api', 'use config relative url root default path session autologin cooky', 'default sort email reminder due date list due date email', 'notification sub event issue updated doe cover event consist parent', 'allows option temporarily mute email notification per user per role']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.02      0.04      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.51      0.32      2332
+weighted avg       0.76      0.43      0.27      2332
+
+Confusion Matrix:
+[[  24 1321]
+ [   0  987]]
+Accuracy: 0.43353344768439106
+Precision: 0.43353344768439106
+Recall: 0.43353344768439106
+F1-Score: 0.43353344768439106
+------------------------------------------------------------------
+Processing ngram_range: (10, 13)
+Top words for topic #0:
+['admin need able set notification rule project level based role', 'user api doe accept boolean like string value generate password', 'use config relative url root default path session autologin cooky', 'parameter back url set redirect login page session ha expired', 'add revision changeset api end point support inclusion associated issue', 'rest api timesheet allow ability include issue detail timesheet api', 'custom acknowledgement meesage resposne body redmine rest api post call', 'notification sub event issue updated doe cover event consist parent', 'event bookmarked project option sending notification non member bookmarked project', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Top words for topic #1:
+['rest api parameter get issue json assigned id doesnt work', 'unable read target version redmine issue using python redmine module', 'redirect user path instead edit user path order avoid confusion', 'cant set author id creating new issue via rest api', 'rest api method available see used status list per tracker', 'default sort email reminder due date list due date email', 'creating issue api project without tracker give wrong error message', 'add option decide default value dont want notified change make', 'allows option temporarily mute email notification per user per role', 'redmine generates notification email fail dmarc therefore often rejected quarantined']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.02      0.03      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.51      0.32      2332
+weighted avg       0.76      0.43      0.27      2332
+
+Confusion Matrix:
+[[  22 1323]
+ [   0  987]]
+Accuracy: 0.43267581475128647
+Precision: 0.43267581475128647
+Recall: 0.43267581475128647
+F1-Score: 0.43267581475128647
+------------------------------------------------------------------
+Processing ngram_range: (10, 14)
+Top words for topic #0:
+['email sent new issue using async smtp non standard emission', 'unable read target version redmine issue using python redmine module', 'rest api method available see used status list per tracker', 'custom acknowledgement meesage resposne body redmine rest api post call', 'add revision changeset api end point support inclusion associated issue', 'cant set author id creating new issue via rest api', 'default sort email reminder due date list due date email', 'notification sub event issue updated doe cover event consist parent', 'allows option temporarily mute email notification per user per role', 'event bookmarked project option sending notification non member bookmarked project']
+
+
+Top words for topic #1:
+['parameter back url set redirect login page session ha expired', 'rest api parameter get issue json assigned id doesnt work', 'use config relative url root default path session autologin cooky', 'rest api timesheet allow ability include issue detail timesheet api', 'redirect user path instead edit user path order avoid confusion', 'user api doe accept boolean like string value generate password', 'add option decide default value dont want notified change make', 'creating issue api project without tracker give wrong error message', 'redmine generates notification email fail dmarc therefore often rejected quarantined', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.02      0.05      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.44      2332
+   macro avg       0.71      0.51      0.32      2332
+weighted avg       0.76      0.44      0.28      2332
+
+Confusion Matrix:
+[[  32 1313]
+ [   0  987]]
+Accuracy: 0.4369639794168096
+Precision: 0.4369639794168096
+Recall: 0.4369639794168096
+F1-Score: 0.4369639794168096
+------------------------------------------------------------------
+Processing ngram_range: (10, 15)
+Top words for topic #0:
+['custom acknowledgement meesage resposne body redmine rest api post call', 'rest api parameter get issue json assigned id doesnt work', 'use config relative url root default path session autologin cooky', 'unable read target version redmine issue using python redmine module', 'add option decide default value dont want notified change make', 'creating issue api project without tracker give wrong error message', 'default sort email reminder due date list due date email', 'notification sub event issue updated doe cover event consist parent', 'event bookmarked project option sending notification non member bookmarked project', 'redmine issue assignee email header field empty assignee issue group']
+
+
+Top words for topic #1:
+['pre text pre issue mail renderred large font multiple line break', 'project admin need able set notification rule project level based', 'project admin need able set notification rule project level based role', 'admin need able set notification rule project level based role', 'cant set author id creating new issue via rest api', 'user api doe accept boolean like string value generate password', 'parameter back url set redirect login page session ha expired', 'rest api timesheet allow ability include issue detail timesheet api', 'allows option temporarily mute email notification per user per role', 'redmine generates notification email fail dmarc therefore often rejected quarantined']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.02      0.04      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.44      2332
+   macro avg       0.71      0.51      0.32      2332
+weighted avg       0.76      0.44      0.28      2332
+
+Confusion Matrix:
+[[  28 1317]
+ [   0  987]]
+Accuracy: 0.43524871355060035
+Precision: 0.43524871355060035
+Recall: 0.43524871355060035
+F1-Score: 0.43524871355060035
+------------------------------------------------------------------
+Processing ngram_range: (11, 11)
+Top words for topic #0:
+['request store gem hold user current prevent data leakage error message', 'introduce request store gem hold user current prevent data leakage error', 'pdf thumbnail displayed even though imagemagick pdf support available optional checked', 'issue link email reminder point issue list doe include issue assigned', 'link email reminder point issue list doe include issue assigned group', 'view issue link email reminder point issue list doe include issue', 'argumenterror lib redmine twofa base rb updating source file development mode', 'encrypt decrypt totp secret key rake db encrypt rake db decrypt', 'add issue name listing time entrise getting time entry rest api', 'create new user via rest api user adding project role way']
+
+
+Top words for topic #1:
+['halt redmine boot entirely instead showing warning admin info pending migration', 'option disalow registration work ldap used ldap account information entered login', 'always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project', 'copy always send email notification ignoring send email notification project copy', 'add option include enabled issue custom field project show api response', 'get requested resource forbidden error calling redmine user redmine user filter', 'project admin need able set notification rule project level based role', 'email sent new issue using async smtp non standard emission address', 'pre text pre issue mail renderred large font multiple line break']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.02      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.51      0.31      2332
+weighted avg       0.76      0.43      0.27      2332
+
+Confusion Matrix:
+[[  17 1328]
+ [   0  987]]
+Accuracy: 0.4305317324185249
+Precision: 0.4305317324185249
+Recall: 0.4305317324185249
+F1-Score: 0.4305317324185249
+------------------------------------------------------------------
+Processing ngram_range: (11, 12)
+Top words for topic #0:
+['halt redmine boot entirely instead showing warning admin info pending migration', 'add ability user control visibility project user profile improve privacy simplicity', 'rest api issue put responds ok even cant set assigned id', 'pdf thumbnail displayed even though imagemagick pdf support available optional checked', 'add issue name listing time entrise getting time entry rest api', 'argumenterror lib redmine twofa base rb updating source file development mode', 'get requested resource forbidden error calling redmine user redmine user filter', 'email sent new issue using async smtp non standard emission address', 'pre text pre issue mail renderred large font multiple line break', 'project admin need able set notification rule project level based role']
+
+
+Top words for topic #1:
+['issue link email reminder point issue list doe include issue assigned group', 'project copy always send email notification ignoring send email notification project copy', 'always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project', 'copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option', 'option disalow registration work ldap used ldap account information entered login', 'encrypt decrypt totp secret key rake db encrypt rake db decrypt', 'add option include enabled issue custom field project show api response', 'create new user via rest api user adding project role way']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   7 1338]
+ [   0  987]]
+Accuracy: 0.4262435677530017
+Precision: 0.4262435677530017
+Recall: 0.4262435677530017
+F1-Score: 0.4262435677530017
+------------------------------------------------------------------
+Processing ngram_range: (11, 13)
+Top words for topic #0:
+['mysql err window temp xxx myi rake redmine load default data', 'user without two factor authentication enabled sign two factor authentication required', 'add ability user control visibility project user profile improve privacy simplicity', 'rest api issue put responds ok even cant set assigned id', 'add issue name listing time entrise getting time entry rest api', 'argumenterror lib redmine twofa base rb updating source file development mode', 'encrypt decrypt totp secret key rake db encrypt rake db decrypt', 'add option include enabled issue custom field project show api response', 'email sent new issue using async smtp non standard emission address', 'project admin need able set notification rule project level based role']
+
+
+Top words for topic #1:
+['copy always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project copy option', 'always send email notification ignoring send email notification project copy option', 'copy always send email notification ignoring send email notification project copy', 'halt redmine boot entirely instead showing warning admin info pending migration', 'pdf thumbnail displayed even though imagemagick pdf support available optional checked', 'option disalow registration work ldap used ldap account information entered login', 'create new user via rest api user adding project role way', 'get requested resource forbidden error calling redmine user redmine user filter', 'pre text pre issue mail renderred large font multiple line break']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.02      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.31      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[  12 1333]
+ [   0  987]]
+Accuracy: 0.4283876500857633
+Precision: 0.4283876500857633
+Recall: 0.4283876500857633
+F1-Score: 0.4283876500857633
+------------------------------------------------------------------
+Processing ngram_range: (11, 14)
+Top words for topic #0:
+['project copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option', 'copy always send email notification ignoring send email notification project copy', 'option disalow registration work ldap used ldap account information entered login', 'pdf thumbnail displayed even though imagemagick pdf support available optional checked', 'argumenterror lib redmine twofa base rb updating source file development mode', 'add issue name listing time entrise getting time entry rest api', 'add option include enabled issue custom field project show api response', 'project admin need able set notification rule project level based role', 'pre text pre issue mail renderred large font multiple line break']
+
+
+Top words for topic #1:
+['introduce request store gem hold user current prevent data leakage error', 'request store gem hold user current prevent data leakage error message', 'user without two factor authentication enabled sign two factor authentication required', 'rest api issue put responds ok even cant set assigned id', 'add ability user control visibility project user profile improve privacy simplicity', 'halt redmine boot entirely instead showing warning admin info pending migration', 'encrypt decrypt totp secret key rake db encrypt rake db decrypt', 'get requested resource forbidden error calling redmine user redmine user filter', 'create new user via rest api user adding project role way', 'email sent new issue using async smtp non standard emission address']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.02      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.31      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[  13 1332]
+ [   0  987]]
+Accuracy: 0.4288164665523156
+Precision: 0.4288164665523156
+Recall: 0.4288164665523156
+F1-Score: 0.4288164665523156
+------------------------------------------------------------------
+Processing ngram_range: (11, 15)
+Top words for topic #0:
+['copy always send email notification ignoring send email notification project copy', 'project copy always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project copy', 'project copy always send email notification ignoring send email notification project', 'always send email notification ignoring send email notification project copy option', 'copy always send email notification ignoring send email notification project copy option', 'add ability user control visibility project user profile improve privacy simplicity', 'option disalow registration work ldap used ldap account information entered login', 'rest api issue put responds ok even cant set assigned id', 'argumenterror lib redmine twofa base rb updating source file development mode']
+
+
+Top words for topic #1:
+['pdf thumbnail displayed even though imagemagick pdf support available optional checked', 'halt redmine boot entirely instead showing warning admin info pending migration', 'add issue name listing time entrise getting time entry rest api', 'encrypt decrypt totp secret key rake db encrypt rake db decrypt', 'get requested resource forbidden error calling redmine user redmine user filter', 'create new user via rest api user adding project role way', 'add option include enabled issue custom field project show api response', 'email sent new issue using async smtp non standard emission address', 'pre text pre issue mail renderred large font multiple line break', 'project admin need able set notification rule project level based role']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.01      1345
+    Frontend       0.43      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.31      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[  10 1335]
+ [   0  987]]
+Accuracy: 0.42753001715265865
+Precision: 0.42753001715265865
+Recall: 0.42753001715265865
+F1-Score: 0.42753001715265865
+------------------------------------------------------------------
+Processing ngram_range: (12, 12)
+Top words for topic #0:
+['selection ui custom field editing screen project setting screen aligned create sense', 'ui custom field editing screen project setting screen aligned create sense coherence', 'custom field editing screen project setting screen aligned create sense coherence unity', 'tracker selection ui custom field editing screen project setting screen aligned create', 'design tracker selection ui custom field editing screen project setting screen aligned', 'handle nil return redmine theme theme setting ui theme redmine info environment', 'rest api show wiki page html format contains wrong link another wiki', 'api show wiki page html format contains wrong link another wiki project', 'view issue link email reminder point issue list doe include issue assigned', 'issue link email reminder point issue list doe include issue assigned group']
+
+
+Top words for topic #1:
+['address per project email alias different incoming email alias mapping specific project', 'outgoing email address per project email alias different incoming email alias mapping', 'issue via rest api cause internal server error invalid project id specified', 'updating issue via rest api cause internal server error invalid project id', 'would like improve user experience ux project selection custom field editing screen', 'creating rest api new issue project without tracker enabled return misleading error', 'rest api new issue project without tracker enabled return misleading error message', 'introduce request store gem hold user current prevent data leakage error message', 'project copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   8 1337]
+ [   0  987]]
+Accuracy: 0.42667238421955406
+Precision: 0.42667238421955406
+Recall: 0.42667238421955406
+F1-Score: 0.42667238421955406
+------------------------------------------------------------------
+Processing ngram_range: (12, 13)
+Top words for topic #0:
+['rest api show wiki page html format contains wrong link another wiki', 'api show wiki page html format contains wrong link another wiki project', 'would like improve user experience ux project selection custom field editing screen', 'view issue link email reminder point issue list doe include issue assigned group', 'issue link email reminder point issue list doe include issue assigned group', 'view issue link email reminder point issue list doe include issue assigned', 'project copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project copy option', 'introduce request store gem hold user current prevent data leakage error message']
+
+
+Top words for topic #1:
+['setting host name instead setting app title totp issuer avoid name collision', 'make key value list format custom field value custom field enumeration searchable', 'issue via rest api cause internal server error invalid project id specified', 'updating issue via rest api cause internal server error invalid project id', 'updating issue via rest api cause internal server error invalid project id specified', 'broken layout preview tab welcome text setting due unexpectedly applied padding left', 'creating rest api new issue project without tracker enabled return misleading error', 'rest api new issue project without tracker enabled return misleading error message', 'creating rest api new issue project without tracker enabled return misleading error message', 'handle nil return redmine theme theme setting ui theme redmine info environment']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   5 1340]
+ [   0  987]]
+Accuracy: 0.42538593481989706
+Precision: 0.42538593481989706
+Recall: 0.42538593481989706
+F1-Score: 0.42538593481989706
+------------------------------------------------------------------
+Processing ngram_range: (12, 14)
+Top words for topic #0:
+['updating issue via rest api cause internal server error invalid project id specified', 'broken layout preview tab welcome text setting due unexpectedly applied padding left', 'rake db migrate rail env production doesnt update type feild repository table', 'api show wiki page html format contains wrong link another wiki project', 'rest api show wiki page html format contains wrong link another wiki', 'rest api show wiki page html format contains wrong link another wiki project', 'would like improve user experience ux project selection custom field editing screen', 'project copy always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option']
+
+
+Top words for topic #1:
+['outgoing email address per project email alias different incoming email alias mapping specific project', 'issue id number increment lot apparent reason example subsequent id next one', 'creating rest api new issue project without tracker enabled return misleading error', 'rest api new issue project without tracker enabled return misleading error message', 'creating rest api new issue project without tracker enabled return misleading error message', 'handle nil return redmine theme theme setting ui theme redmine info environment', 'issue link email reminder point issue list doe include issue assigned group', 'view issue link email reminder point issue list doe include issue assigned', 'view issue link email reminder point issue list doe include issue assigned group', 'introduce request store gem hold user current prevent data leakage error message']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   5 1340]
+ [   0  987]]
+Accuracy: 0.42538593481989706
+Precision: 0.42538593481989706
+Recall: 0.42538593481989706
+F1-Score: 0.42538593481989706
+------------------------------------------------------------------
+Processing ngram_range: (12, 15)
+Top words for topic #0:
+['make key value list format custom field value custom field enumeration searchable', 'broken layout preview tab welcome text setting due unexpectedly applied padding left', 'rake db migrate rail env production doesnt update type feild repository table', 'creating rest api new issue project without tracker enabled return misleading error message', 'rest api new issue project without tracker enabled return misleading error message', 'creating rest api new issue project without tracker enabled return misleading error', 'handle nil return redmine theme theme setting ui theme redmine info environment', 'view issue link email reminder point issue list doe include issue assigned', 'view issue link email reminder point issue list doe include issue assigned group', 'issue link email reminder point issue list doe include issue assigned group']
+
+
+Top words for topic #1:
+['issue via rest api cause internal server error invalid project id specified', 'issue id number increment lot apparent reason example subsequent id next one', 'rest api show wiki page html format contains wrong link another wiki', 'api show wiki page html format contains wrong link another wiki project', 'rest api show wiki page html format contains wrong link another wiki project', 'would like improve user experience ux project selection custom field editing screen', 'project copy always send email notification ignoring send email notification project copy', 'copy always send email notification ignoring send email notification project copy option', 'project copy always send email notification ignoring send email notification project copy option', 'introduce request store gem hold user current prevent data leakage error message']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.01      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   8 1337]
+ [   0  987]]
+Accuracy: 0.42667238421955406
+Precision: 0.42667238421955406
+Recall: 0.42667238421955406
+F1-Score: 0.42667238421955406
+------------------------------------------------------------------
+Processing ngram_range: (13, 13)
+Top words for topic #0:
+['request adding tracker id name rest time entry response like already project info', 'anymore yaml db rake task db data dump db data load update redmine', 'workflow status transition header column header row pan scroll view numerous issue status', 'email address per project email alias different incoming email alias mapping specific project', 'different outgoing email address per project email alias different incoming email alias mapping', 'outgoing email address per project email alias different incoming email alias mapping specific', 'updating issue via rest api cause internal server error invalid project id specified', 'rest api show wiki page html format contains wrong link another wiki project', 'view issue link email reminder point issue list doe include issue assigned group', 'project copy always send email notification ignoring send email notification project copy option']
+
+
+Top words for topic #1:
+['request access cookie incorrect message console content blocking disabled enhanced tracking protection enabled', 'address bar arrow button go button ha misleading tooltip pointing url may searching', 'byte downloads downloading http file http site dom block download insecure set default', 'querycolumn sql field assumes operator issue opened closed deal field named status id', 'sql field assumes operator issue opened closed deal field named status id extendable', 'setting host name instead setting app title totp issuer avoid name collision instance', 'host name instead setting app title totp issuer avoid name collision instance apps', 'use setting host name instead setting app title totp issuer avoid name collision', 'api create issue relation method return undefined method split issue id sent integer', 'creating rest api new issue project without tracker enabled return misleading error message']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.00      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.42      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.42      0.25      2332
+
+Confusion Matrix:
+[[   2 1343]
+ [   0  987]]
+Accuracy: 0.4240994854202401
+Precision: 0.4240994854202401
+Recall: 0.4240994854202401
+F1-Score: 0.4240994854202401
+------------------------------------------------------------------
+Processing ngram_range: (13, 14)
+Top words for topic #0:
+['customize mode entering disabled chromeless window window open without toolbars etc doesnt work', 'secondary undocked window revert default position positioned edge primary monitor dual monitor setup', 'sql field assumes operator issue opened closed deal field named status id extendable', 'querycolumn sql field assumes operator issue opened closed deal field named status id extendable', 'querycolumn sql field assumes operator issue opened closed deal field named status id', 'workflow status transition header column header row pan scroll view numerous issue status', 'anymore yaml db rake task db data dump db data load update redmine', 'api create issue relation method return undefined method split issue id sent integer', 'view issue link email reminder point issue list doe include issue assigned group', 'project copy always send email notification ignoring send email notification project copy option']
+
+
+Top words for topic #1:
+['adding tracker id name rest time entry response like already project info response', 'request adding tracker id name rest time entry response like already project info', 'outgoing email address per project email alias different incoming email alias mapping specific project', 'different outgoing email address per project email alias different incoming email alias mapping', 'outgoing email address per project email alias different incoming email alias mapping specific', 'different outgoing email address per project email alias different incoming email alias mapping specific', 'email address per project email alias different incoming email alias mapping specific project', 'updating issue via rest api cause internal server error invalid project id specified', 'rest api show wiki page html format contains wrong link another wiki project', 'creating rest api new issue project without tracker enabled return misleading error message']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.43      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.43      0.26      2332
+
+Confusion Matrix:
+[[   5 1340]
+ [   0  987]]
+Accuracy: 0.42538593481989706
+Precision: 0.42538593481989706
+Recall: 0.42538593481989706
+F1-Score: 0.42538593481989706
+------------------------------------------------------------------
+Processing ngram_range: (13, 15)
+Top words for topic #0:
+['outgoing email address per project email alias different incoming email alias mapping specific', 'different outgoing email address per project email alias different incoming email alias mapping specific', 'different outgoing email address per project email alias different incoming email alias mapping specific project', 'different outgoing email address per project email alias different incoming email alias mapping', 'email address per project email alias different incoming email alias mapping specific project', 'anymore yaml db rake task db data dump db data load update redmine', 'api create issue relation method return undefined method split issue id sent integer', 'rest api show wiki page html format contains wrong link another wiki project', 'view issue link email reminder point issue list doe include issue assigned group', 'project copy always send email notification ignoring send email notification project copy option']
+
+
+Top words for topic #1:
+['window last top site wrongly displayed second row horizontally resizing browser exactly px', 'searching text via context menu text includes exclamation mark activate duckduckgos bang action', 'newtab linting script rely top level mach lint arent working window dev environment', 'save action add missing override annotation implementation interface method always executed generic interface', 'sql field assumes operator issue opened closed deal field named status id extendable', 'querycolumn sql field assumes operator issue opened closed deal field named status id', 'querycolumn sql field assumes operator issue opened closed deal field named status id extendable', 'workflow status transition header column header row pan scroll view numerous issue status', 'updating issue via rest api cause internal server error invalid project id specified', 'creating rest api new issue project without tracker enabled return misleading error message']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.00      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.42      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.42      0.25      2332
+
+Confusion Matrix:
+[[   3 1342]
+ [   0  987]]
+Accuracy: 0.42452830188679247
+Precision: 0.42452830188679247
+Recall: 0.42452830188679247
+F1-Score: 0.42452830188679247
+------------------------------------------------------------------
+Processing ngram_range: (14, 14)
+Top words for topic #0:
+['imported bookmark html placed inside bookmark menu bookmark toolbar imported file stated spec doc', 'request denied downloading temporary file browser download start downloads tmp dir enabled snap build', 'entering customize menu using context menu edge overflow menu show another incomplete overflow menu', 'firefox account menu display name email manage account fxa panel use default font colour', 'firefox running window admin account still asks admin privilege running downloaded unsigned exe file', 'œpersonalizeâ button ha blue œfocus visibleâ border button clicked state right address bar focused', 'œtry import againâ œcancelâ button œimport errorâ modal exceed modalâ area specific language russian', 'querycolumn sql field assumes operator issue opened closed deal field named status id extendable', 'use setting host name instead setting app title totp issuer avoid name collision instance', 'setting host name instead setting app title totp issuer avoid name collision instance apps']
+
+
+Top words for topic #1:
+['project copy failed copy issue category set required project copy issue issue xxx could', 'failed copy issue category set required project copy issue issue xxx could copied category', 'copy failed copy issue category set required project copy issue issue xxx could copied', 'copy issue category set required project copy issue issue xxx could copied category blank', 'tracker selection ui custom field editing screen project setting screen aligned create sense coherence', 'design tracker selection ui custom field editing screen project setting screen aligned create sense', 'selection ui custom field editing screen project setting screen aligned create sense coherence unity', 'request adding tracker id name rest time entry response like already project info response', 'different outgoing email address per project email alias different incoming email alias mapping specific', 'outgoing email address per project email alias different incoming email alias mapping specific project']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.42      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.42      0.26      2332
+
+Confusion Matrix:
+[[   4 1341]
+ [   0  987]]
+Accuracy: 0.42495711835334476
+Precision: 0.42495711835334476
+Recall: 0.42495711835334476
+F1-Score: 0.42495711835334476
+------------------------------------------------------------------
+Processing ngram_range: (14, 15)
+Top words for topic #0:
+['window tweak svgs caption button match native color thickness precisely different dpi scaling setting', 'entering help menuitem mainmenu first time session display help instead firefox nightly help header', 'contribution contribution run menu item seems linger even though debug context doesnt seem active', 'checkout maven project svn stuck resolve plugin dependency using annotation processor maven compiler plugin', 'progress updating progress view lot job block ui main thread make ui sluggish minute', 'incorrect reporting page size rt click pg view pg info sv ondisk pg larger', 'investigate sync failure caused error encountered statement execution database disk image malformed self repair', 'firefox account ha right arrow sub panel view placed inside overflow menu user signed', 'new sync option encrypt data secret thats used anything else never entered web page', 'querycolumn sql field assumes operator issue opened closed deal field named status id extendable']
+
+
+Top words for topic #1:
+['tracker selection ui custom field editing screen project setting screen aligned create sense coherence unity', 'selection ui custom field editing screen project setting screen aligned create sense coherence unity', 'design tracker selection ui custom field editing screen project setting screen aligned create sense coherence', 'use setting host name instead setting app title totp issuer avoid name collision instance', 'setting host name instead setting app title totp issuer avoid name collision instance apps', 'use setting host name instead setting app title totp issuer avoid name collision instance apps', 'request adding tracker id name rest time entry response like already project info response', 'different outgoing email address per project email alias different incoming email alias mapping specific', 'outgoing email address per project email alias different incoming email alias mapping specific project', 'different outgoing email address per project email alias different incoming email alias mapping specific project']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.01      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.42      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.42      0.26      2332
+
+Confusion Matrix:
+[[   4 1341]
+ [   0  987]]
+Accuracy: 0.42495711835334476
+Precision: 0.42495711835334476
+Recall: 0.42495711835334476
+F1-Score: 0.42495711835334476
+------------------------------------------------------------------
+Processing ngram_range: (15, 15)
+Top words for topic #0:
+['organize import add unnecessary static import creating anonymous class enclosing interface calling static method within', 'meta ascertain whether new gui toolkit needed firefox due gtk abstraction potential gtk lack support', 'closing gmail tab opening email another tab exit firefox even browser tab closewindowwithlasttab set false', 'potential origin spoofing address bar truncates facebook com evil com facebook com instead evil com', 'pin promo still displayed private window user chooses pin shortcut taskbar existing user onboarding modal', 'blocklisted addons cause sync create error log failed apply incoming record error add found install', 'recently closed tab menu slow due giant several mb data uris stored closed tab favicons', 'window icon context menu button recommended pocket card barely visible system high contrast mode turned', 'navigator possible bug org eclipse ui ide src org eclipse ui view navigator stringmatcher java', 'undo close tab window reopens previously loaded page even though user specifically asked remember history']
+
+
+Top words for topic #1:
+['pdf date input box auto corrects dd mm yyyy format american format mm dd yyyy', 'move lightweight theme cs browser base content browser cs browser theme shared browser inc cs', 'downloadssummary file downloading bottom downloads panel includes finished downloads lead wrong size progress number shown', 'project copy failed copy issue category set required project copy issue issue xxx could copied', 'copy failed copy issue category set required project copy issue issue xxx could copied category', 'failed copy issue category set required project copy issue issue xxx could copied category blank', 'design tracker selection ui custom field editing screen project setting screen aligned create sense coherence', 'tracker selection ui custom field editing screen project setting screen aligned create sense coherence unity', 'use setting host name instead setting app title totp issuer avoid name collision instance apps', 'different outgoing email address per project email alias different incoming email alias mapping specific project']
+
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Backend       1.00      0.00      0.00      1345
+    Frontend       0.42      1.00      0.60       987
+
+    accuracy                           0.42      2332
+   macro avg       0.71      0.50      0.30      2332
+weighted avg       0.76      0.42      0.25      2332
+
+Confusion Matrix:
+[[   2 1343]
+ [   0  987]]
+Accuracy: 0.4240994854202401
+Precision: 0.4240994854202401
+Recall: 0.4240994854202401
+F1-Score: 0.4240994854202401
+------------------------------------------------------------------

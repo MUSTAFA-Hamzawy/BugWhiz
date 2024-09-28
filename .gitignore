@@ -1,0 +1,13 @@
+classification/data/
+classification/predict_developers_1/
+classification/predict_developers_2/
+classification/predict_developers_2.zip
+classification/code/
+# ignore the dataset folder and all its contents
+dataset/
+new_dataset/
+BOW_dataset/
+glove.6B/
+.env
+/node_modules
+.idea
