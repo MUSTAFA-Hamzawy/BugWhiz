@@ -106,6 +106,37 @@ Please follow the following steps for successful installation:
 
    Now, your application should be successfully up and running!
 
+
+   ## 📸 Screenshots
+
+### Home
+![Home](./images/1.png)
+![Home](./images/2.png)
+
+### Analytics
+![Analytics](./images/3.png)
+
+### Issues
+![Issues](./images/4.png)
+
+### New Issue
+![NewIssue](./images/5.png)
+
+### issueDetails
+![issueDetails](./images/6.png)
+
+### Comments
+![Comments](./images/7.png)
+
+### Edit Issue
+![EditIssue](./images/8.png)
+
+### Profile
+![Profile](./images/9.png)
+
+### 🔐 Edit Profile
+![EditProfile](./images/10.png)
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
